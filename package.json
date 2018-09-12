@@ -24,7 +24,7 @@
     "react-dom": "^16.5.0"
   },
   "scripts": {
-    "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build": "build-storybook",
+    "start": "start-storybook -p 6006"
   }
 }

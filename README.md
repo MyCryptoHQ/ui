@@ -17,7 +17,7 @@ After `yarn`ing all dependencies you can run various commands depending on what 
 
 ```bash
 # run Storybook in dev mode in browser, rebuild on file changes
-yarn dev
+yarn start
 ```
 
 #### Build Releases
