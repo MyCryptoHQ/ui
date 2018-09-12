@@ -27,8 +27,6 @@ yarn start
 yarn build
 ```
 
-This build is output to a folder in `dist/`.
-
 #### Tests
 
 ```bash

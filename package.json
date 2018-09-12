@@ -9,11 +9,19 @@
   ],
   "author": "MyCryptoHQ",
   "license": "MIT",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib"
+  ],
   "devDependencies": {
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
     "jest": "^23.6.0",
+    "nwb": "^0.23.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0"
   },
@@ -22,7 +30,9 @@
     "react-dom": "^16.5.0"
   },
   "scripts": {
-    "build": "build-storybook",
+    "build": "nwb build-react-component && build-storybook",
+    "clean": "nwb clean-module",
+    "prepublishOnly": "yarn build",
     "start": "start-storybook -p 3000",
     "test": "jest"
   }
