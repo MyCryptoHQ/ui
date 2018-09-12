@@ -19,11 +19,15 @@
   "devDependencies": {
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-react": "^6.24.1",
     "babel-runtime": "^6.26.0",
     "jest": "^23.6.0",
+    "jest-dom": "^1.12.0",
     "nwb": "^0.23.0",
     "react": "^16.5.0",
-    "react-dom": "^16.5.0"
+    "react-dom": "^16.5.0",
+    "react-testing-library": "^5.0.1"
   },
   "peerDependencies": {
     "react": "^16.5.0",
