@@ -39,5 +39,22 @@
     "prepublishOnly": "yarn build",
     "start": "start-storybook -p 3000",
     "test": "jest"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
+  },
+  "jest": {
+    "setupTestFrameworkScriptFile": "./src/setupTests"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "useTabs": false,
+    "semi": true,
+    "tabWidth": 2,
+    "trailingComma": "none"
   }
 }
