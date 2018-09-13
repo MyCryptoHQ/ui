@@ -16,6 +16,9 @@
     "es",
     "lib"
   ],
+  "dependencies": {
+    "typeface-lato": "^0.0.54"
+  },
   "devDependencies": {
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
