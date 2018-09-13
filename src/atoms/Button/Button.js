@@ -1,3 +1,7 @@
 import React from 'react';
 
-export default props => <button type="button" {...props} />;
+export default ({ children, ...props }) => (
+  <button className="button" type="button" {...props}>
+    <div className="button-inner">{children}</div>
+  </button>
+);
