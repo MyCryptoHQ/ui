@@ -16,9 +16,6 @@
     "es",
     "lib"
   ],
-  "dependencies": {
-    "typeface-lato": "^0.0.54"
-  },
   "devDependencies": {
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
@@ -30,7 +27,8 @@
     "nwb": "^0.23.0",
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
-    "react-testing-library": "^5.0.1"
+    "react-testing-library": "^5.0.1",
+    "typeface-lato": "^0.0.54"
   },
   "peerDependencies": {
     "react": "^16.5.0",
@@ -50,6 +48,9 @@
     ]
   },
   "jest": {
+    "moduleNameMapper": {
+      "\\.css$": "<rootDir>/__mocks__/styleMock.js"
+    },
     "setupTestFrameworkScriptFile": "./src/setupTests"
   },
   "prettier": {
