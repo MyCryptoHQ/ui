@@ -1,6 +1,8 @@
 # MyCrypto UI
 
-[React](https://github.com/facebook/react) components for [MyCrypto](https://github.com/MyCryptoHQ/MyCrypto), following [Atomic Design](http://atomicdesign.bradfrost.com/).
+The shared UI component library used across all MyCrypto products.
+
+Implemented with [React](https://github.com/facebook/react) components following [Atomic Design](http://atomicdesign.bradfrost.com/).
 
 ## Installation
 
