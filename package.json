@@ -39,14 +39,6 @@
     "start": "start-storybook -p 3000",
     "test": "jest"
   },
-  "babel": {
-    "presets": "react",
-    "env": {
-      "test": {
-        "plugins": "transform-es2015-modules-commonjs"
-      }
-    }
-  },
   "jest": {
     "moduleNameMapper": {
       "\\.css$": "<rootDir>/__mocks__/styleMock.js"
