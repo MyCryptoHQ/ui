@@ -10,8 +10,8 @@ Requires a bundler with ES module support and webfont extraction (`.woff` and `.
 
 ### Yarn
 
-`yarn add @mycrypto/ui`
+`yarn`
 
 ### npm
 
-`npm install @mycrypto/ui`
+`npm install`

@@ -1,5 +1,4 @@
 {
-  "name": "@mycrypto/ui",
   "version": "1.0.0",
   "description": "React components for MyCrypto, following Atomic Design.",
   "repository": "MyCryptoHQ/ui",
