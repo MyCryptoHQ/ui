@@ -39,7 +39,7 @@ yarn test
 ## Folder structure
 
 ```
-├── __mock__: Mocked modules for Jest (avoid if possible, integration testing with runtime dependencies is preferred)
+├── __mocks__: Mocked modules for Jest (avoid if possible, integration testing with runtime dependencies is preferred)
 ├── dist
 │   └── index.js: ES module bundle for publishing to npm
 ├── src: Components organized into atoms, molecules, and organisms (see Atomic Design)
