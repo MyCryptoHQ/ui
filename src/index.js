@@ -1,2 +1,2 @@
-export { default as Button } from './atoms/Button';
+export * from './atoms';
 import 'typeface-lato';
