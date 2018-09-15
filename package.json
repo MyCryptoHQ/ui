@@ -20,6 +20,8 @@
     "@storybook/react": "^3.4.10",
     "babel-core": "^6.26.3",
     "babel-runtime": "^6.26.0",
+    "eslint": "^5.6.0",
+    "eslint-plugin-jsx-a11y": "^6.1.1",
     "husky": "^0.14.3",
     "jest": "^23.6.0",
     "jest-dom": "^1.12.0",
@@ -43,6 +45,16 @@
     "start": "start-storybook -p 3000",
     "test": "jest"
   },
+  "eslintConfig": {
+    "extends": "plugin:jsx-a11y/recommended",
+    "parserOptions": {
+      "ecmaVersion": 2018,
+      "sourceType": "module"
+    },
+    "plugins": [
+      "jsx-a11y"
+    ]
+  },
   "jest": {
     "moduleNameMapper": {
       "\\.css$": "<rootDir>/__mocks__/styleMock.js"
@@ -52,6 +64,10 @@
   "lint-staged": {
     "*.{css,js,json,md}": [
       "prettier --write",
+      "git add"
+    ],
+    "*.js": [
+      "eslint --fix",
       "git add"
     ]
   },
