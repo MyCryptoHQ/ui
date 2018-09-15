@@ -13,6 +13,7 @@
     "dist"
   ],
   "dependencies": {
+    "prop-types": "^15.6.2",
     "typeface-lato": "^0.0.54"
   },
   "devDependencies": {
