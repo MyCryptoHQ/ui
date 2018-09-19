@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "allowJs": true,
+    "checkJs": true,
+    "esModuleInterop": true,
+    "jsx": "react",
+    "lib": ["dom", "es5"],
+    "strict": true
+  },
+  "exclude": ["dist", "rollup.config.js", "storybook-static"]
+}

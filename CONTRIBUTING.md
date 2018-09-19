@@ -53,7 +53,6 @@ yarn test
 │   │   └── index.js: Component group re-exports
 │   ├── index.js: Entry point, should re-export all components
 │   ├── molecules
-│   ├── organisms
-│   └── setupTests.js: Jest setup
+│   └── organisms
 └── storybook-static: Statically built Storybook, serving as a public demo, styleguide, and documentation
 ```

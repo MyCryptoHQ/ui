@@ -1,3 +1,4 @@
+import 'jest-dom/extend-expect';
 import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 import Button from '.';
