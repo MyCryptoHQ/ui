@@ -1,11 +1,13 @@
 {
   "compilerOptions": {
-    "allowJs": true,
-    "checkJs": true,
+    "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "es5"],
+    "module": "es6",
+    "moduleResolution": "node",
+    "outDir": "dist",
     "strict": true
   },
-  "exclude": ["dist", "rollup.config.js", "storybook-static"]
+  "include": ["src"]
 }

@@ -46,12 +46,12 @@ yarn test
 │   ├── atoms
 │   │   ├── Button
 │   │   │   ├── Button.css: CSS styles
-│   │   │   ├── Button.js: React component
-│   │   │   ├── Button.story.js: Storybook story
-│   │   │   ├── Button.test.js: Jest test
-│   │   │   └── index.js: Component re-exports
-│   │   └── index.js: Component group re-exports
-│   ├── index.js: Entry point, should re-export all components
+│   │   │   ├── Button.tsx: React component
+│   │   │   ├── Button.story.tsx: Storybook story
+│   │   │   ├── Button.test.tsx: Jest test
+│   │   │   └── index.ts: Component re-exports
+│   │   └── index.ts: Component group re-exports
+│   ├── index.ts: Entry point, should re-export all components
 │   ├── molecules
 │   └── organisms
 └── storybook-static: Statically built Storybook, serving as a public demo, styleguide, and documentation

@@ -35,10 +35,6 @@
     "react": "^16.5.0",
     "react-dom": "^16.5.0",
     "react-testing-library": "^5.0.1",
-    "rollup": "^0.66.0",
-    "rollup-plugin-babel": "^4.0.1",
-    "rollup-plugin-node-resolve": "^3.4.0",
-    "rollup-plugin-postcss": "^1.6.2",
     "ts-jest": "^23.1.4",
     "ts-loader": "^5.1.1",
     "typescript": "^3.0.3",
@@ -49,16 +45,10 @@
     "react-dom": "^16.5.0"
   },
   "scripts": {
-    "build": "rollup -c && build-storybook",
+    "build": "tsc && build-storybook",
     "precommit": "lint-staged && yarn test",
     "start": "start-storybook -p 3000",
     "test": "jest"
-  },
-  "babel": {
-    "presets": [
-      "@babel/env",
-      "@babel/react"
-    ]
   },
   "eslintConfig": {
     "extends": "plugin:jsx-a11y/recommended",
@@ -80,20 +70,22 @@
       "node"
     ],
     "moduleNameMapper": {
-      "\\.css$": "<rootDir>/__mocks__/styleMock.js"
+      "\\.css$": "<rootDir>/__mocks__/styleMock.ts"
     },
+    "testPathIgnorePatterns": [
+      "dist"
+    ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "transform": {
-      "^.+\\.jsx?$": "babel-jest",
       "^.+\\.tsx?$": "ts-jest"
     }
   },
   "lint-staged": {
-    "*.{css,js,json,md}": [
+    "*.{css,js,jsx,ts,tsx,json,md}": [
       "prettier --write",
       "git add"
     ],
-    "*.js": [
+    "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
       "git add"
     ]
