@@ -1,7 +1,8 @@
 module.exports = (baseConfig, env, config) => {
   config.module.rules.push({
     test: /\.tsx?$/,
-    loader: 'ts-loader'
+    loader: 'ts-loader',
+    options: { compilerOptions: { declaration: false } }
   });
   config.resolve.extensions.push('.ts', '.tsx');
   return config;
