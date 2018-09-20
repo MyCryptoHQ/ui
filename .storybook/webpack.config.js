@@ -4,10 +4,10 @@ module.exports = (baseConfig, env, config) => {
     use: [
       {
         loader: 'ts-loader',
-        options: { compilerOptions: { declaration: false } }
+        options: { compilerOptions: { declaration: false } },
       },
-      'react-docgen-typescript-loader'
-    ]
+      'react-docgen-typescript-loader',
+    ],
   });
   config.resolve.extensions.push('.ts', '.tsx');
   return config;

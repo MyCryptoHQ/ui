@@ -8,7 +8,7 @@ test('Button', () => {
   const { getByText } = render(
     <Button className="extra" onClick={handleClick}>
       Accept Cookies
-    </Button>
+    </Button>,
   );
   const button = getByText('Accept Cookies');
   expect(button).toHaveAttribute('class', 'button extra');

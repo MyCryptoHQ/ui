@@ -7,7 +7,7 @@ setDefaults({ header: false, inline: true });
 setOptions({
   name: 'MyCrypto UI',
   url: 'https://github.com/MyCryptoHQ/ui',
-  showAddonPanel: false
+  showAddonPanel: false,
 });
 
 const req = require.context('../src', true, /.story.[jt]sx?$/);
