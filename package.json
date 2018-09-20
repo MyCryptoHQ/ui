@@ -41,6 +41,8 @@
     "react-testing-library": "^5.0.1",
     "ts-jest": "^23.1.4",
     "ts-loader": "^3.5.0",
+    "tslint": "^5.11.0",
+    "tslint-config-prettier": "^1.15.0",
     "typescript": "^3.0.3"
   },
   "peerDependencies": {
@@ -90,6 +92,10 @@
     ],
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix",
+      "git add"
+    ],
+    "*.{ts,tsx}": [
+      "tslint --fix --project .",
       "git add"
     ]
   },
