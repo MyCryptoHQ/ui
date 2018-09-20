@@ -44,7 +44,8 @@
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
-    "typescript": "^3.0.3"
+    "typescript": "^3.0.3",
+    "typescript-eslint-parser": "^18.0.0"
   },
   "peerDependencies": {
     "react": "^16.5.0",
@@ -58,8 +59,8 @@
   },
   "eslintConfig": {
     "extends": "plugin:jsx-a11y/recommended",
+    "parser": "typescript-eslint-parser",
     "parserOptions": {
-      "ecmaVersion": 2018,
       "sourceType": "module"
     },
     "plugins": [
@@ -92,7 +93,7 @@
       "git add"
     ],
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
+      "eslint --fix --ext js,jsx,ts,tsx",
       "git add"
     ],
     "*.{ts,tsx}": [
