@@ -17,17 +17,14 @@
     "typeface-lato": "^0.0.54"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.1",
-    "@emotion/core": "^0.13.0",
     "@storybook/addon-info": "^3.4.11",
-    "@storybook/react": "^4.0.0-alpha.21",
+    "@storybook/react": "^3.4.10",
     "@types/jest": "^23.3.2",
     "@types/react": "^16.4.14",
     "@types/storybook__addon-info": "^3.4.2",
     "@types/storybook__react": "^3.0.9",
-    "babel-core": "^7.0.0-bridge.0",
-    "babel-jest": "^23.6.0",
-    "babel-loader": "^8.0.2",
+    "babel-core": "^6.26.3",
+    "babel-runtime": "^6.26.0",
     "eslint": "^5.6.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "husky": "^0.14.3",
@@ -40,9 +37,8 @@
     "react-dom": "^16.5.0",
     "react-testing-library": "^5.0.1",
     "ts-jest": "^23.1.4",
-    "ts-loader": "^5.1.1",
-    "typescript": "^3.0.3",
-    "webpack": "^4.19.0"
+    "ts-loader": "^3.5.0",
+    "typescript": "^3.0.3"
   },
   "peerDependencies": {
     "react": "^16.5.0",
