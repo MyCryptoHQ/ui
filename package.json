@@ -54,7 +54,7 @@
   },
   "scripts": {
     "build": "tsc && build-storybook",
-    "precommit": "lint-staged && yarn test",
+    "precommit": "lint-staged && tsc --noEmit && yarn test",
     "start": "start-storybook -p 3000",
     "test": "jest"
   },
