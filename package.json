@@ -30,6 +30,7 @@
     "babel-runtime": "^6.26.0",
     "eslint": "^5.6.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
+    "eslint-plugin-react": "^7.11.1",
     "husky": "^0.14.3",
     "jest": "^23.6.0",
     "jest-dom": "^1.12.0",
@@ -65,7 +66,10 @@
     },
     "plugins": [
       "jsx-a11y"
-    ]
+    ],
+    "rules": {
+      "react/destructuring-assignment": "error"
+    }
   },
   "jest": {
     "moduleFileExtensions": [
