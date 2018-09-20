@@ -1,4 +1,5 @@
 {
+  "name": "@mycrypto/ui",
   "version": "1.0.0",
   "description": "React components for MyCrypto, following Atomic Design.",
   "repository": "MyCryptoHQ/ui",
@@ -6,7 +7,7 @@
     "react",
     "react-component"
   ],
-  "author": "MyCryptoHQ",
+  "author": "MyCrypto",
   "license": "MIT",
   "module": "dist/index.js",
   "types": "dist/index.d.ts",
