@@ -1,4 +1,5 @@
 # MyCrypto UI
+[![Build Status](https://travis-ci.org/MyCryptoHQ/ui.svg?branch=master)](https://travis-ci.org/MyCryptoHQ/ui)
 
 The shared UI component library used across all MyCrypto products.
 
