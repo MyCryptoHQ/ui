@@ -2,15 +2,14 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "esModuleInterop": true,
     "jsx": "react",
-    "lib": ["dom", "es5"],
-    "module": "es6",
-    "moduleResolution": "node",
+    "lib": ["dom", "es6"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "outDir": "dist",
+    "sourceMap": true,
     "strict": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "inlineSources": true,
+  "inlineSourceMap": true
 }
