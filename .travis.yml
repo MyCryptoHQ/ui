@@ -7,12 +7,6 @@ cache:
 
 after_success: yarn report-coverage
 
-deploy:
-  provider: script
-  script: yarn deploy-storybook --ci
-  on:
-    branch: master
-
 notifications:
   email:
     on_success: never
