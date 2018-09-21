@@ -6,6 +6,15 @@ cache:
     - node_modules
 
 after_success: yarn report-coverage
+before_deploy: yarn build
+
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: $GH_TOKEN
+  local-dir: storybook-static
+  on:
+    branch: master
 
 notifications:
   email:
