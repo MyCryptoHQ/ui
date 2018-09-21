@@ -13,15 +13,10 @@ const external = [
   ...Object.keys(pkg.peerDependencies),
 ];
 
-/**
- * Include all of the dependencies again here to squash rollup warnings
- */
-const globals = {};
-
 export default {
   input: `src/index.ts`,
 
-  output: { file: pkg.module, format: 'es', globals, sourcemap: true },
+  output: { file: pkg.module, format: 'es', sourcemap: true },
 
   // exclude all node modules
   external,
