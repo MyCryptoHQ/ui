@@ -2,6 +2,7 @@
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "declarationMap": true,
     "jsx": "react",
     "lib": ["dom", "es6"],
     "noUnusedLocals": true,

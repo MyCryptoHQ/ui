@@ -4,7 +4,9 @@ module.exports = (baseConfig, env, config) => {
     use: [
       {
         loader: 'ts-loader',
-        options: { compilerOptions: { declaration: false } },
+        options: {
+          compilerOptions: { declaration: false, declarationMap: false },
+        },
       },
       'react-docgen-typescript-loader',
     ],
