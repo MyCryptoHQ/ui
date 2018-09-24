@@ -46,6 +46,8 @@
     "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.17.0",
+    "stylelint": "^9.5.0",
+    "stylelint-config-recommended": "^2.1.0",
     "ts-jest": "^23.1.4",
     "ts-loader": "^3.5.0",
     "tslint": "^5.11.0",
@@ -105,6 +107,10 @@
       "prettier --write",
       "git add"
     ],
+    "*.css": [
+      "stylelint --fix",
+      "git add"
+    ],
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix --ext js,jsx,ts,tsx",
       "git add"
@@ -121,5 +127,8 @@
     "semi": true,
     "tabWidth": 2,
     "trailingComma": "all"
+  },
+  "stylelint": {
+    "extends": "stylelint-config-recommended"
   }
 }
