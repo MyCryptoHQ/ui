@@ -7,7 +7,6 @@
     "jsx": "react",
     "lib": ["dom", "es6"],
     "noUnusedLocals": true,
-    "noUnusedParameters": true,
     "sourceMap": true,
     "strict": true
   },
