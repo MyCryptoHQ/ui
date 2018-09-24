@@ -3,6 +3,7 @@
     "allowSyntheticDefaultImports": true,
     "declaration": true,
     "declarationMap": true,
+    "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "es6"],
     "noUnusedLocals": true,
