@@ -1,5 +1,5 @@
 .button {
-  background-color: #027896;
+  background-color: var(--color-4);
   border-radius: 2px;
   color: #ffffff;
   font-family: Lato;

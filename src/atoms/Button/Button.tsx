@@ -1,4 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
+import '../../colors.css';
 import './Button.css';
 
 export default function Button({
