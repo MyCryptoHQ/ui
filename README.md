@@ -11,10 +11,4 @@ Implemented with [React](https://github.com/facebook/react) components following
 
 Requires a bundler with ES module support and webfont extraction (`.woff` and `.woff2`).
 
-### Yarn
-
 `yarn`
-
-### npm
-
-`npm install`
