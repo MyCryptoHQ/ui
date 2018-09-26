@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 import styled from 'styled-components';
-import colors from './colors';
+import primaryColor from './colors';
 
 const Color = styled.div`
   vertical-align: middle;
@@ -17,11 +17,9 @@ const Property = styled.code`
   vertical-align: middle;
 `;
 
-storiesOf('Styles', module).add('Colors', () =>
-  colors.map(backgroundColor => (
-    <div>
-      <Color color={backgroundColor} />
-      <Property>{backgroundColor}</Property>
-    </div>
-  )),
-);
+storiesOf('Styles', module).add('Colors', () => (
+  <>
+    <Color color={primaryColor} />
+    <Property>--primary-color</Property>
+  </>
+));
