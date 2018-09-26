@@ -1,4 +1,3 @@
-import postcss from 'rollup-plugin-postcss';
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
 import pkg from './package.json';
@@ -25,9 +24,6 @@ export default {
     include: 'src/**',
   },
   plugins: [
-    // Compile styles
-    postcss(),
-
     // Compile TypeScript files
     typescript(),
 

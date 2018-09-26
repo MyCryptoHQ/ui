@@ -1,13 +1,13 @@
 import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
-import '../../colors.css';
+import colors from '../../colors';
 
 function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" {...props} />;
 }
 
 export default styled(Button)`
-  background-color: var(--color-4);
+  background-color: ${colors[3]};
   border-radius: 2px;
   color: #ffffff;
   font-family: Lato, sans-serif;

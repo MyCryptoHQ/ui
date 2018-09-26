@@ -1,20 +1,27 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import './colors.css';
-import './colors.story.css';
+import styled from 'styled-components';
+import colors from './colors';
+
+const Color = styled.div`
+  vertical-align: middle;
+  background-color: ${props => props.color};
+  display: inline-block;
+  height: 25px;
+  width: 25px;
+  margin: 5px 10px;
+  border-radius: 50%;
+`;
+
+const Property = styled.code`
+  vertical-align: middle;
+`;
 
 storiesOf('Styles', module).add('Colors', () =>
-  Array.from({ length: 14 }, (value, index) => {
-    const property = `--color-${index + 1}`;
-
-    return (
-      <div>
-        <div
-          className="color"
-          style={{ backgroundColor: `var(${property})` }}
-        />
-        <code className="property">{property}</code>
-      </div>
-    );
-  }),
+  colors.map(backgroundColor => (
+    <div>
+      <Color color={backgroundColor} />
+      <Property>{backgroundColor}</Property>
+    </div>
+  )),
 );

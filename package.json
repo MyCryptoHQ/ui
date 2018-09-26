@@ -44,12 +44,13 @@
     "react-dom": "^16.5.0",
     "react-testing-library": "^5.0.1",
     "rollup": "^0.66.1",
-    "rollup-plugin-postcss": "^1.6.2",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.17.0",
     "styled-components": "^3.4.9",
     "stylelint": "^9.5.0",
     "stylelint-config-recommended": "^2.1.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.3.2",
     "ts-jest": "^23.1.4",
     "ts-loader": "^3.5.0",
     "tslint": "^5.11.0",
@@ -94,9 +95,6 @@
       "json",
       "node"
     ],
-    "moduleNameMapper": {
-      "\\.css$": "<rootDir>/__mocks__/styleMock.ts"
-    },
     "testPathIgnorePatterns": [
       "dist"
     ],
@@ -106,11 +104,8 @@
     }
   },
   "lint-staged": {
-    "*.{css,js,jsx,ts,tsx,json,md}": [
+    "*.{js,jsx,ts,tsx,json,md}": [
       "prettier --write",
-      "git add"
-    ],
-    "*.css": [
       "stylelint --fix",
       "git add"
     ],
@@ -132,6 +127,10 @@
     "trailingComma": "all"
   },
   "stylelint": {
-    "extends": "stylelint-config-recommended"
+    "processors": "stylelint-processor-styled-components",
+    "extends": [
+      "stylelint-config-recommended",
+      "stylelint-config-styled-components"
+    ]
   }
 }
