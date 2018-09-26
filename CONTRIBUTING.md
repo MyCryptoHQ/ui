@@ -45,7 +45,6 @@ yarn test
 ├── src: Components organized into atoms, molecules, and organisms (see Atomic Design)
 │   ├── atoms
 │   │   ├── Button
-│   │   │   ├── Button.css: CSS styles
 │   │   │   ├── Button.tsx: React component
 │   │   │   ├── Button.story.tsx: Storybook story
 │   │   │   ├── Button.test.tsx: Jest test
