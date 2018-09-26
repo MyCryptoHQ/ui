@@ -1,7 +1,12 @@
+import React, { ButtonHTMLAttributes } from 'react';
 import styled from 'styled-components';
 import '../../colors.css';
 
-const Button = styled.button.attrs({ type: 'button' })`
+function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
+  return <button type="button" {...props} />;
+}
+
+export default styled(Button)`
   background-color: var(--color-4);
   border-radius: 2px;
   color: #ffffff;
@@ -10,5 +15,3 @@ const Button = styled.button.attrs({ type: 'button' })`
   height: 50px;
   width: 200px;
 `;
-
-export default Button;
