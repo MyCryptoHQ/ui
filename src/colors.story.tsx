@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import styled from 'styled-components';
 import primaryColor from './colors';
+import styled from './styled-components';
 
 const Color = styled.div`
   vertical-align: middle;
