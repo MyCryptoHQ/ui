@@ -9,7 +9,7 @@ export default interface Theme {
 
 export const light: Theme = {
   backgroundColor: 'white',
-  name: 'Default',
+  name: 'Light',
   primaryColor: '#027896',
   textColor: '#333',
 };
