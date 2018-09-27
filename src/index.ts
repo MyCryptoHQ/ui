@@ -1,2 +1,2 @@
 export * from './atoms';
-import 'typeface-lato';
+export { dark, default as Theme, light } from './Theme';
