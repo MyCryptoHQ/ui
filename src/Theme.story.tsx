@@ -7,6 +7,7 @@ import Theme from './Theme';
 const Color = styled.div`
   vertical-align: middle;
   background-color: ${props => props.color};
+  border: 1px solid ${props => props.theme.textColor};
   display: inline-block;
   height: 25px;
   width: 25px;
@@ -18,10 +19,16 @@ const Property = styled.code`
   vertical-align: middle;
 `;
 
-const ColorPair = withTheme(({ theme: { primaryColor } }: { theme: Theme }) => (
+const ColorPair = withTheme(({ theme }: { theme: Theme }) => (
   <>
-    <Color color={primaryColor} />
-    <Property>--primary-color</Property>
+    {Object.entries(theme)
+      .filter(([key]) => key.toLowerCase().includes('color'))
+      .map(([key, value]) => (
+        <div>
+          <Color color={value} />
+          <Property>{key}</Property>
+        </div>
+      ))}
   </>
 ));
 
