@@ -25,4 +25,4 @@ const ColorPair = withTheme(({ theme: { primaryColor } }: { theme: Theme }) => (
   </>
 ));
 
-storiesOf('Styles', module).add('Colors', () => <ColorPair />);
+storiesOf('Styles', module).add('Theme', () => <ColorPair />);
