@@ -1,11 +1,6 @@
-import React, { ButtonHTMLAttributes } from 'react';
 import styled from '../../styled-components';
 
-function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
-  return <button type="button" {...props} />;
-}
-
-export const StyledButton = styled(Button)`
+export const StyledButton = styled.button`
   background-color: ${props => props.theme.primaryColor};
   border-radius: 2px;
   border: 0;
@@ -17,3 +12,5 @@ export const StyledButton = styled(Button)`
 `;
 
 export default StyledButton;
+
+StyledButton.defaultProps = { type: 'button' };
