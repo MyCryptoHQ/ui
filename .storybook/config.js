@@ -1,7 +1,9 @@
 import { withInfo } from '@storybook/addon-info';
 import { setOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
+import React from 'react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
+import styled from '../src/styled-components';
 import { dark, light } from '../src/Theme';
 
 setOptions({
@@ -12,6 +14,21 @@ setOptions({
 addDecorator((story, context) =>
   withInfo({ header: false, inline: true })(story)(context),
 );
+
+const Container = styled.div`
+  background-color: ${props => props.theme.backgroundColor};
+  color: ${props => props.theme.textColor};
+
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+
+  border-radius: 4px;
+  padding: 8px;
+`;
+addDecorator(story => <Container>{story()}</Container>);
 
 addDecorator(withThemesProvider([light, dark]));
 
