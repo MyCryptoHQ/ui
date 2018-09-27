@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React from 'react';
 import { withTheme } from 'styled-components';
 import styled from './styled-components';
-import Theme from './theme';
+import Theme from './Theme';
 
 const Color = styled.div`
   vertical-align: middle;

@@ -1,5 +1,5 @@
 import * as styledComponents from 'styled-components';
-import Theme from './theme';
+import Theme from './Theme';
 
 const {
   default: styled,

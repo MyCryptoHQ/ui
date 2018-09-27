@@ -2,7 +2,7 @@ import { withInfo } from '@storybook/addon-info';
 import { setOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
-import { dark, light } from '../src/theme';
+import { dark, light } from '../src/Theme';
 
 setOptions({
   name: 'MyCrypto UI',
