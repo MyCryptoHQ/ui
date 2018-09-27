@@ -8,6 +8,7 @@ function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
 export const StyledButton = styled(Button)`
   background-color: ${props => props.theme.primaryColor};
   border-radius: 2px;
+  border: 0;
   color: #ffffff;
   font-family: Lato, sans-serif;
   font-size: 18px;
