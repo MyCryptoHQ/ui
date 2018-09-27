@@ -24,7 +24,7 @@ const ColorPair = withTheme(({ theme }: { theme: Theme }) => (
     {Object.entries(theme)
       .filter(([key]) => key.toLowerCase().includes('color'))
       .map(([key, value]) => (
-        <div>
+        <div key={key}>
           <Color color={value} />
           <Property>{key}</Property>
         </div>
