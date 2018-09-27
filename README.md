@@ -12,3 +12,15 @@ Implemented with [React](https://github.com/facebook/react) components following
 Requires a bundler with ES module support and webfont extraction (`.woff` and `.woff2`).
 
 `yarn`
+
+To use the included light and dark themes (recommended), install Styled Components (`yarn add styled-components`) and wrap your app in a `ThemeProvider`.
+
+```js
+import { Button, light } from '@mycrypto/ui';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+
+<ThemeProvider theme={light}>
+  <Button>Accept Cookies</Button>
+</ThemeProvider>;
+```
