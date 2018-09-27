@@ -5,7 +5,7 @@ function Button(props: ButtonHTMLAttributes<HTMLButtonElement>) {
   return <button type="button" {...props} />;
 }
 
-export default styled(Button)`
+export const StyledButton = styled(Button)`
   background-color: ${props => props.theme.primaryColor};
   border-radius: 2px;
   color: #ffffff;
@@ -14,3 +14,5 @@ export default styled(Button)`
   height: 50px;
   width: 200px;
 `;
+
+export default StyledButton;
