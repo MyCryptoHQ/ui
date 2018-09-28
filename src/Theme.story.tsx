@@ -6,7 +6,7 @@ import Theme from './Theme';
 
 const Color = styled.div`
   background-color: ${props => props.color};
-  border: 1px solid ${props => props.theme.textColor};
+  border: 1px solid ${props => props.theme.text};
   height: 25px;
   width: 25px;
   margin: 5px 10px;
@@ -21,7 +21,7 @@ const VerticallyCentered = styled.div`
 const ThemePreview = withTheme(({ theme }: { theme: Theme }) => (
   <>
     {Object.entries(theme)
-      .filter(([key]) => key.toLowerCase().includes('color'))
+      .filter(([key]) => key !== 'name')
       .map(([key, value]) => (
         <VerticallyCentered key={key}>
           <Color color={value} />

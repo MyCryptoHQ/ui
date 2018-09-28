@@ -1,22 +1,22 @@
 import 'typeface-lato';
 
 export default interface Theme {
-  backgroundColor: string;
+  background: string;
   name: string;
-  primaryColor: string;
-  textColor: string;
+  primary: string;
+  text: string;
 }
 
 export const light: Theme = {
-  backgroundColor: 'white',
+  background: 'white',
   name: 'Light',
-  primaryColor: '#027896',
-  textColor: '#333',
+  primary: '#027896',
+  text: '#333',
 };
 
 export const dark: Theme = {
-  backgroundColor: '#21252b',
+  background: '#21252b',
   name: 'Dark',
-  primaryColor: '#0090b5',
-  textColor: 'white',
+  primary: '#0090b5',
+  text: 'white',
 };
