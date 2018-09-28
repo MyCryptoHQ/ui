@@ -8,7 +8,12 @@ module.exports = (baseConfig, env, config) => {
           compilerOptions: { declaration: false, declarationMap: false },
         },
       },
-      'react-docgen-typescript-loader',
+      {
+        loader: 'react-docgen-typescript-loader',
+        options: {
+          propFilter: prop => !prop.parent,
+        },
+      },
     ],
   });
   config.resolve.extensions.push('.ts', '.tsx');
