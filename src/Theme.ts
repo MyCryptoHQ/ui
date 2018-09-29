@@ -1,5 +1,3 @@
-import 'typeface-lato';
-
 export default interface Theme {
   background: string;
   name: string;
