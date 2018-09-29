@@ -36,6 +36,6 @@ export const Button = styled.button<{ large?: boolean }>`
   }
 `;
 
-export default Button;
-
 Button.defaultProps = { type: 'button' };
+
+export default Button;
