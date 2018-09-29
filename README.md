@@ -21,6 +21,6 @@ import React from 'react';
 import { ThemeProvider } from 'styled-components';
 
 <ThemeProvider theme={light}>
-  <Button>Accept Cookies</Button>
+  <Button>Button</Button>
 </ThemeProvider>;
 ```

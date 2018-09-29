@@ -5,12 +5,10 @@ import Button from '.';
 
 test('Button', () => {
   const handleClick = jest.fn();
-  const { getByText } = render(
-    <Button onClick={handleClick}>Accept Cookies</Button>,
-  );
-  const button = getByText('Accept Cookies');
+  const { getByText } = render(<Button onClick={handleClick}>Button</Button>);
+  const button = getByText('Button');
   expect(button).toHaveAttribute('type', 'button');
-  expect(button).toHaveTextContent('Accept Cookies');
+  expect(button).toHaveTextContent('Button');
   fireEvent.click(button);
   expect(handleClick).toHaveBeenCalled();
 });
