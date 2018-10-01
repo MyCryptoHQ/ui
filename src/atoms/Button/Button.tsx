@@ -2,7 +2,6 @@ import styled, { css } from '../../styled-components';
 
 const largeMixin = css`
   font-size: 1.15rem;
-  line-height: 1.2;
   padding: 1rem 2rem;
 `;
 
@@ -14,7 +13,6 @@ export const Button = styled.button<{ large?: boolean }>`
   color: #ffffff;
   font-family: Lato, sans-serif;
   font-size: 18px;
-  line-height: 1.4;
   padding: 0.75rem 2rem;
   transition: opacity 0.12s ease, color 0.12s ease, background-color 0.12s ease,
     border-color 0.12s ease;
