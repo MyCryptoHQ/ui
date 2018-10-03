@@ -1,14 +1,17 @@
 import { invert } from 'polished';
 
-export default interface Theme {
-  background: string;
-  headline: string;
-  name: string;
-  primary: string;
-  primaryDark: string;
-  primaryDarker: string;
-  text: string;
-}
+type Theme = Record<
+  | 'background'
+  | 'headline'
+  | 'name'
+  | 'primary'
+  | 'primaryDark'
+  | 'primaryDarker'
+  | 'text',
+  string
+>;
+
+export default Theme;
 
 export const light: Theme = {
   background: '#ffffff',
