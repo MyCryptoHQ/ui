@@ -43,7 +43,7 @@ yarn test
 ├── dist
 │   └── index.js: ES module bundle for publishing to npm
 ├── src: Components organized into atoms, molecules, and organisms (see Atomic Design)
-│   ├── atoms
+│   ├── atoms: Cannot implement any other components (with <Text /> as an exception); Mainly acts as a styling wrapper for basic HTML elements
 │   │   ├── Button
 │   │   │   ├── Button.tsx: React component
 │   │   │   ├── Button.story.tsx: Storybook story
@@ -51,7 +51,7 @@ yarn test
 │   │   │   └── index.ts: Component re-exports
 │   │   └── index.ts: Component group re-exports
 │   ├── index.ts: Entry point, should re-export all components
-│   ├── molecules
-│   └── organisms
+│   ├── molecules: Combines atoms to form more complex components; Cannot use any native HTML elements
+│   └── organisms: Combines molecules and atoms to form even more complex components
 └── storybook-static: Statically built Storybook, serving as a public demo, styleguide, and documentation
 ```
