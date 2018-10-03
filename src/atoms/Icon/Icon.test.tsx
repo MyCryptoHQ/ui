@@ -1,7 +1,9 @@
 import React from 'react';
 import { render } from 'react-testing-library';
-import Icon from '.';
+import Icon, { IconName, icons } from '.';
 
 test('Icon', () => {
-  render(<Icon icon="shield-alt" />);
+  for (const { iconName } of icons) {
+    render(<Icon icon={iconName as IconName} />);
+  }
 });

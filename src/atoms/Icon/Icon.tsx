@@ -8,16 +8,28 @@ import {
 import { FontAwesomeIcon, Props } from '@fortawesome/react-fontawesome';
 import React from 'react';
 
-library.add(faEye, faExclamationTriangle, faQuestionCircle, faShieldAlt);
+export type IconName =
+  | 'eye'
+  | 'exclamation-triangle'
+  | 'question-circle'
+  | 'shield-alt';
 
-export const Icon = (
-  props: Props & {
-    icon:
-      | { prefix: 'far'; iconName: 'eye' }
-      | 'exclamation-triangle'
-      | 'question-circle'
-      | 'shield-alt';
-  },
-) => <FontAwesomeIcon {...props} />;
+export const icons = [
+  faEye,
+  faExclamationTriangle,
+  faQuestionCircle,
+  faShieldAlt,
+];
+
+library.add(...icons);
+
+export function Icon({ icon, ...rest }: Props & { icon: IconName }) {
+  return (
+    <FontAwesomeIcon
+      icon={icons.find(({ iconName }) => iconName === icon)!}
+      {...rest}
+    />
+  );
+}
 
 export default Icon;

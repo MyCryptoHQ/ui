@@ -1,12 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Icon from '.';
+import Icon, { IconName, icons } from '.';
 
 storiesOf('Atoms', module).add('Icon', () => (
   <>
-    <Icon icon={{ prefix: 'far', iconName: 'eye' }} size="3x" />
-    <Icon icon="exclamation-triangle" size="3x" />
-    <Icon icon="question-circle" size="3x" />
-    <Icon icon="shield-alt" size="3x" />
+    {icons.map(({ iconName }) => (
+      <Icon key={iconName} icon={iconName as IconName} size="3x" />
+    ))}
   </>
 ));
