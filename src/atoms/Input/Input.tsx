@@ -9,6 +9,13 @@ export const Input = styled(Text.withComponent('input'))`
   font-size: 1em;
   font-weight: bold;
   padding: 0.75rem 1rem;
+  transition: border 0.12s, box-shadow 0.12s;
+
+  :focus {
+    border-color: ${props => props.theme.primary};
+    box-shadow: inset 0 0 0 1px ${props => props.theme.primary};
+    outline: none;
+  }
 `;
 
 export default Input;
