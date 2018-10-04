@@ -5,7 +5,7 @@ import styled from './styled-components';
 import Theme from './Theme';
 
 const Color = styled.div`
-  background-color: ${props => props.color};
+  background: ${props => props.color};
   border: 1px solid ${props => props.theme.text};
   height: 25px;
   width: 25px;

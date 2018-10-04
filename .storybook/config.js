@@ -16,7 +16,7 @@ addDecorator((story, context) =>
 );
 
 const Container = styled.div`
-  background-color: ${props => props.theme.background};
+  background: ${props => props.theme.background};
   color: ${props => props.theme.text};
 
   position: absolute;
