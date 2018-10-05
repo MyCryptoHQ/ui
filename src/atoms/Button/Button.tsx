@@ -1,10 +1,5 @@
 import styled, { css } from '../../styled-components';
 
-const largeMixin = css`
-  font-size: 1.15rem;
-  padding: 1rem 2rem;
-`;
-
 export const Button = styled.button<{ large?: boolean }>`
   background: ${props => props.theme.primary};
   border: 1px solid ${props => props.theme.primary};
@@ -16,7 +11,12 @@ export const Button = styled.button<{ large?: boolean }>`
     border 0.12s ease;
   user-select: none;
 
-  ${props => props.large && largeMixin};
+  ${props =>
+    props.large &&
+    css`
+      font-size: 1.15rem;
+      padding: 1rem 2rem;
+    `};
 
   &:focus,
   &:hover {
