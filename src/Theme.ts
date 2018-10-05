@@ -6,6 +6,7 @@ type Theme = Record<
   | 'controlBorder'
   | 'headline'
   | 'name'
+  | 'panelBackground'
   | 'primary'
   | 'primaryDark'
   | 'primaryDarker'
@@ -21,6 +22,7 @@ export const light: Theme = {
   controlBorder: '#e5ecf3',
   headline: '#163150',
   name: 'Light',
+  panelBackground: '#ffffff',
   primary: '#007896',
   primaryDark: '#006077',
   primaryDarker: '#004759',
@@ -33,6 +35,7 @@ export const dark: Theme = {
   controlBorder: '#4d5463',
   headline: invert(light.headline),
   name: 'Dark',
+  panelBackground: '#282c34',
   primary: '#0090b5',
   primaryDark: '#007896',
   primaryDarker: '#006077',
