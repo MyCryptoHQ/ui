@@ -4,6 +4,8 @@ import { render } from 'react-testing-library';
 import Panel from '.';
 
 test('Panel', () => {
-  const { getByText } = render(<Panel>Panel</Panel>);
+  const { getByText, rerender } = render(<Panel>Panel</Panel>);
+  expect(getByText('Panel')).toHaveTextContent('Panel');
+  rerender(<Panel noPadding={true}>Panel</Panel>);
   expect(getByText('Panel')).toHaveTextContent('Panel');
 });

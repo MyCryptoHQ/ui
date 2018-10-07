@@ -10,7 +10,13 @@ const TextWithoutMargin = styled(Text)`
 `;
 
 storiesOf('Atoms', module).add('Panel', () => (
-  <Panel>
-    <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
-  </Panel>
+  <>
+    <Panel>
+      <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
+    </Panel>
+
+    <Panel noPadding={true}>
+      <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
+    </Panel>
+  </>
 ));
