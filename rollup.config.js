@@ -13,7 +13,7 @@ const external = [
 ];
 
 export default {
-  input: `src/index.ts`,
+  input: 'src/index.ts',
 
   output: { file: pkg.module, format: 'es', sourcemap: true },
 
