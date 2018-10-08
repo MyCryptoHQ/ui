@@ -2,7 +2,7 @@ import styled from '../../styled-components';
 
 export const Panel = styled.section<{ noPadding?: boolean; raised?: boolean }>`
   background: ${props => props.theme.panelBackground};
-  border-radius: 2px;
+  border-radius: 6px;
   box-shadow: ${props =>
     props.raised
       ? '0 7px 14px 0 rgba(50, 50, 93, 0.1), 0 3px 6px 0 rgba(0, 0, 0, 0.07)'
