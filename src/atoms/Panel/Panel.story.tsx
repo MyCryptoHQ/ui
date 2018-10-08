@@ -18,9 +18,5 @@ storiesOf('Atoms', module).add('Panel', () => (
     <Panel noPadding={true}>
       <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
     </Panel>
-
-    <Panel raised={true}>
-      <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
-    </Panel>
   </>
 ));
