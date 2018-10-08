@@ -1,4 +1,4 @@
-import styled, { css } from '../../styled-components';
+import styled from '../../styled-components';
 
 export const Button = styled.button<{ large?: boolean }>`
   background: ${props => props.theme.primary};
@@ -13,7 +13,7 @@ export const Button = styled.button<{ large?: boolean }>`
 
   ${props =>
     props.large &&
-    css`
+    `
       font-size: 1.15rem;
       padding: 1rem 2rem;
     `};
