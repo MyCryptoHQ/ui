@@ -22,13 +22,6 @@ After `yarn`ing all dependencies you can run various commands depending on what 
 yarn start
 ```
 
-#### Build Releases
-
-```bash
-# builds the Storybook and npm/Yarn package
-yarn build
-```
-
 #### Tests
 
 ```bash
