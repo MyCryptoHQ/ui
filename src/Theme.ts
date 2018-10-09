@@ -36,7 +36,7 @@ export const dark: Theme = {
   headline: invert(light.headline),
   name: 'Dark',
   panelBackground: '#282c34',
-  primary: '#0090b5',
+  primary: '#007896',
   primaryDark: '#007896',
   primaryDarker: '#006077',
   text: '#ffffff',
