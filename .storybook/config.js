@@ -1,3 +1,4 @@
+import { checkA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { setOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
@@ -10,6 +11,8 @@ setOptions({
   name: 'MyCrypto UI',
   url: 'https://github.com/MyCryptoHQ/ui',
 });
+
+addDecorator(checkA11y);
 
 addDecorator((story, context) =>
   withInfo({ header: false, inline: true })(story)(context),
