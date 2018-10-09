@@ -74,8 +74,9 @@
     "styled-components": "^3.4.9"
   },
   "scripts": {
+    "build": "build-storybook",
     "precommit": "lint-staged && tsc --noEmit && yarn test",
-    "prepare": "rollup -c && build-storybook",
+    "prepare": "rollup -c",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook -p 3000",
     "test": "jest"
