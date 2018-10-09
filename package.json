@@ -1,7 +1,7 @@
 {
   "name": "@mycrypto/ui",
   "version": "0.1.0",
-  "description": "React components for MyCrypto, following Atomic Design.",
+  "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
     "react",
