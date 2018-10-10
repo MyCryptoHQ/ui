@@ -12,6 +12,13 @@ export const Button = styled.button<{ large?: boolean }>`
   user-select: none;
 
   ${props =>
+    props.disabled &&
+    `
+      opacity: 0.4;
+      cursor: not-allowed;
+    `};
+
+  ${props =>
     props.large &&
     `
       font-size: 1.15rem;
