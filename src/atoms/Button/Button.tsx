@@ -4,20 +4,18 @@ export const Button = styled.button<{ large?: boolean }>`
   background: ${props => props.theme.primary};
   border: 1px solid ${props => props.theme.primary};
   border-radius: 2px;
-  color: #ffffff;
+  color: white;
   font: 18px Lato, sans-serif;
   padding: 0.75rem 2rem;
   transition: opacity 0.12s ease, color 0.12s ease, background 0.12s ease,
     border 0.12s ease;
   user-select: none;
-
   ${props =>
     props.disabled &&
     `
       opacity: 0.4;
       cursor: not-allowed;
     `};
-
   ${props =>
     props.large &&
     `
