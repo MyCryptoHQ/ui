@@ -7,15 +7,15 @@ import Theme from './Theme';
 const Color = styled.div`
   background: ${props => props.color};
   border: 1px solid ${props => props.theme.text};
-  border-radius: 50%;
   height: 25px;
-  margin: 5px 10px;
   width: 25px;
+  margin: 5px 10px;
+  border-radius: 50%;
 `;
 
 const VerticallyCentered = styled.div`
-  align-items: center;
   display: flex;
+  align-items: center;
 `;
 
 const ThemePreview = withTheme(({ theme }: { theme: Theme }) => (
