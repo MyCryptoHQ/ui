@@ -20,16 +20,14 @@ addDecorator((story, context) =>
 
 const Container = styled.div`
   background: ${props => props.theme.background};
-  color: ${props => props.theme.text};
-
-  position: absolute;
+  border-radius: 4px;
   bottom: 0;
+  color: ${props => props.theme.text};
   left: 0;
+  padding: 8px;
+  position: absolute;
   right: 0;
   top: 0;
-
-  border-radius: 4px;
-  padding: 8px;
 `;
 addDecorator(story => <Container>{story()}</Container>);
 
