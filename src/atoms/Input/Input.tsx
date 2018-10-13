@@ -1,3 +1,4 @@
+import { transitions } from 'polished';
 import styled from '../../styled-components';
 import Text from '../Text';
 
@@ -9,7 +10,7 @@ export const Input = styled(Text.withComponent('input'))`
   font-size: 1em;
   font-weight: bold;
   padding: 0.75em 1em;
-  transition: border 0.12s, box-shadow 0.12s;
+  ${transitions(['border', 'box-shadow'], '0.12s')};
 
   :focus {
     border-color: ${props => props.theme.primary};

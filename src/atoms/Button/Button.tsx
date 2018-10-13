@@ -1,3 +1,4 @@
+import { transitions } from 'polished';
 import styled from '../../styled-components';
 
 export const Button = styled.button<{ large?: boolean }>`
@@ -7,8 +8,7 @@ export const Button = styled.button<{ large?: boolean }>`
   color: white;
   font: 18px Lato, sans-serif;
   padding: 0.75em 2em;
-  transition: opacity 0.12s ease, color 0.12s ease, background 0.12s ease,
-    border 0.12s ease;
+  ${transitions(['opacity', 'color', 'background', 'border'], '0.12s ease')};
   user-select: none;
   ${props =>
     props.disabled &&

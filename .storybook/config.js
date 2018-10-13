@@ -2,6 +2,7 @@ import { checkA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { setOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
+import { cover } from 'polished';
 import React from 'react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import styled from '../src/styled-components';
@@ -21,11 +22,7 @@ addDecorator((story, context) =>
 const Container = styled.div`
   background: ${props => props.theme.background};
   color: ${props => props.theme.text};
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  top: 0;
+  ${cover()};
   border-radius: 4px;
   padding: 8px;
 `;

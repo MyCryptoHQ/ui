@@ -1,4 +1,5 @@
 import { storiesOf } from '@storybook/react';
+import { margin, size } from 'polished';
 import React from 'react';
 import { withTheme } from 'styled-components';
 import styled from './styled-components';
@@ -7,9 +8,8 @@ import Theme from './Theme';
 const Color = styled.div`
   background: ${props => props.color};
   border: 1px solid ${props => props.theme.text};
-  height: 25px;
-  width: 25px;
-  margin: 5px 10px;
+  ${size('25px')};
+  ${margin('5px', '10px')};
   border-radius: 50%; /* stylelint-disable-line unit-whitelist */
 `;
 

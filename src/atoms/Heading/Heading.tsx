@@ -5,7 +5,7 @@ import styled from '../../styled-components';
 import Theme from '../../Theme';
 import Text from '../Text';
 
-const scale = (level: number) => modularScale(level, undefined, 1.5);
+const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 
 const Heading1 = styled(Text.withComponent('h1'))`
   color: ${props => props.theme.headline};
