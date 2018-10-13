@@ -117,11 +117,11 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx,json,md}": [
       "prettier --write",
-      "stylelint",
       "git add"
     ],
     "*.{js,jsx,ts,tsx}": [
       "eslint --fix --ext js,jsx,ts,tsx",
+      "stylelint",
       "git add"
     ],
     "*.{ts,tsx}": [
