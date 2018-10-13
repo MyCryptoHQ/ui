@@ -42,13 +42,13 @@
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "faker": "^4.1.0",
-    "husky": "^0.14.3",
+    "husky": "^1.1.2",
     "jest": "^23.6.0",
-    "jest-dom": "^1.12.0",
+    "jest-dom": "^2.0.5",
     "lint-staged": "^7.2.2",
     "prettier": "^1.14.2",
     "react": "^16.5.0",
-    "react-docgen-typescript-loader": "^2.2.0",
+    "react-docgen-typescript-loader": "^3.0.0",
     "react-dom": "^16.5.0",
     "react-testing-library": "^5.0.1",
     "rollup": "^0.66.1",
@@ -67,7 +67,8 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typescript": "^3.0.3",
-    "typescript-eslint-parser": "^18.0.0"
+    "typescript-eslint-parser": "^20.0.0",
+    "webpack": "^3.0.0"
   },
   "peerDependencies": {
     "react": "^16.5.0",
@@ -76,7 +77,6 @@
   },
   "scripts": {
     "build": "build-storybook",
-    "precommit": "lint-staged && tsc --noEmit && yarn test",
     "prepare": "rollup -c",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook -p 3000",
@@ -112,6 +112,11 @@
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
     "transform": {
       "^.+\\.tsx?$": "ts-jest"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged && tsc --noEmit && yarn test"
     }
   },
   "lint-staged": {
