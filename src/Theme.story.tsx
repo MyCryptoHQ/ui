@@ -10,7 +10,7 @@ const Color = styled.div`
   height: 25px;
   width: 25px;
   margin: 5px 10px;
-  border-radius: 50%;
+  border-radius: 50%; /* stylelint-disable-line unit-whitelist */
 `;
 
 const VerticallyCentered = styled.div`

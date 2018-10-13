@@ -8,7 +8,7 @@ export const Input = styled(Text.withComponent('input'))`
   box-shadow: inset 0 1px 1px 0 rgba(63, 63, 68, 0.05);
   font-size: 1em;
   font-weight: bold;
-  padding: 0.75rem 1rem;
+  padding: 0.75em 1em;
   transition: border 0.12s, box-shadow 0.12s;
 
   :focus {

@@ -6,7 +6,7 @@ export const Button = styled.button<{ large?: boolean }>`
   border-radius: 2px;
   color: white;
   font: 18px Lato, sans-serif;
-  padding: 0.75rem 2rem;
+  padding: 0.75em 2em;
   transition: opacity 0.12s ease, color 0.12s ease, background 0.12s ease,
     border 0.12s ease;
   user-select: none;
@@ -19,8 +19,8 @@ export const Button = styled.button<{ large?: boolean }>`
   ${props =>
     props.large &&
     `
-      font-size: 1.15rem;
-      padding: 1rem 2rem;
+      font-size: 1.15em;
+      padding: 1em 2em;
     `};
 
   &:focus,
