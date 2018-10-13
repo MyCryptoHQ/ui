@@ -21,7 +21,6 @@ addDecorator((story, context) =>
 
 const Container = styled.div`
   background: ${props => props.theme.background};
-  color: ${props => props.theme.text};
   ${cover()};
   border-radius: 4px;
   padding: 8px;
