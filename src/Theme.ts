@@ -17,12 +17,12 @@ type Theme = Record<
 export default Theme;
 
 export const light: Theme = {
-  background: '#ffffff',
-  controlBackground: '#ffffff',
+  background: 'white',
+  controlBackground: 'white',
   controlBorder: '#e5ecf3',
   headline: '#163150',
   name: 'Light',
-  panelBackground: '#ffffff',
+  panelBackground: 'white',
   primary: '#007896',
   primaryDark: '#006077',
   primaryDarker: '#004759',
@@ -39,5 +39,5 @@ export const dark: Theme = {
   primary: '#007896',
   primaryDark: '#007896',
   primaryDarker: '#006077',
-  text: '#ffffff',
+  text: 'white',
 };
