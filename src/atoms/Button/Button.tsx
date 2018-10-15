@@ -1,13 +1,15 @@
-import { transitions } from 'polished';
+import { padding, transitions } from 'polished';
 import styled from '../../styled-components';
+import { scale } from '../../Theme';
+import Text from '../Text';
 
-export const Button = styled.button<{ large?: boolean }>`
+export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
   background: ${props => props.theme.primary};
   border: 1px solid ${props => props.theme.primary};
   border-radius: 2px;
   color: white;
-  font: 18px Lato, sans-serif;
-  padding: 0.75em 2em;
+  font-size: ${scale(0)};
+  ${padding(scale(-1), scale(2))};
   ${transitions(['opacity', 'color', 'background', 'border'], '0.12s ease')};
   user-select: none;
   ${props =>
@@ -19,8 +21,7 @@ export const Button = styled.button<{ large?: boolean }>`
   ${props =>
     props.large &&
     `
-      font-size: 1.15em;
-      padding: 1em 2em;
+      font-size: ${scale(1)};
     `};
 
   &:focus,

@@ -1,4 +1,6 @@
-import { invert } from 'polished';
+import { invert, modularScale } from 'polished';
+
+export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 
 type Theme = Record<
   | 'background'

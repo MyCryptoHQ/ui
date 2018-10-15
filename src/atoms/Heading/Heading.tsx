@@ -1,11 +1,8 @@
-import { modularScale } from 'polished';
 import React, { HTMLAttributes } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 import styled from '../../styled-components';
-import Theme from '../../Theme';
+import Theme, { scale } from '../../Theme';
 import Text from '../Text';
-
-const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 
 const Heading1 = styled(Text.withComponent('h1'))`
   color: ${props => props.theme.headline};
