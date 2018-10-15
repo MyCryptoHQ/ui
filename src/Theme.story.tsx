@@ -8,9 +8,9 @@ import Theme from './Theme';
 
 const Color = styled.div`
   background: ${props => props.color};
-  border: 1px solid ${props => props.theme.text};
-  ${size('25px')};
-  ${margin('5px', '10px')};
+  border: 0.0625em solid ${props => props.theme.text};
+  ${size('1.5625em')};
+  ${margin('0.3125em', '0.625em')};
   border-radius: 50%; /* stylelint-disable-line unit-whitelist */
 `;
 
