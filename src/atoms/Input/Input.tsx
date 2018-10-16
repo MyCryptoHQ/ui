@@ -1,6 +1,6 @@
 import { padding, transitions } from 'polished';
 import styled from '../../styled-components';
-import { scale } from '../../Theme';
+import { scale, transitionDuration } from '../../Theme';
 import Text from '../Text';
 
 export const Input = styled(Text.withComponent('input'))`
@@ -11,7 +11,7 @@ export const Input = styled(Text.withComponent('input'))`
   font-size: ${scale(0)};
   font-weight: bold;
   ${padding(scale(-1), scale(0))};
-  ${transitions(['border', 'box-shadow'], '0.12s')};
+  ${transitions(['border', 'box-shadow'], transitionDuration)};
 
   :focus {
     border-color: ${props => props.theme.primary};

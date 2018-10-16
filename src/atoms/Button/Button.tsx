@@ -1,6 +1,6 @@
 import { padding, transitions } from 'polished';
 import styled from '../../styled-components';
-import { scale } from '../../Theme';
+import { scale, transitionDuration } from '../../Theme';
 import Text from '../Text';
 
 export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
@@ -10,7 +10,10 @@ export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
   color: white;
   font-size: ${scale(0)};
   ${padding(scale(-1), scale(2))};
-  ${transitions(['opacity', 'color', 'background', 'border'], '0.12s ease')};
+  ${transitions(
+    ['opacity', 'color', 'background', 'border'],
+    transitionDuration,
+  )};
   user-select: none;
   ${props =>
     props.disabled &&

@@ -2,6 +2,8 @@ import { invert, modularScale } from 'polished';
 
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 
+export const transitionDuration = '0.12s';
+
 type Theme = Record<
   | 'background'
   | 'controlBackground'
