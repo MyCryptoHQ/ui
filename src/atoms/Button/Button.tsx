@@ -1,12 +1,12 @@
 import { padding, transitions } from 'polished';
 import styled from '../../styled-components';
-import { scale, transitionDuration } from '../../Theme';
+import { borderRadius, scale, transitionDuration } from '../../Theme';
 import Text from '../Text';
 
 export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
   background: ${props => props.theme.primary};
   border: 0.0625em solid ${props => props.theme.primary};
-  border-radius: 0.125em;
+  border-radius: ${borderRadius};
   color: white;
   font-size: ${scale(0)};
   ${padding(scale(-1), scale(2))};

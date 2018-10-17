@@ -1,5 +1,7 @@
 import { darken, invert, lighten, modularScale } from 'polished';
 
+export const borderRadius = '0.125em';
+export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const primary = '#007896';
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
