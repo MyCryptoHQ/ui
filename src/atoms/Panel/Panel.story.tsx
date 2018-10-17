@@ -9,18 +9,10 @@ const TextWithoutMargin = styled(Text)`
   margin: 0;
 `;
 
-storiesOf('Atoms', module).add('Panel', () => (
-  <>
-    <Panel>
+storiesOf('Atoms', module).add('Panel', () =>
+  [{}, { basic: true }, { noPadding: true }].map((props, index) => (
+    <Panel key={index} {...props}>
       <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
     </Panel>
-
-    <Panel basic={true}>
-      <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
-    </Panel>
-
-    <Panel noPadding={true}>
-      <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
-    </Panel>
-  </>
-));
+  )),
+);
