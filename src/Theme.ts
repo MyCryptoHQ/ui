@@ -1,18 +1,26 @@
 import { darken, invert, lighten, modularScale } from 'polished';
 
+const backgroundLight = 'white';
+const backgroundDark = '#21252b';
 export const borderRadius = '0.125em';
 export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
+const linkLight = '#1eb8e7';
+const linkDark = lighten(lightnessMod, linkLight);
 const primary = '#007896';
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 export const transitionDuration = '0.12s';
 
 type Theme = Record<
   | 'name'
+  | 'actionPanelBackground'
+  | 'actionPanelBorder'
   | 'background'
   | 'controlBackground'
   | 'controlBorder'
   | 'headline'
+  | 'link'
+  | 'linkHover'
   | 'panelBackground'
   | 'primary'
   | 'primaryDark'
@@ -26,11 +34,15 @@ export default Theme;
 export const light: Theme = {
   name: 'Light',
 
-  background: 'white',
-  controlBackground: 'white',
+  actionPanelBackground: darken(0.01, backgroundLight),
+  actionPanelBorder: '#e8eaed',
+  background: backgroundLight,
+  controlBackground: backgroundLight,
   controlBorder: '#e5ecf3',
   headline: '#163150',
-  panelBackground: 'white',
+  link: linkLight,
+  linkHover: darken(0.1, linkLight),
+  panelBackground: backgroundLight,
   primary,
   primaryDark: darken(lightnessMod, primary),
   primaryDarker: darken(lightnessMod * 2, primary),
@@ -40,13 +52,17 @@ export const light: Theme = {
 export const dark: Theme = {
   name: 'Dark',
 
-  background: '#21252b',
+  actionPanelBackground: lighten(lightnessMod, backgroundDark),
+  actionPanelBorder: invert(light.actionPanelBorder),
+  background: backgroundDark,
   controlBackground: '#393f4c',
   controlBorder: '#4d5463',
   headline: invert(light.headline),
+  link: linkDark,
+  linkHover: lighten(0.1, linkDark),
   panelBackground: '#282c34',
   primary: lighten(lightnessMod, primary),
   primaryDark: primary,
   primaryDarker: darken(lightnessMod, primary),
-  text: 'white',
+  text: backgroundLight,
 };
