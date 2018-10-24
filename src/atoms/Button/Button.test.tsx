@@ -12,6 +12,5 @@ test('Button', () => {
   expect(button).toHaveAttribute('type', 'button');
   fireEvent.click(button);
   expect(handleClick).toHaveBeenCalled();
-  rerender(<Button disabled={true} />);
   rerender(<Button large={true} />);
 });

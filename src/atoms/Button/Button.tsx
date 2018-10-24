@@ -13,12 +13,6 @@ export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
   ${transitions(['opacity', 'background'], transitionDuration)};
   user-select: none;
   ${props =>
-    props.disabled &&
-    `
-      opacity: 0.4;
-      cursor: not-allowed;
-    `};
-  ${props =>
     props.large &&
     `
       font-size: ${scale(1)};
