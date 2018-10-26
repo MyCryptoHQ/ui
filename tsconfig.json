@@ -6,6 +6,7 @@
     "esModuleInterop": true,
     "jsx": "react",
     "lib": ["dom", "es2017"],
+    "noErrorTruncation": true,
     "noUnusedLocals": true,
     "sourceMap": true,
     "strict": true
