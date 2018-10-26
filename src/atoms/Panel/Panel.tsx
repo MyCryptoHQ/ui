@@ -8,7 +8,7 @@ export const Panel = styled.section<{ basic?: boolean; noPadding?: boolean }>`
     css`
       background: ${props.theme.panelBackground};
       border-radius: ${borderRadiusLarge};
-      box-shadow: 0 3px 6px 0 #00000007, 0 7px 10px 0 #32325d0a;
+      box-shadow: 0 0.1875em 0.375em 0 #00000007, 0 0.4375em 0.625em 0 #32325d0a;
       margin-bottom: ${scale(0)};
       ${!props.noPadding && padding(scale(1), scale(2))};
     `};
