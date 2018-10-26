@@ -6,6 +6,6 @@ import Heading from '.';
 test('Heading', () => {
   const { getByText, rerender } = render(<Heading>Heading</Heading>);
   expect(getByText('Heading')).toHaveTextContent('Heading');
-  rerender(<Heading variant="h2">Heading</Heading>);
+  rerender(<Heading as="h2">Heading</Heading>);
   expect(getByText('Heading')).toHaveTextContent('Heading');
 });

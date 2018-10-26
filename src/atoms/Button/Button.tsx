@@ -1,9 +1,15 @@
 import { padding, transitions } from 'polished';
+import { ButtonHTMLAttributes, ClassAttributes } from 'react';
+import { StyledComponentClass } from 'styled-components';
 import styled from '../../styled-components';
-import { borderRadius, scale, transitionDuration } from '../../Theme';
+import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
 import Text from '../Text';
 
-export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
+interface Props {
+  large?: boolean;
+}
+
+export const Button = styled(Text)<Props>`
   background: ${props => props.theme.primary};
   border: none;
   border-radius: ${borderRadius};
@@ -27,8 +33,13 @@ export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
   &:active {
     background: ${props => props.theme.primaryDarker};
   }
-`;
+` as StyledComponentClass<
+  ClassAttributes<HTMLButtonElement> &
+    ButtonHTMLAttributes<HTMLButtonElement> &
+    Props,
+  Theme
+>;
 
-Button.defaultProps = { type: 'button' };
+Button.defaultProps = { as: 'button', type: 'button' };
 
 export default Button;

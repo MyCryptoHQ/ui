@@ -3,7 +3,7 @@ import styled from '../../styled-components';
 import { borderRadius, scale, transitionDuration } from '../../Theme';
 import Text from '../Text';
 
-export const Input = styled(Text.withComponent('input'))`
+export const Input = styled(Text)`
   background: ${props => props.theme.controlBackground};
   border: 0.0625em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
@@ -19,5 +19,7 @@ export const Input = styled(Text.withComponent('input'))`
     outline: none;
   }
 `;
+
+Input.defaultProps = { as: 'input' };
 
 export default Input;

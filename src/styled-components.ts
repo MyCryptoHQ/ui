@@ -3,11 +3,11 @@ import Theme from './Theme';
 
 const {
   default: styled,
+  createGlobalStyle,
   css,
-  injectGlobal,
   keyframes,
   ThemeProvider,
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<Theme>;
 
-export { css, injectGlobal, keyframes, ThemeProvider };
+export { createGlobalStyle, css, keyframes, ThemeProvider };
 export default styled;

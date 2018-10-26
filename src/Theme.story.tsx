@@ -14,9 +14,11 @@ const Color = styled.div`
   border-radius: 50%; /* stylelint-disable-line unit-whitelist */
 `;
 
-const Code = styled(Text.withComponent('code'))`
+const Code = styled(Text)`
   font-family: monospace;
 `;
+
+Code.defaultProps = { as: 'code' };
 
 const VerticallyCentered = styled.div`
   display: flex;

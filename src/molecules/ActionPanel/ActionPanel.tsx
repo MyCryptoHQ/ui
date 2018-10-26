@@ -1,15 +1,20 @@
 import { padding } from 'polished';
-import React, { ReactNode } from 'react';
+import React, {
+  AnchorHTMLAttributes,
+  DetailedHTMLProps,
+  ReactNode,
+} from 'react';
+import { StyledComponentClass } from 'styled-components';
 import Panel from '../../atoms/Panel';
 import Text from '../../atoms/Text';
 import styled from '../../styled-components';
-import { scale } from '../../Theme';
+import Theme, { scale } from '../../Theme';
 
 const ActionPanelBody = styled.div`
   ${padding(scale(1), scale(2))};
 `;
 
-const ActionPanelLink = styled(Text.withComponent('a'))`
+const ActionPanelLink = styled(Text)`
   background: ${props => props.theme.actionPanelBackground};
   border-top: 0.0416em solid ${props => props.theme.actionPanelBorder};
   color: ${props => props.theme.link};
@@ -23,7 +28,12 @@ const ActionPanelLink = styled(Text.withComponent('a'))`
   :hover {
     color: ${props => props.theme.linkHover};
   }
-`;
+` as StyledComponentClass<
+  DetailedHTMLProps<AnchorHTMLAttributes<HTMLAnchorElement>, HTMLAnchorElement>,
+  Theme
+>;
+
+ActionPanelLink.defaultProps = { as: 'a' };
 
 export function ActionPanel({
   action,

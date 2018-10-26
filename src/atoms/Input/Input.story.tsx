@@ -1,12 +1,17 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
+import React, { DetailedHTMLProps, LabelHTMLAttributes } from 'react';
+import { StyledComponentClass } from 'styled-components';
 import Input from '.';
+import Theme from '../../Theme';
 import Text from '../Text';
 
-const Label = Text.withComponent('label');
+const Label = Text as StyledComponentClass<
+  DetailedHTMLProps<LabelHTMLAttributes<HTMLLabelElement>, HTMLLabelElement>,
+  Theme
+>;
 
 storiesOf('Atoms', module).add('Input', () => (
-  <Label htmlFor="to-address">
+  <Label as="label" htmlFor="to-address">
     To Address
     <br />
     <Input

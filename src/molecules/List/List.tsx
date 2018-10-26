@@ -3,11 +3,7 @@ import Panel from '../../atoms/Panel';
 import Text from '../../atoms/Text';
 import styled from '../../styled-components';
 
-const OrderedList = Panel.withComponent('ol');
-const UnorderedList = Panel.withComponent('ul');
-
-const BasicItem = Text.withComponent('div');
-const ListItem = styled(Text.withComponent('li'))`
+const Item = styled(Text)`
   list-style-position: inside;
 `;
 
@@ -20,23 +16,23 @@ export const List = ({
   children: ReactNode;
   ordered?: boolean;
 }) => {
-  let Container;
+  let container;
   if (basic) {
-    Container = Panel;
+    container = undefined;
   } else if (ordered) {
-    Container = OrderedList;
+    container = 'ol';
   } else {
-    Container = UnorderedList;
+    container = 'ul';
   }
 
-  const Item = basic ? BasicItem : ListItem;
-
   return (
-    <Container role="list">
+    <Panel as={container} role="list">
       {Children.map(children, child => (
-        <Item role="listitem">{child}</Item>
+        <Item as={basic ? 'div' : 'li'} role="listitem">
+          {child}
+        </Item>
       ))}
-    </Container>
+    </Panel>
   );
 };
 
