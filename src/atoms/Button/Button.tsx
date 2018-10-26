@@ -26,7 +26,6 @@ export const Button = styled(Text.withComponent('button'))<{ large?: boolean }>`
 
   &:active {
     background: ${props => props.theme.primaryDarker};
-    box-shadow: inset 0 0.1875em 0.3125em rgba(0, 0, 0, 0.125);
   }
 `;
 
