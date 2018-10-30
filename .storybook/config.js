@@ -1,6 +1,6 @@
 import { checkA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
-import { setOptions } from '@storybook/addon-options';
+import { withOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
 import { cover } from 'polished';
 import React from 'react';
@@ -8,15 +8,20 @@ import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import styled from '../src/styled-components';
 import { dark, light } from '../src/Theme';
 
-setOptions({
-  name: 'MyCrypto UI',
-  url: 'https://github.com/MyCryptoHQ/ui',
-});
+addDecorator(
+  withOptions({
+    name: 'MyCrypto UI',
+    url: 'https://github.com/MyCryptoHQ/ui',
+  }),
+);
 
 addDecorator(checkA11y);
 
-addDecorator((story, context) =>
-  withInfo({ header: false, inline: true })(story)(context),
+addDecorator(
+  withInfo({
+    header: false,
+    inline: true,
+  }),
 );
 
 const Container = styled.div`
