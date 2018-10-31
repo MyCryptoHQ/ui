@@ -22,8 +22,7 @@ addDecorator(withInfo);
 const Container = styled.div`
   background: ${props => props.theme.background};
   ${cover()};
-  border-radius: 0.25em;
-  padding: 0.5em;
+  padding: 8px; /* stylelint-disable-line unit-whitelist */
 `;
 addDecorator(story => <Container>{story()}</Container>);
 
