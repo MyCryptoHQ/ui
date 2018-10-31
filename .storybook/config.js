@@ -17,12 +17,7 @@ addDecorator(
 
 addDecorator(checkA11y);
 
-addDecorator(
-  withInfo({
-    header: false,
-    inline: true,
-  }),
-);
+addDecorator(withInfo);
 
 const Container = styled.div`
   background: ${props => props.theme.background};
