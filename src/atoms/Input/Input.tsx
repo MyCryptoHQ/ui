@@ -1,6 +1,8 @@
 import { padding, transitions } from 'polished';
+import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { StyledComponentClass } from 'styled-components';
 import styled from '../../styled-components';
-import { borderRadius, scale, transitionDuration } from '../../Theme';
+import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
 import Text from '../Text';
 
 export const Input = styled(Text)`
@@ -18,7 +20,10 @@ export const Input = styled(Text)`
     box-shadow: inset 0 0 0 0.0625em ${props => props.theme.primary};
     outline: none;
   }
-`;
+` as StyledComponentClass<
+  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+  Theme
+>;
 
 Input.defaultProps = { as: 'input' };
 

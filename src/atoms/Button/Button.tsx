@@ -1,5 +1,5 @@
 import { padding, transitions } from 'polished';
-import { ButtonHTMLAttributes, ClassAttributes } from 'react';
+import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 import styled from '../../styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
@@ -34,8 +34,10 @@ export const Button = styled(Text)<Props>`
     background: ${props => props.theme.primaryDarker};
   }
 ` as StyledComponentClass<
-  ClassAttributes<HTMLButtonElement> &
-    ButtonHTMLAttributes<HTMLButtonElement> &
+  DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > &
     Props,
   Theme
 >;
