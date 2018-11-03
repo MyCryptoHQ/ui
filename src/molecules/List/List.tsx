@@ -7,13 +7,15 @@ const Item = styled(Text)`
   list-style-position: inside;
 `;
 
-export interface ListProps {
+export const List = ({
+  basic,
+  children,
+  ordered,
+}: {
   basic?: boolean;
   children: ReactNode;
   ordered?: boolean;
-}
-
-export const List = ({ basic, children, ordered }: ListProps) => {
+}) => {
   let container;
   if (basic) {
     container = undefined;

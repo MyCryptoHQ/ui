@@ -1,64 +1,40 @@
-import Downshift, { DownshiftInterface, DownshiftProps } from 'downshift';
-import React, { Component, ReactNode } from 'react';
+import React, {
+  Component,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+} from 'react';
+import { ThemedOuterStyledProps } from 'styled-components';
 import Input from '../../atoms/Input';
-import Text from '../../atoms/Text';
-import List, { ListProps } from '../../molecules/List';
-import styled from '../../styled-components';
+import Panel from '../../atoms/Panel';
+import Theme from '../../Theme';
 
-const Item = styled.div<{ highlighted: boolean; selected: boolean }>`
-  background-color: ${props => props.highlighted && props.theme.primary};
-  color: ${props => props.highlighted && 'white'};
-  font-weight: ${props => props.selected && 'bold'};
-`;
+let datalistId = 0;
 
-// Gives a ref to a List element for Downshift
-class ListWrapper extends Component<ListProps> {
+export class ComboBox extends Component<
+  { items: Set<string | number> } & ThemedOuterStyledProps<
+    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, any>,
+    Theme
+  >
+> {
+  public datalistId = `mycrypto-ui-${datalistId++}`;
+
   public render() {
-    return <List {...this.props} />;
+    const { items, value, ...rest } = this.props;
+    const filteredItems = Array.from(items).filter(
+      item => !value || String(item).includes(String(value)),
+    );
+
+    return (
+      <>
+        <Input list={this.datalistId} {...rest} />
+        <Panel as="datalist" id={this.datalistId}>
+          {filteredItems.map(item => (
+            <option key={item} value={item} />
+          ))}
+        </Panel>
+      </>
+    );
   }
 }
 
-const StringDownshift = Downshift as DownshiftInterface<string>;
-
-export const ComboBox = ({
-  items,
-  label,
-  ...downshiftProps
-}: { items: string[]; label: ReactNode } & DownshiftProps<string>) => (
-  <StringDownshift {...downshiftProps}>
-    {({
-      getInputProps,
-      getItemProps,
-      getLabelProps,
-      getMenuProps,
-      isOpen,
-      inputValue,
-      highlightedIndex,
-      selectedItem,
-    }) => (
-      <div>
-        <Text as="label" {...getLabelProps()}>
-          {label}
-        </Text>
-        <br />
-        <Input {...getInputProps()} />
-        {isOpen && (
-          <ListWrapper basic={true} {...getMenuProps()}>
-            {items
-              .filter(item => !inputValue || item.includes(inputValue))
-              .map((item, index) => (
-                <Item
-                  highlighted={highlightedIndex === index}
-                  selected={selectedItem === item}
-                  {...getItemProps({ key: item, index, item })}
-                >
-                  {item}
-                </Item>
-              ))}
-          </ListWrapper>
-        )}
-      </div>
-    )}
-  </StringDownshift>
-);
 export default ComboBox;
