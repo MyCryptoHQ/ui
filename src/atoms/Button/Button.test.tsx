@@ -5,12 +5,10 @@ import Button from '.';
 
 test('Button', () => {
   const handleClick = jest.fn();
-  const { getByText, rerender } = render(
-    <Button onClick={handleClick}>Button</Button>,
-  );
-  const button = getByText('Button');
+  const { container } = render(<Button onClick={handleClick}>Button</Button>);
+  const button = container.firstChild as HTMLElement;
   expect(button).toHaveAttribute('type', 'button');
   fireEvent.click(button);
   expect(handleClick).toHaveBeenCalled();
-  rerender(<Button large={true} />);
+  render(<Button large={true} />);
 });

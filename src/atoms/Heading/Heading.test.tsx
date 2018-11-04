@@ -4,8 +4,6 @@ import { render } from 'react-testing-library';
 import Heading from '.';
 
 test('Heading', () => {
-  const { getByText, rerender } = render(<Heading>Heading</Heading>);
-  expect(getByText('Heading')).toHaveTextContent('Heading');
-  rerender(<Heading as="h2">Heading</Heading>);
-  expect(getByText('Heading')).toHaveTextContent('Heading');
+  render(<Heading>Heading</Heading>);
+  render(<Heading as="h2">Heading</Heading>);
 });
