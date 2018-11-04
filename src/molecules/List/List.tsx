@@ -12,7 +12,7 @@ const GroupItem = styled(Text)`
       `0.0625em solid ${props.theme.actionPanelBorder}`,
       null,
     )};
-  ${padding(scale(0), scale(2))};
+  ${padding(scale(-1), scale(2))};
 
   :first-child {
     border-top: none;
