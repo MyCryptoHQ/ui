@@ -20,4 +20,8 @@ test('List', () => {
   rerender(<List basic={true}>{children}</List>);
   expect(container.querySelector('section')).toBeTruthy();
   expect(container.querySelector('div')).toBeTruthy();
+
+  rerender(<List group={true}>{children}</List>);
+  expect(container.querySelector('section')).toBeTruthy();
+  expect(container.querySelector('div')).toBeTruthy();
 });
