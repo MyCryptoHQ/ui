@@ -39,14 +39,16 @@ export function ActionPanel({
   action,
   children,
   href,
+  noPadding,
 }: {
   action: string;
   children: ReactNode;
   href: string;
+  noPadding?: boolean;
 }) {
   return (
     <Panel noPadding={true}>
-      <ActionPanelBody>{children}</ActionPanelBody>
+      {noPadding ? children : <ActionPanelBody>{children}</ActionPanelBody>}
       <footer>
         <ActionPanelLink href={href}>{action}</ActionPanelLink>
       </footer>

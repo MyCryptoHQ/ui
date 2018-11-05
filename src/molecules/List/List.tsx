@@ -31,11 +31,13 @@ export const List = ({
   basic,
   children,
   group,
+  inline,
   ordered,
 }: {
   basic?: boolean;
   children: ReactNode;
   group?: boolean;
+  inline?: boolean;
   ordered?: boolean;
 }) => {
   let container;
@@ -50,7 +52,7 @@ export const List = ({
   const Item = group ? GroupItem : ListItem;
 
   return (
-    <Panel as={container} noPadding={group} role="list">
+    <Panel as={container} basic={inline} noPadding={group} role="list">
       {Children.map(children, child => (
         <Item as={basic || group ? 'div' : 'li'} role="listitem">
           {child}

@@ -4,7 +4,7 @@ import { render } from 'react-testing-library';
 import ActionPanel from '.';
 
 test('ActionPanel', () => {
-  const { getByText } = render(
+  const { getByText, rerender } = render(
     <ActionPanel action="View Example" href="https://example.com/">
       ActionPanel
     </ActionPanel>,
@@ -13,4 +13,14 @@ test('ActionPanel', () => {
   const link = getByText('View Example');
   expect(link).toHaveTextContent('View Example');
   expect(link).toHaveAttribute('href', 'https://example.com/');
+
+  rerender(
+    <ActionPanel
+      action="View Example"
+      href="https://example.com/"
+      noPadding={true}
+    >
+      ActionPanel
+    </ActionPanel>,
+  );
 });

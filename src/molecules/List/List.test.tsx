@@ -24,4 +24,8 @@ test('List', () => {
   rerender(<List group={true}>{children}</List>);
   expect(container.querySelector('section')).toBeTruthy();
   expect(container.querySelector('div')).toBeTruthy();
+
+  rerender(<List inline={true}>{children}</List>);
+  expect(container.querySelector('ul')).toBeTruthy();
+  expect(container.querySelector('li')).toBeTruthy();
 });
