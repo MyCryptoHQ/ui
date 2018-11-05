@@ -27,7 +27,6 @@ export const Button = styled(Text)<Props>`
   &:focus,
   &:hover {
     background: ${props => props.theme.primaryDark};
-    box-shadow: 0 0.0625em 0.125em rgba(0, 0, 0, 0.05);
   }
 
   &:active {
