@@ -7,6 +7,8 @@ import Theme from '../../Theme';
 interface Props {
   href?: string;
   target?: string;
+  title?: string;
+  alt?: string;
 }
 
 export const Link = styled(Typography)<Props>`
