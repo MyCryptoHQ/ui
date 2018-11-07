@@ -6,7 +6,7 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 import Panel from '../../atoms/Panel';
-import Text from '../../atoms/Text';
+import Typography from '../../atoms/Typography';
 import styled from '../../styled-components';
 import Theme, { scale } from '../../Theme';
 
@@ -14,7 +14,7 @@ const ActionPanelBody = styled.div`
   ${padding(scale(1), scale(2))};
 `;
 
-const ActionPanelLink = styled(Text)`
+const ActionPanelLink = styled(Typography)`
   background: ${props => props.theme.actionPanelBackground};
   border-top: 0.0416em solid ${props => props.theme.actionPanelBorder};
   color: ${props => props.theme.link};

@@ -3,16 +3,18 @@ import faker from 'faker';
 import React from 'react';
 import Panel from '.';
 import styled from '../../styled-components';
-import Text from '../Text';
+import Typography from '../Typography';
 
-const TextWithoutMargin = styled(Text)`
+const TypographyWithoutMargin = styled(Typography)`
   margin: 0;
 `;
 
 storiesOf('Atoms', module).add('Panel', () =>
   [{}, { basic: true }, { noPadding: true }].map((props, index) => (
     <Panel key={index} {...props}>
-      <TextWithoutMargin>{faker.lorem.paragraphs()}</TextWithoutMargin>
+      <TypographyWithoutMargin>
+        {faker.lorem.paragraphs()}
+      </TypographyWithoutMargin>
     </Panel>
   )),
 );

@@ -3,9 +3,9 @@ import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 import styled from '../../styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
-import Text from '../Text';
+import Typography from '../Typography';
 
-export const Input = styled(Text)`
+export const Input = styled(Typography)`
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
