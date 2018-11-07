@@ -36,7 +36,7 @@ yarn test
 ├── dist
 │   └── index.js: ES module bundle for publishing to npm
 ├── src: Components organized into atoms, molecules, and organisms (see Atomic Design)
-│   ├── atoms: Cannot implement any other components (with <Text /> as an exception); Mainly acts as a styling wrapper for basic HTML elements
+│   ├── atoms: Cannot implement any other components (with <Typography /> as an exception); Mainly acts as a styling wrapper for basic HTML elements
 │   │   ├── Button
 │   │   │   ├── Button.tsx: React component
 │   │   │   ├── Button.story.tsx: Storybook story

@@ -3,13 +3,13 @@ import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 import styled from '../../styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
-import Text from '../Text';
+import Typography from '../Typography';
 
 interface Props {
   large?: boolean;
 }
 
-export const Button = styled(Text)<Props>`
+export const Button = styled(Typography)<Props>`
   background: ${props => props.theme.primary};
   border: none;
   border-radius: ${borderRadius};

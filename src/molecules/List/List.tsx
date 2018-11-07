@@ -1,11 +1,11 @@
 import { directionalProperty, padding } from 'polished';
 import React, { Children, ReactNode } from 'react';
 import Panel from '../../atoms/Panel';
-import Text from '../../atoms/Text';
+import Typography from '../../atoms/Typography';
 import styled from '../../styled-components';
 import { scale } from '../../Theme';
 
-const GroupItem = styled(Text)`
+const GroupItem = styled(Typography)`
   ${props =>
     directionalProperty(
       'border',
@@ -23,7 +23,7 @@ const GroupItem = styled(Text)`
   }
 `;
 
-const ListItem = styled(Text)`
+const ListItem = styled(Typography)`
   list-style-position: inside;
 `;
 

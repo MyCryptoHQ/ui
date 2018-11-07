@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
 import ActionPanel from '.';
-import Text from '../../atoms/Text';
+import Typography from '../../atoms/Typography';
 
 storiesOf('Molecules', module).add('ActionPanel', () =>
   [{}, { noPadding: true }].map((props, index) => (
@@ -12,7 +12,7 @@ storiesOf('Molecules', module).add('ActionPanel', () =>
       href="https://example.com/"
       {...props}
     >
-      <Text>{faker.lorem.paragraphs()}</Text>
+      <Typography>{faker.lorem.paragraphs()}</Typography>
     </ActionPanel>
   )),
 );
