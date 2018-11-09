@@ -4,6 +4,7 @@ import styled from '../../styled-components';
 export const Typography = styled.p`
   color: ${props => props.theme.text};
   font-family: Lato, sans-serif;
+  font-weight: bold;
   line-height: 1.5;
 
   a {
