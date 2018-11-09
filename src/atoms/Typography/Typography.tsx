@@ -10,6 +10,7 @@ export const Typography = styled.p`
     color: ${props => props.theme.link};
     text-decoration: none;
 
+    /* stylelint-disable-next-line max-nesting-depth */
     :hover {
       color: ${props => props.theme.linkHover};
     }
