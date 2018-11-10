@@ -5,7 +5,7 @@ const backgroundDark = '#21252b';
 export const borderRadius = '0.125em';
 export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
-const linkLight = '#1eb8e7';
+const linkLight = '#007a99';
 const linkDark = lighten(lightnessMod, linkLight);
 const primary = '#007896';
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
