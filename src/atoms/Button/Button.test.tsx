@@ -13,4 +13,5 @@ test('Button', () => {
   fireEvent.click(button);
   expect(handleClick).toHaveBeenCalled();
   rerender(<Button large={true} />);
+  rerender(<Button secondary={true} />);
 });
