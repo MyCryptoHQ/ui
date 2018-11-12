@@ -22,6 +22,7 @@ type Theme = Record<
   | 'link'
   | 'linkHover'
   | 'panelBackground'
+  | 'panelBackgroundDark'
   | 'primary'
   | 'primaryDark'
   | 'primaryDarker'
@@ -43,6 +44,7 @@ export const light: Theme = {
   link: linkLight,
   linkHover: darken(0.1, linkLight),
   panelBackground: backgroundLight,
+  panelBackgroundDark: darken(lightnessMod, backgroundLight),
   primary,
   primaryDark: darken(lightnessMod, primary),
   primaryDarker: darken(lightnessMod * 2, primary),
@@ -61,6 +63,7 @@ export const dark: Theme = {
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
   panelBackground: '#282c34',
+  panelBackgroundDark: lighten(lightnessMod, '#282c34'),
   primary: lighten(lightnessMod, primary),
   primaryDark: primary,
   primaryDarker: darken(lightnessMod, primary),

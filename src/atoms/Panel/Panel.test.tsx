@@ -8,4 +8,6 @@ test('Panel', () => {
   expect(getByText('Panel')).toHaveTextContent('Panel');
   rerender(<Panel basic={true}>Panel</Panel>);
   expect(getByText('Panel')).toHaveTextContent('Panel');
+  rerender(<Panel isPlaceholder={true}>Panel</Panel>);
+  expect(getByText('Panel')).toHaveTextContent('Panel');
 });
