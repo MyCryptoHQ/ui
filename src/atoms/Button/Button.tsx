@@ -18,7 +18,7 @@ export const Button = styled(Typography)<Props>`
   color: ${props => (props.secondary ? props.theme.primary : 'white')};
   font-size: ${scale(0)};
   ${padding(scale(-1), scale(2))};
-  ${transitions(['opacity', 'background'], transitionDuration)};
+  ${transitions(['opacity', 'background, color'], transitionDuration)};
   user-select: none;
   ${props =>
     props.large &&
@@ -28,7 +28,8 @@ export const Button = styled(Typography)<Props>`
 
   &:focus,
   &:hover {
-    background: ${props => props.theme.primaryDark};
+    background: ${props =>
+      props.secondary ? props.theme.primary : props.theme.primaryDark};
     ${props =>
       props.secondary &&
       `
@@ -37,7 +38,8 @@ export const Button = styled(Typography)<Props>`
   }
 
   &:active {
-    background: ${props => props.theme.primaryDarker};
+    background: ${props =>
+      props.secondary ? props.theme.primaryDark : props.theme.primaryDarker};
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<
