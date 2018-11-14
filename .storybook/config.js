@@ -5,8 +5,9 @@ import { addDecorator, configure } from '@storybook/react';
 import { cover } from 'polished';
 import React from 'react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
-import styled from '../src/styled-components';
-import { dark, light } from '../src/Theme';
+
+import styled from '_styled-components';
+import { dark, light } from 'Theme';
 
 addDecorator(
   withOptions({
