@@ -3,8 +3,8 @@ import { margin, size } from 'polished';
 import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { StyledComponentClass, withTheme } from 'styled-components';
 
+import Typography from 'Typography';
 import styled from './_styled-components';
-import { Typography } from './atoms';
 import Theme from './Theme';
 
 const Color = styled.div`

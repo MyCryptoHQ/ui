@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Typography } from 'atoms';
+import Typography from 'Typography';
 import ComboBox from './ComboBox';
 
 storiesOf('Organisms', module).add('ComboBox', () => (

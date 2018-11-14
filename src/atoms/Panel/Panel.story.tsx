@@ -3,7 +3,7 @@ import faker from 'faker';
 import React from 'react';
 
 import styled from '_styled-components';
-import { Typography } from 'atoms';
+import Typography from 'Typography';
 import Panel from './Panel';
 
 const TypographyWithoutMargin = styled(Typography)`

@@ -3,8 +3,8 @@ import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
 import styled from '_styled-components';
-import { Typography } from 'atoms';
 import Theme, { borderRadius, scale, transitionDuration } from 'Theme';
+import Typography from 'Typography';
 
 interface Props {
   large?: boolean;
