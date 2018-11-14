@@ -4,8 +4,9 @@ import React, {
   InputHTMLAttributes,
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
-import Input from '../../atoms/Input';
-import Theme from '../../Theme';
+
+import { Input } from 'atoms';
+import Theme from 'Theme';
 
 let datalistId = 0;
 

@@ -1,5 +1,6 @@
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
+import includePaths from 'rollup-plugin-includepaths';
 import pkg from './package.json';
 
 /**
@@ -29,5 +30,8 @@ export default {
 
     // Resolve source maps to the original source
     sourceMaps(),
+
+    // Use absolute imports instead of relative imports
+    includePaths({ paths: ['./src'] }),
   ],
 };

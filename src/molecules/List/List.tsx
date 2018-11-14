@@ -1,9 +1,9 @@
 import { directionalProperty, padding } from 'polished';
 import React, { Children, ReactNode } from 'react';
-import Panel from '../../atoms/Panel';
-import Typography from '../../atoms/Typography';
-import styled from '../../styled-components';
-import { scale } from '../../Theme';
+
+import styled from '_styled-components';
+import { Panel, Typography } from 'atoms';
+import { scale } from 'Theme';
 
 const GroupItem = styled(Typography)`
   ${props =>

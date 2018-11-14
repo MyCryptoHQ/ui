@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
-import ActionPanel from '.';
-import Typography from '../../atoms/Typography';
+
+import { Typography } from 'atoms';
+import ActionPanel from './ActionPanel';
 
 storiesOf('Molecules', module).add('ActionPanel', () =>
   [{}, { noPadding: true }].map((props, index) => (

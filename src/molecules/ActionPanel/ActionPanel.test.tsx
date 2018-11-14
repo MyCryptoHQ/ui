@@ -1,7 +1,8 @@
 import 'jest-dom/extend-expect';
 import React from 'react';
 import { render } from 'react-testing-library';
-import ActionPanel from '.';
+
+import ActionPanel from './ActionPanel';
 
 test('ActionPanel', () => {
   const { getByText, rerender } = render(
