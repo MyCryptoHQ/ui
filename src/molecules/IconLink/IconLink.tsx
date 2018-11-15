@@ -27,21 +27,23 @@ export function IconLink({
   href,
   target,
   icon,
+  ariaLabel,
   handleClick,
 }: {
   href?: string;
   target?: string;
   icon: IconName;
+  ariaLabel: string;
   handleClick?(): void;
 }) {
   return href ? (
-    <a href={href} target={target}>
+    <a href={href} target={target} aria-label={ariaLabel}>
       <IconTypography onClick={handleClick}>
         <Icon icon={icon} />
       </IconTypography>
     </a>
   ) : (
-    <IconTypography onClick={handleClick}>
+    <IconTypography onClick={handleClick} aria-label={ariaLabel}>
       <Icon icon={icon} />
     </IconTypography>
   );
