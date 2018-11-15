@@ -12,27 +12,37 @@ export const IconTypography = styled(Typography)`
   background: none;
   border: none;
   padding: 0;
+  color: ${props => props.theme.text};
 
-  a {
-    color: ${props => props.theme.text};
-  }
   :hover {
+    color: ${props => props.theme.primaryDark};
     /* stylelint-disable-next-line max-nesting-depth */
-    a {
-      color: ${props => props.theme.primaryDark};
-    }
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
   Theme
 >;
 
-export function IconLink({ href, icon }: { href: string; icon: IconName }) {
-  return (
-    <IconTypography>
-      <a href={href}>
+export function IconLink({
+  href,
+  target,
+  icon,
+  handleClick,
+}: {
+  href?: string;
+  target?: string;
+  icon: IconName;
+  handleClick?(): void;
+}) {
+  return href ? (
+    <a href={href} target={target}>
+      <IconTypography onClick={handleClick}>
         <Icon icon={icon} />
-      </a>
+      </IconTypography>
+    </a>
+  ) : (
+    <IconTypography onClick={handleClick}>
+      <Icon icon={icon} />
     </IconTypography>
   );
 }
