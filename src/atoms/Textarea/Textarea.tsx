@@ -1,24 +1,9 @@
-import { padding } from 'polished';
 import { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
-import styled from '../../styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
-import Typography from '../Typography';
+import Theme from '../../Theme';
+import Input from '../Input';
 
-export const Textarea = styled(Typography)`
-  background: ${props => props.theme.controlBackground};
-  border: 0.125em solid ${props => props.theme.controlBorder};
-  border-radius: ${borderRadius};
-  font-size: ${scale(0)};
-  font-weight: bold;
-  ${padding(scale(-1), scale(0))};
-  transition: border ${transitionDuration};
-
-  :focus {
-    border-color: ${props => props.theme.primary};
-    outline: none;
-  }
-` as StyledComponentClass<
+export const Textarea = Input as StyledComponentClass<
   DetailedHTMLProps<
     TextareaHTMLAttributes<HTMLTextAreaElement>,
     HTMLTextAreaElement
