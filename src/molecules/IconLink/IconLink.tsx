@@ -10,6 +10,7 @@ export const IconTypography = styled(Typography)`
   border: none;
   padding: 0;
   color: ${props => props.theme.text};
+  cursor: pointer;
 
   :hover {
     color: ${props => props.theme.primaryDark};
