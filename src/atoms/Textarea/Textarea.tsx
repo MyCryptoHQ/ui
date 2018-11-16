@@ -1,5 +1,5 @@
 import { padding } from 'polished';
-import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
+import { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 import styled from '../../styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
@@ -19,7 +19,10 @@ export const Textarea = styled(Typography)`
     outline: none;
   }
 ` as StyledComponentClass<
-  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
+  DetailedHTMLProps<
+    TextareaHTMLAttributes<HTMLTextAreaElement>,
+    HTMLTextAreaElement
+  >,
   Theme
 >;
 
