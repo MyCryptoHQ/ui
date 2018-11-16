@@ -4,8 +4,8 @@ import IconLink from '.';
 
 storiesOf('Molecules', module).add('IconLink', () =>
   [
-    { ariaLabel: 'shield-icon' },
-    { href: 'https://example.com/', ariaLabel: 'shield-icon' },
+    { 'aria-label': 'shield-icon' },
+    { href: 'https://example.com/', 'aria-label': 'shield-icon' },
   ].map((props, index) => (
     <React.Fragment key={index}>
       Address <IconLink {...props} icon="shield-alt" />

@@ -9,7 +9,7 @@ test('IconLink', () => {
     <IconLink
       href="https://example.com/"
       icon="shield-alt"
-      ariaLabel="shield-button"
+      aria-label="shield-button"
     />,
   );
   const iconLink = getByLabelText('shield-button');
@@ -18,7 +18,7 @@ test('IconLink', () => {
   rerender(
     <IconLink
       icon="shield-alt"
-      ariaLabel="shield-button"
+      aria-label="shield-button"
       handleClick={handleClick}
     />,
   );

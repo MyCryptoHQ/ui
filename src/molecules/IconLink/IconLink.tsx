@@ -4,9 +4,6 @@ import Icon, { IconName } from '../../atoms/Icon';
 import Typography from '../../atoms/Typography';
 import styled from '../../styled-components';
 import Theme from '../../Theme';
-// import { IconName } from '@fortawesome/fontawesome-svg-core';
-
-IconLink.defaultProps = { as: 'a' };
 
 export const IconTypography = styled(Typography)`
   background: none;
@@ -16,24 +13,25 @@ export const IconTypography = styled(Typography)`
 
   :hover {
     color: ${props => props.theme.primaryDark};
-    /* stylelint-disable-next-line max-nesting-depth */
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
   Theme
 >;
 
+IconTypography.defaultProps = { as: 'button', type: 'button' };
+
 export function IconLink({
   href,
   target,
   icon,
-  ariaLabel,
+  'aria-label': ariaLabel,
   handleClick,
 }: {
   href?: string;
   target?: string;
   icon: IconName;
-  ariaLabel: string;
+  'aria-label': string;
   handleClick?(): void;
 }) {
   return href ? (
@@ -48,7 +46,5 @@ export function IconLink({
     </IconTypography>
   );
 }
-
-IconTypography.defaultProps = { as: 'button', type: 'button' };
 
 export default IconLink;
