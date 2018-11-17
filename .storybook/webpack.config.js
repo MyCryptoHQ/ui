@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = (baseConfig, env, config) => {
   config.module.rules.push({
     test: /\.tsx?$/,
@@ -17,5 +19,6 @@ module.exports = (baseConfig, env, config) => {
     ],
   });
   config.resolve.extensions.push('.ts', '.tsx');
+  config.resolve.modules.push(path.resolve('./src'));
   return config;
 };

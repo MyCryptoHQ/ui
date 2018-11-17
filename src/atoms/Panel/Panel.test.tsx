@@ -1,7 +1,8 @@
 import 'jest-dom/extend-expect';
 import React from 'react';
 import { render } from 'react-testing-library';
-import Panel from '.';
+
+import Panel from './Panel';
 
 test('Panel', () => {
   const { getByText, rerender } = render(<Panel>Panel</Panel>);

@@ -1,7 +1,8 @@
 import 'jest-dom/extend-expect';
 import React from 'react';
 import { render } from 'react-testing-library';
-import Typography from '.';
+
+import Typography from './Typography';
 
 test('Typography', () => {
   const { getByText } = render(<Typography>Typography</Typography>);

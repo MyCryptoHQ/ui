@@ -1,9 +1,10 @@
 import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
-import Panel from '.';
-import styled from '../../styled-components';
-import Typography from '../Typography';
+
+import styled from '_styled-components';
+import Typography from 'Typography';
+import Panel from './Panel';
 
 const TypographyWithoutMargin = styled(Typography)`
   margin: 0;

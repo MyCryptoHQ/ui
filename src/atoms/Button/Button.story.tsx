@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
-import Button from '.';
+
+import Button from './Button';
 
 storiesOf('Atoms', module).add('Button', () =>
   [{}, { large: true }].map((props, index) => (

@@ -1,7 +1,8 @@
 import 'jest-dom/extend-expect';
 import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
-import IconLink from '.';
+
+import IconLink from './IconLink';
 
 test('IconLink', () => {
   const handleClick = jest.fn();

@@ -1,6 +1,7 @@
 import { padding } from 'polished';
-import styled, { css } from '../../styled-components';
-import { borderRadiusLarge, scale } from '../../Theme';
+
+import styled, { css } from '_styled-components';
+import { borderRadiusLarge, scale } from 'Theme';
 
 export const Panel = styled.section<{
   basic?: boolean;
