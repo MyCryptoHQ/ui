@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Textarea from '.';
-import Typography from '../Typography';
+
+import Typography from 'Typography';
+import Textarea from './Textarea';
 
 storiesOf('Atoms', module).add('Textarea', () => (
   <Typography as="label">

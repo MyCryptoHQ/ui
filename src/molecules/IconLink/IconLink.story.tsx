@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import IconLink from '.';
+
+import IconLink from './IconLink';
 
 storiesOf('Molecules', module).add('IconLink', () =>
   [
