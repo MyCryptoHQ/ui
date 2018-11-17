@@ -1,6 +1,6 @@
-declare module 'react-storybook-addon-chapters' {
-  import { storiesOf } from '@storybook/react';
+import '@storybook/react';
 
+declare module '@storybook/react' {
   //   export function addWithChapters(
   //     chapterName: string,
   //     chapters: object,

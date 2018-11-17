@@ -16,7 +16,7 @@ import React from 'react';
 //   )),
 // );
 
-(storiesOf('Atoms', module) as any).addWithChapters('Icons', {
+storiesOf('Atoms', module).addWithChapters('Icons', {
   subtitle: 'Icon',
   info: 'Renders an icon',
   chapters: [
