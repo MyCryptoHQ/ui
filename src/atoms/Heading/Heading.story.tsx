@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Heading from '.';
+
+import Heading from './Heading';
 
 storiesOf('Atoms', module).add('Heading', () => (
   <>

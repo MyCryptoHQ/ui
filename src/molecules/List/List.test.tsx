@@ -1,7 +1,8 @@
 import 'jest-dom/extend-expect';
 import React from 'react';
 import { render } from 'react-testing-library';
-import List from '.';
+
+import List from './List';
 
 test('List', () => {
   const children = ['Foo', 'Bar', 'Baz'];

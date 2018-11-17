@@ -9,7 +9,8 @@
     "noErrorTruncation": true,
     "noUnusedLocals": true,
     "sourceMap": true,
-    "strict": true
+    "strict": true,
+    "baseUrl": "src"
   },
   "include": ["src"],
   "inlineSources": true,
