@@ -25,6 +25,13 @@ const Container = styled.div`
   background: ${props => props.theme.background};
   ${cover()};
   padding: 8px; /* stylelint-disable-line unit-whitelist */
+
+  .section-header,
+  .section-container,
+  .section-component-container,
+  .section-subsection {
+    margin-bottom: 0 !important; /* stylelint-disable-line declaration-no-important */
+  }
 `;
 addDecorator(story => <Container>{story()}</Container>);
 
