@@ -29,6 +29,16 @@ yarn start
 yarn test
 ```
 
+### Visual Studio Code Extensions
+
+If you're using Code, the following extensions are recommended based on our tooling:
+
+- [ESLint](https://marketplace.visualstudio.com/items?itemName=dbaeumer.vscode-eslint)
+- [Prettier](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+- [styled-components](https://marketplace.visualstudio.com/items?itemName=mf.vscode-styled-components)
+- [stylelint](https://marketplace.visualstudio.com/items?itemName=shinnn.stylelint)
+- [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint)
+
 ## Folder structure
 
 ```

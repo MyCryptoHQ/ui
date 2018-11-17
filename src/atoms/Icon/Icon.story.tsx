@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import Icon, { IconName, icons } from '.';
-import Typography from '../Typography';
+
+import Typography from 'Typography';
+import Icon, { IconName, icons } from './Icon';
 
 storiesOf('Atoms', module).add('Icon', () =>
   icons.map(({ iconName }) => (

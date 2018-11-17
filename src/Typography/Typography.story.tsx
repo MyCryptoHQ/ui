@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React, { Fragment } from 'react';
-import Typography from '.';
+
+import Typography from './Typography';
 
 storiesOf('Atoms', module).add('Typography', () => (
   <Fragment>

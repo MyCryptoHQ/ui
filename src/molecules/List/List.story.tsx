@@ -1,7 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
-import List from '.';
-import { ActionPanel } from '..';
+
+import { ActionPanel } from 'molecules';
+import List from './List';
 
 const children = ['Foo', 'Bar', 'Baz'];
 

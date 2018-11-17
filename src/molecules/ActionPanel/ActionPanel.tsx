@@ -5,10 +5,11 @@ import React, {
   ReactNode,
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
-import Panel from '../../atoms/Panel';
-import Typography from '../../atoms/Typography';
-import styled from '../../styled-components';
-import Theme, { scale } from '../../Theme';
+
+import styled from '_styled-components';
+import { Panel } from 'atoms';
+import Theme, { scale } from 'Theme';
+import Typography from 'Typography';
 
 const ActionPanelBody = styled.div`
   ${padding(scale(1), scale(2))};
