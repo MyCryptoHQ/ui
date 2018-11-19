@@ -7,7 +7,7 @@ import Copyable from './Copyable';
 navigator.clipboard = { ...navigator.clipboard, writeText: jest.fn() };
 
 test('Copyable', () => {
-  const { getByText } = render(<Copyable>Copyable</Copyable>);
+  const { getByText } = render(<Copyable text="Copyable" />);
   const copyable = getByText('Copyable');
   expect(copyable).toHaveTextContent('Copyable');
   fireEvent.click(copyable);

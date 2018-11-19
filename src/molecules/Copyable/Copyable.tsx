@@ -19,24 +19,24 @@ const ColoredIcon = styled(Icon)`
   color: #b5bfc7;
 `;
 
-export class Copyable extends Component<{ children: string }> {
+export class Copyable extends Component<{ text: string }> {
   public handleClick = () => {
-    const { children } = this.props;
-    navigator.clipboard.writeText(children);
+    const { text } = this.props;
+    navigator.clipboard.writeText(text);
   };
 
   public render() {
-    const { children } = this.props;
+    const { text } = this.props;
 
     return (
-      <Tooltip tooltip={<Typography as="div">{children}</Typography>}>
+      <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
         {props => (
           <BasicButton
             onClick={this.handleClick}
-            aria-label={`Copy ${children}`}
+            aria-label={`Copy ${text}`}
             {...props}
           >
-            {children} <ColoredIcon icon="clone" />
+            {text} <ColoredIcon icon="clone" />
           </BasicButton>
         )}
       </Tooltip>

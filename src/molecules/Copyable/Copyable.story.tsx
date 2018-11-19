@@ -7,7 +7,7 @@ import Copyable from './Copyable';
 storiesOf('Molecules', module).add('Copyable', () => (
   <>
     <Typography>Before</Typography>
-    <Copyable>0x4bbeEB066D09B7AEd07bF39EE20460DFa261520</Copyable>
+    <Copyable text="0x4bbeEB066D09B7AEd07bF39EE20460DFa261520" />
     <Typography>After</Typography>
   </>
 ));
