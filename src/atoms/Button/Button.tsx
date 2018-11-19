@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const Button = styled(Typography)<Props>`
-  background: ${props => !props.secondary && props.theme.primary};
+  background: ${props => (props.secondary ? 'none' : props.theme.primary)};
   border: ${props =>
     props.secondary ? '1px solid' + props.theme.primary : 'none'};
   border-radius: ${borderRadius};
