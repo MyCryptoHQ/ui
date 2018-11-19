@@ -19,14 +19,17 @@ const ColoredIcon = styled(Icon)`
   color: #b5bfc7;
 `;
 
-export class Copyable extends Component<{ text: string }> {
+export class Copyable extends Component<{
+  text: string;
+  truncate(text: string): string;
+}> {
   public handleClick = () => {
     const { text } = this.props;
     navigator.clipboard.writeText(text);
   };
 
   public render() {
-    const { text } = this.props;
+    const { text, truncate } = this.props;
 
     return (
       <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
@@ -36,7 +39,7 @@ export class Copyable extends Component<{ text: string }> {
             aria-label={`Copy ${text}`}
             {...props}
           >
-            {text} <ColoredIcon icon="clone" />
+            {truncate(text)} <ColoredIcon icon="clone" />
           </BasicButton>
         )}
       </Tooltip>
