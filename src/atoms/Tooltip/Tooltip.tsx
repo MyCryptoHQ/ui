@@ -1,10 +1,14 @@
 import { padding } from 'polished';
-import React, { Component, ReactNode } from 'react';
+import React, { Component, createRef, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { borderRadius, scale } from 'Theme';
 
-const InnerTooltip = styled.div`
+const Relative = styled.div`
+  position: relative;
+`;
+
+const InnerTooltip = styled.div<{ height?: number }>`
   border: 0.0625em solid #bac9d4;
   background: ${props => props.theme.controlBackground};
   border-radius: ${borderRadius};
@@ -12,27 +16,38 @@ const InnerTooltip = styled.div`
     0 0.4375em 0.625em 0.4375em #32325d1a;
   ${padding(scale(-1))};
   position: absolute;
+  bottom: ${props => props.height}px;
 `;
 
 export class Tooltip extends Component<{
   tooltip: ReactNode;
   children(props: Record<'onMouseOver' | 'onMouseOut', () => void>): ReactNode;
 }> {
-  public state = { open: false };
+  public ref = createRef<HTMLDivElement>();
+  public state = { height: undefined, open: false };
+
+  public componentDidMount() {
+    if (this.ref.current) {
+      const { height } = this.ref.current.getBoundingClientRect();
+      this.setState({ height });
+    }
+  }
 
   public render() {
     const { children, tooltip } = this.props;
-    const { open } = this.state;
+    const { height, open } = this.state;
 
     return (
-      <>
-        {children({
-          onMouseOver: () => this.setState({ open: true }),
-          onMouseOut: () => this.setState({ open: false }),
-        })}
+      <Relative>
+        <div ref={this.ref}>
+          {children({
+            onMouseOver: () => this.setState({ open: true }),
+            onMouseOut: () => this.setState({ open: false }),
+          })}
+        </div>
 
-        {open && <InnerTooltip>{tooltip}</InnerTooltip>}
-      </>
+        {open && <InnerTooltip height={height}>{tooltip}</InnerTooltip>}
+      </Relative>
     );
   }
 }
