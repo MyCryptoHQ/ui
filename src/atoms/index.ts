@@ -4,3 +4,4 @@ export { default as Icon, IconName, icons } from './Icon';
 export { default as Input } from './Input';
 export { default as Panel } from './Panel';
 export { default as Textarea } from './Textarea';
+export { default as Tooltip } from './Tooltip';
