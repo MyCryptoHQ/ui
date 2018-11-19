@@ -15,6 +15,10 @@ const BasicButton = styled(Typography)`
 
 BasicButton.defaultProps = { as: 'button' };
 
+const ColoredIcon = styled(Icon)`
+  color: #b5bfc7;
+`;
+
 export class Copyable extends Component<{ children: string }> {
   public handleClick = () => {
     const { children } = this.props;
@@ -32,7 +36,7 @@ export class Copyable extends Component<{ children: string }> {
             aria-label={`Copy ${children}`}
             {...props}
           >
-            {children} <Icon icon="clone" />
+            {children} <ColoredIcon icon="clone" />
           </BasicButton>
         )}
       </Tooltip>
