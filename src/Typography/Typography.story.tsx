@@ -10,5 +10,6 @@ storiesOf('Atoms', module).add('Typography', () => (
     <Typography>
       <a href="https://example.com">Link Test</a>
     </Typography>
+    <Typography muted={true}>Muted Test</Typography>
   </Fragment>
 ));
