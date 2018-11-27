@@ -3,7 +3,7 @@ import React, { Component, createRef, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { borderRadius, scale } from 'Theme';
-import Triangle from './Triangle';
+import triangle from './tooltip-triangle.svg';
 
 const Relative = styled.div`
   position: relative;
@@ -22,6 +22,15 @@ const Box = styled.div`
     0 0.4375em 0.625em 0.4375em #32325d1a;
   ${padding(scale(-1))};
 `;
+
+const Triangle = styled.img`
+  position: relative;
+  top: -0.25em;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+Triangle.defaultProps = { src: triangle };
 
 export class Tooltip extends Component<{
   tooltip: ReactNode;
