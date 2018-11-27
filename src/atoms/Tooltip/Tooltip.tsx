@@ -3,21 +3,34 @@ import React, { Component, createRef, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { borderRadius, scale } from 'Theme';
+import triangle from './tooltip-triangle.svg';
 
 const Relative = styled.div`
   position: relative;
 `;
 
-const InnerTooltip = styled.div<{ height?: number }>`
+const Absolute = styled.div<{ height?: number }>`
+  position: absolute;
+  bottom: ${props => props.height}px;
+`;
+
+const Box = styled.div`
   border: 0.0625em solid #bac9d4;
   background: ${props => props.theme.controlBackground};
   border-radius: ${borderRadius};
   box-shadow: 0 0.1875em 0.375em 0 #00000012,
     0 0.4375em 0.625em 0.4375em #32325d1a;
   ${padding(scale(-1))};
-  position: absolute;
-  bottom: ${props => props.height}px;
 `;
+
+const Triangle = styled.img`
+  position: relative;
+  top: -0.25em;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+Triangle.defaultProps = { src: triangle };
 
 export class Tooltip extends Component<{
   tooltip: ReactNode;
@@ -46,7 +59,12 @@ export class Tooltip extends Component<{
           })}
         </div>
 
-        {open && <InnerTooltip height={height}>{tooltip}</InnerTooltip>}
+        {open && (
+          <Absolute height={height}>
+            <Box>{tooltip}</Box>
+            <Triangle />
+          </Absolute>
+        )}
       </Relative>
     );
   }

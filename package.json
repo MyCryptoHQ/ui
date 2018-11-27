@@ -1,6 +1,6 @@
 {
   "name": "@mycrypto/ui",
-  "version": "0.2.0",
+  "version": "0.4.0",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
@@ -55,6 +55,7 @@
     "rollup": "^0.66.1",
     "rollup-plugin-sourcemaps": "^0.4.2",
     "rollup-plugin-typescript2": "^0.17.0",
+    "rollup-plugin-url": "^2.0.1",
     "storybook-addon-styled-component-theme": "^1.0.5",
     "styled-components": "^4.0.2",
     "stylelint": "^9.5.0",
@@ -111,6 +112,9 @@
       "json",
       "node"
     ],
+    "moduleNameMapper": {
+      "\\.svg$": "<rootDir>/__mocks__/fileMock.ts"
+    },
     "testPathIgnorePatterns": [
       "dist"
     ],
@@ -161,8 +165,8 @@
       "font-weight-notation": "named-where-possible",
       "max-nesting-depth": 1,
       "unit-whitelist": [
-        "em",
-        "s"
+        "%",
+        "em"
       ]
     }
   }

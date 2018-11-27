@@ -6963,6 +6963,11 @@ mkdirp@0.x, mkdirp@^0.5.0, mkdirp@^0.5.1, mkdirp@~0.5.0:
   dependencies:
     minimist "0.0.8"
 
+mkpath@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/mkpath/-/mkpath-1.0.0.tgz#ebb3a977e7af1c683ae6fda12b545a6ba6c5853d"
+  integrity sha1-67Opd+evHGg65v2hK1Raa6bFhT0=
+
 move-concurrently@^1.0.1:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/move-concurrently/-/move-concurrently-1.0.1.tgz#be2c005fda32e0b29af1f05d7c4b33214c701f92"
@@ -8881,7 +8886,16 @@ rollup-plugin-typescript2@^0.17.0:
     rollup-pluginutils "2.3.3"
     tslib "1.9.3"
 
-rollup-pluginutils@2.3.3, rollup-pluginutils@^2.0.1:
+rollup-plugin-url@^2.0.1:
+  version "2.0.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-url/-/rollup-plugin-url-2.0.1.tgz#d6481321e05196c37a48ac576a07ff212dd02742"
+  integrity sha512-MEl76wFtH3DE1ETxac5/TUNKW4lRxqx9wmWK49xLluhr9CIV3p3zs8Rtg6BYm1LyIf3pyh+SmXaQ6ikiDHd4kA==
+  dependencies:
+    mime "^2.3.1"
+    mkpath "^1.0.0"
+    rollup-pluginutils "^2.3.3"
+
+rollup-pluginutils@2.3.3, rollup-pluginutils@^2.0.1, rollup-pluginutils@^2.3.3:
   version "2.3.3"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.3.3.tgz#3aad9b1eb3e7fe8262820818840bf091e5ae6794"
   integrity sha512-2XZwja7b6P5q4RZ5FhyX1+f46xi1Z3qBKigLRZ6VTZjwbN0K1IFGMlwm06Uu0Emcre2Z63l77nq/pzn+KxIEoA==
