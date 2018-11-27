@@ -15,10 +15,12 @@ function truncate(children: string) {
 storiesOf('Molecules', module).add('Copyable', () => (
   <>
     <Typography>Before</Typography>
+    <Typography>Before</Typography>
     <Copyable
       text="0x4bbeEB066D09B7AEd07bF39EE20460DFa261520"
       truncate={truncate}
     />
+    <Typography>After</Typography>
     <Typography>After</Typography>
   </>
 ));
