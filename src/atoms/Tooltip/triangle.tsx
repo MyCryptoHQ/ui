@@ -1,7 +1,16 @@
 import React from 'react';
 
-export default (
-  <svg
+import styled from '_styled-components';
+
+const Svg = styled.svg`
+  position: relative;
+  top: -0.25em;
+  left: 50%;
+  transform: translateX(-50%);
+`;
+
+export default () => (
+  <Svg
     width="29px"
     height="21px"
     viewBox="0 0 29 21"
@@ -71,5 +80,5 @@ export default (
         />
       </g>
     </g>
-  </svg>
+  </Svg>
 );
