@@ -26,8 +26,8 @@ const Box = styled.div`
 const Triangle = styled.div`
   position: relative;
   top: -0.25em;
-  left: 50%; /* stylelint-disable-line unit-whitelist */
-  transform: translateX(-50%); /* stylelint-disable-line unit-whitelist */
+  left: 50%;
+  transform: translateX(-50%);
 `;
 
 Triangle.defaultProps = { children: triangle };
