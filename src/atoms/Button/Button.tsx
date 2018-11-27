@@ -8,16 +8,18 @@ import Typography from 'Typography';
 
 interface Props {
   large?: boolean;
+  secondary?: boolean;
 }
 
 export const Button = styled(Typography)<Props>`
-  background: ${props => props.theme.primary};
-  border: none;
+  background: ${props => (props.secondary ? 'none' : props.theme.primary)};
+  border: ${props =>
+    props.secondary ? '.125em solid' + props.theme.primary : 'none'};
   border-radius: ${borderRadius};
-  color: white;
+  color: ${props => (props.secondary ? props.theme.primary : 'white')};
   font-size: ${scale(0)};
   ${padding(scale(-1), scale(2))};
-  ${transitions(['opacity', 'background'], transitionDuration)};
+  ${transitions(['opacity', 'background', 'color'], transitionDuration)};
   user-select: none;
   ${props =>
     props.large &&
@@ -27,11 +29,18 @@ export const Button = styled(Typography)<Props>`
 
   &:focus,
   &:hover {
-    background: ${props => props.theme.primaryDark};
+    background: ${props =>
+      props.secondary ? props.theme.primary : props.theme.primaryDark};
+    ${props =>
+      props.secondary &&
+      `
+        color: white;
+      `};
   }
 
   &:active {
-    background: ${props => props.theme.primaryDarker};
+    background: ${props =>
+      props.secondary ? props.theme.primaryDark : props.theme.primaryDarker};
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<
