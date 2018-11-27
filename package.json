@@ -160,10 +160,7 @@
       "font-family-name-quotes": "always-where-recommended",
       "font-weight-notation": "named-where-possible",
       "max-nesting-depth": 1,
-      "unit-whitelist": [
-        "em",
-        "s"
-      ]
+      "unit-whitelist": "em"
     }
   }
 }
