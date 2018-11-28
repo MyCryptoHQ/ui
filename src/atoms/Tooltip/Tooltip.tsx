@@ -9,7 +9,7 @@ const Relative = styled.div`
   position: relative;
 `;
 
-const Absolute = styled.div<{ height?: number }>`
+const Absolute = styled.div<{ height: number }>`
   position: absolute;
   bottom: ${props => props.height}px;
 `;
@@ -60,7 +60,8 @@ export class Tooltip extends Component<{
         </div>
 
         {open && (
-          <Absolute height={height}>
+          // Height needs to be reduced because the triangle SVG is too tall
+          <Absolute height={(height || 0) - 17}>
             <Box>{tooltip}</Box>
             <Triangle />
           </Absolute>
