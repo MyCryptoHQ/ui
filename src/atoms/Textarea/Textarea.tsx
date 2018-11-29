@@ -1,4 +1,3 @@
-/* stylelint-disable block-no-empty */
 import { DetailedHTMLProps, TextareaHTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
