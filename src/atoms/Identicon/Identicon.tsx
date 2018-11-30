@@ -5,6 +5,7 @@ import styled from '_styled-components';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
+  height: 3.75em;
 `;
 
 export const Identicon = ({ address }: { address: string }) => {
