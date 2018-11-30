@@ -2,9 +2,9 @@ import { padding, transitions } from 'polished';
 import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from '_styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from 'Theme';
-import Typography from 'Typography';
+import styled from 'src/styled-components';
+import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
+import Typography from 'src/Typography';
 
 interface Props {
   large?: boolean;

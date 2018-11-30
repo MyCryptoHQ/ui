@@ -5,8 +5,8 @@ import React, {
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
-import { Input } from 'atoms';
-import Theme from 'Theme';
+import { Input } from 'src/atoms';
+import Theme from 'src/Theme';
 
 let datalistId = 0;
 

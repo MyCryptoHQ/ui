@@ -1,10 +1,10 @@
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from '_styled-components';
-import { Icon, IconName } from 'atoms';
-import Theme from 'Theme';
-import Typography from 'Typography';
+import { Icon, IconName } from 'src/atoms';
+import styled from 'src/styled-components';
+import Theme from 'src/Theme';
+import Typography from 'src/Typography';
 
 export const IconTypography = styled(Typography)`
   background: none;

@@ -1,7 +1,7 @@
 import makeBlockie from 'ethereum-blockies-base64';
 import React from 'react';
 
-import styled from '_styled-components';
+import styled from 'src/styled-components';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
