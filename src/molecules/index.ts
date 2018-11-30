@@ -1,3 +1,5 @@
-export { default as ActionPanel } from './ActionPanel';
-export { default as IconLink } from './IconLink';
-export { default as List } from './List';
+import ActionPanel from './ActionPanel';
+import IconLink from './IconLink';
+import List from './List';
+
+export { ActionPanel, IconLink, List };
