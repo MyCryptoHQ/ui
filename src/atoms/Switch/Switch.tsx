@@ -7,8 +7,8 @@ import Typography from 'Typography';
 /* stylelint-disable unit-whitelist */
 /* stylelint-disable no-descending-specificity */
 const LabelText = styled(Typography)`
-  font-size: 0.875em;
   color: #163150;
+  margin-top: 12px;
 `;
 export const Checkbox = styled(Input)`
   :checked + span {
