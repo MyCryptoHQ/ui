@@ -15,12 +15,12 @@ const Overlay = styled.section`
 
 export const Drawer = styled(Panel)`
   width: 23.475em; /* stylelint-disable-line unit-whitelist */
-  border: 1px solid black; /* stylelint-disable-line unit-whitelist */
+  box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.1);
   height: 100vh; /* stylelint-disable-line unit-whitelist */
   position: fixed;
   right: 0;
   top: 0;
-  padding: 0;
+  overflow: scroll;
 `;
 
 export const DrawerHeader = styled.section`
@@ -87,7 +87,7 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
         {visible && (
           <React.Fragment>
             <Overlay onClick={this.handleClick} />
-            <Drawer>
+            <Drawer noPadding={true}>
               <DrawerHeader>
                 <img src={headerIcon} alt={iconAltText} />
                 <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
