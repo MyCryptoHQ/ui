@@ -8,6 +8,7 @@ storiesOf('Atoms', module).add('Switch', () =>
       handleChange: () => console.log('change detected'),
       labelLeft: 'On',
       labelRight: 'Off',
+      checked: true,
     },
   ].map((props, index) => (
     <Fragment key={index}>

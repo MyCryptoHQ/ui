@@ -58,19 +58,29 @@ const Slider = styled.span`
 interface Props {
   labelLeft?: string;
   labelRight?: string;
+  checked?: boolean;
   handleChange?(): void;
 }
 export class Switch extends Component<Props, {}> {
   public render() {
-    const { handleChange, labelLeft, labelRight } = this.props;
+    const { handleChange, labelLeft, labelRight, checked } = this.props;
     return (
       <SwitchContainer>
-        <LabelText>{labelLeft}</LabelText>
+        <LabelText>
+          <label htmlFor="toggle">{labelLeft}</label>
+        </LabelText>
         <SliderBackground htmlFor="toggle">
-          <Checkbox id="toggle" type="checkbox" onChange={handleChange} />
+          <Checkbox
+            id="toggle"
+            type="checkbox"
+            onChange={handleChange}
+            defaultChecked={checked}
+          />
           <Slider />
         </SliderBackground>
-        <LabelText>{labelRight}</LabelText>
+        <LabelText>
+          <label htmlFor="toggle">{labelRight}</label>
+        </LabelText>
       </SwitchContainer>
     );
   }
