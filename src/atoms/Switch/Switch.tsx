@@ -74,7 +74,7 @@ export class Switch extends Component<Props, {}> {
             id="toggle"
             type="checkbox"
             onChange={handleChange}
-            defaultChecked={checked}
+            checked={checked}
           />
           <Slider />
         </SliderBackground>
