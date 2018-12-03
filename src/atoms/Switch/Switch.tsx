@@ -9,6 +9,7 @@ import Typography from 'Typography';
 const LabelText = styled(Typography)`
   color: #163150;
   margin-top: 0.75em;
+  cursor: pointer;
 `;
 export const Checkbox = styled(Input)`
   :checked + span {
