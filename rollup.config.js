@@ -1,5 +1,6 @@
 import sourceMaps from 'rollup-plugin-sourcemaps';
 import typescript from 'rollup-plugin-typescript2';
+import url from 'rollup-plugin-url';
 import pkg from './package.json';
 
 /**
@@ -24,6 +25,9 @@ export default {
     include: 'src/**',
   },
   plugins: [
+    // Bundle images
+    url(),
+
     // Compile TypeScript files
     typescript(),
 

@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 import Button from './Button';
 
 storiesOf('Atoms', module).add('Button', () =>
-  [{}, { large: true }].map((props, index) => (
+  [{}, { large: true }, { secondary: true }].map((props, index) => (
     <Fragment key={index}>
       <Button {...props}>Button</Button>{' '}
     </Fragment>
