@@ -1,19 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Icon, Tooltip } from 'atoms';
-import { scale } from 'Theme';
+import { Button, Icon, Tooltip } from 'atoms';
 import Typography from 'Typography';
-
-const BasicButton = styled(Typography)`
-  background: inherit;
-  border: none;
-  cursor: pointer;
-  font-size: ${scale(0)};
-  padding: 0;
-`;
-
-BasicButton.defaultProps = { as: 'button' };
 
 const ColoredIcon = styled(Icon)`
   color: #b5bfc7;
@@ -34,13 +23,14 @@ export class Copyable extends Component<{
     return (
       <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
         {props => (
-          <BasicButton
+          <Button
             onClick={this.handleClick}
             aria-label={`Copy ${text}`}
+            basic={true}
             {...props}
           >
             {truncate(text)} <ColoredIcon icon="clone" />
-          </BasicButton>
+          </Button>
         )}
       </Tooltip>
     );
