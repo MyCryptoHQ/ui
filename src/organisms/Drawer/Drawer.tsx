@@ -2,7 +2,9 @@ import React, { Component, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { Heading, Panel } from 'atoms';
+import { List } from 'molecules';
 import Typography from 'Typography';
+// import exit from './exit.svg';
 
 const Overlay = styled.section`
   height: 100%; /* stylelint-disable-line unit-whitelist */
@@ -15,12 +17,28 @@ const Overlay = styled.section`
 
 export const Drawer = styled(Panel)`
   width: 23.475em; /* stylelint-disable-line unit-whitelist */
-  box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.1); /* stylelint-disable-line unit-whitelist */
   height: 100vh; /* stylelint-disable-line unit-whitelist */
   position: fixed;
-  right: 0;
+  right: ${props => (props.visible ? '0' : '-23.474em')};
+  transition: 0.3s;
   top: 0;
   overflow: scroll;
+`;
+
+const DrawerControls = styled.section`
+  margin-top: 1.125em;
+  display: flex;
+  justify-content: flex-end;
+`;
+
+const DrawerCloseButton = styled.button`
+  margin-right: 1.125em;
+  cursor: pointer;
+  line-height: 0;
+  background: none;
+  padding: 0;
+  border: none;
 `;
 
 export const DrawerHeader = styled.section`
@@ -28,6 +46,7 @@ export const DrawerHeader = styled.section`
 `;
 
 export const DrawerHeading = styled(Heading)`
+  margin-top: 1.07083em;
   margin-bottom: 0.2083em;
   font-weight: 900;
   font-size: 1.5625;
@@ -56,8 +75,7 @@ interface DrawerProps {
   headerText?: string;
 
   children?: ReactNode;
-  // 'aria-label': string;
-  // handleClick?(): void;
+  listItems?: ReactNode;
 }
 
 interface DrawerState {
@@ -69,7 +87,7 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
     visible: true,
   };
 
-  public handleClick = () => {
+  public handleClose = () => {
     this.setState({ visible: false });
   };
 
@@ -80,24 +98,32 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
       headerTitle,
       headerText,
       children,
+      listItems,
     } = this.props;
     const { visible } = this.state;
     return (
       <section>
-        {visible && (
-          <React.Fragment>
-            <Overlay onClick={this.handleClick} />
-            <Drawer noPadding={true}>
-              <DrawerHeader>
-                <img src={headerIcon} alt={iconAltText} />
-                <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
-                <DrawerHeaderText>{headerText}</DrawerHeaderText>
-                <Divider />
-              </DrawerHeader>
-              {children}
-            </Drawer>
-          </React.Fragment>
-        )}
+        <React.Fragment>
+          <Overlay onClick={this.handleClose} />
+          <Drawer noPadding={true} visible={visible}>
+            <DrawerControls>
+              <DrawerCloseButton onClick={this.handleClose}>
+                <img
+                  src={'https://via.placeholder.com/50x50'}
+                  alt="exit-button"
+                />
+              </DrawerCloseButton>
+            </DrawerControls>
+            <DrawerHeader>
+              {headerIcon && <img src={headerIcon} alt={iconAltText} />}
+              <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
+              <DrawerHeaderText>{headerText}</DrawerHeaderText>
+              <Divider />
+            </DrawerHeader>
+            {children}
+            {listItems && <List>{listItems}</List>}
+          </Drawer>
+        </React.Fragment>
       </section>
     );
   }
