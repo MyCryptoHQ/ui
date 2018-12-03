@@ -8,7 +8,7 @@ import Typography from 'Typography';
 /* stylelint-disable no-descending-specificity */
 const LabelText = styled(Typography)`
   color: #163150;
-  margin-top: 12px;
+  margin-top: 0.75em;
 `;
 export const Checkbox = styled(Input)`
   :checked + span {
