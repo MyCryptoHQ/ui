@@ -22,7 +22,7 @@ export const Drawer = styled(Panel)`
   right: ${props => (props.visible ? '0' : '-23.474em')};
   transition: 0.3s; /* stylelint-disable-line unit-whitelist */
   top: 0;
-  overflow: scroll;
+  overflow: auto;
   display: flex;
   flex-direction: column;
 `;
