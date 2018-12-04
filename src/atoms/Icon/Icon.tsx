@@ -1,5 +1,5 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
-import { faEye } from '@fortawesome/free-regular-svg-icons';
+import { faClone, faEye } from '@fortawesome/free-regular-svg-icons';
 import {
   faExclamationTriangle,
   faQuestionCircle,
@@ -12,13 +12,15 @@ export type IconName =
   | 'eye'
   | 'exclamation-triangle'
   | 'question-circle'
-  | 'shield-alt';
+  | 'shield-alt'
+  | 'clone';
 
 export const icons = [
   faEye,
   faExclamationTriangle,
   faQuestionCircle,
   faShieldAlt,
+  faClone,
 ];
 
 library.add(...icons);
