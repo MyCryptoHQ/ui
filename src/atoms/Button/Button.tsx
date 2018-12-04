@@ -1,9 +1,11 @@
 import { padding, transitions } from 'polished';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
 import styled, { css } from '_styled-components';
+import Icon, { IconName } from 'atoms/Icon';
 import Theme, { borderRadius, scale, transitionDuration } from 'Theme';
+import { ExtractProps, Omit } from 'types';
 import Typography from 'Typography';
 
 interface CustomProps {
@@ -51,7 +53,7 @@ const custom = css<CustomProps>`
   }
 `;
 
-export const Button = styled(Typography)<Props>`
+export const ButtonBase = styled(Typography)<Props>`
   cursor: pointer;
   font-size: ${scale(0)};
   ${props => (props.basic ? basic : custom)};
@@ -63,6 +65,18 @@ export const Button = styled(Typography)<Props>`
     Props,
   Theme
 >;
+
+export function Button({
+  children,
+  icon,
+  ...rest
+}: { icon?: IconName } & Omit<ExtractProps<typeof ButtonBase>, 'ref'>) {
+  return (
+    <ButtonBase basic={Boolean(icon)} {...rest}>
+      {icon ? <Icon icon={icon} /> : children}
+    </ButtonBase>
+  );
+}
 
 Button.defaultProps = { as: 'button', type: 'button' };
 
