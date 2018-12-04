@@ -21,12 +21,10 @@ export const BasicButton = styled(Typography)`
 
 BasicButton.defaultProps = { as: 'button', type: 'button' };
 
-interface StyledProps {
+const StyledButton = styled(BasicButton)<{
   large?: boolean;
   secondary?: boolean;
-}
-
-const StyledButton = styled(BasicButton)<StyledProps>`
+}>`
   background: ${props => !props.secondary && props.theme.primary};
   border: ${props => props.secondary && '.125em solid' + props.theme.primary};
   border-radius: ${borderRadius};
