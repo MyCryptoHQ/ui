@@ -2,14 +2,13 @@ import React, { Component, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { Heading, Panel } from 'atoms';
-import { List } from 'molecules';
 import Typography from 'Typography';
-// import exit from './exit.svg';
+import exit from './exit.svg';
 
 const Overlay = styled.section`
   height: 100%; /* stylelint-disable-line unit-whitelist */
   width: 100%; /* stylelint-disable-line unit-whitelist */
-  background-color: rgba(82, 117, 201, 0.5);
+  background-color: rgba(0, 0, 0, 0.15);
   position: fixed;
   top: 0;
   left: 0;
@@ -21,9 +20,11 @@ export const Drawer = styled(Panel)`
   height: 100vh; /* stylelint-disable-line unit-whitelist */
   position: fixed;
   right: ${props => (props.visible ? '0' : '-23.474em')};
-  transition: 0.3s;
+  transition: 0.3s; /* stylelint-disable-line unit-whitelist */
   top: 0;
   overflow: scroll;
+  display: flex;
+  flex-direction: column;
 `;
 
 const DrawerControls = styled.section`
@@ -41,31 +42,35 @@ const DrawerCloseButton = styled.button`
   border: none;
 `;
 
-export const DrawerHeader = styled.section`
+const DrawerHeader = styled.section`
   text-align: center;
 `;
 
-export const DrawerHeading = styled(Heading)`
+const DrawerHeading = styled(Heading)`
   margin-top: 1.07083em;
   margin-bottom: 0.2083em;
   font-weight: 900;
   font-size: 1.5625;
 `;
 
-export const DrawerHeaderText = styled(Typography)`
+const DrawerHeaderText = styled(Typography)`
   margin-top: 0;
   line-height: 1.31;
   padding-right: 2.9375em;
   padding-left: 2.9375em;
 `;
 
-export const Divider = styled.hr`
+const Divider = styled.hr`
   height: 0.125em;
   color: #e9e9e9;
   border: none;
   background-color: #e9e9e9;
   margin-top: 0;
   margin-bottom: 0.9375em;
+`;
+
+const DrawerContent = styled.section`
+  flex: 1;
 `;
 
 interface DrawerProps {
@@ -75,7 +80,7 @@ interface DrawerProps {
   headerText?: string;
 
   children?: ReactNode;
-  listItems?: ReactNode;
+  footer?: ReactNode;
 }
 
 interface DrawerState {
@@ -98,20 +103,17 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
       headerTitle,
       headerText,
       children,
-      listItems,
+      footer,
     } = this.props;
     const { visible } = this.state;
     return (
       <section>
         <React.Fragment>
-          <Overlay onClick={this.handleClose} />
+          {visible && <Overlay onClick={this.handleClose} />}
           <Drawer noPadding={true} visible={visible}>
             <DrawerControls>
               <DrawerCloseButton onClick={this.handleClose}>
-                <img
-                  src={'https://via.placeholder.com/50x50'}
-                  alt="exit-button"
-                />
+                <img src={exit} alt="exit-button" />
               </DrawerCloseButton>
             </DrawerControls>
             <DrawerHeader>
@@ -120,8 +122,8 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
               <DrawerHeaderText>{headerText}</DrawerHeaderText>
               <Divider />
             </DrawerHeader>
-            {children}
-            {listItems && <List>{listItems}</List>}
+            <DrawerContent>{children}</DrawerContent>
+            {footer && <footer>{footer}</footer>}
           </Drawer>
         </React.Fragment>
       </section>
