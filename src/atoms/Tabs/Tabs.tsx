@@ -11,13 +11,28 @@ export const TabsContainer = styled.ul`
   display: flex;
   text-align: center;
   margin: 0;
+  background-color: #163150;
 `;
 
 export const Tab = styled.li`
   list-style: none;
   flex: 1;
+  padding-top: 1.3125em;
+  padding-bottom: 1.5em;
   p {
     margin: 0;
+    /* stylelint-disable max-nesting-depth */
+    a {
+      color: white;
+      letter-spacing: 1.1px; /* stylelint-disable-line unit-whitelist */
+      padding-bottom: 0.15625em;
+
+      :hover,
+      :focus {
+        color: white;
+        border-bottom: ${props => '.125em solid' + props.theme.primary};
+      }
+    }
   }
 `;
 
