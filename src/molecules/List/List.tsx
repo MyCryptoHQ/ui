@@ -4,6 +4,7 @@ import React, { Children, ReactNode } from 'react';
 import styled from '_styled-components';
 import { Panel } from 'atoms';
 import { scale } from 'Theme';
+import { ExtractProps, Omit } from 'types';
 import Typography from 'Typography';
 
 const GroupItem = styled(Typography)`
@@ -34,13 +35,14 @@ export const List = ({
   group,
   inline,
   ordered,
+  ...rest
 }: {
   basic?: boolean;
   children: ReactNode;
   group?: boolean;
   inline?: boolean;
   ordered?: boolean;
-}) => {
+} & Omit<ExtractProps<typeof Panel>, 'ref'>) => {
   let container;
   if (basic || group) {
     container = undefined;
@@ -53,7 +55,13 @@ export const List = ({
   const Item = group ? GroupItem : ListItem;
 
   return (
-    <Panel as={container} basic={inline} noPadding={group} role="list">
+    <Panel
+      as={container}
+      basic={inline}
+      noPadding={group}
+      role="list"
+      {...rest}
+    >
       {Children.map(children, child => (
         <Item as={basic || group ? 'div' : 'li'} role="listitem">
           {child}

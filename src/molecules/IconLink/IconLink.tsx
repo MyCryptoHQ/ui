@@ -1,4 +1,8 @@
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import React, {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  HTMLAttributes,
+} from 'react';
 import { StyledComponentClass } from 'styled-components';
 
 import styled from '_styled-components';
@@ -29,21 +33,22 @@ export function IconLink({
   icon,
   'aria-label': ariaLabel,
   handleClick,
+  ...rest
 }: {
   href?: string;
   target?: string;
   icon: IconName;
   'aria-label': string;
   handleClick?(): void;
-}) {
+} & HTMLAttributes<HTMLElement>) {
   return href ? (
-    <a href={href} target={target} aria-label={ariaLabel}>
+    <a href={href} target={target} aria-label={ariaLabel} {...rest}>
       <IconTypography onClick={handleClick}>
         <Icon icon={icon} />
       </IconTypography>
     </a>
   ) : (
-    <IconTypography onClick={handleClick} aria-label={ariaLabel}>
+    <IconTypography onClick={handleClick} aria-label={ariaLabel} {...rest}>
       <Icon icon={icon} />
     </IconTypography>
   );
