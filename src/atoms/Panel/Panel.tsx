@@ -7,7 +7,6 @@ export const Panel = styled.section<{
   basic?: boolean;
   noPadding?: boolean;
   isPlaceholder?: boolean;
-  visible?: boolean;
 }>`
   ${props =>
     !props.basic &&
