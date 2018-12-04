@@ -1,20 +1,12 @@
-import React, {
-  Component,
-  DetailedHTMLProps,
-  InputHTMLAttributes,
-} from 'react';
-import { ThemedOuterStyledProps } from 'styled-components';
+import React, { Component } from 'react';
 
 import { Input } from 'atoms';
-import Theme from 'Theme';
+import { ExtractProps, Omit } from 'types';
 
 let datalistId = 0;
 
 export class ComboBox extends Component<
-  { items: Set<string | number> } & ThemedOuterStyledProps<
-    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, any>,
-    Theme
-  >
+  { items: Set<string | number> } & Omit<ExtractProps<typeof Input>, 'ref'>
 > {
   public datalistId = `mycrypto-ui-${datalistId++}`;
 

@@ -9,6 +9,7 @@ import { StyledComponentClass } from 'styled-components';
 import styled from '_styled-components';
 import { Panel } from 'atoms';
 import Theme, { scale } from 'Theme';
+import { ExtractProps, Omit } from 'types';
 import Typography from 'Typography';
 
 const ActionPanelBody = styled.div`
@@ -41,14 +42,15 @@ export function ActionPanel({
   children,
   href,
   noPadding,
+  ...rest
 }: {
   action: string;
   children: ReactNode;
   href: string;
   noPadding?: boolean;
-}) {
+} & Omit<ExtractProps<typeof Panel>, 'ref'>) {
   return (
-    <Panel noPadding={true}>
+    <Panel noPadding={true} {...rest}>
       {noPadding ? children : <ActionPanelBody>{children}</ActionPanelBody>}
       <footer>
         <ActionPanelLink href={href}>{action}</ActionPanelLink>

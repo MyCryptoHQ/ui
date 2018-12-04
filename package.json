@@ -96,7 +96,13 @@
       "react"
     ],
     "rules": {
-      "react/destructuring-assignment": "error"
+      "react/destructuring-assignment": "error",
+      "jsx-a11y/label-has-for": [
+        "error",
+        {
+          "required": "id"
+        }
+      ]
     }
   },
   "jest": {
