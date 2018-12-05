@@ -1,24 +1,77 @@
 import { padding } from 'polished';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import { StyledComponentClass } from 'styled-components';
 
-import styled, { css } from '_styled-components';
-import { borderRadiusLarge, scale } from 'Theme';
+import styled from '_styled-components';
+import Theme, { borderRadiusLarge, scale } from 'Theme';
+import { ExtractProps, Omit } from 'types';
 
-export const Panel = styled.section<{
-  basic?: boolean;
+// Use an empty styled component instead of a plain section tag so components
+// like List can change tags with the as prop.
+const BasicPanel = styled.section``;
+
+const StyledPanel = styled(BasicPanel)<{
   noPadding?: boolean;
   isPlaceholder?: boolean;
 }>`
-  ${props =>
-    !props.basic &&
-    css`
-      background: ${props.isPlaceholder
-        ? props.theme.panelBackgroundDark
-        : props.theme.panelBackground};
-      border-radius: ${borderRadiusLarge};
-      ${!props.isPlaceholder && 'box-shadow: 0 0.1875em 0.375em 0 #00000012'};
-      margin-bottom: ${scale(0)};
-      ${!props.noPadding && padding(scale(1), scale(2))};
-    `};
+  background: ${props =>
+    props.isPlaceholder
+      ? props.theme.panelBackgroundDark
+      : props.theme.panelBackground};
+  border-radius: ${borderRadiusLarge};
+  box-shadow: ${props =>
+    !props.isPlaceholder && '0 0.1875em 0.375em 0 #00000012'};
+  margin-bottom: ${scale(0)};
+  ${props => !props.noPadding && padding(scale(1), scale(2))};
 `;
+
+const InteractivePanel = styled(StyledPanel)`
+  border: none;
+  cursor: pointer;
+  font-size: ${scale(0)};
+  text-align: left;
+` as StyledComponentClass<
+  DetailedHTMLProps<
+    ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > & { noPadding?: boolean; isPlaceholder?: boolean },
+  Theme
+>;
+
+InteractivePanel.defaultProps = { as: 'button', type: 'button' };
+
+export function Panel({
+  basic,
+  noPadding,
+  isPlaceholder,
+  onClick,
+  ...rest
+}: {
+  basic?: boolean;
+  noPadding?: boolean;
+  isPlaceholder?: boolean;
+} & Omit<ExtractProps<typeof BasicPanel>, 'ref'>) {
+  if (basic) {
+    return <BasicPanel {...rest} />;
+  } else if (onClick) {
+    return (
+      <InteractivePanel
+        noPadding={noPadding}
+        isPlaceholder={isPlaceholder}
+        onClick={onClick}
+        tabIndex={0}
+        {...rest}
+      />
+    );
+  } else {
+    return (
+      <StyledPanel
+        noPadding={noPadding}
+        isPlaceholder={isPlaceholder}
+        {...rest}
+      />
+    );
+  }
+}
 
 export default Panel;
