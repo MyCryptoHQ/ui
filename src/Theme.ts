@@ -27,6 +27,7 @@ type Theme = Record<
   | 'primary'
   | 'primaryDark'
   | 'primaryDarker'
+  | 'tableHeaderBackground'
   | 'text',
   string
 >;
@@ -49,6 +50,7 @@ export const light: Theme = {
   primary,
   primaryDark: darken(lightnessMod, primary),
   primaryDarker: darken(lightnessMod * 2, primary),
+  tableHeaderBackground: '#f8f8f8',
   text: '#424242',
 };
 
@@ -68,5 +70,6 @@ export const dark: Theme = {
   primary: lighten(lightnessMod, primary),
   primaryDark: primary,
   primaryDarker: darken(lightnessMod, primary),
+  tableHeaderBackground: '#f8f8f8',
   text: backgroundLight,
 };
