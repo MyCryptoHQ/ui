@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
 import styled from '_styled-components';
-import { Input } from 'atoms';
 import Typography from 'Typography';
+import Input from '../Input';
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable unit-whitelist */
 /* stylelint-disable no-descending-specificity */
