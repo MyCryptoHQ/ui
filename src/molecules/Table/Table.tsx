@@ -1,12 +1,67 @@
 import styled from '_styled-components';
-import { DetailedHTMLProps, HTMLAttributes } from 'react';
+import React, { Component, DetailedHTMLProps, HTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
 import Theme from 'Theme';
 import Typography from 'Typography';
 
 //#region Table
-const Table = styled.div`
+class AbstractTable extends Component {
+  public componentDidMount() {
+    this.validateTableLayout();
+  }
+
+  public render() {
+    const { children, ...rest } = this.props;
+
+    return <div {...rest}>{children}</div>;
+  }
+
+  private getTransformedTableLayout = (): { head: string[]; body: any[][] } => {
+    const { children } = this.props;
+    const head: any[] = [];
+    const body: any[] = [];
+
+    React.Children.forEach(children, (column: any, columnIndex) => {
+      const { children: cells } = column.props;
+
+      if (columnIndex === 0) {
+        const dataCount = React.Children.count(cells) - 1;
+
+        Array.from({ length: dataCount }, () => body.push([]));
+      }
+
+      React.Children.forEach(cells, (cell: any, cellIndex) => {
+        const { children: cellInner } = cell.props;
+        const cellContents = cellInner || '';
+
+        if (cellIndex === 0) {
+          // Table.Heading
+          head.push(cellContents);
+        } else {
+          // Table.Data
+          body[cellIndex - 1].push(cellContents);
+        }
+      });
+    });
+
+    return { head, body };
+  };
+
+  private validateTableLayout = () => {
+    const { head, body } = this.getTransformedTableLayout();
+
+    body.forEach((row, index) => {
+      if (row.length !== head.length) {
+        throw new Error(
+          `Imbalance in <Table> in row ${index} -- each column must have a header and each row must have the same number of data cells.`,
+        );
+      }
+    });
+  };
+}
+
+const Table = styled(AbstractTable)`
   display: flex;
 ` as any;
 //#endregion
