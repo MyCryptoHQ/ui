@@ -33,5 +33,6 @@ storiesOf('Molecules', module).add('Address', () => (
   <>
     <Address {...storyProps} />
     <AddressContainer />
+    <Address title={storyProps.title} address="foo.eth" />
   </>
 ));

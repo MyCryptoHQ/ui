@@ -11,10 +11,14 @@ function truncate(text: string) {
 }
 
 test('Copyable', () => {
-  const { getByText } = render(
+  const { getByText, rerender } = render(
     <Copyable text="Copyable" truncate={truncate} />,
   );
-  const copyable = getByText('C...');
+  let copyable = getByText('C...');
+  fireEvent.click(copyable);
+  expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Copyable');
+  rerender(<Copyable text="Copyable" />);
+  copyable = getByText('Copyable');
   fireEvent.click(copyable);
   expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Copyable');
 });

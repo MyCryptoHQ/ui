@@ -29,4 +29,5 @@ test('Copyable', () => {
   fireEvent.click(container.querySelector('button')!);
   expect(handleSubmit).toHaveBeenCalled();
   expect(container).toHaveTextContent('New Address');
+  rerender(<Address address="foo.eth" title="Address" />);
 });

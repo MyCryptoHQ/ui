@@ -35,7 +35,7 @@ interface Props {
   address: string;
   title: string;
   onSubmit?(title: string): void;
-  truncate(text: string): string;
+  truncate?(text: string): string;
 }
 
 interface State {
