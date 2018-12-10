@@ -1,9 +1,9 @@
 import React, { ChangeEvent, Component, FormEvent } from 'react';
 
 import styled from '_styled-components';
-import { Button, Identicon, Input } from 'atoms';
+import { Button, Identicon } from 'atoms';
 import { Copyable } from 'molecules';
-import { scale } from 'Theme';
+import { borderRadius, scale } from 'Theme';
 import Typography from 'Typography';
 
 const Flex = styled.div`
@@ -22,8 +22,12 @@ const Title = styled(Typography)<{ clickable: boolean }>`
 
 Title.defaultProps = { as: 'div' };
 
-const TitleInput = styled(Input)`
-  font-size: ${scale(1)};
+const TitleInput = styled.input`
+  background: ${props => props.theme.background};
+  border: 0.125em solid ${props => props.theme.controlBorder};
+  border-radius: ${borderRadius};
+  color: ${props => props.theme.text};
+  font: ${scale(1)} Lato, sans-serif;
   padding: 0;
 `;
 
