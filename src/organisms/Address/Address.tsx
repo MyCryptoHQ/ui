@@ -51,31 +51,17 @@ export class Address extends Component<Props, State> {
 
   public handleChange = ({
     target: { value },
-  }: ChangeEvent<HTMLInputElement>) => {
-    const { onSubmit } = this.props;
+  }: ChangeEvent<HTMLInputElement>) => this.setState({ title: value });
 
-    if (onSubmit) {
-      this.setState({ title: value });
-    }
-  };
-
-  public handleEditing = () => {
-    const { onSubmit } = this.props;
-
-    if (onSubmit) {
-      this.setState({ editing: true });
-    }
-  };
+  public handleEditing = () => this.setState({ editing: true });
 
   public handleSubmit = (event: FormEvent) => {
     event.preventDefault();
     const { onSubmit } = this.props;
     const { title } = this.state;
 
-    if (onSubmit) {
-      this.setState({ editing: false });
-      onSubmit(title);
-    }
+    this.setState({ editing: false });
+    onSubmit!(title);
   };
 
   public render() {
@@ -109,7 +95,7 @@ export class Address extends Component<Props, State> {
                   {' '}
                   <ColoredIconButton
                     icon="pencil-alt"
-                    onClick={onSubmit && this.handleEditing}
+                    onClick={this.handleEditing}
                   />
                 </>
               )}
