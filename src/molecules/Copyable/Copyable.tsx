@@ -1,7 +1,8 @@
-import React, { cloneElement, Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
 
 import { Button, Icon, Tooltip } from 'atoms';
+import { ExtractProps } from 'types';
 import Typography from 'Typography';
 
 const ColoredIcon = styled(Icon)`
@@ -20,22 +21,33 @@ export class Copyable extends Component<{
   public render() {
     const { text, truncate } = this.props;
 
-    const children = (
+    return truncate ? (
+      <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
+        {props => this.renderButton(truncate(text), props)}
+      </Tooltip>
+    ) : (
+      <div>{this.renderButton(text)}</div>
+    );
+  }
+
+  public renderButton(
+    children: ReactNode,
+    props?: ExtractProps<typeof Button>,
+  ) {
+    const { text } = this.props;
+
+    return (
       <Button
         onClick={this.handleClick}
         aria-label={`Copy ${text}`}
         basic={true}
-      >
-        {truncate ? truncate(text) : text} <ColoredIcon icon="clone" />
-      </Button>
-    );
-
-    return truncate ? (
-      <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
-        {props => cloneElement(children, props)}
-      </Tooltip>
-    ) : (
-      <div>{children}</div>
+        children={
+          <>
+            {children} <ColoredIcon icon="clone" />
+          </>
+        }
+        {...props}
+      />
     );
   }
 }
