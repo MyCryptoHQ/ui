@@ -31,6 +31,12 @@ const ColoredIconButton = styled(Button)`
   color: #b5bfc7;
 `;
 
+const SubmitButton = styled(ColoredIconButton)`
+  color: #1eb8e7;
+`;
+
+SubmitButton.defaultProps = { type: 'submit', icon: 'check' };
+
 interface Props {
   address: string;
   title: string;
@@ -80,7 +86,7 @@ export class Address extends Component<Props, State> {
                 onChange={this.handleChange}
                 autoFocus={true} // eslint-disable-line jsx-a11y/no-autofocus
               />{' '}
-              <ColoredIconButton type="submit" icon="check" />
+              <SubmitButton />
             </form>
           ) : (
             <>
