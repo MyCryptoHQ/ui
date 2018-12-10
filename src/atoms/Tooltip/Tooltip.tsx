@@ -40,6 +40,7 @@ export class Tooltip extends Component<{
   public state = { height: undefined, open: false };
 
   public componentDidMount() {
+    // istanbul ignore else
     if (this.ref.current) {
       const { height } = this.ref.current.getBoundingClientRect();
       this.setState({ height });
