@@ -9,13 +9,21 @@ const ColoredIcon = styled(Icon)`
   color: #b5bfc7;
 `;
 
+const ActiveButton = styled(Icon)`
+  color: green;
+`;
+
 export class Copyable extends Component<{
   text: string;
   truncate?(text: string): string;
 }> {
+  public state = { copied: false };
+
   public handleClick = () => {
     const { text } = this.props;
     navigator.clipboard.writeText(text);
+    this.setState({ copied: true });
+    setTimeout(() => this.setState({ copied: false }), 1000);
   };
 
   public render() {
@@ -35,6 +43,7 @@ export class Copyable extends Component<{
     props?: ExtractProps<typeof Button>,
   ) {
     const { text } = this.props;
+    const { copied } = this.state;
 
     return (
       <Button
@@ -43,7 +52,12 @@ export class Copyable extends Component<{
         basic={true}
         children={
           <>
-            {children} <ColoredIcon icon="clone" />
+            {children}{' '}
+            {copied ? (
+              <ActiveButton icon="check" />
+            ) : (
+              <ColoredIcon icon="clone" />
+            )}
           </>
         }
         {...props}
