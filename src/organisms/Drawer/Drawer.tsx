@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component, createRef, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { Heading, Panel } from 'atoms';
@@ -14,7 +14,7 @@ const Overlay = styled.section`
   left: 0;
 `;
 
-export const Drawer = styled(Panel)<{ visible?: boolean }>`
+export const Drawer = styled(Panel)<{ visible?: boolean; tabIndex?: number }>`
   width: 23.475em; /* stylelint-disable-line unit-whitelist */
   box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.1); /* stylelint-disable-line unit-whitelist */
   height: 100vh; /* stylelint-disable-line unit-whitelist */
@@ -88,6 +88,8 @@ interface DrawerState {
 }
 
 export class DrawerContainer extends Component<DrawerProps, DrawerState> {
+  public ref = createRef<HTMLDivElement>();
+
   public state: Readonly<DrawerState> = {
     visible: true,
   };
@@ -106,25 +108,30 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
       footer,
     } = this.props;
     const { visible } = this.state;
+    if (visible && this.ref.current) {
+      this.ref.current.focus();
+    }
     return (
       <section>
         <React.Fragment>
           {visible && <Overlay onClick={this.handleClose} />}
-          <Drawer noPadding={true} visible={visible}>
-            <DrawerControls>
-              <DrawerCloseButton onClick={this.handleClose}>
-                <img src={exit} alt="exit-button" />
-              </DrawerCloseButton>
-            </DrawerControls>
-            <DrawerHeader>
-              {headerIcon && <img src={headerIcon} alt={iconAltText} />}
-              <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
-              <DrawerHeaderText>{headerText}</DrawerHeaderText>
-              <Divider />
-            </DrawerHeader>
-            <DrawerContent>{children}</DrawerContent>
-            {footer && <footer>{footer}</footer>}
-          </Drawer>
+          <div ref={this.ref}>
+            <Drawer noPadding={true} visible={visible} tabIndex={0}>
+              <DrawerControls>
+                <DrawerCloseButton onClick={this.handleClose}>
+                  <img src={exit} alt="exit-button" />
+                </DrawerCloseButton>
+              </DrawerControls>
+              <DrawerHeader>
+                {headerIcon && <img src={headerIcon} alt={iconAltText} />}
+                <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
+                <DrawerHeaderText>{headerText}</DrawerHeaderText>
+                <Divider />
+              </DrawerHeader>
+              <DrawerContent>{children}</DrawerContent>
+              {footer && <footer>{footer}</footer>}
+            </Drawer>
+          </div>
         </React.Fragment>
       </section>
     );
