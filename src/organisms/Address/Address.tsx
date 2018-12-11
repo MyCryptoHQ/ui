@@ -37,6 +37,8 @@ const ColoredIconButton = styled(Button)`
 
 const SubmitButton = styled(ColoredIconButton)`
   color: #1eb8e7;
+  left: -${scale(2)};
+  position: relative;
 `;
 
 SubmitButton.defaultProps = { type: 'submit', icon: 'check' };
