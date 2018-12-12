@@ -1,37 +1,18 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { faClone, faEye } from '@fortawesome/free-regular-svg-icons';
-import {
-  faExclamationTriangle,
-  faQuestionCircle,
-  faShieldAlt,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon, Props } from '@fortawesome/react-fontawesome';
-import React from 'react';
+import React, { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
 
-export type IconName =
-  | 'eye'
-  | 'exclamation-triangle'
-  | 'question-circle'
-  | 'shield-alt'
-  | 'clone';
+import { Omit } from 'types';
+import copy from './icons/icn-copy.svg';
 
-export const icons = [
-  faEye,
-  faExclamationTriangle,
-  faQuestionCircle,
-  faShieldAlt,
-  faClone,
-];
+export const icons = { copy };
 
-library.add(...icons);
-
-export function Icon({ icon, ...rest }: Props & { icon: IconName }) {
-  return (
-    <FontAwesomeIcon
-      icon={icons.find(({ iconName }) => iconName === icon)!}
-      {...rest}
-    />
-  );
+export function Icon({
+  icon,
+  ...rest
+}: { icon: keyof typeof icons } & Omit<
+  DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+  'ref'
+>) {
+  return <img src={icons[icon]} alt={icon} {...rest} />;
 }
 
 export default Icon;

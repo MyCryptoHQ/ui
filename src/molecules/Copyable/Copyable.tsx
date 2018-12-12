@@ -29,7 +29,7 @@ export class Copyable extends Component<{
             basic={true}
             {...props}
           >
-            {truncate(text)} <ColoredIcon icon="clone" />
+            {truncate(text)} <ColoredIcon icon="copy" />
           </Button>
         )}
       </Tooltip>

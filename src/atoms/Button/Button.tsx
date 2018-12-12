@@ -3,7 +3,7 @@ import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
 import styled from '_styled-components';
-import Icon, { IconName } from 'atoms/Icon';
+import Icon, { icons } from 'atoms/Icon';
 import Theme, { borderRadius, scale, transitionDuration } from 'Theme';
 import { ExtractProps, Omit } from 'types';
 import Typography from 'Typography';
@@ -52,7 +52,7 @@ export function Button({
   children,
   icon,
   ...rest
-}: { basic?: boolean; icon?: IconName } & Omit<
+}: { basic?: boolean; icon?: keyof typeof icons } & Omit<
   ExtractProps<typeof StyledButton>,
   'ref'
 >) {

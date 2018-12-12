@@ -6,24 +6,14 @@ import IconLink from './IconLink';
 
 test('IconLink', () => {
   const handleClick = jest.fn();
-  const { getByLabelText, rerender } = render(
-    <IconLink
-      href="https://example.com/"
-      icon="shield-alt"
-      aria-label="shield-button"
-    />,
+  const { container, rerender } = render(
+    <IconLink href="https://example.com/" icon="copy" />,
   );
-  const iconLink = getByLabelText('shield-button');
+  const iconLink = container.querySelector('a');
   expect(iconLink).toHaveAttribute('href', 'https://example.com/');
 
-  rerender(
-    <IconLink
-      icon="shield-alt"
-      aria-label="shield-button"
-      handleClick={handleClick}
-    />,
-  );
-  const iconButton = getByLabelText('shield-button');
+  rerender(<IconLink icon="copy" handleClick={handleClick} />);
+  const iconButton = container.querySelector('button')!;
   expect(iconButton).toHaveAttribute('type', 'button');
   fireEvent.click(iconButton);
   expect(handleClick).toHaveBeenCalled();
