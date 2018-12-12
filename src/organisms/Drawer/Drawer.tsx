@@ -14,7 +14,7 @@ const Overlay = styled.section`
   left: 0;
 `;
 
-export const Drawer = styled(Panel)<{ visible?: boolean; tabIndex?: number }>`
+export const Drawer = styled(Panel)<{ visible?: boolean }>`
   width: 23.475em; /* stylelint-disable-line unit-whitelist */
   box-shadow: -2px 0 6px 0 rgba(0, 0, 0, 0.1); /* stylelint-disable-line unit-whitelist */
   height: 100vh; /* stylelint-disable-line unit-whitelist */
