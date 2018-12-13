@@ -1,4 +1,4 @@
-# [MyCrypto UI](https://mycryptobuilds.com/ui)
+# [MyCrypto UI](https://mycryptobuilds.com/storybook)
 
 [![Build Status](https://travis-ci.org/MyCryptoHQ/ui.svg?branch=master)](https://travis-ci.org/MyCryptoHQ/ui)
 [![Coverage Status](https://coveralls.io/repos/github/MyCryptoHQ/ui/badge.svg?branch=master)](https://coveralls.io/github/MyCryptoHQ/ui?branch=master)
