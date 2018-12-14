@@ -15,10 +15,13 @@ export interface TableConfig {
   sortFunction?(a: any, b: any): number;
 }
 
-export interface Table {
-  head: any[];
+export interface TableContent {
   body: any[][];
   groups?: TableGroup[];
+}
+
+export interface Table extends TableContent {
+  head: any[];
   config?: TableConfig;
 }
 
@@ -42,19 +45,19 @@ const sharedCellProperties = `
 `;
 
 const TableHead = styled.tr`
-  border-top: 1px solid ${props => props.theme.tableHeadBorder};
-  border-bottom: 1px solid ${props => props.theme.tableHeadBorder};
+  border-top: 0.0625rem solid ${props => props.theme.tableHeadBorder};
+  border-bottom: 0.0625rem solid ${props => props.theme.tableHeadBorder};
   background: ${props => props.theme.tableHeadBackground};
 ` as any;
 
 const TableHeading = styled(Typography)`
   ${sharedCellProperties}
-  color: ${props => props.theme.headline}
+  color: ${props => props.theme.headline};
   text-align: left;
-  font-size: 14px;
+  font-size: 0.875rem;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 1.4px;
+  letter-spacing: 0.0625rem;
   cursor: ${(props: any) => (props.isSortable ? 'pointer' : 'inherit')}
 ` as any;
 
@@ -63,7 +66,7 @@ TableHeading.defaultProps = {
 };
 
 const TableRow = styled.tr`
-  border-bottom: 1px solid ${props => props.theme.tableHeadBorder};
+  border-bottom: 0.0625rem solid ${props => props.theme.tableHeadBorder};
 ` as any;
 
 const TableGroupHead = styled(TableRow)`
@@ -88,13 +91,44 @@ TableCell.defaultProps = {
   as: 'td',
 };
 
-// const defaultColumnSort = (a: any, b: any): number =>
-//   a.toString().localeCompare(b.toString());
+const defaultColumnSort = (a: any, b: any): number =>
+  a.toString().localeCompare(b.toString());
 
-// tslint:disable-next-line
-// const noop = () => {};
+const getSortedRows = (
+  head: any[],
+  body: any[][],
+  config: TableConfig,
+  sortedColumnDirection: ColumnDirections,
+): any[][] => {
+  const { sortableColumn, sortFunction = defaultColumnSort } = config;
+  // Determine which column to order.
+  const sortableColumnIndex = head.indexOf(sortableColumn);
+  // Create an array containing the data from each row in the specified column.
+  const sortableColumnEntries = body.map(row => row[sortableColumnIndex]);
+  // Rearrange that array based on the selected sort.
+  const sortedColumnEntries = [...sortableColumnEntries].sort(sortFunction);
+  // Translate the new order into the indexes of the original order to determine the change.
+  const sortedColumnIndices = sortedColumnEntries.map(sortedEntry =>
+    sortableColumnEntries.indexOf(sortedEntry),
+  );
+  // Potentially reverse the new order depending on the sort direction.
+  const finalSortedColumnIndices =
+    sortedColumnDirection === ColumnDirections.Forward
+      ? sortedColumnIndices
+      : sortedColumnIndices.reverse();
+  // Apply the new order to all of the rows.
+  const sortedRows = finalSortedColumnIndices.map(index => body[index]);
+
+  return sortedRows;
+};
 
 class AbstractTable extends Component<Props> {
+  public static defaultProps = {
+    head: [],
+    body: [],
+    groups: [],
+  };
+
   public state: State = {
     collapsedGroups: {},
     sortedColumnDirection: ColumnDirections.Forward,
@@ -105,43 +139,40 @@ class AbstractTable extends Component<Props> {
   }
 
   public render() {
-    const {
-      head = [],
-      body = [],
-      groups = [],
-      config = {},
-      ...rest
-    } = this.props;
+    const { head, config, ...rest } = this.props;
     const { collapsedGroups, sortedColumnDirection } = this.state;
+    const { body, groups = [] } = this.getSortedLayout();
 
     return (
       <table {...rest}>
-        <TableHead>
-          {head.map((heading, index) => {
-            const isSortableColumn =
-              (config as TableConfig).sortableColumn === heading;
+        <thead>
+          <TableHead>
+            {head.map((heading, index) => {
+              const isSortableColumn =
+                (config as TableConfig).sortableColumn === heading;
 
-            return (
-              <TableHeading
-                key={index}
-                onClick={this.toggleSortedColumnDirection}
-                aria-role="button"
-                isSortable={isSortableColumn}
-              >
-                {heading}
-                {isSortableColumn && (
-                  <TableCaret
-                    icon={
-                      sortedColumnDirection === ColumnDirections.Forward
-                        ? 'caret-down'
-                        : 'caret-up'
-                    }
-                  />
-                )}
-              </TableHeading>
-            );
-          })}
-        </TableHead>
+              return (
+                <TableHeading
+                  key={index}
+                  onClick={this.toggleSortedColumnDirection}
+                  role={isSortableColumn ? 'button' : ''}
+                  isSortable={isSortableColumn}
+                >
+                  {heading}
+                  {isSortableColumn && (
+                    <TableCaret
+                      icon={
+                        sortedColumnDirection === ColumnDirections.Forward
+                          ? 'caret-down'
+                          : 'caret-up'
+                      }
+                    />
+                  )}
+                </TableHeading>
+              );
+            })}
+          </TableHead>
+        </thead>
         <tbody>
           {/* Ungrouped rows are placed on top of grouped rows. */}
           {body.map((row, rowIndex) => (
@@ -157,7 +188,7 @@ class AbstractTable extends Component<Props> {
             <React.Fragment key={title}>
               <TableGroupHead
                 onClick={this.toggleCollapseGroup.bind(this, title)}
-                aria-role="button"
+                role="button"
               >
                 {/* Enter ghost cells to facilitate the offset. */}
                 {Array.from({ length: offset }, (_, index) => (
@@ -187,12 +218,25 @@ class AbstractTable extends Component<Props> {
   }
 
   private verifyTableLayout = () => {
-    const { head, body, groups } = this.props;
+    const { head, body, groups, config } = this.props;
     const columnCount = head.length;
 
     if (columnCount === 0) {
-      throw new Error(`A <Table /> must have at least one column.`);
+      throw new Error('A <Table /> must have at least one column.');
     }
+
+    const titleCounts = head.reduce((prev, next) => {
+      prev[next] = prev[next] ? prev[next] + 1 : 1;
+      return prev;
+    }, {});
+
+    Object.entries(titleCounts).forEach(([key, value]: any) => {
+      if (key !== '' && value > 1) {
+        throw new Error(
+          `A <Table /> cannot have duplicate non-empty headings -- found multiple headings called "${key}".`,
+        );
+      }
+    });
 
     body.forEach((row, index) => {
       if (row.length !== columnCount) {
@@ -223,6 +267,18 @@ class AbstractTable extends Component<Props> {
         }
       });
     }
+
+    if (config) {
+      const { sortableColumn } = config;
+
+      if (sortableColumn) {
+        const sortedColumnExists = head.includes(sortableColumn);
+
+        if (!sortedColumnExists) {
+          throw new Error(`Nonexistent sortable column provided to <Table />.`);
+        }
+      }
+    }
   };
 
   private toggleCollapseGroup = (title: string) =>
@@ -240,6 +296,28 @@ class AbstractTable extends Component<Props> {
           ? ColumnDirections.Reverse
           : ColumnDirections.Forward,
     }));
+
+  private getSortedLayout = (): TableContent => {
+    const { head, body, groups = [], config } = this.props;
+    const { sortedColumnDirection } = this.state;
+
+    return config
+      ? {
+          body: getSortedRows(head, body, config, sortedColumnDirection),
+          groups: groups
+            ? groups.map(group => ({
+                ...group,
+                entries: getSortedRows(
+                  head,
+                  group.entries,
+                  config,
+                  sortedColumnDirection,
+                ),
+              }))
+            : [],
+        }
+      : { body, groups };
+  };
 }
 
 const Table = styled(AbstractTable)`
