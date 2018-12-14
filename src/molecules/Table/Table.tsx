@@ -299,7 +299,7 @@ class AbstractTable extends Component<Props> {
     const { head, body, groups = [], config } = this.props;
     const { sortedColumnDirection } = this.state;
 
-    return config
+    return config && config.sortableColumn
       ? {
           body: getSortedRows(head, body, config, sortedColumnDirection),
           groups: groups
