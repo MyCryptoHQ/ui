@@ -8,7 +8,7 @@ import Table, { TableData } from './Table';
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
 const truncate = (text: string): string => text.substr(0, 6);
 const accountTable: TableData = {
-  head: ['', 'Label', 'Address', 'Network', 'Value'],
+  head: ['Favorite', 'Label', 'Address', 'Network', 'Value'],
   body: [
     [
       <Icon key={0} icon="star" />,
@@ -65,10 +65,11 @@ const accountTable: TableData = {
 
       return aLabel.localeCompare(bLabel);
     },
+    hiddenHeadings: ['Favorite'],
   },
 };
 const recentTransactionsTable: TableData = {
-  head: ['', 'Date', 'From Address', 'To Address', 'Amount'],
+  head: ['Image', 'Date', 'From Address', 'To Address', 'Amount'],
   body: [],
   groups: [
     {
@@ -114,10 +115,11 @@ const recentTransactionsTable: TableData = {
   ],
   config: {
     sortableColumn: 'Date',
+    hiddenHeadings: ['Image'],
   },
 };
 const addressBookTable: TableData = {
-  head: ['', 'Label', 'Address', 'Notes', ''],
+  head: ['Favorite', 'Label', 'Address', 'Notes', ''],
   body: [
     [
       <Icon key={0} icon="star" style={{ marginLeft: '1rem' }} />,
@@ -149,6 +151,7 @@ const addressBookTable: TableData = {
   ],
   config: {
     sortableColumn: 'Label',
+    hiddenHeadings: ['Favorite'],
   },
 };
 

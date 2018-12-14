@@ -12,6 +12,7 @@ export interface TableGroup {
 
 export interface TableConfig {
   sortableColumn?: string | null;
+  hiddenHeadings?: string[];
   sortFunction?(a: any, b: any): number;
 }
 
@@ -50,14 +51,24 @@ const TableHead = styled.tr`
   background: ${props => props.theme.tableHeadBackground};
 ` as any;
 
-const TableHeading = styled(Typography)`
+const TableHeading = styled(Typography)<{
+  isSortable?: boolean;
+  isHidden?: boolean;
+}>`
   ${sharedCellProperties}
   color: ${props => props.theme.headline};
   text-align: left;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
-  cursor: ${(props: any) => (props.isSortable ? 'pointer' : 'inherit')}
+  cursor: ${props => (props.isSortable ? 'pointer' : 'inherit')}
+  ${props =>
+    props.isHidden &&
+    `
+    position: fixed;
+    top: -9999em;
+    left: -9999em;
+  `}
 ` as any;
 
 TableHeading.defaultProps = {
@@ -89,10 +100,15 @@ TableCell.defaultProps = {
 const noop = () => {};
 
 const defaultColumnSort = (a: any, b: any): number => {
-  const aText = a.props.children;
-  const bText = b.props.children;
+  try {
+    const aText = a.props.children;
+    const bText = b.props.children;
 
-  return aText.localeCompare(bText);
+    return aText.localeCompare(bText);
+  } catch (error) {
+    throw new Error(`The default column sort of <Table /> expects either a string or a single-nested React element for cell contents.
+    For anything else, provide a custom sortFunction in the config.`);
+  }
 };
 
 const getSortedRows = (
@@ -158,7 +174,12 @@ class AbstractTable extends Component<Props> {
         <thead>
           <TableHead>
             {head.map((heading, index) => {
-              const isSortableColumn = config!.sortableColumn === heading;
+              const isSortableColumn =
+                config && config.sortableColumn === heading;
+              const isHiddenHeading =
+                config &&
+                config.hiddenHeadings &&
+                config.hiddenHeadings.includes(heading);
 
               return (
                 <TableHeading
@@ -168,6 +189,7 @@ class AbstractTable extends Component<Props> {
                   }
                   role={isSortableColumn ? 'button' : ''}
                   isSortable={isSortableColumn}
+                  isHidden={isHiddenHeading}
                 >
                   {heading}
                   {isSortableColumn && (
