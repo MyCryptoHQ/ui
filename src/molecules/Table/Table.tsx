@@ -319,6 +319,7 @@ class AbstractTable extends Component<Props> {
 }
 
 const Table = styled(AbstractTable)`
+  width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
 `;
