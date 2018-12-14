@@ -74,11 +74,6 @@ const TableGroupHead = styled(TableRow)`
   cursor: pointer;
 `;
 
-TableGroupHead.defaultProps = {
-  as: TableRow,
-  basic: true,
-};
-
 const TableCaret = styled(Icon)`
   margin-left: 0.5em;
 `;
