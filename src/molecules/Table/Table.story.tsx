@@ -3,23 +3,11 @@ import React from 'react';
 
 import { Button, Icon, Identicon } from 'atoms';
 import { Copyable } from 'molecules';
-import Table from './Table';
-
-interface TableGroup {
-  title: string;
-  entries: any[][];
-  offset?: number;
-}
-
-interface TableData {
-  head: any[];
-  body: any[][];
-  groups?: TableGroup[];
-}
+import Table, { Table as TableType } from './Table';
 
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
 const truncate = (text: string): string => text.substr(0, 6);
-const accountTable: TableData = {
+const accountTable: TableType = {
   head: ['', 'Label', 'Address', 'Network', 'Value'],
   body: [
     [
@@ -46,8 +34,11 @@ const accountTable: TableData = {
       '$2,203.12',
     ],
   ],
+  config: {
+    sortableColumn: 'Label',
+  },
 };
-const recentTransactionsTable: TableData = {
+const recentTransactionsTable: TableType = {
   head: ['', 'Date', 'From Address', 'To Address', 'Amount'],
   body: [],
   groups: [
@@ -79,7 +70,7 @@ const recentTransactionsTable: TableData = {
     },
   ],
 };
-const addressBookTable: TableData = {
+const addressBookTable: TableType = {
   head: ['', 'Label', 'Address', 'Notes', ''],
   body: [
     [
@@ -114,11 +105,7 @@ storiesOf('Molecules', module).add('Table', () =>
   [accountTable, recentTransactionsTable, addressBookTable].map(
     (tableData, index) => (
       <div key={index} style={{ marginBottom: '3rem' }}>
-        <Table
-          head={tableData.head}
-          body={tableData.body}
-          groups={tableData.groups}
-        />
+        <Table {...tableData} />
       </div>
     ),
   ),

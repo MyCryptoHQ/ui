@@ -4,22 +4,36 @@ import React, { Component } from 'react';
 import { Icon } from 'atoms';
 import Typography from 'Typography';
 
-interface TableGroup {
+export interface TableGroup {
   title: string;
   entries: any[][];
   offset?: number;
 }
 
-interface Props {
+export interface TableConfig {
+  sortableColumn: string | null;
+  sortFunction?(a: any, b: any): number;
+}
+
+export interface Table {
   head: any[];
   body: any[][];
   groups?: TableGroup[];
+  config?: TableConfig;
 }
+
+export enum ColumnDirections {
+  Forward,
+  Reverse,
+}
+
+type Props = Table;
 
 interface State {
   collapsedGroups: {
     [title: string]: true;
   };
+  sortedColumnDirection: ColumnDirections;
 }
 
 const sharedCellProperties = `
@@ -41,6 +55,7 @@ const TableHeading = styled(Typography)`
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 1.4px;
+  cursor: ${(props: any) => (props.isSortable ? 'pointer' : 'inherit')}
 ` as any;
 
 TableHeading.defaultProps = {
@@ -61,7 +76,7 @@ TableGroupHead.defaultProps = {
   basic: true,
 };
 
-const TableGroupHeadCaret = styled(Icon)`
+const TableCaret = styled(Icon)`
   margin-left: 0.5rem;
 `;
 
@@ -73,9 +88,16 @@ TableCell.defaultProps = {
   as: 'td',
 };
 
+// const defaultColumnSort = (a: any, b: any): number =>
+//   a.toString().localeCompare(b.toString());
+
+// tslint:disable-next-line
+// const noop = () => {};
+
 class AbstractTable extends Component<Props> {
   public state: State = {
     collapsedGroups: {},
+    sortedColumnDirection: ColumnDirections.Forward,
   };
 
   public componentDidMount() {
@@ -83,15 +105,42 @@ class AbstractTable extends Component<Props> {
   }
 
   public render() {
-    const { head, body = [], groups = [], ...rest } = this.props;
-    const { collapsedGroups } = this.state;
+    const {
+      head = [],
+      body = [],
+      groups = [],
+      config = {},
+      ...rest
+    } = this.props;
+    const { collapsedGroups, sortedColumnDirection } = this.state;
 
     return (
       <table {...rest}>
         <TableHead>
-          {head.map((heading, index) => (
-            <TableHeading key={index}>{heading}</TableHeading>
-          ))}
+          {head.map((heading, index) => {
+            const isSortableColumn =
+              (config as TableConfig).sortableColumn === heading;
+
+            return (
+              <TableHeading
+                key={index}
+                onClick={this.toggleSortedColumnDirection}
+                aria-role="button"
+                isSortable={isSortableColumn}
+              >
+                {heading}
+                {isSortableColumn && (
+                  <TableCaret
+                    icon={
+                      sortedColumnDirection === ColumnDirections.Forward
+                        ? 'caret-down'
+                        : 'caret-up'
+                    }
+                  />
+                )}
+              </TableHeading>
+            );
+          })}
         </TableHead>
         <tbody>
           {/* Ungrouped rows are placed on top of grouped rows. */}
@@ -116,7 +165,7 @@ class AbstractTable extends Component<Props> {
                 ))}
                 <TableHeading colSpan={head.length - offset}>
                   {title}
-                  <TableGroupHeadCaret
+                  <TableCaret
                     icon={collapsedGroups[title] ? 'caret-up' : 'caret-down'}
                   />
                 </TableHeading>
@@ -182,6 +231,14 @@ class AbstractTable extends Component<Props> {
         ...prevState.collapsedGroups,
         [title]: !prevState.collapsedGroups[title],
       },
+    }));
+
+  private toggleSortedColumnDirection = () =>
+    this.setState((prevState: State) => ({
+      sortedColumnDirection:
+        prevState.sortedColumnDirection === ColumnDirections.Forward
+          ? ColumnDirections.Reverse
+          : ColumnDirections.Forward,
     }));
 }
 
