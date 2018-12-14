@@ -1,26 +1,26 @@
 import styled from '_styled-components';
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 
 import { Icon } from 'atoms';
 import Typography from 'Typography';
 
 export interface TableGroup {
   title: string;
-  entries: any[][];
+  entries: ReactNode[][];
   offset?: number;
 }
 
 export interface TableConfig {
-  sortableColumn: string | null;
+  sortableColumn?: string | null;
   sortFunction?(a: any, b: any): number;
 }
 
 export interface TableContent {
-  body: any[][];
+  body: ReactNode[][];
   groups?: TableGroup[];
 }
 
-export interface Table extends TableContent {
+export interface TableData extends TableContent {
   head: any[];
   config?: TableConfig;
 }
@@ -30,7 +30,7 @@ export enum ColumnDirections {
   Reverse,
 }
 
-type Props = Table;
+type Props = TableData;
 
 interface State {
   collapsedGroups: {
@@ -54,7 +54,6 @@ const TableHeading = styled(Typography)`
   ${sharedCellProperties}
   color: ${props => props.theme.headline};
   text-align: left;
-  font-size: 0.875em;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
@@ -86,20 +85,35 @@ TableCell.defaultProps = {
   as: 'td',
 };
 
-const defaultColumnSort = (a: any, b: any): number =>
-  a.toString().localeCompare(b.toString());
+// tslint:disable-next-line
+const noop = () => {};
+
+const defaultColumnSort = (a: any, b: any): number => {
+  const aText = a.props.children;
+  const bText = b.props.children;
+
+  return aText.localeCompare(bText);
+};
 
 const getSortedRows = (
   head: any[],
-  body: any[][],
+  body: ReactNode[][],
   config: TableConfig,
   sortedColumnDirection: ColumnDirections,
-): any[][] => {
+): ReactNode[][] => {
   const { sortableColumn, sortFunction = defaultColumnSort } = config;
   // Determine which column to order.
   const sortableColumnIndex = head.indexOf(sortableColumn);
   // Create an array containing the data from each row in the specified column.
-  const sortableColumnEntries = body.map(row => row[sortableColumnIndex]);
+  const sortableColumnEntries = body.map(row => row[sortableColumnIndex]).map(
+    (entry: any) =>
+      // If the entry is a string, wrap it.
+      typeof entry === 'string' ? (
+        <React.Fragment>{entry}</React.Fragment>
+      ) : (
+        entry
+      ),
+  );
   // Rearrange that array based on the selected sort.
   const sortedColumnEntries = [...sortableColumnEntries].sort(sortFunction);
   // Translate the new order into the indexes of the original order to determine the change.
@@ -122,6 +136,7 @@ class AbstractTable extends Component<Props> {
     head: [],
     body: [],
     groups: [],
+    config: {},
   };
 
   public state: State = {
@@ -143,13 +158,14 @@ class AbstractTable extends Component<Props> {
         <thead>
           <TableHead>
             {head.map((heading, index) => {
-              const isSortableColumn =
-                (config as TableConfig).sortableColumn === heading;
+              const isSortableColumn = config!.sortableColumn === heading;
 
               return (
                 <TableHeading
                   key={index}
-                  onClick={this.toggleSortedColumnDirection}
+                  onClick={
+                    isSortableColumn ? this.toggleSortedColumnDirection : noop
+                  }
                   role={isSortableColumn ? 'button' : ''}
                   isSortable={isSortableColumn}
                 >
@@ -313,7 +329,7 @@ class AbstractTable extends Component<Props> {
   };
 }
 
-const Table = styled(AbstractTable)`
+export const Table = styled(AbstractTable)`
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;

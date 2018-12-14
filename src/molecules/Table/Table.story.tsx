@@ -3,11 +3,11 @@ import React from 'react';
 
 import { Button, Icon, Identicon } from 'atoms';
 import { Copyable } from 'molecules';
-import Table, { Table as TableType } from './Table';
+import Table, { TableData } from './Table';
 
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
 const truncate = (text: string): string => text.substr(0, 6);
-const accountTable: TableType = {
+const accountTable: TableData = {
   head: ['', 'Label', 'Address', 'Network', 'Value'],
   body: [
     [
@@ -59,9 +59,15 @@ const accountTable: TableType = {
   ],
   config: {
     sortableColumn: 'Label',
+    sortFunction: (a: any, b: any) => {
+      const aLabel = a.props.children[1];
+      const bLabel = b.props.children[1];
+
+      return aLabel.localeCompare(bLabel);
+    },
   },
 };
-const recentTransactionsTable: TableType = {
+const recentTransactionsTable: TableData = {
   head: ['', 'Date', 'From Address', 'To Address', 'Amount'],
   body: [],
   groups: [
@@ -110,28 +116,12 @@ const recentTransactionsTable: TableType = {
     sortableColumn: 'Date',
   },
 };
-const addressBookTable: TableType = {
+const addressBookTable: TableData = {
   head: ['', 'Label', 'Address', 'Notes', ''],
   body: [
     [
       <Icon key={0} icon="star" style={{ marginLeft: '1rem' }} />,
-      <div
-        key={1}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <Identicon
-          address={address}
-          style={{
-            width: '35px',
-            height: '35px',
-            marginRight: '1rem',
-          }}
-        />
-        Bob
-      </div>,
+      'Bob',
       <Copyable key={2} text={address} truncate={truncate} />,
       'This is the main Bob.',
       <Button key={4} basic={true}>
@@ -140,23 +130,7 @@ const addressBookTable: TableType = {
     ],
     [
       <Icon key={0} icon="star" style={{ marginLeft: '1rem' }} />,
-      <div
-        key={1}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <Identicon
-          address={address}
-          style={{
-            width: '35px',
-            height: '35px',
-            marginRight: '1rem',
-          }}
-        />
-        Bob
-      </div>,
+      'Bob',
       <Copyable key={2} text={address} truncate={truncate} />,
       'This is the other Bob.',
       <Button key={4} basic={true}>
@@ -165,23 +139,7 @@ const addressBookTable: TableType = {
     ],
     [
       <Icon key={0} icon="star" style={{ marginLeft: '1rem' }} />,
-      <div
-        key={1}
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-        }}
-      >
-        <Identicon
-          address={address}
-          style={{
-            width: '35px',
-            height: '35px',
-            marginRight: '1rem',
-          }}
-        />
-        Craig
-      </div>,
+      <div key={1}>Craig</div>,
       <Copyable key={2} text={address} truncate={truncate} />,
       'This is Craig.',
       <Button key={4} basic={true}>
