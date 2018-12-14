@@ -83,7 +83,7 @@ const addressBookTable: TableData = {
   head: ['', 'Label', 'Address', 'Notes', ''],
   body: [
     [
-      <Icon key={0} icon="star" />,
+      <Icon key={0} icon="star" style={{ marginLeft: '1rem' }} />,
       <div
         key={1}
         style={{

@@ -1,7 +1,7 @@
 import styled from '_styled-components';
 import React, { Component } from 'react';
 
-import { Button, Icon } from 'atoms';
+import { Icon } from 'atoms';
 import Typography from 'Typography';
 
 interface TableGroup {
@@ -22,17 +22,25 @@ interface State {
   };
 }
 
+const sharedCellProperties = `
+  min-width: 1rem;
+  padding: 1rem 1rem 1rem 0;
+`;
+
 const TableHead = styled.tr`
-  border-top: 1px solid #e8eaed;
-  border-bottom: 1px solid #e8eaed;
-  background: #fafcfc;
+  border-top: 1px solid ${props => props.theme.tableHeadBorder};
+  border-bottom: 1px solid ${props => props.theme.tableHeadBorder};
+  background: ${props => props.theme.tableHeadBackground};
 ` as any;
 
 const TableHeading = styled(Typography)`
-  min-width: 1rem;
-  padding: 15px 1rem 15px 0;
+  ${sharedCellProperties}
+  color: ${props => props.theme.headline}
   text-align: left;
+  font-size: 14px;
+  font-weight: normal;
   text-transform: uppercase;
+  letter-spacing: 1.4px;
 ` as any;
 
 TableHeading.defaultProps = {
@@ -40,12 +48,25 @@ TableHeading.defaultProps = {
 };
 
 const TableRow = styled.tr`
-  border-bottom: 1px solid #e8eaed;
+  border-bottom: 1px solid ${props => props.theme.tableHeadBorder};
 ` as any;
 
+const TableGroupHead = styled(TableRow)`
+  text-transform: uppercase;
+  cursor: pointer;
+`;
+
+TableGroupHead.defaultProps = {
+  as: TableRow,
+  basic: true,
+};
+
+const TableGroupHeadCaret = styled(Icon)`
+  margin-left: 0.5rem;
+`;
+
 const TableCell = styled(Typography)`
-  min-width: 1rem;
-  padding: 15px 1rem 15px 0;
+  ${sharedCellProperties};
 ` as any;
 
 TableCell.defaultProps = {
@@ -69,6 +90,7 @@ class AbstractTable extends Component<Props> {
           ))}
         </TableHead>
         <tbody>
+          {/* Ungrouped rows are placed on top of grouped rows. */}
           {body.map((row, rowIndex) => (
             <React.Fragment key={rowIndex}>
               <TableRow>
@@ -80,27 +102,22 @@ class AbstractTable extends Component<Props> {
           ))}
           {groups.map(({ title, entries, offset = 0 }) => (
             <React.Fragment key={title}>
-              <Button
-                as={TableRow}
-                basic={true}
+              <TableGroupHead
                 onClick={this.toggleCollapseGroup.bind(this, title)}
-                style={{
-                  textTransform: 'uppercase',
-                }}
+                aria-role="button"
               >
+                {/* Enter ghost cells to facilitate the offset. */}
                 {Array.from({ length: offset }, (_, index) => (
                   <td key={index} />
                 ))}
                 <TableHeading colSpan={head.length - offset}>
                   {title}
-                  <Icon
+                  <TableGroupHeadCaret
                     icon={collapsedGroups[title] ? 'caret-up' : 'caret-down'}
-                    style={{
-                      marginLeft: '0.5rem',
-                    }}
                   />
                 </TableHeading>
-              </Button>
+              </TableGroupHead>
+              {/* Display group rows if not collapsed. */}
               {!collapsedGroups[title] &&
                 entries.map((row, rowIndex) => (
                   <TableRow key={rowIndex}>
