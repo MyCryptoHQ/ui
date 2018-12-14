@@ -40,13 +40,13 @@ interface State {
 }
 
 const sharedCellProperties = `
-  min-width: 1rem;
-  padding: 1rem 1rem 1rem 0;
+  min-width: 1em;
+  padding: 1em 1em 1em 0;
 `;
 
 const TableHead = styled.tr`
-  border-top: 0.0625rem solid ${props => props.theme.tableHeadBorder};
-  border-bottom: 0.0625rem solid ${props => props.theme.tableHeadBorder};
+  border-top: 0.0625em solid ${props => props.theme.tableHeadBorder};
+  border-bottom: 0.0625em solid ${props => props.theme.tableHeadBorder};
   background: ${props => props.theme.tableHeadBackground};
 ` as any;
 
@@ -54,10 +54,10 @@ const TableHeading = styled(Typography)`
   ${sharedCellProperties}
   color: ${props => props.theme.headline};
   text-align: left;
-  font-size: 0.875rem;
+  font-size: 0.875em;
   font-weight: normal;
   text-transform: uppercase;
-  letter-spacing: 0.0625rem;
+  letter-spacing: 0.0625em;
   cursor: ${(props: any) => (props.isSortable ? 'pointer' : 'inherit')}
 ` as any;
 
@@ -66,7 +66,7 @@ TableHeading.defaultProps = {
 };
 
 const TableRow = styled.tr`
-  border-bottom: 0.0625rem solid ${props => props.theme.tableHeadBorder};
+  border-bottom: 0.0625em solid ${props => props.theme.tableHeadBorder};
 ` as any;
 
 const TableGroupHead = styled(TableRow)`
@@ -80,7 +80,7 @@ TableGroupHead.defaultProps = {
 };
 
 const TableCaret = styled(Icon)`
-  margin-left: 0.5rem;
+  margin-left: 0.5em;
 `;
 
 const TableCell = styled(Typography)`
@@ -176,13 +176,11 @@ class AbstractTable extends Component<Props> {
         <tbody>
           {/* Ungrouped rows are placed on top of grouped rows. */}
           {body.map((row, rowIndex) => (
-            <React.Fragment key={rowIndex}>
-              <TableRow>
-                {row.map((cell, cellIndex) => (
-                  <TableCell key={cellIndex}>{cell}</TableCell>
-                ))}
-              </TableRow>
-            </React.Fragment>
+            <TableRow key={rowIndex}>
+              {row.map((cell, cellIndex) => (
+                <TableCell key={cellIndex}>{cell}</TableCell>
+              ))}
+            </TableRow>
           ))}
           {groups.map(({ title, entries, offset = 0 }) => (
             <React.Fragment key={title}>
