@@ -78,6 +78,10 @@ class AbstractTable extends Component<Props> {
     collapsedGroups: {},
   };
 
+  public componentDidMount() {
+    this.verifyTableLayout();
+  }
+
   public render() {
     const { head, body = [], groups = [], ...rest } = this.props;
     const { collapsedGroups } = this.state;
@@ -132,6 +136,45 @@ class AbstractTable extends Component<Props> {
       </table>
     );
   }
+
+  private verifyTableLayout = () => {
+    const { head, body, groups } = this.props;
+    const columnCount = head.length;
+
+    if (columnCount === 0) {
+      throw new Error(`A <Table /> must have at least one column.`);
+    }
+
+    body.forEach((row, index) => {
+      if (row.length !== columnCount) {
+        throw new Error(
+          `Unbalanced row found in <Table /> at position ${index}.`,
+        );
+      }
+    });
+
+    if (groups) {
+      groups.forEach(({ title, entries, offset }) => {
+        if (!title || title === '') {
+          throw new Error(
+            `Untitled group in <Table /> -- all table groups must have a title.`,
+          );
+        }
+
+        entries.forEach((row, index) => {
+          if (row.length !== columnCount) {
+            throw new Error(
+              `Unbalanced row in group "${title}" found in <Table /> at position ${index}.`,
+            );
+          }
+        });
+
+        if (offset && offset > columnCount - 1) {
+          throw new Error(`Bad offset in group "${title}" found in <Table />.`);
+        }
+      });
+    }
+  };
 
   private toggleCollapseGroup = (title: string) =>
     this.setState((prevState: State) => ({
