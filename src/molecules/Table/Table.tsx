@@ -325,7 +325,7 @@ class AbstractTable extends Component<Props> {
     }
 
     if (config) {
-      const { sortableColumn } = config;
+      const { sortableColumn, hiddenHeadings } = config;
 
       if (sortableColumn) {
         const sortedColumnExists = head.includes(sortableColumn);
@@ -333,6 +333,16 @@ class AbstractTable extends Component<Props> {
         if (!sortedColumnExists) {
           throw new Error(`Nonexistent sortable column provided to <Table />.`);
         }
+      }
+
+      if (hiddenHeadings) {
+        hiddenHeadings.forEach(heading => {
+          if (!head.includes(heading)) {
+            throw new Error(
+              `Unused heading ${heading} found in hiddenHeadings in <Table />`,
+            );
+          }
+        });
       }
     }
   };
