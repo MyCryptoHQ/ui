@@ -31,7 +31,7 @@ export interface TableContent {
 }
 
 export interface TableData extends TableContent {
-  head: any[];
+  head: string[];
   config?: TableConfig;
 }
 
@@ -144,7 +144,7 @@ const getSortedRows = (
   const sortableColumnIndex = head.indexOf(sortableColumn);
   // Create an array containing the data from each row in the specified column.
   const sortableColumnEntries = body.map(row => row[sortableColumnIndex]).map(
-    (entry: any) =>
+    entry =>
       // If the entry is a string, wrap it.
       typeof entry === 'string' ? (
         <React.Fragment>{entry}</React.Fragment>
@@ -278,12 +278,15 @@ class AbstractTable extends Component<Props> {
       throw new Error('A <Table /> must have at least one column.');
     }
 
-    const titleCounts = head.reduce((prev, next) => {
-      prev[next] = prev[next] ? prev[next] + 1 : 1;
-      return prev;
-    }, {});
+    const titleCounts = head.reduce(
+      (prev, next) => {
+        prev[next] = prev[next] ? prev[next] + 1 : 1;
+        return prev;
+      },
+      {} as Record<string, number>,
+    );
 
-    Object.entries(titleCounts).forEach(([key, value]: any) => {
+    Object.entries(titleCounts).forEach(([key, value]) => {
       if (key !== '' && value > 1) {
         throw new Error(
           `A <Table /> cannot have duplicate non-empty headings -- found multiple headings called "${key}".`,
