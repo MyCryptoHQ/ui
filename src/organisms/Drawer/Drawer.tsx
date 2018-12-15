@@ -78,9 +78,12 @@ interface DrawerProps {
   iconAltText?: string;
   headerTitle?: string;
   headerText?: string;
+  visible?: boolean;
 
   children?: ReactNode;
   footer?: ReactNode;
+
+  handleClose?(): void;
 }
 
 interface DrawerState {
@@ -91,11 +94,30 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
   public ref = createRef<HTMLDivElement>();
 
   public state: Readonly<DrawerState> = {
-    visible: true,
+    visible: false,
   };
 
-  public handleClose = () => {
+  public focused = false;
+
+  public componentDidUpdate(prevProps: DrawerProps) {
+    const { visible: internalVisible } = this.state;
+    if (internalVisible && this.ref.current && !this.focused) {
+      this.ref.current.focus();
+      this.focused = true;
+    }
+
+    const { visible: externalVisible } = this.props;
+    if (externalVisible !== prevProps.visible) {
+      this.setState({ visible: externalVisible });
+    }
+  }
+
+  public handleExit = () => {
     this.setState({ visible: false });
+    const { handleClose } = this.props;
+    if (typeof handleClose === 'function') {
+      handleClose();
+    }
   };
 
   public render() {
@@ -108,17 +130,14 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
       footer,
     } = this.props;
     const { visible } = this.state;
-    if (visible && this.ref.current) {
-      this.ref.current.focus();
-    }
     return (
       <section>
         <React.Fragment>
-          {visible && <Overlay onClick={this.handleClose} />}
+          {visible && <Overlay onClick={this.handleExit} />}
           <div ref={this.ref}>
             <Drawer noPadding={true} visible={visible} tabIndex={0}>
               <DrawerControls>
-                <DrawerCloseButton onClick={this.handleClose}>
+                <DrawerCloseButton onClick={this.handleExit}>
                   <img src={exit} alt="exit-button" />
                 </DrawerCloseButton>
               </DrawerControls>
