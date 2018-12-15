@@ -1,7 +1,16 @@
-import styled from '_styled-components';
-import React, { Component, ReactNode } from 'react';
+import React, {
+  ClassAttributes,
+  Component,
+  DetailedHTMLProps,
+  ReactNode,
+  TdHTMLAttributes,
+  ThHTMLAttributes,
+} from 'react';
+import { StyledComponentClass } from 'styled-components';
 
+import styled from '_styled-components';
 import { Icon } from 'atoms';
+import Theme from 'Theme';
 import Typography from 'Typography';
 
 export interface TableGroup {
@@ -49,12 +58,14 @@ const TableHead = styled.tr`
   border-top: 0.0625em solid ${props => props.theme.tableHeadBorder};
   border-bottom: 0.0625em solid ${props => props.theme.tableHeadBorder};
   background: ${props => props.theme.tableHeadBackground};
-` as any;
+`;
 
-const TableHeading = styled(Typography)<{
+interface HeadingProps {
   isSortable?: boolean;
   isHidden?: boolean;
-}>`
+}
+
+const TableHeading = styled(Typography)<HeadingProps>`
   ${sharedCellProperties}
   color: ${props => props.theme.headline};
   text-align: left;
@@ -62,14 +73,19 @@ const TableHeading = styled(Typography)<{
   text-transform: uppercase;
   letter-spacing: 0.0625em;
   cursor: ${props => (props.isSortable ? 'pointer' : 'inherit')}
-  ${props =>
-    props.isHidden &&
-    `
+    ${props =>
+      props.isHidden &&
+      `
     position: fixed;
     top: -9999em;
     left: -9999em;
   `}
-` as any;
+` as StyledComponentClass<
+  ClassAttributes<HTMLTableHeaderCellElement> &
+    ThHTMLAttributes<HTMLTableHeaderCellElement> &
+    HeadingProps,
+  Theme
+>;
 
 TableHeading.defaultProps = {
   as: 'th',
@@ -77,7 +93,7 @@ TableHeading.defaultProps = {
 
 const TableRow = styled.tr`
   border-bottom: 0.0625em solid ${props => props.theme.tableHeadBorder};
-` as any;
+`;
 
 const TableGroupHead = styled(TableRow)`
   text-transform: uppercase;
@@ -90,7 +106,13 @@ const TableCaret = styled(Icon)`
 
 const TableCell = styled(Typography)`
   ${sharedCellProperties};
-` as any;
+` as StyledComponentClass<
+  DetailedHTMLProps<
+    TdHTMLAttributes<HTMLTableDataCellElement>,
+    HTMLTableDataCellElement
+  >,
+  Theme
+>;
 
 TableCell.defaultProps = {
   as: 'td',
