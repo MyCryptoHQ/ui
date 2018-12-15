@@ -17,6 +17,7 @@
   "dependencies": {
     "ethereum-blockies-base64": "^1.0.2",
     "polished": "^2.2.0",
+    "react-inlinesvg": "^0.8.3",
     "typeface-lato": "^0.0.54"
   },
   "devDependencies": {

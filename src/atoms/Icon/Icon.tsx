@@ -1,4 +1,7 @@
-import React, { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import React from 'react';
+import InlineSVG, { Props } from 'react-inlinesvg';
+
+import { Omit } from 'types';
 
 import combinedShape from './icons/combined-shape.svg';
 import add from './icons/icn-add.svg';
@@ -53,13 +56,15 @@ export const icons = {
 };
 
 export function Icon({
+  'aria-label': ariaLabel,
   icon,
   ...rest
-}: { icon: keyof typeof icons } & DetailedHTMLProps<
-  ImgHTMLAttributes<HTMLImageElement>,
-  HTMLImageElement
->) {
-  return <img src={icons[icon]} alt={icon} {...rest} />;
+}: { 'aria-label'?: string; icon: keyof typeof icons } & Omit<Props, 'src'>) {
+  return (
+    <span role="img" aria-label={ariaLabel || icon}>
+      <InlineSVG src={icons[icon]} {...rest} />
+    </span>
+  );
 }
 
 export default Icon;
