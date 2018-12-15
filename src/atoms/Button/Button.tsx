@@ -38,7 +38,7 @@ const StyledButton = styled(BasicButton)<{
   user-select: none;
 
   :focus {
-    box-shadow: 0 0 0 2px white, 0 0 0 4px ${props => props.theme.primary};
+    box-shadow: ${props => props.theme.outline};
   }
 
   &:focus,

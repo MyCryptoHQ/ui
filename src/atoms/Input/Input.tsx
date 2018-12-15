@@ -17,7 +17,7 @@ export const Input = styled(Typography)`
 
   :focus {
     outline: none;
-    box-shadow: 0 0 0 2px white, 0 0 0 4px ${props => props.theme.primary};
+    box-shadow: ${props => props.theme.outline};
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
