@@ -134,8 +134,9 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
       <section>
         <React.Fragment>
           {visible && <Overlay onClick={this.handleExit} />}
-          <div ref={this.ref}>
-            <Drawer noPadding={true} visible={visible} tabIndex={0}>
+
+          <Drawer noPadding={true} visible={visible} tabIndex={0}>
+            <div ref={this.ref}>
               <DrawerControls>
                 <DrawerCloseButton onClick={this.handleExit}>
                   <img src={exit} alt="exit-button" />
@@ -149,8 +150,8 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
               </DrawerHeader>
               <DrawerContent>{children}</DrawerContent>
               {footer && <footer>{footer}</footer>}
-            </Drawer>
-          </div>
+            </div>
+          </Drawer>
         </React.Fragment>
       </section>
     );
