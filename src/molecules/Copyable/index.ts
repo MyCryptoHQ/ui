@@ -1,1 +1,2 @@
-export { default } from './Copyable';
+import Copyable from './Copyable';
+export default Copyable;

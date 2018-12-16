@@ -1,1 +1,2 @@
-export { default } from './Network';
+import Network from './Network';
+export default Network;
