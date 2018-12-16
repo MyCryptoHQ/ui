@@ -1,2 +1,3 @@
 import ComboBox from './ComboBox';
-export { ComboBox };
+import Drawer from './Drawer';
+export { ComboBox, Drawer };

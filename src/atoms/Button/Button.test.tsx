@@ -15,4 +15,6 @@ test('Button', () => {
   expect(handleClick).toHaveBeenCalled();
   rerender(<Button large={true} />);
   rerender(<Button secondary={true} />);
+  rerender(<Button basic={true} />);
+  rerender(<Button icon="question-circle" />);
 });

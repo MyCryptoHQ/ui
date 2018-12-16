@@ -98,30 +98,25 @@
       "react"
     ],
     "rules": {
-      "react/destructuring-assignment": "error"
+      "react/destructuring-assignment": "error",
+      "jsx-a11y/label-has-for": [
+        "error",
+        {
+          "required": "id"
+        }
+      ]
     }
   },
   "jest": {
     "collectCoverage": true,
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
     "moduleNameMapper": {
       "\\.svg$": "<rootDir>/__mocks__/fileMock.ts",
       "^src/(.*)$": "<rootDir>/src/$1"
     },
+    "preset": "ts-jest",
     "testPathIgnorePatterns": [
       "dist"
-    ],
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    }
+    ]
   },
   "husky": {
     "hooks": {

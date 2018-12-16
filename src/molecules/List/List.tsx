@@ -4,7 +4,7 @@ import React, { Children, ReactNode } from 'react';
 import { Panel } from 'src/atoms';
 import styled from 'src/styled-components';
 import { scale } from 'src/Theme';
-import { ExtractProps, Omit } from 'src/types';
+import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 
 const GroupItem = styled(Typography)`
@@ -42,7 +42,7 @@ export const List = ({
   group?: boolean;
   inline?: boolean;
   ordered?: boolean;
-} & Omit<ExtractProps<typeof Panel>, 'ref'>) => {
+} & ExtractProps<typeof Panel>) => {
   let container;
   if (basic || group) {
     container = undefined;

@@ -3,7 +3,10 @@ import Heading from './Heading';
 import Icon, { IconName, icons } from './Icon';
 import Identicon from './Identicon';
 import Input from './Input';
+import Network from './Network';
 import Panel from './Panel';
+import Switch from './Switch';
+import Tabs from './Tabs';
 import Textarea from './Textarea';
 import Tooltip from './Tooltip';
 export {
@@ -14,7 +17,10 @@ export {
   icons,
   Identicon,
   Input,
+  Network,
   Panel,
+  Switch,
+  Tabs,
   Textarea,
   Tooltip,
 };

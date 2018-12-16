@@ -1,56 +1,75 @@
 import { padding, transitions } from 'polished';
-import { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
+import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
+import Icon, { IconName } from 'src/atoms/Icon';
 import styled from 'src/styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
+import { ExtractProps, Omit } from 'src/types';
 import Typography from 'src/Typography';
 
-interface Props {
+export const BasicButton = styled(Typography)`
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: ${scale(0)};
+  padding: 0;
+` as StyledComponentClass<
+  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
+  Theme
+>;
+
+BasicButton.defaultProps = { as: 'button', type: 'button' };
+
+const StyledButton = styled(BasicButton)<{
   large?: boolean;
   secondary?: boolean;
-}
-
-export const Button = styled(Typography)<Props>`
-  background: ${props => (props.secondary ? 'none' : props.theme.primary)};
-  border: ${props =>
-    props.secondary ? '.125em solid' + props.theme.primary : 'none'};
+}>`
+  background: ${props => !props.secondary && props.theme.primary};
+  border: ${props => props.secondary && '.125em solid' + props.theme.primary};
   border-radius: ${borderRadius};
   color: ${props => (props.secondary ? props.theme.primary : 'white')};
-  font-size: ${scale(0)};
+  font-size: ${props => props.large && scale(1)};
   ${padding(scale(-1), scale(2))};
-  ${transitions(['opacity', 'background', 'color'], transitionDuration)};
+  ${transitions(
+    ['opacity', 'background', 'color', 'box-shadow'],
+    transitionDuration,
+  )};
   user-select: none;
-  ${props =>
-    props.large &&
-    `
-      font-size: ${scale(1)};
-    `};
+
+  :focus {
+    box-shadow: ${props => props.theme.outline};
+  }
 
   &:focus,
   &:hover {
     background: ${props =>
       props.secondary ? props.theme.primary : props.theme.primaryDark};
-    ${props =>
-      props.secondary &&
-      `
-        color: white;
-      `};
+    color: ${props => props.secondary && 'white'};
   }
 
   &:active {
     background: ${props =>
       props.secondary ? props.theme.primaryDark : props.theme.primaryDarker};
   }
-` as StyledComponentClass<
-  DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > &
-    Props,
-  Theme
->;
+`;
 
-Button.defaultProps = { as: 'button', type: 'button' };
+export function Button({
+  basic,
+  children,
+  icon,
+  ...rest
+}: { basic?: boolean; icon?: IconName } & Omit<
+  ExtractProps<typeof StyledButton>,
+  'ref'
+>) {
+  const ButtonComponent = basic || icon ? BasicButton : StyledButton;
+
+  return (
+    <ButtonComponent {...rest}>
+      {icon ? <Icon icon={icon} /> : children}
+    </ButtonComponent>
+  );
+}
 
 export default Button;
