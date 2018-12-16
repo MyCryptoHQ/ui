@@ -111,24 +111,10 @@
       "node_modules",
       "src"
     ],
-    "moduleFileExtensions": [
-      "ts",
-      "tsx",
-      "js",
-      "jsx",
-      "json",
-      "node"
-    ],
     "moduleNameMapper": {
       "\\.svg$": "<rootDir>/__mocks__/fileMock.ts"
     },
-    "testPathIgnorePatterns": [
-      "dist"
-    ],
-    "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-    "transform": {
-      "^.+\\.tsx?$": "ts-jest"
-    }
+    "preset": "ts-jest"
   },
   "husky": {
     "hooks": {
