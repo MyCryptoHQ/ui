@@ -114,7 +114,10 @@
     "moduleNameMapper": {
       "\\.svg$": "<rootDir>/__mocks__/fileMock.ts"
     },
-    "preset": "ts-jest"
+    "preset": "ts-jest",
+    "testPathIgnorePatterns": [
+      "dist"
+    ]
   },
   "husky": {
     "hooks": {
