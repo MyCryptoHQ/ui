@@ -12,10 +12,13 @@ const LabelText = styled(Typography)`
   margin-top: 0.75em;
   cursor: pointer;
 `;
-export const Checkbox = styled(Input)<{ greyable?: boolean }>`
+export const Checkbox = styled(Input)<{
+  greyable?: boolean;
+  checked?: boolean;
+}>`
   :checked + span {
     background-color: ${props =>
-      props.greyable ? lighten(0.3, 'grey') : '#b2d7e0'};
+      props.greyable && !props.checked ? lighten(0.3, 'grey') : '#b2d7e0'};
   }
   :checked + span::before {
     transform: translateX(30px);
@@ -36,14 +39,15 @@ const SliderBackground = styled.label`
     display: none;
   }
 `;
-const Slider = styled.span<{ greyable?: boolean }>`
+const Slider = styled.span<{ greyable?: boolean; checked?: boolean }>`
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #b2d7e0;
+  background-color: ${props =>
+    props.greyable && !props.checked ? lighten(0.3, 'grey') : '#b2d7e0'};
   transition: 0.4s;
   border-radius: 17px;
   ::before {
@@ -54,7 +58,7 @@ const Slider = styled.span<{ greyable?: boolean }>`
     left: -4px;
     bottom: -3px;
     background-color: ${props =>
-      props.greyable ? 'grey' : props.theme.primary};
+      props.greyable && !props.checked ? 'grey' : props.theme.primary};
     transition: 0.4s;
     border-radius: 17px;
   }
@@ -88,7 +92,7 @@ export class Switch extends Component<Props, {}> {
             onChange={handleChange}
             checked={checked}
           />
-          <Slider greyable={greyable} />
+          <Slider checked={checked} greyable={greyable} />
         </SliderBackground>
         <LabelText>
           <label htmlFor="toggle">{labelRight}</label>
