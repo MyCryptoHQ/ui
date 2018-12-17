@@ -18,6 +18,7 @@ type Theme = Record<
   | 'actionPanelBackground'
   | 'actionPanelBorder'
   | 'background'
+  | 'cardText'
   | 'controlBackground'
   | 'controlBorder'
   | 'headline'
@@ -43,6 +44,7 @@ export const light: Theme = {
   actionPanelBackground: darken(0.01, backgroundLight),
   actionPanelBorder: '#e8eaed',
   background: backgroundLight,
+  cardText: '#697685',
   controlBackground: backgroundLight,
   controlBorder: '#e5ecf3',
   headline: '#163150',
@@ -65,6 +67,7 @@ export const dark: Theme = {
   actionPanelBackground: lighten(lightnessMod, backgroundDark),
   actionPanelBorder: invert(light.actionPanelBorder),
   background: backgroundDark,
+  cardText: '#e9ceaf',
   controlBackground: '#393f4c',
   controlBorder: '#4d5463',
   headline: invert(light.headline),
