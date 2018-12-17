@@ -3,4 +3,4 @@ export { default as Copyable } from './Copyable';
 export { default as IconLink } from './IconLink';
 export { default as List } from './List';
 export { default as StackedCard } from './StackedCard';
-export { default as Table, TableData } from './Table';
+export { default as Table, TableConfig, TableData } from './Table';

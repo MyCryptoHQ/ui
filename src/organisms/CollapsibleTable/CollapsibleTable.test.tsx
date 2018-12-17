@@ -1,15 +1,23 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import { TableData } from 'molecules';
-import CollapsibleTable from './CollapsibleTable';
+import CollapsibleTable, { CollapsibleTableData } from './CollapsibleTable';
 
-const generateTableData = (): TableData => ({
+const generateTableData = (): CollapsibleTableData => ({
   head: ['Foo', 'Bar', 'Baz'],
   body: [['A', 'B', 'C']],
+  config: {
+    primaryColumn: 'Foo',
+  },
 });
 
 describe('StackedCard', () => {
+  beforeEach(() => {
+    window.matchMedia = jest.fn().mockReturnValue({
+      matches: false,
+    });
+  });
+
   test('It renders', () => {
     const table = render(<CollapsibleTable {...generateTableData()} />);
 

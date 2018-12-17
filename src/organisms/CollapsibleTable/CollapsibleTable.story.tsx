@@ -1,11 +1,14 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import CollapsibleTable from './CollapsibleTable';
+import CollapsibleTable, { CollapsibleTableData } from './CollapsibleTable';
 
-const data = {
-  head: ['Foo', 'Bar'],
-  body: [['A', 'A'], ['B', 'C']],
+const data: CollapsibleTableData = {
+  head: ['Name', 'Age'],
+  body: [['Connor', '26'], ['David', '29']],
+  config: {
+    primaryColumn: 'Name',
+  },
 };
 
 storiesOf('Organisms', module).add('CollapsibleTable', () => (
