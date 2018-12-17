@@ -155,8 +155,26 @@ const addressBookTable: TableData = {
   },
 };
 
+const generateTableData = (): TableData => ({
+  head: ['Foo', 'Bar', 'Baz'],
+  body: [['A', 'B', 'C']],
+});
+
+const data = generateTableData();
+
+data.body.push(['B', 'B', 'C']);
+data.groups = [
+  {
+    title: 'Derp',
+    entries: [['C', 'B', 'C']],
+  },
+];
+data.config = {
+  sortableColumn: 'Foo',
+};
+
 storiesOf('Molecules', module).add('Table', () =>
-  [accountTable, recentTransactionsTable, addressBookTable].map(
+  [accountTable, recentTransactionsTable, addressBookTable, data].map(
     (tableData, index) => (
       <div key={index} style={{ marginBottom: '3rem' }}>
         <Table {...tableData} />

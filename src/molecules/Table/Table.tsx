@@ -121,7 +121,7 @@ TableCell.defaultProps = {
 // tslint:disable-next-line
 const noop = () => {};
 
-const defaultColumnSort = (a: any, b: any): number => {
+export const defaultColumnSort = (a: any, b: any): number => {
   try {
     const aText = a.props.children;
     const bText = b.props.children;
@@ -133,7 +133,7 @@ const defaultColumnSort = (a: any, b: any): number => {
   }
 };
 
-const getSortedRows = (
+export const getSortedRows = (
   head: any[],
   body: ReactNode[][],
   config: TableConfig,
@@ -189,7 +189,7 @@ class AbstractTable extends Component<Props> {
   public render() {
     const { head, config, ...rest } = this.props;
     const { collapsedGroups, sortedColumnDirection } = this.state;
-    const { body, groups = [] } = this.getSortedLayout();
+    const { body, groups } = this.getSortedLayout();
 
     return (
       <table {...rest}>
@@ -212,6 +212,10 @@ class AbstractTable extends Component<Props> {
                   role={isSortableColumn ? 'button' : ''}
                   isSortable={isSortableColumn}
                   isHidden={isHiddenHeading}
+                  id={isSortableColumn ? 'xxx' : ''}
+                  data-testid={
+                    isSortableColumn ? 'sortable-column-heading' : ''
+                  }
                 >
                   {heading}
                   {isSortableColumn && (
@@ -233,11 +237,16 @@ class AbstractTable extends Component<Props> {
           {body.map((row, rowIndex) => (
             <TableRow key={rowIndex}>
               {row.map((cell, cellIndex) => (
-                <TableCell key={cellIndex}>{cell}</TableCell>
+                <TableCell
+                  key={cellIndex}
+                  data-testid={`ungrouped-${rowIndex}-${cellIndex}`}
+                >
+                  {cell}
+                </TableCell>
               ))}
             </TableRow>
           ))}
-          {groups.map(({ title, entries, offset = 0 }) => (
+          {groups!.map(({ title, entries, offset = 0 }) => (
             <React.Fragment key={title}>
               <TableGroupHead
                 onClick={this.toggleCollapseGroup.bind(this, title)}
@@ -302,48 +311,44 @@ class AbstractTable extends Component<Props> {
       }
     });
 
-    if (groups) {
-      groups.forEach(({ title, entries, offset }) => {
-        if (!title || title === '') {
+    groups!.forEach(({ title, entries, offset }) => {
+      if (!title || title === '') {
+        throw new Error(
+          `Untitled group in <Table /> -- all table groups must have a title.`,
+        );
+      }
+
+      entries.forEach((row, index) => {
+        if (row.length !== columnCount) {
           throw new Error(
-            `Untitled group in <Table /> -- all table groups must have a title.`,
+            `Unbalanced row in group "${title}" found in <Table /> at position ${index}.`,
           );
         }
-
-        entries.forEach((row, index) => {
-          if (row.length !== columnCount) {
-            throw new Error(
-              `Unbalanced row in group "${title}" found in <Table /> at position ${index}.`,
-            );
-          }
-        });
-
-        if (offset && offset > columnCount - 1) {
-          throw new Error(`Bad offset in group "${title}" found in <Table />.`);
-        }
       });
+
+      if (offset && offset > columnCount - 1) {
+        throw new Error(`Bad offset in group "${title}" found in <Table />.`);
+      }
+    });
+
+    const { sortableColumn, hiddenHeadings } = config!;
+
+    if (sortableColumn) {
+      const sortedColumnExists = head.includes(sortableColumn);
+
+      if (!sortedColumnExists) {
+        throw new Error(`Nonexistent sortable column provided to <Table />.`);
+      }
     }
 
-    if (config) {
-      const { sortableColumn, hiddenHeadings } = config;
-
-      if (sortableColumn) {
-        const sortedColumnExists = head.includes(sortableColumn);
-
-        if (!sortedColumnExists) {
-          throw new Error(`Nonexistent sortable column provided to <Table />.`);
+    if (hiddenHeadings) {
+      hiddenHeadings.forEach(heading => {
+        if (!head.includes(heading)) {
+          throw new Error(
+            `Unused heading ${heading} found in hiddenHeadings in <Table />`,
+          );
         }
-      }
-
-      if (hiddenHeadings) {
-        hiddenHeadings.forEach(heading => {
-          if (!head.includes(heading)) {
-            throw new Error(
-              `Unused heading ${heading} found in hiddenHeadings in <Table />`,
-            );
-          }
-        });
-      }
+      });
     }
   };
 
@@ -364,23 +369,21 @@ class AbstractTable extends Component<Props> {
     }));
 
   private getSortedLayout = (): TableContent => {
-    const { head, body, groups = [], config } = this.props;
+    const { head, body, groups, config } = this.props;
     const { sortedColumnDirection } = this.state;
 
     return config && config.sortableColumn
       ? {
           body: getSortedRows(head, body, config, sortedColumnDirection),
-          groups: groups
-            ? groups.map(group => ({
-                ...group,
-                entries: getSortedRows(
-                  head,
-                  group.entries,
-                  config,
-                  sortedColumnDirection,
-                ),
-              }))
-            : [],
+          groups: groups!.map(group => ({
+            ...group,
+            entries: getSortedRows(
+              head,
+              group.entries,
+              config,
+              sortedColumnDirection,
+            ),
+          })),
         }
       : { body, groups };
   };

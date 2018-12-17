@@ -1,98 +1,244 @@
 import 'jest-dom/extend-expect';
 import React from 'react';
-import { render } from 'react-testing-library';
+import { fireEvent, render } from 'react-testing-library';
+import 'react-testing-library/cleanup-after-each';
 
-import Table, { TableData } from './Table';
+import Table, {
+  ColumnDirections,
+  defaultColumnSort,
+  getSortedRows,
+  TableData,
+} from './Table';
 
 const generateTableData = (): TableData => ({
   head: ['Foo', 'Bar', 'Baz'],
   body: [['A', 'B', 'C']],
 });
 
-test('Table - can render', () => {
-  const data = generateTableData();
-  const table = render(<Table {...data} />);
+describe('Table', () => {
+  test('It renders', () => {
+    const data = generateTableData();
+    const table = render(<Table {...data} />);
 
-  expect(table).toBeTruthy();
+    expect(table).toBeTruthy();
+  });
+
+  test('It collapses groups', () => {
+    const data = generateTableData();
+
+    data.body = [];
+    data.groups = [
+      {
+        title: 'Derp',
+        entries: [['D', 'E', 'F']],
+      },
+    ];
+
+    const { queryByText } = render(<Table {...data} />);
+
+    expect(queryByText('F')).toBeTruthy();
+
+    fireEvent.click(queryByText('Derp')!);
+
+    expect(queryByText('F')).toBeNull();
+
+    fireEvent.click(queryByText('Derp')!);
+
+    expect(queryByText('F')).toBeTruthy();
+  });
+
+  test('It sorts columns', () => {
+    const data = generateTableData();
+
+    data.body.push(['B', 'B', 'C']);
+    data.groups = [
+      {
+        title: 'Derp',
+        entries: [['C', 'B', 'C']],
+      },
+    ];
+    data.config = {
+      sortableColumn: 'Foo',
+    };
+
+    const { getByTestId, getByText } = render(<Table {...data} />);
+
+    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+
+    fireEvent.click(getByText('Bar'));
+
+    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+
+    fireEvent.click(getByTestId('sortable-column-heading'));
+
+    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('B');
+
+    fireEvent.click(getByTestId('sortable-column-heading'));
+
+    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+  });
+
+  test('It hides headings', () => {
+    const data = generateTableData();
+
+    data.config = {
+      hiddenHeadings: ['Foo'],
+    };
+
+    const { getByText } = render(<Table {...data} />);
+
+    expect(getByText('Foo')).toHaveStyle(
+      'position: fixed; top: -9999em; left: -9999em;',
+    );
+  });
+
+  describe('Error handling', () => {
+    test('Bad column count', () => {
+      const data = generateTableData();
+
+      data.head = [];
+      data.body = [];
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        'A <Table /> must have at least one column.',
+      );
+    });
+
+    test('Duplicate headings', () => {
+      const data = generateTableData();
+
+      data.head[1] = 'Foo';
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        'A <Table /> cannot have duplicate non-empty headings -- found multiple headings called "Foo".',
+      );
+    });
+
+    test('Unbalanced row', () => {
+      const data = generateTableData();
+
+      data.head.pop();
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        `Unbalanced row found in <Table /> at position 0.`,
+      );
+    });
+
+    test('Untitled group', () => {
+      const data = generateTableData();
+
+      data.groups = [
+        {
+          title: '',
+          entries: [['D', 'E', 'F']],
+        },
+      ];
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        `Untitled group in <Table /> -- all table groups must have a title.`,
+      );
+    });
+
+    test('Unbalanced group row', () => {
+      const data = generateTableData();
+
+      data.groups = [
+        {
+          title: 'Derp',
+          entries: [['D', 'E']],
+        },
+      ];
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        `Unbalanced row in group "Derp" found in <Table /> at position 0.`,
+      );
+    });
+
+    test('Bad group offset', () => {
+      const data = generateTableData();
+
+      data.groups = [
+        {
+          title: 'Derp',
+          entries: [['D', 'E', 'F']],
+          offset: 3,
+        },
+      ];
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        `Bad offset in group "Derp" found in <Table />.`,
+      );
+    });
+
+    test('Nonexistent sortable column', () => {
+      const data = generateTableData();
+
+      data.config = {
+        sortableColumn: 'Wow',
+      };
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        `Nonexistent sortable column provided to <Table />.`,
+      );
+    });
+
+    test('Unused hidden heading', () => {
+      const data = generateTableData();
+
+      data.config = {
+        hiddenHeadings: ['Hmm'],
+      };
+
+      expect(() => render(<Table {...data} />)).toThrow(
+        `Unused heading Hmm found in hiddenHeadings in <Table />`,
+      );
+    });
+  });
 });
 
-test('Table - throws applicable errors', () => {
-  // Bad column count.
-  const badColumnCountTableData = generateTableData();
-
-  badColumnCountTableData.head = [];
-  badColumnCountTableData.body = [];
-
-  expect(() => render(<Table {...badColumnCountTableData} />)).toThrow();
-
-  // Duplicate headings.
-  const duplicateHeadingTableData = generateTableData();
-
-  duplicateHeadingTableData.head[1] = 'Foo';
-
-  expect(() => render(<Table {...duplicateHeadingTableData} />)).toThrow();
-
-  // Unbalanced row.
-  const unbalancedRowTableData = generateTableData();
-
-  unbalancedRowTableData.head.pop();
-
-  expect(() => render(<Table {...unbalancedRowTableData} />)).toThrow();
-
-  // Untitled group.
-  const untitledGroupTableData = generateTableData();
-
-  untitledGroupTableData.groups = [
-    {
-      title: '',
-      entries: [['D', 'E', 'F']],
-    },
-  ];
-
-  expect(() => render(<Table {...untitledGroupTableData} />)).toThrow();
-
-  // Unbalanced group row.
-  const unbalancedGroupRowTableData = generateTableData();
-
-  unbalancedGroupRowTableData.groups = [
-    {
-      title: 'Derp',
-      entries: [['D', 'E']],
-    },
-  ];
-
-  expect(() => render(<Table {...unbalancedGroupRowTableData} />)).toThrow();
-
-  // Bad group offset.
-  const badOffsetTableData = generateTableData();
-
-  badOffsetTableData.groups = [
-    {
-      title: 'Derp',
-      entries: [['D', 'E', 'F']],
-      offset: 3,
-    },
-  ];
-
-  expect(() => render(<Table {...badOffsetTableData} />)).toThrow();
-
-  // Nonexistent sortable column.
-  const nonexistentSortableColumnTableData = generateTableData();
-
-  nonexistentSortableColumnTableData.config = {
-    sortableColumn: 'Wow',
+describe('getSortedRows', () => {
+  const head = ['A', 'B', 'C'];
+  const body = [['FooA', 'Bar', 'Baz'], ['FooB', 'Bar', 'Baz']];
+  const config = {
+    sortableColumn: 'A',
+    sortFunction: defaultColumnSort,
   };
 
-  expect(() =>
-    render(<Table {...nonexistentSortableColumnTableData} />),
-  ).toThrow();
+  test('Forward direction', () => {
+    const sorted = getSortedRows(head, body, config, ColumnDirections.Forward);
 
-  // Unused hidden heading.
-  const unusedHiddenHeadingTableData = generateTableData();
+    expect(sorted).toEqual(body);
+  });
 
-  unusedHiddenHeadingTableData.config = {
-    hiddenHeadings: ['Hmm'],
-  };
+  test('Reverse direction', () => {
+    const sorted = getSortedRows(head, body, config, ColumnDirections.Reverse);
 
-  expect(() => render(<Table {...unusedHiddenHeadingTableData} />)).toThrow();
+    expect(sorted).toEqual(body.reverse());
+  });
+});
+
+describe('defaultColumnSort', () => {
+  test('Happy path', () => {
+    const columnA = <React.Fragment>Foo</React.Fragment>;
+    const columnB = <React.Fragment>Bar</React.Fragment>;
+
+    expect(defaultColumnSort(columnA, columnB)).toEqual(1);
+  });
+
+  test('Error case -- doubly nested', () => {
+    const columnA = (
+      <div>
+        <div>Foo</div>
+      </div>
+    );
+    const columnB = (
+      <div>
+        <div>Bar</div>
+      </div>
+    );
+
+    expect(() => defaultColumnSort(columnA, columnB))
+      .toThrow(`The default column sort of <Table /> expects either a string or a single-nested React element for cell contents.
+    For anything else, provide a custom sortFunction in the config.`);
+  });
 });
