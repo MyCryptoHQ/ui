@@ -31,8 +31,15 @@ const StyledButton = styled(BasicButton)<{
   color: ${props => (props.secondary ? props.theme.primary : 'white')};
   font-size: ${props => props.large && scale(1)};
   ${padding(scale(-1), scale(2))};
-  ${transitions(['opacity', 'background', 'color'], transitionDuration)};
+  ${transitions(
+    ['opacity', 'background', 'color', 'box-shadow'],
+    transitionDuration,
+  )};
   user-select: none;
+
+  :focus {
+    box-shadow: ${props => props.theme.outline};
+  }
 
   &:focus,
   &:hover {
