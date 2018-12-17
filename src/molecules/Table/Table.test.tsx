@@ -47,37 +47,6 @@ describe('Table', () => {
     expect(queryByText('F')).toBeTruthy();
   });
 
-  test('It sorts columns', () => {
-    const data = generateTableData();
-
-    data.body.push(['B', 'B', 'C']);
-    data.groups = [
-      {
-        title: 'Derp',
-        entries: [['C', 'B', 'C']],
-      },
-    ];
-    data.config = {
-      sortableColumn: 'Foo',
-    };
-
-    const { getByTestId, getByText } = render(<Table {...data} />);
-
-    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
-
-    fireEvent.click(getByText('Bar'));
-
-    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
-
-    fireEvent.click(getByTestId('sortable-column-heading'));
-
-    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('B');
-
-    fireEvent.click(getByTestId('sortable-column-heading'));
-
-    expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
-  });
-
   test('It hides headings', () => {
     const data = generateTableData();
 
@@ -90,6 +59,82 @@ describe('Table', () => {
     expect(getByText('Foo')).toHaveStyle(
       'position: fixed; top: -9999em; left: -9999em;',
     );
+  });
+
+  describe('Column sorting', () => {
+    test('It sorts columns using the default sortFunction', () => {
+      const data = generateTableData();
+
+      data.body.push(['B', 'B', 'C']);
+      data.groups = [
+        {
+          title: 'Derp',
+          entries: [['C', 'B', 'C']],
+        },
+      ];
+      data.config = {
+        sortableColumn: 'Foo',
+      };
+
+      const { getByTestId, getByText } = render(<Table {...data} />);
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+
+      fireEvent.click(getByText('Bar'));
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+
+      fireEvent.click(getByTestId('sortable-column-heading'));
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('B');
+
+      fireEvent.click(getByTestId('sortable-column-heading'));
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+    });
+
+    test('It sorts columns with a custom sortFunction', () => {
+      const data = generateTableData();
+
+      data.head = ['Foo'];
+      data.body = [
+        [
+          <div key={0}>
+            <div>
+              <div>A</div>
+            </div>
+          </div>,
+        ],
+        [
+          <div key={0}>
+            <div>
+              <div>B</div>
+            </div>
+          </div>,
+        ],
+      ];
+      data.config = {
+        sortableColumn: 'Foo',
+        sortFunction: (a: any, b: any): number => {
+          const aText = a.props.children.props.children.props.children;
+          const bText = b.props.children.props.children.props.children;
+
+          return aText.localeCompare(bText);
+        },
+      };
+
+      const { getByTestId } = render(<Table {...data} />);
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+
+      fireEvent.click(getByTestId('sortable-column-heading'));
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('B');
+
+      fireEvent.click(getByTestId('sortable-column-heading'));
+
+      expect(getByTestId('ungrouped-0-0')).toHaveTextContent('A');
+    });
   });
 
   describe('Error handling', () => {
