@@ -14,7 +14,6 @@ const LabelText = styled(Typography)`
 `;
 export const Checkbox = styled(Input)<{
   greyable?: boolean;
-  checked?: boolean;
 }>`
   :checked + span {
     background-color: ${props =>
