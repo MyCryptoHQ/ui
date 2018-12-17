@@ -5,7 +5,7 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import { Icon, IconName } from 'src/atoms';
+import { Icon, icons } from 'src/atoms';
 import styled from 'src/styled-components';
 import Theme from 'src/Theme';
 import Typography from 'src/Typography';
@@ -31,24 +31,22 @@ export function IconLink({
   href,
   target,
   icon,
-  'aria-label': ariaLabel,
   handleClick,
   ...rest
 }: {
   href?: string;
   target?: string;
-  icon: IconName;
-  'aria-label': string;
+  icon: keyof typeof icons;
   handleClick?(): void;
 } & HTMLAttributes<HTMLElement>) {
   return href ? (
-    <a href={href} target={target} aria-label={ariaLabel} {...rest}>
+    <a href={href} target={target} {...rest}>
       <IconTypography onClick={handleClick}>
         <Icon icon={icon} />
       </IconTypography>
     </a>
   ) : (
-    <IconTypography onClick={handleClick} aria-label={ariaLabel} {...rest}>
+    <IconTypography onClick={handleClick} {...rest}>
       <Icon icon={icon} />
     </IconTypography>
   );

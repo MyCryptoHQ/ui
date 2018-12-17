@@ -2,7 +2,7 @@ import { padding, transitions } from 'polished';
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import Icon, { IconName } from 'src/atoms/Icon';
+import Icon, { icons } from 'src/atoms/Icon';
 import styled from 'src/styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
 import { ExtractProps, Omit } from 'src/types';
@@ -59,7 +59,7 @@ export function Button({
   children,
   icon,
   ...rest
-}: { basic?: boolean; icon?: IconName } & Omit<
+}: { basic?: boolean; icon?: keyof typeof icons } & Omit<
   ExtractProps<typeof StyledButton>,
   'ref'
 >) {

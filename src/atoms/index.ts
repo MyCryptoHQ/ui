@@ -1,6 +1,6 @@
 import Button from './Button';
 import Heading from './Heading';
-import Icon, { IconName, icons } from './Icon';
+import Icon, { icons } from './Icon';
 import Identicon from './Identicon';
 import Input from './Input';
 import Network from './Network';
@@ -13,7 +13,6 @@ export {
   Button,
   Heading,
   Icon,
-  IconName,
   icons,
   Identicon,
   Input,
