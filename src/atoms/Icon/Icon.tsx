@@ -1,9 +1,13 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { faClone, faEye } from '@fortawesome/free-regular-svg-icons';
 import {
+  faCaretDown,
+  faCaretUp,
   faExclamationTriangle,
   faQuestionCircle,
   faShieldAlt,
+  faStar,
+  faTimesCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon, Props } from '@fortawesome/react-fontawesome';
 import React from 'react';
@@ -13,7 +17,11 @@ export type IconName =
   | 'exclamation-triangle'
   | 'question-circle'
   | 'shield-alt'
-  | 'clone';
+  | 'clone'
+  | 'star'
+  | 'caret-up'
+  | 'caret-down'
+  | 'times-circle';
 
 export const icons = [
   faEye,
@@ -21,6 +29,10 @@ export const icons = [
   faQuestionCircle,
   faShieldAlt,
   faClone,
+  faStar,
+  faCaretUp,
+  faCaretDown,
+  faTimesCircle,
 ];
 
 library.add(...icons);
