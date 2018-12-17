@@ -1,8 +1,8 @@
 import React, { Component, ReactNode } from 'react';
 
-import styled from '_styled-components';
-import { Heading, Panel } from 'atoms';
-import Typography from 'Typography';
+import { Heading, Panel } from 'src/atoms';
+import styled from 'src/styled-components';
+import Typography from 'src/Typography';
 import exit from './exit.svg';
 
 const Overlay = styled.section`

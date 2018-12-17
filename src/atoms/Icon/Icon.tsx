@@ -2,9 +2,9 @@ import { size } from 'polished';
 import React from 'react';
 import InlineSVG, { Props } from 'react-inlinesvg';
 
-import styled from '_styled-components';
-import { scale } from 'Theme';
-import { Omit } from 'types';
+import styled from 'src/styled-components';
+import { scale } from 'src/Theme';
+import { Omit } from 'src/types';
 
 import combinedShape from './icons/combined-shape.svg';
 import add from './icons/icn-add.svg';

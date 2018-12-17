@@ -1,2 +1,3 @@
-export { default as ComboBox } from './ComboBox';
-export { default as Drawer } from './Drawer';
+import ComboBox from './ComboBox';
+import Drawer from './Drawer';
+export { ComboBox, Drawer };

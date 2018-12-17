@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Button, Icon, Tooltip } from 'atoms';
-import Typography from 'Typography';
+import { Button, Icon, Tooltip } from 'src/atoms';
+import Typography from 'src/Typography';
 
 const ColoredIcon = styled(Icon)`
   color: #b5bfc7;

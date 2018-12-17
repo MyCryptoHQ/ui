@@ -1,1 +1,2 @@
-export { default } from './Drawer';
+import Drawer from './Drawer';
+export default Drawer;

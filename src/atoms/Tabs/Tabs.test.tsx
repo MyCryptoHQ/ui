@@ -2,7 +2,7 @@ import 'jest-dom/extend-expect';
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import { Tabs } from 'atoms';
+import { Tabs } from 'src/atoms';
 
 test('Tabs', () => {
   const links = [
