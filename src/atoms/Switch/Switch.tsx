@@ -1,4 +1,3 @@
-import { lighten } from 'polished';
 import React, { Component } from 'react';
 
 import styled from '_styled-components';
@@ -17,7 +16,9 @@ export const Checkbox = styled(Input)<{
 }>`
   :checked + span {
     background-color: ${props =>
-      props.greyable && !props.checked ? lighten(0.3, 'grey') : '#b2d7e0'};
+      props.greyable && !props.checked
+        ? props.theme.switchBackgroundGreyable
+        : '#b2d7e0'};
   }
   :checked + span::before {
     transform: translateX(30px);
@@ -46,7 +47,9 @@ const Slider = styled.span<{ greyable?: boolean; checked?: boolean }>`
   right: 0;
   bottom: 0;
   background-color: ${props =>
-    props.greyable && !props.checked ? lighten(0.3, 'grey') : '#b2d7e0'};
+    props.greyable && !props.checked
+      ? props.theme.switchBackgroundGreyable
+      : '#b2d7e0'};
   transition: 0.4s;
   border-radius: 17px;
   ::before {
