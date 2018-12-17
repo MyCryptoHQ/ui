@@ -13,11 +13,11 @@ export const Input = styled(Typography)`
   font-size: ${scale(0)};
   font-weight: bold;
   ${padding(scale(-1), scale(0))};
-  transition: border ${transitionDuration};
+  transition: border ${transitionDuration}, box-shadow ${transitionDuration};
 
   :focus {
-    border-color: ${props => props.theme.primary};
     outline: none;
+    box-shadow: ${props => props.theme.outline};
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
