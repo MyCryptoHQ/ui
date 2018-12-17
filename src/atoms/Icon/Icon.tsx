@@ -1,6 +1,9 @@
+import { size } from 'polished';
 import React from 'react';
 import InlineSVG, { Props } from 'react-inlinesvg';
 
+import styled from '_styled-components';
+import { scale } from 'Theme';
 import { Omit } from 'types';
 
 import combinedShape from './icons/combined-shape.svg';
@@ -55,6 +58,12 @@ export const icons = {
   unlock,
 };
 
+const StyledInlineSVG = styled(InlineSVG)`
+  svg {
+    ${size(scale(0))};
+  }
+`;
+
 export function Icon({
   'aria-label': ariaLabel,
   icon,
@@ -62,7 +71,7 @@ export function Icon({
 }: { 'aria-label'?: string; icon: keyof typeof icons } & Omit<Props, 'src'>) {
   return (
     <span role="img" aria-label={ariaLabel || icon}>
-      <InlineSVG src={icons[icon]} {...rest} />
+      <StyledInlineSVG src={icons[icon]} {...rest} />
     </span>
   );
 }
