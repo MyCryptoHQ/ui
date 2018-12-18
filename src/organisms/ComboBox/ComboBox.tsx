@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import { Input } from 'atoms';
-import { ExtractProps, Omit } from 'types';
+import { Input } from 'src/atoms';
+import { ExtractProps, Omit } from 'src/types';
 
 let datalistId = 0;
 

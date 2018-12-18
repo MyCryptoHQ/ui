@@ -2,9 +2,9 @@ import { padding, size } from 'polished';
 import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from '_styled-components';
-import Theme, { borderRadiusLarge, scale } from 'Theme';
-import { ExtractProps, Omit } from 'types';
+import styled from 'src/styled-components';
+import Theme, { borderRadiusLarge, scale } from 'src/Theme';
+import { ExtractProps, Omit } from 'src/types';
 
 // Use an empty styled component instead of a plain section tag so components
 // like List can change tags with the as prop.

@@ -8,10 +8,10 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from '_styled-components';
-import { Icon } from 'atoms';
-import Theme from 'Theme';
-import Typography from 'Typography';
+import { Icon } from 'src/atoms';
+import styled from 'src/styled-components';
+import Theme from 'src/Theme';
+import Typography from 'src/Typography';
 
 export interface TableGroup {
   title: string;
@@ -100,8 +100,15 @@ const TableGroupHead = styled(TableRow)`
   cursor: pointer;
 `;
 
-const TableCaret = styled(Icon)`
+const TableCaret = styled(Icon)<{ isFlipped?: boolean }>`
   margin-left: 0.5em;
+  ${props =>
+    props.isFlipped &&
+    `
+    svg {
+      transform: rotateX(180deg);
+    }
+  `};
 `;
 
 const TableCell = styled(Typography)`
@@ -212,7 +219,6 @@ class AbstractTable extends Component<Props> {
                   role={isSortableColumn ? 'button' : ''}
                   isSortable={isSortableColumn}
                   isHidden={isHiddenHeading}
-                  id={isSortableColumn ? 'xxx' : ''}
                   data-testid={
                     isSortableColumn ? 'sortable-column-heading' : ''
                   }
@@ -220,10 +226,9 @@ class AbstractTable extends Component<Props> {
                   {heading}
                   {isSortableColumn && (
                     <TableCaret
-                      icon={
-                        sortedColumnDirection === ColumnDirections.Forward
-                          ? 'caret-down'
-                          : 'caret-up'
+                      icon="navDownCaret"
+                      isFlipped={
+                        sortedColumnDirection === ColumnDirections.Reverse
                       }
                     />
                   )}
@@ -259,7 +264,8 @@ class AbstractTable extends Component<Props> {
                 <TableHeading colSpan={head.length - offset}>
                   {title}
                   <TableCaret
-                    icon={collapsedGroups[title] ? 'caret-up' : 'caret-down'}
+                    icon="navDownCaret"
+                    isFlipped={collapsedGroups[title]}
                   />
                 </TableHeading>
               </TableGroupHead>
