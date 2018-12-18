@@ -164,7 +164,8 @@
       "max-nesting-depth": 1,
       "unit-whitelist": [
         "%",
-        "em"
+        "em",
+        "rem"
       ]
     }
   }
