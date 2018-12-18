@@ -4,11 +4,20 @@ import styled from 'src/styled-components';
 import { scale } from 'src/Theme';
 import Typography from 'src/Typography';
 
-interface Props {
+type StackedCardEntry = string | ReactNode;
+
+interface StackedCardData {
   heading: ReactNode;
-  entries: (string | ReactNode)[][];
+  entries: StackedCardEntry[][];
   icons?: ReactNode[];
 }
+
+type Props = StackedCardData;
+
+const StackedCardContainer = styled.section`
+  padding: 0.9375em;
+  border-bottom: 0.0625em solid #dde3ee;
+`;
 
 const StackedCardHead = styled.section`
   display: flex;
@@ -64,9 +73,9 @@ StackedCardLabel.defaultProps = {
   as: 'dd',
 };
 
-const AbstractStackedCard = ({ heading, icons, entries, ...rest }: Props) => {
+const StackedCard = ({ heading, icons, entries, ...rest }: Props) => {
   return (
-    <section {...rest}>
+    <StackedCardContainer {...rest}>
       <StackedCardHead>
         <StackedCardHeading>{heading}</StackedCardHeading>
         <StackedCardIcons>{icons}</StackedCardIcons>
@@ -79,13 +88,8 @@ const AbstractStackedCard = ({ heading, icons, entries, ...rest }: Props) => {
           </StackedCardEntry>
         ))}
       </StackedCardBody>
-    </section>
+    </StackedCardContainer>
   );
 };
-
-export const StackedCard = styled(AbstractStackedCard)`
-  padding: 0.9375em;
-  border-bottom: 0.0625em solid #dde3ee;
-`;
 
 export default StackedCard;
