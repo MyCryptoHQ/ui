@@ -1,16 +1,24 @@
-import React, { ReactNode } from 'react';
+import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
+import { StyledComponentClass } from 'styled-components';
 
 import styled from 'src/styled-components';
-import { scale } from 'src/Theme';
+import Theme, { scale } from 'src/Theme';
 import Typography from 'src/Typography';
+
+type StackedCardEntry = string | ReactNode;
 
 export interface StackedCardData {
   heading: ReactNode;
-  entries: (string | ReactNode)[][];
+  entries: StackedCardEntry[][];
   icons?: ReactNode[];
 }
 
 type Props = StackedCardData;
+
+const StackedCardContainer = styled.section`
+  padding: 0.9375em;
+  border-bottom: 0.0625em solid #dde3ee;
+`;
 
 const StackedCardHead = styled.section`
   display: flex;
@@ -44,6 +52,11 @@ const StackedCardEntry = styled.dl`
   margin-bottom: 1.4375em;
 `;
 
+type StyledHTMLElement = StyledComponentClass<
+  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+  Theme
+>;
+
 const StackedCardLabel = styled(Typography)`
   flex: 1 0;
   margin: 0;
@@ -51,7 +64,7 @@ const StackedCardLabel = styled(Typography)`
   letter-spacing: 0.106875em;
   text-transform: uppercase;
   font-weight: bold;
-`;
+` as StyledHTMLElement;
 
 StackedCardLabel.defaultProps = {
   as: 'dt',
@@ -60,15 +73,15 @@ StackedCardLabel.defaultProps = {
 const StackedCardValue = styled(Typography)`
   flex: 1 0;
   margin: 0;
-`;
+` as StyledHTMLElement;
 
 StackedCardLabel.defaultProps = {
   as: 'dd',
 };
 
-const AbstractStackedCard = ({ heading, icons, entries, ...rest }: Props) => {
+export const StackedCard = ({ heading, icons, entries, ...rest }: Props) => {
   return (
-    <section {...rest}>
+    <StackedCardContainer {...rest}>
       <StackedCardHead>
         <StackedCardHeading>{heading}</StackedCardHeading>
         <StackedCardIcons>{icons}</StackedCardIcons>
@@ -81,13 +94,8 @@ const AbstractStackedCard = ({ heading, icons, entries, ...rest }: Props) => {
           </StackedCardEntry>
         ))}
       </StackedCardBody>
-    </section>
+    </StackedCardContainer>
   );
 };
-
-export const StackedCard = styled(AbstractStackedCard)`
-  padding: 0.9375em;
-  border-bottom: 0.0625em solid #dde3ee;
-`;
 
 export default StackedCard;
