@@ -4,11 +4,13 @@ import styled from '_styled-components';
 import { scale } from 'Theme';
 import Typography from 'Typography';
 
-interface Props {
+export interface StackedCardData {
   heading: ReactNode;
   entries: (string | ReactNode)[][];
   icons?: ReactNode[];
 }
+
+type Props = StackedCardData;
 
 const StackedCardHead = styled.section`
   display: flex;

@@ -3,7 +3,13 @@ import React, { Component, ReactNode } from 'react';
 
 import styled from '_styled-components';
 import { Icon } from 'atoms';
-import { StackedCard, Table, TableConfig, TableData } from 'molecules';
+import {
+  StackedCard,
+  StackedCardData,
+  Table,
+  TableConfig,
+  TableData,
+} from 'molecules';
 import { scale } from 'Theme';
 import Typography from 'Typography';
 
@@ -14,15 +20,11 @@ export enum CollapsibleTableModes {
 
 export interface CollapsibleTableConfig extends TableConfig {
   primaryColumn: string;
+  iconColumns?: string[];
 }
 
 export interface CollapsibleTableData extends TableData {
   config: CollapsibleTableConfig;
-}
-
-export interface StackedCardData {
-  heading: ReactNode;
-  entries: (string | ReactNode)[][];
 }
 
 interface CollapsedGroups {
@@ -40,13 +42,18 @@ export const transformRowToCards = (
   row: ReactNode[],
   head: string[],
   primaryColumnIndex: number,
+  iconColumns: string[] = [],
 ): StackedCardData =>
   row.reduce(
     (prev: StackedCardData, next, index) => {
+      const label = head[index];
+
       if (index === primaryColumnIndex) {
         prev.heading = next;
+      } else if (iconColumns.includes(label)) {
+        prev.icons!.push(next);
       } else {
-        prev.entries.push([head[index], next]);
+        prev.entries.push([label, next]);
       }
 
       return prev;
@@ -54,6 +61,7 @@ export const transformRowToCards = (
     {
       heading: '',
       entries: [],
+      icons: [],
     } as StackedCardData,
   );
 
@@ -61,10 +69,10 @@ export const transformTableToCards = (
   { head, body, groups = [], config }: CollapsibleTableData,
   collapsedGroups: CollapsedGroups,
 ): (StackedCardData | string)[] => {
-  const { primaryColumn } = config;
+  const { primaryColumn, iconColumns } = config;
   const primaryColumnIndex = head.indexOf(primaryColumn);
   const cards: (StackedCardData | string)[] = body.map(row =>
-    transformRowToCards(row, head, primaryColumnIndex),
+    transformRowToCards(row, head, primaryColumnIndex, iconColumns),
   );
 
   groups.forEach(({ title, entries }) =>
@@ -73,7 +81,7 @@ export const transformTableToCards = (
       ...(collapsedGroups[title]
         ? []
         : entries.map(row =>
-            transformRowToCards(row, head, primaryColumnIndex),
+            transformRowToCards(row, head, primaryColumnIndex, iconColumns),
           )),
     ),
   );

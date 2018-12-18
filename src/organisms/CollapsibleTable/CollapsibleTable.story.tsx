@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import { Icon } from 'atoms';
 import CollapsibleTable, { CollapsibleTableData } from './CollapsibleTable';
 
 const basicData: CollapsibleTableData = {
@@ -12,7 +13,7 @@ const basicData: CollapsibleTableData = {
 };
 const groupData: CollapsibleTableData = {
   head: ['Name', 'Age'],
-  body: [['Frank', '26']],
+  body: [['Frank', '39']],
   groups: [
     {
       title: 'Employees',
@@ -23,9 +24,21 @@ const groupData: CollapsibleTableData = {
     primaryColumn: 'Name',
   },
 };
+const iconData: CollapsibleTableData = {
+  head: ['Favorite', 'Name', 'Age', 'Watching'],
+  body: [
+    [<Icon key={0} icon="star" />, 'Connor', '26', <Icon key={4} icon="eye" />],
+    [null, 'Frank', '39', null],
+  ],
+  config: {
+    primaryColumn: 'Name',
+    iconColumns: ['Favorite', 'Watching'],
+    hiddenHeadings: ['Favorite', 'Watching'],
+  },
+};
 
 storiesOf('Organisms', module).add('CollapsibleTable', () =>
-  [basicData, groupData].map((data, index) => (
+  [basicData, groupData, iconData].map((data, index) => (
     <div key={index} style={{ marginBottom: '10rem' }}>
       <CollapsibleTable {...data} />
     </div>
