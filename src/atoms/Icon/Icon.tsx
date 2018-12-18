@@ -17,6 +17,8 @@ import exit from './icons/icn-exit.svg';
 import navDownCaret from './icons/icn-nav-down-caret.svg';
 import settings from './icons/icn-settings.svg';
 import showNetworks from './icons/icn-show-networks.svg';
+import starO from './icons/icn-star-o.svg';
+import star from './icons/icn-star.svg';
 import warning from './icons/icn-warning.svg';
 import shape from './icons/shape.svg';
 
@@ -43,6 +45,8 @@ export const icons = {
   navDownCaret,
   settings,
   showNetworks,
+  starO,
+  star,
   shape,
   warning,
 

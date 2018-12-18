@@ -19,6 +19,7 @@ type Theme = Record<
   | 'actionPanelBackground'
   | 'actionPanelBorder'
   | 'background'
+  | 'cardText'
   | 'controlBackground'
   | 'controlBorder'
   | 'headline'
@@ -31,6 +32,8 @@ type Theme = Record<
   | 'primaryDark'
   | 'primaryDarker'
   | 'switchBackgroundGreyable'
+  | 'tableHeadBackground'
+  | 'tableHeadBorder'
   | 'text',
   string
 >;
@@ -43,6 +46,7 @@ export const light: Theme = {
   actionPanelBackground: darken(0.01, backgroundLight),
   actionPanelBorder: '#e8eaed',
   background: backgroundLight,
+  cardText: '#697685',
   controlBackground: backgroundLight,
   controlBorder: '#e5ecf3',
   headline: '#163150',
@@ -54,6 +58,8 @@ export const light: Theme = {
   primary,
   primaryDark: darken(lightnessMod, primary),
   primaryDarker: darken(lightnessMod * 2, primary),
+  tableHeadBackground: '#fafcfc',
+  tableHeadBorder: '#e8eaed',
   switchBackgroundGreyable,
   text: '#424242',
 };
@@ -64,6 +70,7 @@ export const dark: Theme = {
   actionPanelBackground: lighten(lightnessMod, backgroundDark),
   actionPanelBorder: invert(light.actionPanelBorder),
   background: backgroundDark,
+  cardText: '#e9ceaf',
   controlBackground: '#393f4c',
   controlBorder: '#4d5463',
   headline: invert(light.headline),
@@ -75,6 +82,8 @@ export const dark: Theme = {
   primary: lighten(lightnessMod, primary),
   primaryDark: primary,
   primaryDarker: darken(lightnessMod, primary),
+  tableHeadBackground: darken(lightnessMod, backgroundDark),
+  tableHeadBorder: '#e9ceaf',
   switchBackgroundGreyable,
   text: backgroundLight,
 };
