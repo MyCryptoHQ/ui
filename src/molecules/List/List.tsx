@@ -29,9 +29,44 @@ const ListItem = styled(Typography)`
   list-style-position: inside;
 `;
 
+const DefinitionEntry = styled.dl`
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.4375em;
+`;
+
+const DefinitionLabel = styled(Typography)`
+  flex: 1 0;
+  margin: 0;
+  color: ${props => props.theme.cardText};
+  letter-spacing: 0.106875em;
+  text-transform: uppercase;
+  font-weight: bold;
+`;
+
+DefinitionLabel.defaultProps = {
+  as: 'dt',
+};
+
+const DefinitionValue = styled(Typography)`
+  flex: 1 0;
+  margin: 0;
+`;
+
+DefinitionValue.defaultProps = {
+  as: 'dd',
+};
+
+interface Description {
+  term: string;
+  definition: string | ReactNode;
+}
+
 export const List = ({
   basic,
   children,
+  description,
+  descriptionData,
   group,
   inline,
   ordered,
@@ -39,6 +74,8 @@ export const List = ({
 }: {
   basic?: boolean;
   children: ReactNode;
+  description?: boolean;
+  descriptionData?: Description[];
   group?: boolean;
   inline?: boolean;
   ordered?: boolean;
@@ -62,11 +99,18 @@ export const List = ({
       role="list"
       {...rest}
     >
-      {Children.map(children, child => (
-        <Item as={basic || group ? 'div' : 'li'} role="listitem">
-          {child}
-        </Item>
-      ))}
+      {description && descriptionData
+        ? descriptionData.map((item: Description) => (
+            <DefinitionEntry key={item.term}>
+              <DefinitionLabel>{item.term}</DefinitionLabel>
+              <DefinitionValue>{item.definition}</DefinitionValue>
+            </DefinitionEntry>
+          ))
+        : Children.map(children, child => (
+            <Item as={basic || group ? 'div' : 'li'} role="listitem">
+              {child}
+            </Item>
+          ))}
     </Panel>
   );
 };
