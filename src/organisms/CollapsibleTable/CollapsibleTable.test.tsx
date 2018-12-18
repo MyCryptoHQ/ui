@@ -19,7 +19,9 @@ describe('StackedCard', () => {
   });
 
   test('It renders', () => {
-    const table = render(<CollapsibleTable {...generateTableData()} />);
+    const table = render(
+      <CollapsibleTable breakpoint={450} {...generateTableData()} />,
+    );
 
     expect(table).toBeTruthy();
   });

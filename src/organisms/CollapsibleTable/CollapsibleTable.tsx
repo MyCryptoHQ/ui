@@ -31,7 +31,9 @@ interface CollapsedGroups {
   [title: string]: boolean;
 }
 
-type Props = CollapsibleTableData;
+interface Props extends CollapsibleTableData {
+  breakpoint: number;
+}
 
 interface State {
   mode: CollapsibleTableModes;
@@ -110,6 +112,14 @@ const GroupHeadingCaret = styled(Icon)`
 `;
 
 export class AbstractCollapsibleTable extends Component<Props, State> {
+  public static defaultProps = {
+    head: [],
+    body: [],
+    groups: [],
+    config: {},
+    breakpoint: 450,
+  };
+
   public State = {
     mode: CollapsibleTableModes.Desktop,
   };
@@ -117,7 +127,8 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
   public constructor(props: Props) {
     super(props);
 
-    const isMobile = window.matchMedia('(max-width: 450px)').matches;
+    const isMobile = window.matchMedia(`(max-width: ${props.breakpoint}px)`)
+      .matches;
 
     this.state = {
       mode: isMobile
@@ -144,6 +155,7 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
       transformTableToCards(this.props, collapsedGroups).map(
         (cardData, index) =>
           typeof cardData === 'string' ? (
+            // The element being iterated on is a group heading.
             <GroupHeading
               onClick={this.toggleCollapseGroup.bind(this, cardData)}
             >
@@ -153,6 +165,7 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
               />
             </GroupHeading>
           ) : (
+            // The element being iterated on is table data.
             <StackedCard key={index} {...cardData} />
           ),
       )
@@ -162,9 +175,10 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
   }
 
   private checkWindowSize = () => {
+    const { breakpoint } = this.props;
     const { mode } = this.state;
     const wasMobile = mode === CollapsibleTableModes.Mobile;
-    const isMobile = window.matchMedia('(max-width: 450px)').matches;
+    const isMobile = window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
 
     if (wasMobile && !isMobile) {
       // Mobile-to-Desktop
