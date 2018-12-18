@@ -11,6 +11,7 @@ const outline = '0 0 0 0.125em white, 0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const primary = '#007896';
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
+const switchBackgroundGreyable = lighten(0.3, 'grey');
 export const transitionDuration = '0.12s';
 
 type Theme = Record<
@@ -30,6 +31,7 @@ type Theme = Record<
   | 'primary'
   | 'primaryDark'
   | 'primaryDarker'
+  | 'switchBackgroundGreyable'
   | 'tableHeadBackground'
   | 'tableHeadBorder'
   | 'text',
@@ -58,6 +60,7 @@ export const light: Theme = {
   primaryDarker: darken(lightnessMod * 2, primary),
   tableHeadBackground: '#fafcfc',
   tableHeadBorder: '#e8eaed',
+  switchBackgroundGreyable,
   text: '#424242',
 };
 
@@ -81,5 +84,6 @@ export const dark: Theme = {
   primaryDarker: darken(lightnessMod, primary),
   tableHeadBackground: darken(lightnessMod, backgroundDark),
   tableHeadBorder: '#e9ceaf',
+  switchBackgroundGreyable,
   text: backgroundLight,
 };
