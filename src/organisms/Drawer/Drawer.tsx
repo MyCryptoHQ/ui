@@ -91,7 +91,7 @@ interface DrawerState {
 }
 
 export class DrawerContainer extends Component<DrawerProps, DrawerState> {
-  public ref = createRef<HTMLDivElement>();
+  public ref = createRef<HTMLButtonElement>();
 
   public state: Readonly<DrawerState> = {
     visible: false,
@@ -131,29 +131,29 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
     } = this.props;
     const { visible } = this.state;
     return (
-      <section>
-        <React.Fragment>
-          {visible && <Overlay onClick={this.handleExit} />}
+      <>
+        {visible && <Overlay onClick={this.handleExit} />}
 
-          <Drawer noPadding={true} visible={visible} tabIndex={0}>
-            <div ref={this.ref}>
-              <DrawerControls>
-                <DrawerCloseButton onClick={this.handleExit}>
-                  <img src={exit} alt="exit-button" />
-                </DrawerCloseButton>
-              </DrawerControls>
-              <DrawerHeader>
-                {headerIcon && <img src={headerIcon} alt={iconAltText} />}
-                <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
-                <DrawerHeaderText>{headerText}</DrawerHeaderText>
-                <Divider />
-              </DrawerHeader>
-              <DrawerContent>{children}</DrawerContent>
-              {footer && <footer>{footer}</footer>}
-            </div>
-          </Drawer>
-        </React.Fragment>
-      </section>
+        <Drawer noPadding={true} visible={visible} tabIndex={0}>
+          <DrawerControls>
+            <DrawerCloseButton
+              onClick={this.handleExit}
+              //@ts-ignore
+              ref={this.ref}
+            >
+              <img src={exit} alt="exit-button" />
+            </DrawerCloseButton>
+          </DrawerControls>
+          <DrawerHeader>
+            {headerIcon && <img src={headerIcon} alt={iconAltText} />}
+            <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
+            <DrawerHeaderText>{headerText}</DrawerHeaderText>
+            <Divider />
+          </DrawerHeader>
+          <DrawerContent>{children}</DrawerContent>
+          {footer && <footer>{footer}</footer>}
+        </Drawer>
+      </>
     );
   }
 }
