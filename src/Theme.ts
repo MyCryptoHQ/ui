@@ -11,6 +11,7 @@ const outline = '0 0 0 0.125em white, 0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const primary = '#007896';
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
+const switchBackgroundGreyable = lighten(0.3, 'grey');
 export const transitionDuration = '0.12s';
 
 type Theme = Record<
@@ -29,6 +30,7 @@ type Theme = Record<
   | 'primary'
   | 'primaryDark'
   | 'primaryDarker'
+  | 'switchBackgroundGreyable'
   | 'text',
   string
 >;
@@ -52,6 +54,7 @@ export const light: Theme = {
   primary,
   primaryDark: darken(lightnessMod, primary),
   primaryDarker: darken(lightnessMod * 2, primary),
+  switchBackgroundGreyable,
   text: '#424242',
 };
 
@@ -72,5 +75,6 @@ export const dark: Theme = {
   primary: lighten(lightnessMod, primary),
   primaryDark: primary,
   primaryDarker: darken(lightnessMod, primary),
+  switchBackgroundGreyable,
   text: backgroundLight,
 };
