@@ -1,5 +1,11 @@
 import throttle from 'lodash/throttle';
-import React, { Component, ReactNode } from 'react';
+import React, {
+  Component,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactNode,
+} from 'react';
+import { StyledComponentClass } from 'styled-components';
 
 import { Icon } from 'src/atoms';
 import {
@@ -10,7 +16,7 @@ import {
   TableData,
 } from 'src/molecules';
 import styled from 'src/styled-components';
-import { scale } from 'src/Theme';
+import Theme, { scale } from 'src/Theme';
 import Typography from 'src/Typography';
 
 export enum CollapsibleTableModes {
@@ -91,6 +97,14 @@ export const transformTableToCards = (
   return cards;
 };
 
+export const screenIsMobileSized = (breakpoint: number) =>
+  window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
+
+type StyledHTMLElement = StyledComponentClass<
+  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+  Theme
+>;
+
 const GroupHeading = styled(Typography)`
   display: flex;
   align-items: center;
@@ -101,13 +115,18 @@ const GroupHeading = styled(Typography)`
   text-transform: uppercase;
   font-size: ${scale(1)};
   cursor: pointer;
-`;
+` as StyledHTMLElement;
 
 GroupHeading.defaultProps = {
+  as: 'section',
   role: 'button',
 };
 
-const GroupHeadingCaret = styled(Icon)<{ isFlipped?: boolean }>`
+interface Flippable {
+  isFlipped?: boolean;
+}
+
+const GroupHeadingCaret = styled(Icon)<Flippable>`
   margin-left: 0.5em;
   ${props =>
     props.isFlipped &&
@@ -127,18 +146,11 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
     breakpoint: 450,
   };
 
-  public State = {
-    mode: CollapsibleTableModes.Desktop,
-  };
-
   public constructor(props: Props) {
     super(props);
 
-    const isMobile = window.matchMedia(`(max-width: ${props.breakpoint}px)`)
-      .matches;
-
     this.state = {
-      mode: isMobile
+      mode: screenIsMobileSized(props.breakpoint)
         ? CollapsibleTableModes.Mobile
         : CollapsibleTableModes.Desktop,
       collapsedGroups: {},
@@ -186,7 +198,7 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
     const { breakpoint } = this.props;
     const { mode } = this.state;
     const wasMobile = mode === CollapsibleTableModes.Mobile;
-    const isMobile = window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
+    const isMobile = screenIsMobileSized(breakpoint);
 
     if (wasMobile && !isMobile) {
       // Mobile-to-Desktop
