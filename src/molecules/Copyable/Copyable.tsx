@@ -1,9 +1,9 @@
 import React, { Component, ReactNode } from 'react';
 import styled from 'styled-components';
 
-import { Button, Icon, Tooltip } from 'atoms';
-import { ExtractProps } from 'types';
-import Typography from 'Typography';
+import { Button, Icon, Tooltip } from 'src/atoms';
+import { ExtractProps } from 'src/types';
+import Typography from 'src/Typography';
 
 const ColoredIcon = styled(Icon)`
   color: #b5bfc7;
@@ -54,9 +54,9 @@ export class Copyable extends Component<{
           <>
             {children}{' '}
             {copied ? (
-              <ActiveButton icon="check" />
+              <ActiveButton icon="warning" />
             ) : (
-              <ColoredIcon icon="clone" />
+              <ColoredIcon icon="copy" />
             )}
           </>
         }

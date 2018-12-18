@@ -1,10 +1,10 @@
 import React, { ChangeEvent, Component, FormEvent } from 'react';
 
-import styled from '_styled-components';
-import { Button, Identicon } from 'atoms';
-import { Copyable } from 'molecules';
-import { borderRadius, scale } from 'Theme';
-import Typography from 'Typography';
+import { Button, Identicon } from 'src/atoms';
+import { Copyable } from 'src/molecules';
+import styled from 'src/styled-components';
+import { borderRadius, scale } from 'src/Theme';
+import Typography from 'src/Typography';
 
 const Flex = styled.div`
   display: flex;
@@ -41,7 +41,7 @@ const SubmitButton = styled(ColoredIconButton)`
   position: relative;
 `;
 
-SubmitButton.defaultProps = { type: 'submit', icon: 'check' };
+SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
 interface Props {
   address: string;
@@ -106,7 +106,7 @@ export class Address extends Component<Props, State> {
                 <>
                   {' '}
                   <ColoredIconButton
-                    icon="pencil-alt"
+                    icon="create"
                     onClick={this.handleEditing}
                   />
                 </>

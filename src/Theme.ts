@@ -7,6 +7,7 @@ export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
 const linkDark = lighten(lightnessMod, linkLight);
+const outline = '0 0 0 0.125em white, 0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const primary = '#007896';
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
@@ -22,6 +23,7 @@ type Theme = Record<
   | 'headline'
   | 'link'
   | 'linkHover'
+  | 'outline'
   | 'panelBackground'
   | 'panelBackgroundDark'
   | 'primary'
@@ -44,6 +46,7 @@ export const light: Theme = {
   headline: '#163150',
   link: linkLight,
   linkHover: darken(0.1, linkLight),
+  outline: outline + primary,
   panelBackground: backgroundLight,
   panelBackgroundDark: darken(lightnessMod, backgroundLight),
   primary,
@@ -63,6 +66,7 @@ export const dark: Theme = {
   headline: invert(light.headline),
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
+  outline: outline + primary,
   panelBackground,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),
   primary: lighten(lightnessMod, primary),

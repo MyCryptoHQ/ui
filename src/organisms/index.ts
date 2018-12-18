@@ -1,3 +1,4 @@
-export { default as Address } from './Address';
-export { default as ComboBox } from './ComboBox';
-export { default as Drawer } from './Drawer';
+import Address from './Address';
+import ComboBox from './ComboBox';
+import Drawer from './Drawer';
+export { Address, ComboBox, Drawer };
