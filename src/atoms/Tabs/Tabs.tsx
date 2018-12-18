@@ -1,7 +1,7 @@
 import React, { Children, Component, ReactNode } from 'react';
 
-import styled from '_styled-components';
-import Typography from 'Typography';
+import styled from 'src/styled-components';
+import Typography from 'src/Typography';
 
 interface Props {
   children: ReactNode;

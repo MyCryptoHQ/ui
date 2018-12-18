@@ -3,9 +3,9 @@ import { margin, size } from 'polished';
 import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { StyledComponentClass, withTheme } from 'styled-components';
 
-import Typography from 'Typography';
-import styled from './_styled-components';
-import Theme from './Theme';
+import styled from 'src/styled-components';
+import Theme from 'src/Theme';
+import Typography from 'src/Typography';
 
 const Color = styled.div`
   background: ${props => props.color};

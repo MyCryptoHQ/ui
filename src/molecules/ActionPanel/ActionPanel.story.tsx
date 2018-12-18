@@ -2,7 +2,7 @@ import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
 
-import Typography from 'Typography';
+import Typography from 'src/Typography';
 import ActionPanel from './ActionPanel';
 
 storiesOf('Molecules', module).add('ActionPanel', () =>

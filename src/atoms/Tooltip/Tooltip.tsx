@@ -1,8 +1,8 @@
 import { padding } from 'polished';
 import React, { Component, createRef, ReactNode } from 'react';
 
-import styled from '_styled-components';
-import { borderRadius, scale } from 'Theme';
+import styled from 'src/styled-components';
+import { borderRadius, scale } from 'src/Theme';
 import triangle from './tooltip-triangle.svg';
 
 const Relative = styled.div`
@@ -40,6 +40,7 @@ export class Tooltip extends Component<{
   public state = { height: undefined, open: false };
 
   public componentDidMount() {
+    // istanbul ignore else
     if (this.ref.current) {
       const { height } = this.ref.current.getBoundingClientRect();
       this.setState({ height });

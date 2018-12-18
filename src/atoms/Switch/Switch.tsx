@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 
-import styled from '_styled-components';
-import { Input } from 'atoms';
-import Typography from 'Typography';
+import styled from 'src/styled-components';
+import Typography from 'src/Typography';
+import Input from '../Input';
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable unit-whitelist */
 /* stylelint-disable no-descending-specificity */
@@ -11,9 +11,14 @@ const LabelText = styled(Typography)`
   margin-top: 0.75em;
   cursor: pointer;
 `;
-export const Checkbox = styled(Input)`
+export const Checkbox = styled(Input)<{
+  greyable?: boolean;
+}>`
   :checked + span {
-    background-color: #b2d7e0;
+    background-color: ${props =>
+      props.greyable && !props.checked
+        ? props.theme.switchBackgroundGreyable
+        : '#b2d7e0'};
   }
   :checked + span::before {
     transform: translateX(30px);
@@ -34,14 +39,17 @@ const SliderBackground = styled.label`
     display: none;
   }
 `;
-const Slider = styled.span`
+const Slider = styled.span<{ greyable?: boolean; checked?: boolean }>`
   position: absolute;
   cursor: pointer;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #b2d7e0;
+  background-color: ${props =>
+    props.greyable && !props.checked
+      ? props.theme.switchBackgroundGreyable
+      : '#b2d7e0'};
   transition: 0.4s;
   border-radius: 17px;
   ::before {
@@ -51,12 +59,14 @@ const Slider = styled.span`
     width: 22px;
     left: -4px;
     bottom: -3px;
-    background-color: ${props => props.theme.primary};
+    background-color: ${props =>
+      props.greyable && !props.checked ? 'grey' : props.theme.primary};
     transition: 0.4s;
     border-radius: 17px;
   }
 `;
 interface Props {
+  greyable?: boolean;
   labelLeft?: string;
   labelRight?: string;
   checked?: boolean;
@@ -64,7 +74,13 @@ interface Props {
 }
 export class Switch extends Component<Props, {}> {
   public render() {
-    const { handleChange, labelLeft, labelRight, checked } = this.props;
+    const {
+      greyable,
+      handleChange,
+      labelLeft,
+      labelRight,
+      checked,
+    } = this.props;
     return (
       <SwitchContainer>
         <LabelText>
@@ -72,12 +88,13 @@ export class Switch extends Component<Props, {}> {
         </LabelText>
         <SliderBackground htmlFor="toggle">
           <Checkbox
+            greyable={greyable}
             id="toggle"
             type="checkbox"
             onChange={handleChange}
             checked={checked}
           />
-          <Slider />
+          <Slider checked={checked} greyable={greyable} />
         </SliderBackground>
         <LabelText>
           <label htmlFor="toggle">{labelRight}</label>

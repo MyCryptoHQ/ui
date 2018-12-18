@@ -2,9 +2,9 @@ import { padding } from 'polished';
 import { DetailedHTMLProps, InputHTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from '_styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from 'Theme';
-import Typography from 'Typography';
+import styled from 'src/styled-components';
+import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
+import Typography from 'src/Typography';
 
 export const Input = styled(Typography)`
   background: ${props => props.theme.controlBackground};
@@ -13,11 +13,11 @@ export const Input = styled(Typography)`
   font-size: ${scale(0)};
   font-weight: bold;
   ${padding(scale(-1), scale(0))};
-  transition: border ${transitionDuration};
+  transition: border ${transitionDuration}, box-shadow ${transitionDuration};
 
   :focus {
-    border-color: ${props => props.theme.primary};
     outline: none;
+    box-shadow: ${props => props.theme.outline};
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,

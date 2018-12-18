@@ -2,11 +2,11 @@ import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
 
-import { Button } from 'atoms';
-import { List } from 'molecules';
-import { Drawer } from 'organisms';
+import { Button } from 'src/atoms';
+import { List } from 'src/molecules';
+import { Drawer } from 'src/organisms';
 
-import Typography from 'Typography';
+import Typography from 'src/Typography';
 
 storiesOf('Organisms', module).add('Drawer', () => <DrawerStory />);
 

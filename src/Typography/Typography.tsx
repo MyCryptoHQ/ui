@@ -1,7 +1,7 @@
 import { transparentize } from 'polished';
 import 'typeface-lato';
 
-import styled from '_styled-components';
+import styled from 'src/styled-components';
 
 export const Typography = styled.p<{ muted?: boolean }>`
   color: ${props =>
