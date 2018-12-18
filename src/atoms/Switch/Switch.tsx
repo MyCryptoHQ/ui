@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
-import styled from '_styled-components';
-import Typography from 'Typography';
+import styled from 'src/styled-components';
+import Typography from 'src/Typography';
 import Input from '../Input';
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable unit-whitelist */

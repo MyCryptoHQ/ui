@@ -1,6 +1,8 @@
-export { default as ActionPanel } from './ActionPanel';
-export { default as Copyable } from './Copyable';
-export { default as IconLink } from './IconLink';
-export { default as List } from './List';
-export { default as StackedCard } from './StackedCard';
-export { default as Table } from './Table';
+import ActionPanel from './ActionPanel';
+import Copyable from './Copyable';
+import IconLink from './IconLink';
+import List from './List';
+import StackedCard from './StackedCard';
+import Table from './Table';
+
+export { ActionPanel, Copyable, IconLink, List, StackedCard, Table };

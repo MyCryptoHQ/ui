@@ -1,9 +1,9 @@
 import { size } from 'polished';
 import React, { ReactNode } from 'react';
 
-import styled from '_styled-components';
-import { scale } from 'Theme';
-import Typography from 'Typography';
+import styled from 'src/styled-components';
+import { scale } from 'src/Theme';
+import Typography from 'src/Typography';
 
 const Color = styled.div`
   background: ${props => props.color};
