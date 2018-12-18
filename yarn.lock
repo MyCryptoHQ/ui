@@ -1115,7 +1115,14 @@
   resolved "https://registry.yarnpkg.com/@types/jest/-/jest-23.3.5.tgz#870a1434208b60603745bfd214fc3fc675142364"
   integrity sha512-3LI+vUC3Wju28vbjIjsTKakhMB8HC4l+tMz+Z8WRzVK+kmvezE5jcOvKtBpznWSI5KDLFo+FouUhpTKoekadCA==
 
-"@types/lodash@^4.14.119":
+"@types/lodash.throttle@^4.1.4":
+  version "4.1.4"
+  resolved "https://registry.yarnpkg.com/@types/lodash.throttle/-/lodash.throttle-4.1.4.tgz#db210627eb05ef68af99344669818c5baad24039"
+  integrity sha512-ZniM2KbesKU9Qyv+mxbp1/3xAzJyrrXcfdYdOpuO8VFIG04E2VGqzXUKjNiqOKTBpNXR3r0F9yukldLBX4z5HA==
+  dependencies:
+    "@types/lodash" "*"
+
+"@types/lodash@*":
   version "4.14.119"
   resolved "https://registry.yarnpkg.com/@types/lodash/-/lodash-4.14.119.tgz#be847e5f4bc3e35e46d041c394ead8b603ad8b39"
   integrity sha512-Z3TNyBL8Vd/M9D9Ms2S3LmFq2sSMzahodD6rCS9V2N44HUMINb75jNkSuwAx7eo2ufqTdfOdtGQpNbieUjPQmw==
