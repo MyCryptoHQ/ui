@@ -37,6 +37,15 @@ interface CollapsedGroups {
   [title: string]: boolean;
 }
 
+type StyledHTMLElement = StyledComponentClass<
+  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+  Theme
+>;
+
+interface Flippable {
+  isFlipped?: boolean;
+}
+
 interface Props extends CollapsibleTableData {
   breakpoint: number;
 }
@@ -97,13 +106,8 @@ export const transformTableToCards = (
   return cards;
 };
 
-export const screenIsMobileSized = (breakpoint: number) =>
+export const screenIsMobileSized = (breakpoint: number): boolean =>
   window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
-
-type StyledHTMLElement = StyledComponentClass<
-  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-  Theme
->;
 
 const GroupHeading = styled(Typography)`
   display: flex;
@@ -122,10 +126,6 @@ GroupHeading.defaultProps = {
   role: 'button',
 };
 
-interface Flippable {
-  isFlipped?: boolean;
-}
-
 const GroupHeadingCaret = styled(Icon)<Flippable>`
   margin-left: 0.5em;
   ${props =>
@@ -137,7 +137,7 @@ const GroupHeadingCaret = styled(Icon)<Flippable>`
   `};
 `;
 
-export class AbstractCollapsibleTable extends Component<Props, State> {
+export class CollapsibleTable extends Component<Props, State> {
   public static defaultProps = {
     head: [],
     body: [],
@@ -176,6 +176,7 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
           typeof cardData === 'string' ? (
             // The element being iterated on is a group heading.
             <GroupHeading
+              key={index}
               onClick={this.toggleCollapseGroup.bind(this, cardData)}
             >
               {cardData}
@@ -223,7 +224,5 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
       },
     }));
 }
-
-const CollapsibleTable = AbstractCollapsibleTable;
 
 export default CollapsibleTable;
