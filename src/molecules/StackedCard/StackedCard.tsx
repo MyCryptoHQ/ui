@@ -73,7 +73,7 @@ StackedCardLabel.defaultProps = {
   as: 'dd',
 };
 
-const StackedCard = ({ heading, icons, entries, ...rest }: Props) => {
+export const StackedCard = ({ heading, icons, entries, ...rest }: Props) => {
   return (
     <StackedCardContainer {...rest}>
       <StackedCardHead>
