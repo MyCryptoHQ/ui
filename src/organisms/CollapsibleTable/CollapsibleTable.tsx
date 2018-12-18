@@ -1,17 +1,17 @@
 import throttle from 'lodash/throttle';
 import React, { Component, ReactNode } from 'react';
 
-import styled from '_styled-components';
-import { Icon } from 'atoms';
+import { Icon } from 'src/atoms';
 import {
   StackedCard,
   StackedCardData,
   Table,
   TableConfig,
   TableData,
-} from 'molecules';
-import { scale } from 'Theme';
-import Typography from 'Typography';
+} from 'src/molecules';
+import styled from 'src/styled-components';
+import { scale } from 'src/Theme';
+import Typography from 'src/Typography';
 
 export enum CollapsibleTableModes {
   Mobile,
@@ -107,8 +107,15 @@ GroupHeading.defaultProps = {
   role: 'button',
 };
 
-const GroupHeadingCaret = styled(Icon)`
+const GroupHeadingCaret = styled(Icon)<{ isFlipped?: boolean }>`
   margin-left: 0.5em;
+  ${props =>
+    props.isFlipped &&
+    `
+    svg {
+      transform: rotateX(180deg)
+    }
+  `};
 `;
 
 export class AbstractCollapsibleTable extends Component<Props, State> {
@@ -161,7 +168,8 @@ export class AbstractCollapsibleTable extends Component<Props, State> {
             >
               {cardData}
               <GroupHeadingCaret
-                icon={collapsedGroups[cardData] ? 'caret-up' : 'caret-down'}
+                icon="navDownCaret"
+                isFlipped={collapsedGroups[cardData]}
               />
             </GroupHeading>
           ) : (

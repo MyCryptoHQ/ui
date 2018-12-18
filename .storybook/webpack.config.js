@@ -19,6 +19,6 @@ module.exports = (baseConfig, env, config) => {
     ],
   });
   config.resolve.extensions.push('.ts', '.tsx');
-  config.resolve.modules.push(path.resolve('./src'));
+  config.resolve.modules.push(path.resolve('.'));
   return config;
 };

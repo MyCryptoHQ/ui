@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Icon } from 'atoms';
+import { Icon } from 'src/atoms';
 import CollapsibleTable, { CollapsibleTableData } from './CollapsibleTable';
 
 const basicData: CollapsibleTableData = {
@@ -27,7 +27,12 @@ const groupData: CollapsibleTableData = {
 const iconData: CollapsibleTableData = {
   head: ['Favorite', 'Name', 'Age', 'Watching'],
   body: [
-    [<Icon key={0} icon="star" />, 'Connor', '26', <Icon key={4} icon="eye" />],
+    [
+      <Icon key={0} icon="star" />,
+      'Connor',
+      '26',
+      <Icon key={4} icon="starO" />,
+    ],
     [null, 'Frank', '39', null],
   ],
   config: {

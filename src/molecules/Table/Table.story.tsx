@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Button, Icon, Identicon } from 'atoms';
-import { Copyable } from 'molecules';
+import { Button, Icon, Identicon } from 'src/atoms';
+import { Copyable } from 'src/molecules';
 import Table, { TableData } from './Table';
 
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
@@ -34,7 +34,7 @@ const accountTable: TableData = {
       '$2,203.12',
     ],
     [
-      <Icon key={0} icon="eye" />,
+      <Icon key={0} icon="starO" />,
       <div
         key={1}
         style={{
@@ -127,7 +127,7 @@ const addressBookTable: TableData = {
       <Copyable key={2} text={address} truncate={truncate} />,
       'This is the main Bob.',
       <Button key={4} basic={true}>
-        <Icon icon="times-circle" />
+        <Icon icon="exit" />
       </Button>,
     ],
     [
@@ -136,7 +136,7 @@ const addressBookTable: TableData = {
       <Copyable key={2} text={address} truncate={truncate} />,
       'This is the other Bob.',
       <Button key={4} basic={true}>
-        <Icon icon="times-circle" />
+        <Icon icon="exit" />
       </Button>,
     ],
     [
@@ -145,7 +145,7 @@ const addressBookTable: TableData = {
       <Copyable key={2} text={address} truncate={truncate} />,
       'This is Craig.',
       <Button key={4} basic={true}>
-        <Icon icon="times-circle" />
+        <Icon icon="exit" />
       </Button>,
     ],
   ],

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Tabs } from 'atoms';
+import { Tabs } from 'src/atoms';
 
 const links = [
   <a key="wallets" href="https://mycrypto.com">

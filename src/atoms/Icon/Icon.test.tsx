@@ -1,10 +1,10 @@
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import Icon, { IconName, icons } from './Icon';
+import Icon, { icons } from './Icon';
 
 test('Icon', () => {
-  for (const { iconName } of icons) {
-    render(<Icon icon={iconName as IconName} />);
+  for (const icon of Object.keys(icons)) {
+    render(<Icon icon={icon as keyof typeof icons} />);
   }
 });
