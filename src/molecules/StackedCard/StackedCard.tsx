@@ -7,7 +7,7 @@ import Typography from 'src/Typography';
 
 type StackedCardEntry = string | ReactNode;
 
-interface StackedCardData {
+export interface StackedCardData {
   heading: ReactNode;
   entries: StackedCardEntry[][];
   icons?: ReactNode[];
