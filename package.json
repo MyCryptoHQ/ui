@@ -15,6 +15,7 @@
     "dist"
   ],
   "dependencies": {
+    "@types/lodash.throttle": "^4.1.4",
     "ethereum-blockies-base64": "^1.0.2",
     "lodash.throttle": "^4.1.1",
     "polished": "^2.2.0",
@@ -31,7 +32,6 @@
     "@storybook/react": "^4.0.0",
     "@types/faker": "^4.1.4",
     "@types/jest": "^23.3.2",
-    "@types/lodash.throttle": "^4.1.4",
     "@types/react": "^16.4.18",
     "@types/storybook__addon-info": "^3.4.2",
     "@types/storybook__addon-options": "^3.2.2",
