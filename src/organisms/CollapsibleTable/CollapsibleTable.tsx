@@ -79,12 +79,12 @@ export const transformRowToCards = (
       heading: '',
       entries: [],
       icons: [],
-    } as StackedCardData,
+    },
   );
 
 export const transformTableToCards = (
   { head, body, groups = [], config }: CollapsibleTableData,
-  collapsedGroups: CollapsedGroups,
+  collapsedGroups: CollapsedGroups = {},
 ): (StackedCardData | string)[] => {
   const { primaryColumn, iconColumns } = config;
   const primaryColumnIndex = head.indexOf(primaryColumn);
@@ -207,7 +207,9 @@ export class CollapsibleTable extends Component<Props, State> {
         mode: CollapsibleTableModes.Desktop,
         collapsedGroups: {},
       });
-    } else if (!wasMobile && isMobile) {
+    }
+
+    if (!wasMobile && isMobile) {
       // Desktop-to-Mobile
       this.setState({
         mode: CollapsibleTableModes.Mobile,
