@@ -5,12 +5,22 @@ import {
   icons,
   Identicon,
   Input,
+  Network,
   Panel,
+  Switch,
+  Tabs,
   Textarea,
   Tooltip,
 } from './atoms';
-import { ActionPanel, IconLink, List } from './molecules';
-import { ComboBox } from './organisms';
+import {
+  ActionPanel,
+  Copyable,
+  IconLink,
+  List,
+  StackedCard,
+  Table,
+} from './molecules';
+import { ComboBox, Drawer } from './organisms';
 import Theme, { dark, light } from './Theme';
 import Typography from './Typography';
 
@@ -22,15 +32,22 @@ export {
   icons,
   Identicon,
   Input,
+  Network,
   Panel,
+  Switch,
+  Tabs,
   Textarea,
   Tooltip,
   // Molecules
   ActionPanel,
+  Copyable,
   IconLink,
   List,
+  StackedCard,
+  Table,
   // Organisms
   ComboBox,
+  Drawer,
   // Utilities
   Theme,
   dark,
