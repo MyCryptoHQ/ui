@@ -20,7 +20,7 @@ import {
   StackedCard,
   Table,
 } from './molecules';
-import { Address, ComboBox, Drawer } from './organisms';
+import { Address, CollapsibleTable, ComboBox, Drawer } from './organisms';
 import Theme, { dark, light } from './Theme';
 import Typography from './Typography';
 
@@ -47,6 +47,7 @@ export {
   Table,
   // Organisms
   Address,
+  CollapsibleTable,
   ComboBox,
   Drawer,
   // Utilities

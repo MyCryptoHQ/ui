@@ -15,7 +15,9 @@
     "dist"
   ],
   "dependencies": {
+    "@types/lodash.throttle": "^4.1.4",
     "ethereum-blockies-base64": "^1.0.2",
+    "lodash.throttle": "^4.1.1",
     "polished": "^2.2.0",
     "react-inlinesvg": "^0.8.3",
     "typeface-lato": "^0.0.54"
@@ -158,7 +160,8 @@
       "max-nesting-depth": 1,
       "unit-whitelist": [
         "%",
-        "em"
+        "em",
+        "rem"
       ]
     }
   }
