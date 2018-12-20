@@ -285,7 +285,7 @@ class AbstractTable extends Component<Props> {
     );
   }
 
-  private verifyTableLayout = () => {
+  private readonly verifyTableLayout = () => {
     const { head, body, groups, config } = this.props;
     const columnCount = head.length;
 
@@ -358,7 +358,7 @@ class AbstractTable extends Component<Props> {
     }
   };
 
-  private toggleCollapseGroup = (title: string) =>
+  private readonly toggleCollapseGroup = (title: string) =>
     this.setState((prevState: State) => ({
       collapsedGroups: {
         ...prevState.collapsedGroups,
@@ -366,7 +366,7 @@ class AbstractTable extends Component<Props> {
       },
     }));
 
-  private toggleSortedColumnDirection = () =>
+  private readonly toggleSortedColumnDirection = () =>
     this.setState((prevState: State) => ({
       sortedColumnDirection:
         prevState.sortedColumnDirection === ColumnDirections.Forward
@@ -374,7 +374,7 @@ class AbstractTable extends Component<Props> {
           : ColumnDirections.Forward,
     }));
 
-  private getSortedLayout = (): TableContent => {
+  private readonly getSortedLayout = (): TableContent => {
     const { head, body, groups, config } = this.props;
     const { sortedColumnDirection } = this.state;
 

@@ -1,3 +1,5 @@
+import CollapsibleTable from './CollapsibleTable';
 import ComboBox from './ComboBox';
 import Drawer from './Drawer';
-export { ComboBox, Drawer };
+
+export { CollapsibleTable, ComboBox, Drawer };
