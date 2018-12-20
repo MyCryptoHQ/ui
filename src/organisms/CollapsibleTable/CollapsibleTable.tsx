@@ -195,7 +195,7 @@ export class CollapsibleTable extends Component<Props, State> {
     );
   }
 
-  private checkWindowSize = () => {
+  private readonly checkWindowSize = () => {
     const { breakpoint } = this.props;
     const { mode } = this.state;
     const wasMobile = mode === CollapsibleTableModes.Mobile;
@@ -218,7 +218,7 @@ export class CollapsibleTable extends Component<Props, State> {
     }
   };
 
-  private toggleCollapseGroup = (title: string) =>
+  private readonly toggleCollapseGroup = (title: string) =>
     this.setState((prevState: State) => ({
       collapsedGroups: {
         ...prevState.collapsedGroups,
