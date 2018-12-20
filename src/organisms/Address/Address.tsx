@@ -61,6 +61,14 @@ export class Address extends Component<Props, State> {
     this.state = { editing: false, title: props.title };
   }
 
+  public componentDidUpdate(prevProps: Readonly<Props>) {
+    const { title } = this.props;
+
+    if (title !== prevProps.title) {
+      this.setState({ title });
+    }
+  }
+
   public handleChange = ({
     target: { value },
   }: ChangeEvent<HTMLInputElement>) => this.setState({ title: value });
