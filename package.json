@@ -40,6 +40,7 @@
     "babel-loader": "^8.0.4",
     "coveralls": "^3.0.2",
     "eslint": "^5.6.0",
+    "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "faker": "^4.1.0",
@@ -93,10 +94,12 @@
       "sourceType": "module"
     },
     "plugins": [
+      "import",
       "jsx-a11y",
       "react"
     ],
     "rules": {
+      "import/newline-after-import": "error",
       "react/destructuring-assignment": "error",
       "jsx-a11y/label-has-for": [
         "error",
@@ -106,6 +109,9 @@
       ]
     }
   },
+  "eslintIgnore": [
+    "dist"
+  ],
   "jest": {
     "collectCoverage": true,
     "moduleNameMapper": {
