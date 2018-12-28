@@ -2,6 +2,7 @@ import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
 import { Switch } from 'src/atoms';
+
 storiesOf('Atoms', module).add('Switch', () =>
   [
     {

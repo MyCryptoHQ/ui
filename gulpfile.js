@@ -1,3 +1,4 @@
+/* eslint-disable import/no-commonjs */
 const gulp = require('gulp');
 const alias = require('mycrypto-path-alias-resolver/gulp');
 
