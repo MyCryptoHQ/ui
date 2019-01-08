@@ -65,7 +65,6 @@ interface Description {
 export const List = ({
   basic,
   children,
-  description,
   descriptionData,
   group,
   inline,
@@ -74,7 +73,6 @@ export const List = ({
 }: {
   basic?: boolean;
   children: ReactNode;
-  description?: boolean;
   descriptionData?: Description[];
   group?: boolean;
   inline?: boolean;
@@ -99,7 +97,7 @@ export const List = ({
       role="list"
       {...rest}
     >
-      {description && descriptionData
+      {descriptionData
         ? descriptionData.map((item: Description) => (
             <DefinitionEntry key={item.term}>
               <DefinitionLabel>{item.term}</DefinitionLabel>

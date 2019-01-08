@@ -24,7 +24,6 @@ storiesOf('Molecules', module).add('List', () => (
       { ordered: true },
       { group: true },
       {
-        description: true,
         descriptionData: listData,
       },
     ].map((props, index) => (
