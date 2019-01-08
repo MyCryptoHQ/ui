@@ -5,16 +5,32 @@ import { ActionPanel } from 'src/molecules';
 import List from './List';
 
 const children = ['Foo', 'Bar', 'Baz'];
+const listData = [
+  {
+    term: 'Address',
+    definition: 'Some Address',
+  },
+  {
+    term: 'Address',
+    definition: 'Another Address',
+  },
+];
 
 storiesOf('Molecules', module).add('List', () => (
   <>
-    {[{}, { basic: true }, { ordered: true }, { group: true }].map(
-      (props, index) => (
-        <List key={index} {...props}>
-          {children}
-        </List>
-      ),
-    )}
+    {[
+      {},
+      { basic: true },
+      { ordered: true },
+      { group: true },
+      {
+        descriptionData: listData,
+      },
+    ].map((props, index) => (
+      <List key={index} {...props}>
+        {children}
+      </List>
+    ))}
 
     <ActionPanel
       action="View Example"
