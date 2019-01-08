@@ -7,11 +7,16 @@ import triangle from './tooltip-triangle.svg';
 
 const Relative = styled.div`
   position: relative;
+  display: inline-block;
+  border: 0.2em solid black;
 `;
 
-const Absolute = styled.div<{ height: number }>`
+const Absolute = styled.div<{ height: number; boxHeight: number }>`
+  border: 0.2em solid green;
   position: absolute;
-  bottom: ${props => props.height}px;
+  display: block;
+  bottom: ${props => props.height * 4}px;
+  height: ${props => props.boxHeight}px;
 `;
 
 const Box = styled.div`
@@ -37,37 +42,66 @@ export class Tooltip extends Component<{
   children(props: Record<'onMouseOver' | 'onMouseOut', () => void>): ReactNode;
 }> {
   public ref = createRef<HTMLDivElement>();
-  public state = { height: undefined, open: false };
+  public boxRef = createRef<HTMLDivElement>();
+  public containerRef = createRef<HTMLDivElement>();
+  public state = {
+    height: undefined,
+    open: false,
+    boxHeight: undefined,
+    containerHeight: undefined,
+  };
 
   public componentDidMount() {
     // istanbul ignore else
-    if (this.ref.current) {
+    if (this.ref.current && this.boxRef.current && this.containerRef.current) {
       const { height } = this.ref.current.getBoundingClientRect();
-      this.setState({ height });
+      const { height: boxHeight } = this.boxRef.current.getBoundingClientRect();
+      const {
+        height: containerHeight,
+      } = this.boxRef.current.getBoundingClientRect();
+      this.setState({ height, boxHeight, containerHeight });
     }
   }
 
+  public handleMouseOver = () => {
+    this.setState({ open: true });
+    console.log('mouse entering');
+  };
+
+  public handleMouseExit = () => {
+    this.setState({ open: false });
+    console.log('mouse exiting');
+  };
+
   public render() {
     const { children, tooltip } = this.props;
-    const { height, open } = this.state;
+    const { height, open, boxHeight, containerHeight } = this.state;
+    console.log('height', height);
+    console.log('boxheight', boxHeight);
+    console.log('container height', containerHeight);
 
     return (
-      <Relative>
-        <div ref={this.ref}>
-          {children({
-            onMouseOver: () => this.setState({ open: true }),
-            onMouseOut: () => this.setState({ open: false }),
-          })}
-        </div>
+      <div ref={this.containerRef}>
+        <Relative>
+          <div ref={this.ref}>
+            {children({
+              onMouseOver: this.handleMouseOver,
+              onMouseOut: this.handleMouseExit,
+            })}
+          </div>
 
-        {open && (
-          // Height needs to be reduced because the triangle SVG is too tall
-          <Absolute height={(height || 0) - 17}>
-            <Box>{tooltip}</Box>
-            <Triangle />
-          </Absolute>
-        )}
-      </Relative>
+          {open && (
+            // Height needs to be reduced because the triangle SVG is too tall
+            <Absolute height={(height || 0) - 17} boxHeight={boxHeight || 0}>
+              <div ref={this.boxRef}>
+                <Box>{tooltip}</Box>
+              </div>
+
+              <Triangle />
+            </Absolute>
+          )}
+        </Relative>
+      </div>
     );
   }
 }
