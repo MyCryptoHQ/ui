@@ -88,6 +88,7 @@ interface DrawerProps {
 
 interface DrawerState {
   visible?: boolean;
+  reset?: boolean;
 }
 
 export class DrawerContainer extends Component<DrawerProps, DrawerState> {
@@ -95,12 +96,13 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
 
   public state: Readonly<DrawerState> = {
     visible: false,
+    reset: false,
   };
 
   public focused = false;
 
-  public componentDidUpdate(prevProps: DrawerProps) {
-    const { visible: internalVisible } = this.state;
+  public componentDidUpdate(prevProps: DrawerProps, prevState: DrawerState) {
+    const { visible: internalVisible, reset } = this.state;
     if (internalVisible && this.ref.current && !this.focused) {
       this.ref.current.focus();
       this.focused = true;
@@ -110,10 +112,17 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
     if (externalVisible !== prevProps.visible) {
       this.setState({ visible: externalVisible });
     }
+
+    if (reset) {
+      this.setState({ reset: false });
+    }
   }
 
   public handleExit = () => {
     this.setState({ visible: false });
+    setTimeout(() => {
+      this.setState({ reset: true });
+    }, 320);
     const { handleClose } = this.props;
     if (typeof handleClose === 'function') {
       handleClose();
@@ -129,30 +138,32 @@ export class DrawerContainer extends Component<DrawerProps, DrawerState> {
       children,
       footer,
     } = this.props;
-    const { visible } = this.state;
+    const { visible, reset } = this.state;
     return (
       <>
         {visible && <Overlay onClick={this.handleExit} />}
 
-        <Drawer noPadding={true} visible={visible} tabIndex={0}>
-          <DrawerControls>
-            <DrawerCloseButton
-              onClick={this.handleExit}
-              //@ts-ignore
-              ref={this.ref}
-            >
-              <img src={exit} alt="exit-button" />
-            </DrawerCloseButton>
-          </DrawerControls>
-          <DrawerHeader>
-            {headerIcon && <img src={headerIcon} alt={iconAltText} />}
-            <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
-            <DrawerHeaderText>{headerText}</DrawerHeaderText>
-            <Divider />
-          </DrawerHeader>
-          <DrawerContent>{children}</DrawerContent>
-          {footer && <footer>{footer}</footer>}
-        </Drawer>
+        {!reset && (
+          <Drawer noPadding={true} visible={visible} tabIndex={0}>
+            <DrawerControls>
+              <DrawerCloseButton
+                onClick={this.handleExit}
+                //@ts-ignore
+                ref={this.ref}
+              >
+                <img src={exit} alt="exit-button" />
+              </DrawerCloseButton>
+            </DrawerControls>
+            <DrawerHeader>
+              {headerIcon && <img src={headerIcon} alt={iconAltText} />}
+              <DrawerHeading as="h2">{headerTitle}</DrawerHeading>
+              <DrawerHeaderText>{headerText}</DrawerHeaderText>
+              <Divider />
+            </DrawerHeader>
+            <DrawerContent>{children}</DrawerContent>
+            {footer && <footer>{footer}</footer>}
+          </Drawer>
+        )}
       </>
     );
   }
