@@ -82,10 +82,11 @@
   },
   "scripts": {
     "build": "build-storybook",
-    "prepare": "rollup -c && gulp",
+    "prepare": "gulp",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook",
-    "test": "jest"
+    "test": "jest",
+    "watch": "gulp watch"
   },
   "eslintConfig": {
     "extends": [
