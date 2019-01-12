@@ -18,7 +18,7 @@ export class ComboBox extends Component<
 
     return (
       <>
-        <Input list={this.datalistId} {...rest} />
+        <Input list={this.datalistId} value={value} {...rest} />
         <datalist id={this.datalistId}>
           {filteredItems.map(item => (
             <option key={item} value={item} />
