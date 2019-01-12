@@ -33,38 +33,58 @@ addDecorator(withThemesProvider([light, dark]));
 
 addDecorator(story => <StrictMode>{story()}</StrictMode>);
 
-const defaultViewport = {
-  /**
-   * name to display in the dropdown
-   * @type {String}
-   */
-  name: 'Responsive',
-
-  /**
-   * Inline styles to be applied to the story (iframe).
-   * styles is an object whose key is the camelCased version of the style name, and whose
-   * value is the style’s value, usually a string
-   * @type {Object}
-   */
-  styles: {
-    width: '100%',
-    height: '100%',
-  },
-
-  /**
-   * type of the device (e.g. desktop, mobile, or tablet)
-   * @type {String}
-   */
-  type: 'desktop',
-};
-
-configureViewport({
-  viewports: defaultViewport,
-});
-
 const req = require.context('../src', true, /.story.[jt]sx?$/);
 function loadStories() {
   req.keys().forEach(filename => req(filename));
 }
 
 configure(loadStories, module);
+
+const viewports = {
+  default: {
+    name: 'default',
+    styles: {
+      width: '100%',
+      height: '100%',
+    },
+  },
+  small: {
+    name: 'Small (320x240)',
+    styles: {
+      width: '320px',
+      height: '240px',
+    },
+  },
+  medium: {
+    name: 'Medium (800x600)',
+    styles: {
+      width: '800px',
+      height: '600px',
+    },
+  },
+  large: {
+    name: 'Large (1280x1024)',
+    styles: {
+      width: '1280px',
+      height: '1024px',
+    },
+  },
+  iphoneX: {
+    name: 'iPhone X',
+    styles: {
+      width: '375px',
+      height: '812px',
+    },
+  },
+  pixel3: {
+    name: 'Google Pixel 3',
+    styles: {
+      width: '360px',
+      height: '460px',
+    },
+  },
+};
+
+configureViewport({
+  viewports,
+});
