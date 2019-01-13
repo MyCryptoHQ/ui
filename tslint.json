@@ -35,7 +35,7 @@
     "no-import-side-effect": [
       true,
       {
-        "ignore-module": "jest-dom/extend-expect|react-testing-library/cleanup-after-each|typeface-lato"
+        "ignore-module": "jest-dom/extend-expect|react-testing-library/cleanup-after-each"
       }
     ],
     "no-reference-import": true,

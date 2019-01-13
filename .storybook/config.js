@@ -5,6 +5,7 @@ import { addDecorator, configure } from '@storybook/react';
 import { cover } from 'polished';
 import React from 'react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
+import 'typeface-lato';
 
 import styled from 'src/styled-components';
 import { dark, light } from 'src/Theme';
