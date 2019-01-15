@@ -22,7 +22,9 @@ const data = {
 };
 
 storiesOf('Molecules', module).add('StackedCard', () => (
-  <div style={{ width: '400px ' }}>
-    <StackedCard {...data} />
-  </div>
+  <React.StrictMode>
+    <div style={{ width: '400px ' }}>
+      <StackedCard {...data} />
+    </div>
+  </React.StrictMode>
 ));

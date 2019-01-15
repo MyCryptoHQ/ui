@@ -158,9 +158,11 @@ const addressBookTable: TableData = {
 storiesOf('Molecules', module).add('Table', () =>
   [accountTable, recentTransactionsTable, addressBookTable].map(
     (tableData, index) => (
-      <div key={index} style={{ marginBottom: '3rem' }}>
-        <Table {...tableData} />
-      </div>
+      <React.StrictMode>
+        <div key={index} style={{ marginBottom: '3rem' }}>
+          <Table {...tableData} />
+        </div>
+      </React.StrictMode>
     ),
   ),
 );

@@ -5,8 +5,8 @@ import Identicon from './Identicon';
 
 storiesOf('Atoms', module).add('Identicon', () =>
   [{ address: 'ETH ADDRESS' }].map((props, index) => (
-    <React.Fragment key={index}>
+    <React.StrictMode key={index}>
       <Identicon {...props} />
-    </React.Fragment>
+    </React.StrictMode>
   )),
 );

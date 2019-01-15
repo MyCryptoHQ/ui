@@ -4,5 +4,7 @@ import React from 'react';
 import { Network } from 'src/atoms';
 
 storiesOf('Atoms', module).add('Network', () => (
-  <Network color="#a682ff">Ethereum</Network>
+  <React.StrictMode>
+    <Network color="#a682ff">Ethereum</Network>
+  </React.StrictMode>
 ));

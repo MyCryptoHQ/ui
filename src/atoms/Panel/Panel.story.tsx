@@ -14,11 +14,13 @@ storiesOf('Atoms', module).add('Panel', () => (
   <>
     {[{}, { basic: true }, { noPadding: true }, { isPlaceholder: true }].map(
       (props, index) => (
-        <Panel key={index} {...props}>
-          <TypographyWithoutMargin>
-            {faker.lorem.paragraphs()}
-          </TypographyWithoutMargin>
-        </Panel>
+        <React.StrictMode>
+          <Panel key={index} {...props}>
+            <TypographyWithoutMargin>
+              {faker.lorem.paragraphs()}
+            </TypographyWithoutMargin>
+          </Panel>
+        </React.StrictMode>
       ),
     )}
     <Panel

@@ -17,7 +17,7 @@ const listData = [
 ];
 
 storiesOf('Molecules', module).add('List', () => (
-  <>
+  <React.StrictMode>
     {[
       {},
       { basic: true },
@@ -41,5 +41,5 @@ storiesOf('Molecules', module).add('List', () => (
         {children}
       </List>
     </ActionPanel>
-  </>
+  </React.StrictMode>
 ));
