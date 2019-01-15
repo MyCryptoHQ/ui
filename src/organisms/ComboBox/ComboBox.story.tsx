@@ -1,13 +1,49 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
+import React, { ChangeEvent, Component } from 'react';
 
+import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 import ComboBox from './ComboBox';
 
-storiesOf('Organisms', module).add('ComboBox', () => (
-  <Typography as="label">
-    Enter a fruit
-    <br />
-    <ComboBox items={new Set(['apple', 'pear', 'orange', 'grape', 'banana'])} />
-  </Typography>
-));
+class ControlledComboBox extends Component<ExtractProps<typeof ComboBox>> {
+  public state = { value: '' };
+
+  public handleChange = ({
+    target: { value },
+  }: ChangeEvent<HTMLInputElement>) => this.setState({ value });
+
+  public render() {
+    const { value } = this.state;
+    return (
+      <ComboBox value={value} onChange={this.handleChange} {...this.props} />
+    );
+  }
+}
+
+function validator(value: string) {
+  if (!['Ethereum', 'Ropsten'].includes(value)) {
+    return 'Invalid selection, must choose Ethereum or Ropsten';
+  }
+}
+
+storiesOf('Organisms', module).add('ComboBox', () =>
+  Object.entries({
+    'Enter a fruit': (
+      <ComboBox
+        items={new Set(['apple', 'pear', 'orange', 'grape', 'banana'])}
+      />
+    ),
+    Network: (
+      <ControlledComboBox
+        items={new Set(['Ethereum', 'Ropsten'])}
+        validator={validator}
+      />
+    ),
+  }).map(([label, element]) => (
+    <Typography as="label" key={label}>
+      {label}
+      <br />
+      {element}
+    </Typography>
+  )),
+);
