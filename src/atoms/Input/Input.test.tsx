@@ -11,7 +11,12 @@ function validator(value: string) {
 
 test('Input', () => {
   render(<Input />);
-  const { rerender } = render(<Input value="" validator={validator} />);
-  rerender(<Input value="Invalid" validator={validator} />);
-  rerender(<Input value="Ethereum" validator={validator} />);
+
+  const { container, rerender } = render(<Input validator={validator} />);
+  const input = container.querySelector('input')!;
+  expect(input.checkValidity()).toBeTruthy();
+  rerender(<Input validator={validator} value="Invalid" />);
+  expect(input.checkValidity()).toBeFalsy();
+  rerender(<Input validator={validator} value="Ethereum" />);
+  expect(input.checkValidity()).toBeTruthy();
 });
