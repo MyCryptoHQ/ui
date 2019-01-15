@@ -37,6 +37,7 @@ storiesOf('Atoms', module).add('Input', () =>
       {label}
       <br />
       {element}
+      <br />
     </Typography>
   )),
 );

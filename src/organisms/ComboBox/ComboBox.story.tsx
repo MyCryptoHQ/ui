@@ -44,6 +44,7 @@ storiesOf('Organisms', module).add('ComboBox', () =>
       {label}
       <br />
       {element}
+      <br />
     </Typography>
   )),
 );
