@@ -30,7 +30,7 @@ const VerticallyCentered = styled.div`
 `;
 
 const ThemePreview = withTheme(({ theme }: { theme: Theme }) => (
-  <React.StrictMode>
+  <>
     {Object.entries(theme)
       .filter(([key]) => key !== 'name')
       .map(([key, value]) => (
@@ -39,7 +39,7 @@ const ThemePreview = withTheme(({ theme }: { theme: Theme }) => (
           <Code>{key}</Code>
         </VerticallyCentered>
       ))}
-  </React.StrictMode>
+  </>
 ));
 
 storiesOf('Styles', module).add('Theme', () => <ThemePreview />);

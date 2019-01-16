@@ -44,10 +44,8 @@ const iconData: CollapsibleTableData = {
 
 storiesOf('Organisms', module).add('CollapsibleTable', () =>
   [basicData, groupData, iconData].map((data, index) => (
-    <React.StrictMode>
-      <div key={index} style={{ marginBottom: '10rem' }}>
-        <CollapsibleTable breakpoint={450} {...data} />
-      </div>
-    </React.StrictMode>
+    <div key={index} style={{ marginBottom: '10rem' }}>
+      <CollapsibleTable breakpoint={450} {...data} />
+    </div>
   )),
 );

@@ -30,9 +30,9 @@ class AddressContainer extends Component {
 }
 
 storiesOf('Molecules', module).add('Address', () => (
-  <React.StrictMode>
+  <>
     <Address {...storyProps} />
     <AddressContainer />
     <Address title={storyProps.title} address="foo.eth" />
-  </React.StrictMode>
+  </>
 ));

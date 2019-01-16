@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { Switch } from 'src/atoms';
 
@@ -19,8 +19,8 @@ storiesOf('Atoms', module).add('Switch', () =>
       checked: false,
     },
   ].map((props, index) => (
-    <React.StrictMode key={index}>
+    <Fragment key={index}>
       <Switch {...props} />
-    </React.StrictMode>
+    </Fragment>
   )),
 );

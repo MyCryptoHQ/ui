@@ -1,5 +1,5 @@
 import { storiesOf } from '@storybook/react';
-import React from 'react';
+import React, { Fragment } from 'react';
 
 import { icons } from 'src/atoms';
 import Button from './Button';
@@ -12,8 +12,8 @@ storiesOf('Atoms', module).add('Button', () =>
     { basic: true },
     { icon: 'copy' as keyof typeof icons },
   ].map((props, index) => (
-    <React.StrictMode key={index}>
+    <Fragment key={index}>
       <Button {...props}>Button</Button>{' '}
-    </React.StrictMode>
+    </Fragment>
   )),
 );

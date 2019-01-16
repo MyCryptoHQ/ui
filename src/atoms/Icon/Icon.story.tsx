@@ -18,13 +18,11 @@ const Code = styled(Typography)`
 Code.defaultProps = { as: 'code' };
 
 storiesOf('Atoms', module).add('Icon', () => (
-  <React.StrictMode>
-    <Typography>
-      {Object.keys(icons).map(icon => (
-        <Code key={icon}>
-          <Icon icon={icon as keyof typeof icons} /> {icon}
-        </Code>
-      ))}
-    </Typography>
-  </React.StrictMode>
+  <Typography>
+    {Object.keys(icons).map(icon => (
+      <Code key={icon}>
+        <Icon icon={icon as keyof typeof icons} /> {icon}
+      </Code>
+    ))}
+  </Typography>
 ));

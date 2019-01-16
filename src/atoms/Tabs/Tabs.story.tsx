@@ -17,10 +17,8 @@ const links = [
 
 storiesOf('Atoms', module).add('Tabs', () =>
   [{}].map((props, index) => (
-    <React.StrictMode>
-      <Tabs key={index} {...props}>
-        {links}
-      </Tabs>
-    </React.StrictMode>
+    <Tabs key={index} {...props}>
+      {links}
+    </Tabs>
   )),
 );

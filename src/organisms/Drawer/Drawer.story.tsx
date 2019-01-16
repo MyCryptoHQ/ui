@@ -19,10 +19,8 @@ storiesOf('Organisms', module).add('Drawer', () =>
       footer: <List group={true}>{['Foo', 'Bar', 'Baz']}</List>,
     },
   ].map((props, index) => (
-    <React.StrictMode>
-      <Drawer key={index} {...props}>
-        <Typography>{faker.lorem.paragraphs()}</Typography>
-      </Drawer>
-    </React.StrictMode>
+    <Drawer key={index} {...props}>
+      <Typography>{faker.lorem.paragraphs()}</Typography>
+    </Drawer>
   )),
 );

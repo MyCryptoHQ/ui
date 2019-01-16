@@ -13,7 +13,7 @@ function truncate(children: string) {
 }
 
 storiesOf('Molecules', module).add('Copyable', () => (
-  <React.StrictMode>
+  <>
     <Typography>Before</Typography>
     <Copyable
       text="0x4bbeEB066D09B7AEd07bF39EE20460DFa261520"
@@ -21,5 +21,5 @@ storiesOf('Molecules', module).add('Copyable', () => (
     />
     <Copyable text="foo.eth" />
     <Typography>After</Typography>
-  </React.StrictMode>
+  </>
 ));
