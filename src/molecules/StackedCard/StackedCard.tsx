@@ -75,7 +75,7 @@ const StackedCardValue = styled(Typography)`
   margin: 0;
 ` as StyledHTMLElement;
 
-StackedCardLabel.defaultProps = {
+StackedCardValue.defaultProps = {
   as: 'dd',
 };
 
