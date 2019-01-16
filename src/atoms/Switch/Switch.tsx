@@ -7,7 +7,7 @@ import Input from '../Input';
 /* stylelint-disable unit-whitelist */
 /* stylelint-disable no-descending-specificity */
 const LabelText = styled(Typography)`
-  color: #163150;
+  color: ${props => props.theme.text};
   margin-top: 0.75em;
   cursor: pointer;
 `;
