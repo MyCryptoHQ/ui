@@ -7,11 +7,11 @@ import List from './List';
 const children = ['Foo', 'Bar', 'Baz'];
 const listData = [
   {
-    term: 'Address',
+    term: 'Address 1',
     definition: 'Some Address',
   },
   {
-    term: 'Address',
+    term: 'Address 2',
     definition: 'Another Address',
   },
 ];
