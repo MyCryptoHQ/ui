@@ -1785,6 +1785,13 @@
   resolved "https://registry.yarnpkg.com/@types/q/-/q-1.5.1.tgz#48fd98c1561fe718b61733daed46ff115b496e18"
   integrity sha512-eqz8c/0kwNi/OEHQfvIuJVLTst3in0e7uTKeuY+WL/zfKn0xVujOTp42bS/vUUokhK5P2BppLd9JXMOMHcgbjA==
 
+"@types/react-inlinesvg@^0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@types/react-inlinesvg/-/react-inlinesvg-0.8.0.tgz#0347931da1b7744561ab6e96a7252a2a78b63f2e"
+  integrity sha512-C67E7ssAaIG2bMphWmhu2TZyMQaaulLKZLPi0O3hgjLyj7oa4frNWiRFzmaDNFFS579uYpnrn78dt9owuqAiyg==
+  dependencies:
+    "@types/react" "*"
+
 "@types/react@*", "@types/react@^16.4.18":
   version "16.4.18"
   resolved "https://registry.yarnpkg.com/@types/react/-/react-16.4.18.tgz#2e28a2e7f92d3fa7d6a65f2b73275c3e3138a13d"
