@@ -48,7 +48,7 @@ const StackedCardBody = styled.div`
 
 const StackedCardEntry = styled.dl`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 1.4375em;
 `;
 
