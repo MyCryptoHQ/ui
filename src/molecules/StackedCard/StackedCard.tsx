@@ -35,6 +35,10 @@ const StackedCardHeading = styled(Typography)`
   font-size: ${scale(1)};
 `;
 
+StackedCardHeading.defaultProps = {
+  as: 'div',
+};
+
 const StackedCardIcons = styled.div`
   display: flex;
   flex-wrap: wrap;
