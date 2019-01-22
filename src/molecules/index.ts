@@ -4,6 +4,7 @@ import IconLink from './IconLink';
 import List from './List';
 import StackedCard, { StackedCardData } from './StackedCard';
 import Table, { TableConfig, TableData } from './Table';
+import ThemeToggle from './ThemeToggle';
 
 export {
   ActionPanel,
@@ -15,4 +16,5 @@ export {
   Table,
   TableConfig,
   TableData,
+  ThemeToggle,
 };

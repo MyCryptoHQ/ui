@@ -18,6 +18,13 @@ storiesOf('Atoms', module).add('Switch', () =>
       labelRight: 'On',
       checked: false,
     },
+    {
+      greyable: true,
+      handleChange: () => console.log('change detected'),
+      labelLeft: 'Off',
+      labelRight: 'On',
+      checked: true,
+    },
   ].map((props, index) => (
     <Fragment key={index}>
       <Switch {...props} />

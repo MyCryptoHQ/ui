@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { Component, ReactNode } from 'react';
 
 import styled from 'src/styled-components';
 import Typography from 'src/Typography';
 import Input from '../Input';
+
 /* stylelint-disable max-nesting-depth */
 /* stylelint-disable unit-whitelist */
 /* stylelint-disable no-descending-specificity */
@@ -13,12 +14,15 @@ const LabelText = styled(Typography)`
 `;
 export const Checkbox = styled(Input)<{
   greyable?: boolean;
+  themeToggle?: boolean;
 }>`
   :checked + span {
     background-color: ${props =>
       props.greyable && !props.checked
         ? props.theme.switchBackgroundGreyable
-        : '#b2d7e0'};
+        : props.themeToggle
+          ? 'rgba(255, 255, 255, .2)'
+          : '#b2d7e0'};
   }
   :checked + span::before {
     transform: translateX(30px);
@@ -39,7 +43,11 @@ const SliderBackground = styled.label`
     display: none;
   }
 `;
-const Slider = styled.span<{ greyable?: boolean; checked?: boolean }>`
+const Slider = styled.span<{
+  greyable?: boolean;
+  checked?: boolean;
+  themeToggle?: boolean;
+}>`
   position: absolute;
   cursor: pointer;
   top: 0;
@@ -49,7 +57,11 @@ const Slider = styled.span<{ greyable?: boolean; checked?: boolean }>`
   background-color: ${props =>
     props.greyable && !props.checked
       ? props.theme.switchBackgroundGreyable
-      : '#b2d7e0'};
+      : props.themeToggle && !props.checked
+        ? 'rgba(0, 0, 0, .4)'
+        : props.themeToggle
+          ? 'rgba(255, 255, 255, .2)'
+          : '#b2d7e0'};
   transition: 0.4s;
   border-radius: 17px;
   ::before {
@@ -60,18 +72,28 @@ const Slider = styled.span<{ greyable?: boolean; checked?: boolean }>`
     left: -4px;
     bottom: -3px;
     background-color: ${props =>
-      props.greyable && !props.checked ? 'grey' : props.theme.primary};
+      props.greyable && !props.checked
+        ? 'grey'
+        : props.themeToggle && !props.checked
+          ? 'white'
+          : props.themeToggle
+            ? '#393f4c'
+            : props.theme.primary};
     transition: 0.4s;
     border-radius: 17px;
   }
 `;
+
 interface Props {
   greyable?: boolean;
   labelLeft?: string;
   labelRight?: string;
   checked?: boolean;
+  children?: ReactNode;
+  themeToggle?: boolean;
   handleChange?(): void;
 }
+
 export class Switch extends Component<Props, {}> {
   public render() {
     const {
@@ -80,21 +102,30 @@ export class Switch extends Component<Props, {}> {
       labelLeft,
       labelRight,
       checked,
+      children,
+      themeToggle,
     } = this.props;
+
     return (
       <SwitchContainer>
         <LabelText>
           <label htmlFor="toggle">{labelLeft}</label>
         </LabelText>
         <SliderBackground htmlFor="toggle">
+          {children}
           <Checkbox
             greyable={greyable}
             id="toggle"
             type="checkbox"
             onChange={handleChange}
             checked={checked}
+            themeToggle={themeToggle}
           />
-          <Slider checked={checked} greyable={greyable} />
+          <Slider
+            checked={checked}
+            greyable={greyable}
+            themeToggle={themeToggle}
+          />
         </SliderBackground>
         <LabelText>
           <label htmlFor="toggle">{labelRight}</label>

@@ -33,6 +33,9 @@ import wallet from './illustrations/icn-wallet-copy.svg';
 import lock from './nav_icons/icn-lock.svg';
 import unlock from './nav_icons/icn-unlock.svg';
 
+import moon from './icons/icn-dark-theme.svg';
+import sun from './icons/icn-light-theme.svg';
+
 export const icons = {
   combinedShape,
   add,
@@ -60,6 +63,9 @@ export const icons = {
 
   lock,
   unlock,
+
+  sun,
+  moon,
 };
 
 const StyledInlineSVG = styled(InlineSVG)`
@@ -73,11 +79,7 @@ export function Icon({
   icon,
   ...rest
 }: { 'aria-label'?: string; icon: keyof typeof icons } & Omit<Props, 'src'>) {
-  return (
-    <span role="img" aria-label={ariaLabel || icon}>
-      <StyledInlineSVG src={icons[icon]} {...rest} />
-    </span>
-  );
+  return <StyledInlineSVG src={icons[icon]} {...rest} />;
 }
 
 export default Icon;
