@@ -23,7 +23,7 @@ const ActionPanelFooter = styled(Typography)`
   Theme
 >;
 
-ActionPanelFooter.defaultProps = { as: 'div' };
+ActionPanelFooter.defaultProps = { as: 'footer' };
 
 export function ActionPanel({
   action,

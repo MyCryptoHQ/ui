@@ -36,7 +36,7 @@ const StackedCardHeading = styled(Typography)`
 `;
 
 StackedCardHeading.defaultProps = {
-  as: 'div',
+  as: 'header',
 };
 
 const StackedCardIcons = styled.div`
