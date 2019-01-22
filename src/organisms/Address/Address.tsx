@@ -16,7 +16,7 @@ const Content = styled.div`
 
 const Title = styled(Typography)<{ clickable: boolean }>`
   display: inline;
-  font-size: ${scale(1)};
+  font-size: ${scale(0.5)};
   ${props => props.clickable && `cursor: pointer;`};
 `;
 
@@ -27,7 +27,7 @@ const TitleInput = styled.input`
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
   color: ${props => props.theme.text};
-  font: ${scale(1)} Lato, sans-serif;
+  font: ${scale(0.5)} Lato, sans-serif;
   padding: 0;
 `;
 

@@ -10,7 +10,11 @@ function truncate(text: string) {
   return `${text[0]}...`;
 }
 
-test('Copyable', () => {
+function sleep(ms: number) {
+  return new Promise(r => setTimeout(r, ms));
+}
+
+test('Copyable', async () => {
   const { getByText, rerender } = render(
     <Copyable text="Copyable" truncate={truncate} />,
   );
@@ -21,4 +25,6 @@ test('Copyable', () => {
   copyable = getByText('Copyable');
   fireEvent.click(copyable);
   expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Copyable');
+  // Allow setTimeout to play out.
+  await sleep(1000);
 });
