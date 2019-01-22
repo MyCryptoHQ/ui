@@ -1,21 +1,18 @@
 import { padding } from 'polished';
 import React, { Component, createRef, ReactNode } from 'react';
 
-import styled from 'src/styled-components';
 import { borderRadius, scale } from 'src/Theme';
+import styled from 'styled-components';
 import triangle from './tooltip-triangle.svg';
 
 const Relative = styled.div`
   position: relative;
-  display: inline-block;
-  border: 0.2em solid black;
 `;
 
 const Absolute = styled.div<{ height: number; boxHeight: number }>`
-  border: 0.2em solid green;
   position: absolute;
   display: block;
-  bottom: ${props => props.height * 4}px;
+  bottom: ${props => props.height * 4 + 8}px;
   height: ${props => props.boxHeight}px;
 `;
 
@@ -46,12 +43,13 @@ export class Tooltip extends Component<{
   public containerRef = createRef<HTMLDivElement>();
   public state = {
     height: undefined,
-    open: false,
+    open: true,
     boxHeight: undefined,
     containerHeight: undefined,
   };
 
   public componentDidMount() {
+    this.setState({ open: false });
     // istanbul ignore else
     if (this.ref.current && this.boxRef.current && this.containerRef.current) {
       const { height } = this.ref.current.getBoundingClientRect();
@@ -65,20 +63,15 @@ export class Tooltip extends Component<{
 
   public handleMouseOver = () => {
     this.setState({ open: true });
-    console.log('mouse entering');
   };
 
   public handleMouseExit = () => {
     this.setState({ open: false });
-    console.log('mouse exiting');
   };
 
   public render() {
     const { children, tooltip } = this.props;
-    const { height, open, boxHeight, containerHeight } = this.state;
-    console.log('height', height);
-    console.log('boxheight', boxHeight);
-    console.log('container height', containerHeight);
+    const { height, open, boxHeight } = this.state;
 
     return (
       <div ref={this.containerRef}>
