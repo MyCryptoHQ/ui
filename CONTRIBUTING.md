@@ -30,7 +30,7 @@ Follow these steps if you want to make changes in UI and use them in another pac
 4. In UI's directory, build package once with `yarn` or continue editing and rebuilding with `yarn watch`. Repeat each time you develop.
 5. Use `yarn unlink` to go back to using release vesions of UI (recommended in production).
 
-### Visual Studio Code Extensions
+### Visual Studio Code extensions
 
 If you're using Code, the following extensions are recommended based on our tooling:
 
