@@ -7,12 +7,7 @@ import ActionPanel from './ActionPanel';
 
 storiesOf('Molecules', module).add('ActionPanel', () =>
   [{}, { noPadding: true }].map((props, index) => (
-    <ActionPanel
-      key={index}
-      action="View Example"
-      href="https://example.com/"
-      {...props}
-    >
+    <ActionPanel key={index} action="View Example" {...props}>
       <Typography>{faker.lorem.paragraphs()}</Typography>
     </ActionPanel>
   )),

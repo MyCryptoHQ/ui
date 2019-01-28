@@ -35,6 +35,10 @@ const StackedCardHeading = styled(Typography)`
   font-size: ${scale(1)};
 `;
 
+StackedCardHeading.defaultProps = {
+  as: 'header',
+};
+
 const StackedCardIcons = styled.div`
   display: flex;
   flex-wrap: wrap;
@@ -48,7 +52,7 @@ const StackedCardBody = styled.div`
 
 const StackedCardEntry = styled.dl`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 1.4375em;
 `;
 
@@ -75,7 +79,7 @@ const StackedCardValue = styled(Typography)`
   margin: 0;
 ` as StyledHTMLElement;
 
-StackedCardLabel.defaultProps = {
+StackedCardValue.defaultProps = {
   as: 'dd',
 };
 

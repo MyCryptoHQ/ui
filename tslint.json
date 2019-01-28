@@ -29,6 +29,22 @@
     "deprecation": true,
     "no-mergeable-namespace": true,
     "strict-type-predicates": true,
-    "prefer-conditional-expression": true
+    "prefer-conditional-expression": true,
+    "import-spacing": true,
+    "no-implicit-dependencies": [true, "dev", ["src"]],
+    "no-import-side-effect": [
+      true,
+      {
+        "ignore-module": "jest-dom/extend-expect|react-testing-library/cleanup-after-each"
+      }
+    ],
+    "no-reference-import": true,
+    "no-require-imports": true,
+    "no-submodule-imports": [
+      true,
+      "jest-dom/extend-expect",
+      "react-testing-library/cleanup-after-each",
+      "src"
+    ]
   }
 }

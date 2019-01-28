@@ -8,3 +8,8 @@ interface Clipboard extends EventTarget {
 interface Navigator {
   clipboard: Clipboard;
 }
+
+declare module '*.svg' {
+  const path: string;
+  export default path;
+}
