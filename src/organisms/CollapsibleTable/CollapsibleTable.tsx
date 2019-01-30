@@ -7,8 +7,9 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import { Icon } from 'src/atoms';
+import { Button, Icon } from 'src/atoms';
 import {
+  ActionPanel,
   StackedCard,
   StackedCardData,
   Table,
@@ -48,11 +49,13 @@ interface Flippable {
 
 interface Props extends CollapsibleTableData {
   breakpoint: number;
+  limit: number;
 }
 
 interface State {
   mode: CollapsibleTableModes;
   collapsedGroups: CollapsedGroups;
+  viewAll: boolean;
 }
 
 export const transformRowToCards = (
@@ -137,6 +140,12 @@ const GroupHeadingCaret = styled(Icon)<Flippable>`
   `};
 `;
 
+export const ActionPanelButton = styled(Button)`
+  color: ${props => props.theme.linkStandalone};
+`;
+
+ActionPanelButton.defaultProps = { basic: true };
+
 export class CollapsibleTable extends Component<Props, State> {
   public static defaultProps = {
     head: [],
@@ -144,6 +153,7 @@ export class CollapsibleTable extends Component<Props, State> {
     groups: [],
     config: {},
     breakpoint: 450,
+    limit: Infinity,
   };
 
   public constructor(props: Props) {
@@ -154,10 +164,13 @@ export class CollapsibleTable extends Component<Props, State> {
         ? CollapsibleTableModes.Mobile
         : CollapsibleTableModes.Desktop,
       collapsedGroups: {},
+      viewAll: false,
     };
 
     this.checkWindowSize = throttle(this.checkWindowSize, 200);
   }
+
+  public viewAll = () => this.setState({ viewAll: true });
 
   public componentDidMount() {
     window.addEventListener('resize', this.checkWindowSize);
@@ -168,30 +181,52 @@ export class CollapsibleTable extends Component<Props, State> {
   }
 
   public render() {
-    const { mode, collapsedGroups } = this.state;
+    const { limit } = this.props;
+    const { collapsedGroups, mode, viewAll } = this.state;
+
+    const cards = transformTableToCards(this.props, collapsedGroups);
 
     return mode === CollapsibleTableModes.Mobile ? (
-      transformTableToCards(this.props, collapsedGroups).map(
-        (cardData, index) =>
-          typeof cardData === 'string' ? (
-            // The element being iterated on is a group heading.
-            <GroupHeading
-              key={index}
-              onClick={this.toggleCollapseGroup.bind(this, cardData)}
-            >
-              {cardData}
-              <GroupHeadingCaret
-                icon="navDownCaret"
-                isFlipped={collapsedGroups[cardData]}
-              />
-            </GroupHeading>
-          ) : (
-            // The element being iterated on is table data.
-            <StackedCard key={index} {...cardData} />
-          ),
+      viewAll || cards.length <= limit ? (
+        this.renderCards(cards)
+      ) : (
+        <ActionPanel
+          action={
+            <ActionPanelButton onClick={this.viewAll}>
+              View All
+            </ActionPanelButton>
+          }
+          noPadding={true}
+        >
+          {this.renderCards(cards.slice(0, limit))}
+        </ActionPanel>
       )
     ) : (
       <Table {...this.props} />
+    );
+  }
+
+  public renderCards(cards: (string | StackedCardData)[]) {
+    const { collapsedGroups } = this.state;
+
+    return cards.map(
+      (cardData, index) =>
+        typeof cardData === 'string' ? (
+          // The element being iterated on is a group heading.
+          <GroupHeading
+            key={index}
+            onClick={this.toggleCollapseGroup.bind(this, cardData)}
+          >
+            {cardData}
+            <GroupHeadingCaret
+              icon="navDownCaret"
+              isFlipped={collapsedGroups[cardData]}
+            />
+          </GroupHeading>
+        ) : (
+          // The element being iterated on is table data.
+          <StackedCard key={index} {...cardData} />
+        ),
     );
   }
 

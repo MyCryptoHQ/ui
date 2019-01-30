@@ -7,6 +7,7 @@ export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
 const linkDark = lighten(lightnessMod, linkLight);
+const linkStandalone = '#1eb8e7';
 const outline = '0 0 0 0.125em white, 0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const primary = '#007896';
@@ -25,6 +26,7 @@ type Theme = Record<
   | 'headline'
   | 'link'
   | 'linkHover'
+  | 'linkStandalone'
   | 'outline'
   | 'panelBackground'
   | 'panelBackgroundDark'
@@ -52,6 +54,7 @@ export const light: Theme = {
   headline: '#163150',
   link: linkLight,
   linkHover: darken(0.1, linkLight),
+  linkStandalone,
   outline: outline + primary,
   panelBackground: backgroundLight,
   panelBackgroundDark: darken(lightnessMod, backgroundLight),
@@ -76,6 +79,7 @@ export const dark: Theme = {
   headline: invert(light.headline),
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
+  linkStandalone: lighten(lightnessMod, linkStandalone),
   outline: outline + primary,
   panelBackground,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),

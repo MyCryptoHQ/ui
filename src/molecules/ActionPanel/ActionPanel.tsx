@@ -31,7 +31,7 @@ export function ActionPanel({
   noPadding,
   ...rest
 }: {
-  action: string;
+  action: ReactNode;
   children: ReactNode;
   noPadding?: boolean;
 } & ExtractProps<typeof Panel>) {
