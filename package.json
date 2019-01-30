@@ -90,6 +90,7 @@
     "test": "jest",
     "watch": "gulp watch"
   },
+  "sideEffects": false,
   "eslintConfig": {
     "extends": [
       "plugin:import/recommended",
