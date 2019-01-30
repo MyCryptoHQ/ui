@@ -6,6 +6,7 @@ import { ExtractProps, Omit } from 'src/types';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
+  height: 3.75em;
 `;
 
 export const Identicon = ({

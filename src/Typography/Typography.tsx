@@ -1,5 +1,4 @@
 import { fluidRange, transparentize } from 'polished';
-import 'typeface-lato';
 
 import styled from 'src/styled-components';
 

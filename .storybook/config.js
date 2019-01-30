@@ -3,9 +3,10 @@ import { withInfo } from '@storybook/addon-info';
 import { withOptions } from '@storybook/addon-options';
 import { addDecorator, configure } from '@storybook/react';
 import { cover } from 'polished';
-import React from 'react';
+import React, { StrictMode } from 'react';
 import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import { configureViewport } from '@storybook/addon-viewport';
+import 'typeface-lato';
 
 import styled from 'src/styled-components';
 import { dark, light } from 'src/Theme';
@@ -29,6 +30,8 @@ const Container = styled.div`
 addDecorator(story => <Container>{story()}</Container>);
 
 addDecorator(withThemesProvider([light, dark]));
+
+addDecorator(story => <StrictMode>{story()}</StrictMode>);
 
 const req = require.context('../src', true, /.story.[jt]sx?$/);
 function loadStories() {
