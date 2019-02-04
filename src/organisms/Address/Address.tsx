@@ -29,6 +29,7 @@ const TitleInput = styled.input`
   color: ${props => props.theme.text};
   font: ${scale(0.5)} Lato, sans-serif;
   padding: 0;
+  width: 100%;
 `;
 
 const ColoredIconButton = styled(Button)`
