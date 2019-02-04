@@ -2,7 +2,7 @@ import { darken, invert, lighten, modularScale } from 'polished';
 
 const backgroundLight = 'white';
 const backgroundDark = '#214772';
-export const borderRadius = '6px';
+export const borderRadius = '0.125em';
 export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
