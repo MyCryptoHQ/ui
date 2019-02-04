@@ -1,17 +1,16 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { ActionPanel } from 'src/molecules';
 import List from './List';
 
 const children = ['Foo', 'Bar', 'Baz'];
 const listData = [
   {
-    term: 'Address',
+    term: 'Address 1',
     definition: 'Some Address',
   },
   {
-    term: 'Address',
+    term: 'Address 2',
     definition: 'Another Address',
   },
 ];
@@ -32,14 +31,8 @@ storiesOf('Molecules', module).add('List', () => (
       </List>
     ))}
 
-    <ActionPanel
-      action="View Example"
-      href="https://example.com/"
-      noPadding={true}
-    >
-      <List group={true} inline={true}>
-        {children}
-      </List>
-    </ActionPanel>
+    <List group={true} inline={true}>
+      {children}
+    </List>
   </>
 ));

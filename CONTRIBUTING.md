@@ -13,23 +13,24 @@ All code must follow the folder structure and be formatted with [Prettier](https
 
 ### Scripts
 
-After `yarn`ing all dependencies you can run various commands depending on what you want to do:
+| Command      | Description                                                   |
+| ------------ | ------------------------------------------------------------- |
+| `yarn`       | Install all dependencies, build package to dist               |
+| `yarn start` | Run Storybook in dev mode in browser, rebuild on file changes |
+| `yarn test`  | Run tests with Jest                                           |
+| `yarn watch` | Build package to dist, rebuild on file changes                |
 
-#### Development
+### Developing with another package
 
-```bash
-# run Storybook in dev mode in browser, rebuild on file changes
-yarn start
-```
+Follow these steps if you want to make changes in UI and use them in another package locally.
 
-#### Tests
+1. If you use a version manager or multiple Node installations, make sure to use the same version for both UI and the other package.
+2. Run `yarn link` in UI's directory to allow other packages to link to it globally.
+3. Run `yarn link @mycrypto/ui` in the other package's directory to link it to UI's directory.
+4. In UI's directory, build package once with `yarn` or continue editing and rebuilding with `yarn watch`. Repeat each time you develop.
+5. Use `yarn unlink` to go back to using release vesions of UI (recommended in production).
 
-```bash
-# run tests with Jest
-yarn test
-```
-
-### Visual Studio Code Extensions
+### Visual Studio Code extensions
 
 If you're using Code, the following extensions are recommended based on our tooling:
 

@@ -21,7 +21,7 @@ import {
   Table,
 } from './molecules';
 import { Address, CollapsibleTable, ComboBox, Drawer } from './organisms';
-import Theme, { dark, light } from './Theme';
+import Theme, { dark, light, scale } from './Theme';
 import Typography from './Typography';
 
 export {
@@ -54,5 +54,6 @@ export {
   Theme,
   dark,
   light,
+  scale,
   Typography,
 };
