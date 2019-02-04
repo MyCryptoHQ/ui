@@ -7,7 +7,7 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import { Icon, icons } from 'src/atoms';
+import Icon, { icons } from 'src/atoms/Icon';
 import styled from 'src/styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
 import { ExtractProps } from 'src/types';
@@ -20,6 +20,7 @@ const StyledInput = styled(Typography)`
   font-size: ${scale(0)};
   font-weight: bold;
   ${padding(scale(-1), scale(0))};
+  padding-left: 2.8125em;
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
 
   :focus {
@@ -33,7 +34,8 @@ const StyledInput = styled(Typography)`
 
 const StyledIcon = styled(Icon)`
   position: absolute;
-  left: 0.3125em;
+  left: 0.75em;
+  color: #1eb8e7;
 `;
 
 StyledInput.defaultProps = { as: 'input' };
@@ -58,15 +60,19 @@ export class Input extends Component<
 
   public render() {
     const { icon } = this.props;
+    console.log(StyledIcon);
     if (icon) {
       return (
-        <StyledInput
-          //@ts-ignore
-          ref={this.ref}
-          {...this.props}
-        >
+        <>
+          <StyledInput
+            //@ts-ignore
+            ref={this.ref}
+            {...this.props}
+          >
+            {/* <StyledIcon icon={icon} /> */}
+          </StyledInput>
           <StyledIcon icon={icon} />
-        </StyledInput>
+        </>
       );
     }
     return (
