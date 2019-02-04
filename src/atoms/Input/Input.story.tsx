@@ -29,7 +29,10 @@ function validator(value: string) {
 storiesOf('Atoms', module).add('Input', () =>
   Object.entries({
     'To Address': (
-      <Input placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520" />
+      <Input
+        icon="copy"
+        placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
+      />
     ),
     Network: <ControlledInput validator={validator} />,
   }).map(([label, element]) => (

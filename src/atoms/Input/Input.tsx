@@ -7,6 +7,7 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
+import { Icon, icons } from 'src/atoms';
 import styled from 'src/styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
 import { ExtractProps } from 'src/types';
@@ -30,11 +31,17 @@ const StyledInput = styled(Typography)`
   Theme
 >;
 
+const StyledIcon = styled(Icon)`
+  position: absolute;
+  left: 0.3125em;
+`;
+
 StyledInput.defaultProps = { as: 'input' };
 
 export class Input extends Component<
   ExtractProps<typeof StyledInput> & {
     value?: string;
+    icon?: keyof typeof icons;
     validator?(value: string): string | undefined;
   }
 > {
@@ -50,6 +57,18 @@ export class Input extends Component<
   }
 
   public render() {
+    const { icon } = this.props;
+    if (icon) {
+      return (
+        <StyledInput
+          //@ts-ignore
+          ref={this.ref}
+          {...this.props}
+        >
+          <StyledIcon icon={icon} />
+        </StyledInput>
+      );
+    }
     return (
       <StyledInput
         //@ts-ignore
