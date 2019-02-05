@@ -13,6 +13,7 @@ import announcement from './icons/icn-announcement.svg';
 import backArrow from './icons/icn-back-arrow.svg';
 import copy from './icons/icn-copy.svg';
 import create from './icons/icn-create-wallet.svg';
+import edit from './icons/icn-edit.svg';
 import exit from './icons/icn-exit.svg';
 import navDownCaret from './icons/icn-nav-down-caret.svg';
 import settings from './icons/icn-settings.svg';
@@ -41,6 +42,7 @@ export const icons = {
   backArrow,
   copy,
   create,
+  edit,
   exit,
   navDownCaret,
   settings,

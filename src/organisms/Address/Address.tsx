@@ -114,10 +114,7 @@ export class Address extends Component<Props, State> {
               {onSubmit && (
                 <>
                   {' '}
-                  <ColoredIconButton
-                    icon="create"
-                    onClick={this.handleEditing}
-                  />
+                  <ColoredIconButton icon="edit" onClick={this.handleEditing} />
                 </>
               )}
             </>
