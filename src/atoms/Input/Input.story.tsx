@@ -32,6 +32,7 @@ storiesOf('Atoms', module).add('Input', () =>
       <Input
         icon="copy"
         placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
+        iconSide="right"
       />
     ),
     Network: <ControlledInput validator={validator} />,

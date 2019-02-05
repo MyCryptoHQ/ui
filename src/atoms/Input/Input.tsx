@@ -13,14 +13,21 @@ import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
 import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 
-const StyledInput = styled(Typography)`
+const InputContainer = styled.div`
+  position: relative;
+`;
+
+const StyledInput = styled(Typography)<{ iconSide?: string }>`
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
   font-size: ${scale(0)};
   font-weight: bold;
   ${padding(scale(-1), scale(0))};
-  padding-left: 2.8125em;
+  ${props =>
+    props.iconSide === 'right'
+      ? 'padding-right: 2.8125em;'
+      : 'padding-left: 2.8125em;'};
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
 
   :focus {
@@ -32,9 +39,10 @@ const StyledInput = styled(Typography)`
   Theme
 >;
 
-const StyledIcon = styled(Icon)`
+const StyledIcon = styled(Icon)<{ iconSide?: string }>`
   position: absolute;
-  left: 0.75em;
+  top: 0.8em;
+  ${props => (props.iconSide === 'right' ? 'right: 0.75em' : 'left: 0.75em;')};
   color: #1eb8e7;
 `;
 
@@ -44,6 +52,7 @@ export class Input extends Component<
   ExtractProps<typeof StyledInput> & {
     value?: string;
     icon?: keyof typeof icons;
+    iconSide?: string;
     validator?(value: string): string | undefined;
   }
 > {
@@ -59,20 +68,19 @@ export class Input extends Component<
   }
 
   public render() {
-    const { icon } = this.props;
+    const { icon, iconSide } = this.props;
     console.log(StyledIcon);
     if (icon) {
       return (
-        <>
+        <InputContainer>
           <StyledInput
             //@ts-ignore
             ref={this.ref}
+            iconSide={iconSide}
             {...this.props}
-          >
-            {/* <StyledIcon icon={icon} /> */}
-          </StyledInput>
-          <StyledIcon icon={icon} />
-        </>
+          />
+          <StyledIcon icon={icon} iconSide={iconSide} />
+        </InputContainer>
       );
     }
     return (
