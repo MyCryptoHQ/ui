@@ -11255,9 +11255,9 @@ stealthy-require@^1.1.0:
   integrity sha1-NbCYdbT/SfJqd35QmzCQoyJr8ks=
 
 storybook-addon-styled-component-theme@^1.0.5:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/storybook-addon-styled-component-theme/-/storybook-addon-styled-component-theme-1.0.7.tgz#8126497f69e734212395e60aad68efa11d3c6fe5"
-  integrity sha512-GnUNKPqtAJEaF3Kb3NhvZRxxXq1Dgd7mkDlPXRZX6rH3SltVSTEbrAvxvkEkgL07zmNR1WeHRrCYz4KHI29aAw==
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/storybook-addon-styled-component-theme/-/storybook-addon-styled-component-theme-1.1.1.tgz#64b5061da41132b32199bd26c967b50bd4539a4f"
+  integrity sha512-2o0IyYi5AlvhUHitfym9/+Y83K45yRCOGJ62VWNzQt5hGtZ9dGoUWbdH7GQMi/eLNVYhlqIVd6GesZ67cmSgyw==
   dependencies:
     immutable "^3.8.2"
     recompose "^0.27.1"
