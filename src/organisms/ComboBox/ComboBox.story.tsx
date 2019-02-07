@@ -1,6 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React, { ChangeEvent, Component } from 'react';
 
+import { Panel } from 'src/atoms';
 import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 import ComboBox from './ComboBox';
@@ -26,25 +27,27 @@ function validator(value: string) {
   }
 }
 
-storiesOf('Organisms', module).add('ComboBox', () =>
-  Object.entries({
-    'Enter a fruit': (
-      <ComboBox
-        items={new Set(['apple', 'pear', 'orange', 'grape', 'banana'])}
-      />
-    ),
-    Network: (
-      <ControlledComboBox
-        items={new Set(['Ethereum', 'Ropsten'])}
-        validator={validator}
-      />
-    ),
-  }).map(([label, element]) => (
-    <Typography as="label" key={label}>
-      {label}
-      <br />
-      {element}
-      <br />
-    </Typography>
-  )),
-);
+storiesOf('Organisms', module).add('ComboBox', () => (
+  <Panel>
+    {Object.entries({
+      'Enter a fruit': (
+        <ComboBox
+          items={new Set(['apple', 'pear', 'orange', 'grape', 'banana'])}
+        />
+      ),
+      Network: (
+        <ControlledComboBox
+          items={new Set(['Ethereum', 'Ropsten'])}
+          validator={validator}
+        />
+      ),
+    }).map(([label, element]) => (
+      <Typography as="label" key={label}>
+        {label}
+        <br />
+        {element}
+        <br />
+      </Typography>
+    ))}
+  </Panel>
+));

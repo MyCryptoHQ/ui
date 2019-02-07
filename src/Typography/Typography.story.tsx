@@ -4,7 +4,7 @@ import React, { Fragment } from 'react';
 
 import Typography from './Typography';
 
-storiesOf('Atoms', module).add('Typography', () => (
+storiesOf('Styles', module).add('Typography', () => (
   <Fragment>
     <Typography>{faker.lorem.paragraphs()}</Typography>
     <Typography>

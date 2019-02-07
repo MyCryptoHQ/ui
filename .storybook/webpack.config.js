@@ -8,6 +8,7 @@ module.exports = (baseConfig, env, config) => {
         loader: 'ts-loader',
         options: {
           compilerOptions: { declaration: false, declarationMap: false },
+          transpileOnly: true,
         },
       },
       {

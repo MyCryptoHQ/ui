@@ -3,10 +3,12 @@ import React from 'react';
 
 import IconLink from './IconLink';
 
+import Typography from 'src/Typography';
+
 storiesOf('Molecules', module).add('IconLink', () =>
   [{}, { href: 'https://example.com/' }].map((props, index) => (
-    <React.Fragment key={index}>
+    <Typography key={index}>
       Address <IconLink icon="copy" {...props} />
-    </React.Fragment>
+    </Typography>
   )),
 );

@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Button, Icon, Identicon } from 'src/atoms';
+import { Button, Icon, Identicon, Panel } from 'src/atoms';
 import { Copyable } from 'src/molecules';
 import Table, { TableData } from './Table';
 
@@ -158,9 +158,11 @@ const addressBookTable: TableData = {
 storiesOf('Molecules', module).add('Table', () =>
   [accountTable, recentTransactionsTable, addressBookTable].map(
     (tableData, index) => (
-      <div key={index} style={{ marginBottom: '3rem' }}>
-        <Table {...tableData} />
-      </div>
+      <Panel noPadding={true}>
+        <div key={index} style={{ marginBottom: '3rem' }}>
+          <Table {...tableData} />
+        </div>
+      </Panel>
     ),
   ),
 );

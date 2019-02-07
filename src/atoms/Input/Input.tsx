@@ -33,6 +33,11 @@ const StyledInput = styled(Typography)<{ iconSide?: string }>`
   font-size: ${scale(0)};
   font-weight: bold;
   outline: none;
+
+  ::placeholder: {
+    color: ${props => props.theme.text};
+    opacity: 1;
+  }
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
   Theme

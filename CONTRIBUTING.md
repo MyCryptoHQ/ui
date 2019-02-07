@@ -13,12 +13,12 @@ All code must follow the folder structure and be formatted with [Prettier](https
 
 ### Scripts
 
-Command|Description
----|---
-`yarn`|Install all dependencies, build package to dist
-`yarn start`|Run Storybook in dev mode in browser, rebuild on file changes
-`yarn test`|Run tests with Jest
-`yarn watch`|Build package to dist, rebuild on file changes
+| Command      | Description                                                   |
+| ------------ | ------------------------------------------------------------- |
+| `yarn`       | Install all dependencies, build package to dist               |
+| `yarn start` | Run Storybook in dev mode in browser, rebuild on file changes |
+| `yarn test`  | Run tests with Jest                                           |
+| `yarn watch` | Build package to dist, rebuild on file changes                |
 
 ### Developing with another package
 
