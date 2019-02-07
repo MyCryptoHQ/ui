@@ -14,36 +14,44 @@ import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 
 const InputContainer = styled.div`
-  position: relative;
-`;
-
-const StyledInput = styled(Typography)<{ iconSide?: string }>`
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
-  font-size: ${scale(0)};
-  font-weight: bold;
-  ${padding(scale(-1), scale(0))};
-  ${props =>
-    props.iconSide === 'right'
-      ? 'padding-right: 2.8125em;'
-      : 'padding-left: 2.8125em;'};
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
-
-  :focus {
+  ${padding(scale(-1), scale(0))};
+  display: flex;
+  :focus-within {
     outline: none;
     box-shadow: ${props => props.theme.outline};
   }
+`;
+
+const StyledInput = styled(Typography)<{ iconSide?: string }>`
+  flex: 1;
+  background: none;
+  border: none;
+  font-size: ${scale(0)};
+  font-weight: bold;
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
   Theme
 >;
 
 const StyledIcon = styled(Icon)<{ iconSide?: string }>`
-  position: absolute;
-  top: 0.8em;
-  ${props => (props.iconSide === 'right' ? 'right: 0.75em' : 'left: 0.75em;')};
   color: #1eb8e7;
+  margin: auto;
+  ${props =>
+    props.iconSide === 'right'
+      ? 'padding-left: 12px;'
+      : 'padding-right: 12px;'};
+  height: 100%;
+  display: block;
+  /* stylelint-disable max-nesting-depth */
+  span {
+    svg {
+      height: 100;
+    }
+  }
 `;
 
 StyledInput.defaultProps = { as: 'input' };
@@ -69,9 +77,9 @@ export class Input extends Component<
 
   public render() {
     const { icon, iconSide } = this.props;
-    console.log(StyledIcon);
+    const formattedIconSide = iconSide && iconSide.toLowerCase();
     if (icon) {
-      return (
+      return iconSide && formattedIconSide === 'right' ? (
         <InputContainer>
           <StyledInput
             //@ts-ignore
@@ -79,16 +87,29 @@ export class Input extends Component<
             iconSide={iconSide}
             {...this.props}
           />
-          <StyledIcon icon={icon} iconSide={iconSide} />
+          <StyledIcon icon={icon} iconSide={formattedIconSide} />
+        </InputContainer>
+      ) : (
+        <InputContainer>
+          <StyledIcon icon={icon} iconSide={formattedIconSide} />
+          <StyledInput
+            //@ts-ignore
+            ref={this.ref}
+            iconSide={iconSide}
+            {...this.props}
+          />
         </InputContainer>
       );
     }
+
     return (
-      <StyledInput
-        //@ts-ignore
-        ref={this.ref}
-        {...this.props}
-      />
+      <InputContainer>
+        <StyledInput
+          //@ts-ignore
+          ref={this.ref}
+          {...this.props}
+        />
+      </InputContainer>
     );
   }
 }
