@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Icon } from 'src/atoms';
+import { Icon, Panel } from 'src/atoms';
 import { Copyable } from 'src/molecules';
 import StackedCard from './StackedCard';
 
@@ -23,6 +23,8 @@ const data = {
 
 storiesOf('Molecules', module).add('StackedCard', () => (
   <div style={{ width: '400px ' }}>
-    <StackedCard {...data} />
+    <Panel>
+      <StackedCard {...data} />
+    </Panel>
   </div>
 ));

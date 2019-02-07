@@ -3,6 +3,7 @@ import React, { ChangeEvent, Component } from 'react';
 
 import { ExtractProps, Omit } from 'src/types';
 import Typography from 'src/Typography';
+import Panel from '../Panel';
 import Input from './Input';
 
 class ControlledInput extends Component<
@@ -26,18 +27,20 @@ function validator(value: string) {
   }
 }
 
-storiesOf('Atoms', module).add('Input', () =>
-  Object.entries({
-    'To Address': (
-      <Input placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520" />
-    ),
-    Network: <ControlledInput validator={validator} />,
-  }).map(([label, element]) => (
-    <Typography as="label" key={label}>
-      {label}
-      <br />
-      {element}
-      <br />
-    </Typography>
-  )),
-);
+storiesOf('Atoms', module).add('Input', () => (
+  <Panel>
+    {Object.entries({
+      'To Address': (
+        <Input placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520" />
+      ),
+      Network: <ControlledInput validator={validator} />,
+    }).map(([label, element]) => (
+      <Typography as="label" key={label}>
+        {label}
+        <br />
+        {element}
+        <br />
+      </Typography>
+    ))}
+  </Panel>
+));

@@ -92,7 +92,7 @@ TableHeading.defaultProps = {
 };
 
 const TableRow = styled.tr`
-  border-bottom: 0.0625em solid ${props => props.theme.tableHeadBorder};
+  border-bottom: 0.0625em solid ${props => props.theme.tableRowBorder};
 `;
 
 const TableGroupHead = styled(TableRow)`

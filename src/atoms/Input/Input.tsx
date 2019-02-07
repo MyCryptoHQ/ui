@@ -25,6 +25,11 @@ const StyledInput = styled(Typography)`
     outline: none;
     box-shadow: ${props => props.theme.outline};
   }
+
+  ::placeholder: {
+    color: ${props => props.theme.text};
+    opacity: 1;
+  }
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
   Theme

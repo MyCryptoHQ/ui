@@ -7,6 +7,7 @@ import Typography from 'src/Typography';
 
 const Color = styled.div`
   background: ${props => props.color};
+  border: 0.0625em solid ${props => props.theme.text};
   border-radius: 50%;
   display: inline-block;
   margin-right: ${scale(-1)};

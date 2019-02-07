@@ -65,6 +65,7 @@ export const icons = {
 const StyledInlineSVG = styled(InlineSVG)`
   svg {
     ${size(scale(0))};
+    color: ${props => props.theme.iconColor};
   }
 `;
 
