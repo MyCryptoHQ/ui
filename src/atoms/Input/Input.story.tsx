@@ -31,7 +31,11 @@ storiesOf('Atoms', module).add('Input', () => (
   <Panel>
     {Object.entries({
       'To Address': (
-        <Input placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520" />
+        <Input
+          icon="copy"
+          placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
+          iconSide="left"
+        />
       ),
       Network: <ControlledInput validator={validator} />,
     }).map(([label, element]) => (
