@@ -30,11 +30,17 @@ function validator(value: string) {
 storiesOf('Atoms', module).add('Input', () => (
   <Panel>
     {Object.entries({
+      'From Address': (
+        <Input
+          icon="add"
+          placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
+        />
+      ),
       'To Address': (
         <Input
-          icon="copy"
+          icon="add"
           placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
-          iconSide="left"
+          iconSide="right"
         />
       ),
       Network: <ControlledInput validator={validator} />,
