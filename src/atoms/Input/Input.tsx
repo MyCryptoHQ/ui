@@ -26,7 +26,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const StyledInput = styled(Typography)<{ iconSide?: string }>`
+const StyledInput = styled(Typography)`
   flex: 1;
   background: none;
   border: none;
@@ -70,6 +70,8 @@ export class Input extends Component<
     validator?(value: string): string | undefined;
   }
 > {
+  public static defaultProps = { iconSide: 'left' };
+
   public ref = createRef<HTMLInputElement>();
 
   public componentDidUpdate() {
@@ -84,37 +86,19 @@ export class Input extends Component<
   public render() {
     const { icon, iconSide } = this.props;
     const formattedIconSide = iconSide && iconSide.toLowerCase();
-    if (icon) {
-      return iconSide && formattedIconSide === 'right' ? (
-        <InputContainer>
-          <StyledInput
-            //@ts-ignore
-            ref={this.ref}
-            iconSide={iconSide}
-            {...this.props}
-          />
-          <StyledIcon icon={icon} iconSide={formattedIconSide} />
-        </InputContainer>
-      ) : (
-        <InputContainer>
-          <StyledIcon icon={icon} iconSide={formattedIconSide} />
-          <StyledInput
-            //@ts-ignore
-            ref={this.ref}
-            iconSide={iconSide}
-            {...this.props}
-          />
-        </InputContainer>
-      );
-    }
+    const iconElement = icon && (
+      <StyledIcon icon={icon} iconSide={formattedIconSide} />
+    );
 
     return (
       <InputContainer>
+        {formattedIconSide === 'left' && iconElement}
         <StyledInput
           //@ts-ignore
           ref={this.ref}
           {...this.props}
         />
+        {formattedIconSide === 'right' && iconElement}
       </InputContainer>
     );
   }
