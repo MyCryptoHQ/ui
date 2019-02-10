@@ -1,4 +1,10 @@
-import { darken, invert, lighten, modularScale } from 'polished';
+import {
+  darken,
+  invert,
+  lighten,
+  modularScale,
+  transparentize,
+} from 'polished';
 
 const backgroundLight = 'white';
 const backgroundDark = '#214772';
@@ -53,12 +59,12 @@ export const light: Theme = {
   background: backgroundLight,
   cardText: '#697685',
   controlBackground: backgroundLight,
-  controlBorder: '#e5ecf3',
+  controlBorder: transparentize(0.95, '#3f3f44'),
   headline: '#163150',
   iconColor: '#424242',
   link: linkLight,
   linkHover: darken(0.1, linkLight),
-  outline: outline + primary,
+  outline: outline + transparentize(0.35, linkLight),
   panelBackground: backgroundLight,
   panelBackgroundDark: darken(lightnessMod, backgroundLight),
   primary,
@@ -78,13 +84,13 @@ export const dark: Theme = {
   actionPanelBorder: invert(light.actionPanelBorder),
   background: backgroundDark,
   cardText: '#dbe0e6',
-  controlBackground: '#214772',
-  controlBorder: panelBackgroundDark,
+  controlBackground: panelBackgroundDark,
+  controlBorder: linkLight,
   headline: '#FFFFFF',
   iconColor: primaryDark,
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
-  outline: outlineDark + primaryDark,
+  outline: outlineDark + transparentize(0.35, linkLight),
   panelBackground: panelBackgroundDark,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),
   primary: primaryDark,

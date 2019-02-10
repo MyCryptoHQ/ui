@@ -31,7 +31,6 @@ const StyledInput = styled(Typography)<{ iconSide?: string }>`
   background: none;
   border: none;
   font-size: ${scale(0)};
-  font-weight: bold;
   outline: none;
 
   ::placeholder: {
