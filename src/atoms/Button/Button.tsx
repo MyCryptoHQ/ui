@@ -39,6 +39,7 @@ const StyledButton = styled(BasicButton)<{
 
   :focus {
     box-shadow: ${props => props.theme.outline};
+    outline: none;
   }
 
   &:focus,
