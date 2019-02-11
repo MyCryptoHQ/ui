@@ -52,7 +52,7 @@ interface State {
 
 const sharedCellProperties = `
   min-width: 1em;
-  padding: 1em 1em 1em 0;
+  padding: 1em;
 `;
 
 const TableHead = styled.tr`
