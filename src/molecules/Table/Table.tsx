@@ -203,6 +203,11 @@ class AbstractTable extends Component<Props> {
     const { collapsedGroups, sortedColumnDirection } = this.state;
     const { body, groups } = this.getSortedLayout();
 
+    const isReversedColumn = (heading: string) =>
+      config &&
+      config.reversedColumns &&
+      config.reversedColumns.includes(heading);
+
     return (
       <table {...rest}>
         <thead>
@@ -214,10 +219,6 @@ class AbstractTable extends Component<Props> {
                 config &&
                 config.hiddenHeadings &&
                 config.hiddenHeadings.includes(heading);
-              const isReversedColumn =
-                config &&
-                config.reversedColumns &&
-                config.reversedColumns.includes(heading);
 
               return (
                 <TableHeading
@@ -228,7 +229,7 @@ class AbstractTable extends Component<Props> {
                   role={isSortableColumn ? 'button' : ''}
                   isSortable={isSortableColumn}
                   isHidden={isHiddenHeading}
-                  isReversed={isReversedColumn}
+                  isReversed={isReversedColumn(heading)}
                   data-testid={
                     isSortableColumn ? 'sortable-column-heading' : ''
                   }
@@ -254,11 +255,7 @@ class AbstractTable extends Component<Props> {
               {row.map((cell, cellIndex) => (
                 <TableCell
                   key={cellIndex}
-                  isReversed={
-                    config &&
-                    config.reversedColumns &&
-                    config.reversedColumns.includes(head[cellIndex])
-                  }
+                  isReversed={isReversedColumn(head[cellIndex])}
                   data-testid={`ungrouped-${rowIndex}-${cellIndex}`}
                 >
                   {cell}
@@ -291,11 +288,7 @@ class AbstractTable extends Component<Props> {
                     {row.map((cell, cellIndex) => (
                       <TableCell
                         key={cellIndex}
-                        isReversed={
-                          config &&
-                          config.reversedColumns &&
-                          config.reversedColumns.includes(head[cellIndex])
-                        }
+                        isReversed={isReversedColumn(head[cellIndex])}
                       >
                         {cell}
                       </TableCell>
