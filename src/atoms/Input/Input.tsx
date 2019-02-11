@@ -27,7 +27,7 @@ const InputContainer = styled.div`
   }
 `;
 
-const StyledInput = styled(Typography)`
+const StyledInput = styled(Typography)<{ iconSide?: string }>`
   flex: 1;
   background: none;
   border: none;
