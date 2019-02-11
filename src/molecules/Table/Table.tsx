@@ -50,9 +50,10 @@ interface State {
   sortedColumnDirection: ColumnDirections;
 }
 
-const sharedCellProperties = `
+const sharedCellProperties = ({ isReversed }: { isReversed?: boolean }) => `
   min-width: 1em;
   padding: 1em;
+  text-align: ${isReversed ? 'right' : 'left'};
 `;
 
 const TableHead = styled.tr`
@@ -70,7 +71,6 @@ interface HeadingProps {
 const TableHeading = styled(Typography)<HeadingProps>`
   ${sharedCellProperties}
   color: ${props => props.theme.headline};
-  text-align: left;
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
@@ -82,7 +82,6 @@ const TableHeading = styled(Typography)<HeadingProps>`
     top: -9999em;
     left: -9999em;
   `}
-  ${props => props.isReversed && 'text-align: right;'}
 ` as StyledComponentClass<
   ClassAttributes<HTMLTableHeaderCellElement> &
     ThHTMLAttributes<HTMLTableHeaderCellElement> &
@@ -116,7 +115,6 @@ const TableCaret = styled(Icon)<{ isFlipped?: boolean }>`
 
 const TableCell = styled(Typography)<{ isReversed?: boolean }>`
   ${sharedCellProperties};
-  ${props => props.isReversed && 'text-align: right;'};
 ` as StyledComponentClass<
   DetailedHTMLProps<
     TdHTMLAttributes<HTMLTableDataCellElement> & { isReversed?: boolean },
