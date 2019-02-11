@@ -1,4 +1,3 @@
-import { padding } from 'polished';
 import React, {
   Component,
   createRef,
@@ -18,8 +17,10 @@ const InputContainer = styled.div`
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
-  ${padding(scale(-1), scale(0))};
+  padding-top: ${scale(-1)};
+  padding-bottom: ${scale(-1)};
   display: flex;
+  align-items: center;
   :focus-within {
     outline: none;
     box-shadow: ${props => props.theme.outline};
@@ -33,6 +34,10 @@ const StyledInput = styled(Typography)<{ iconSide?: string }>`
   font-size: ${scale(0)};
   font-weight: bold;
   outline: none;
+  ${props =>
+    props.iconSide === 'right'
+      ? 'padding-left: ' + scale(0) + ';'
+      : 'padding-right:' + scale(0) + ';'};
 
   ::placeholder: {
     color: ${props => props.theme.text};
@@ -44,20 +49,10 @@ const StyledInput = styled(Typography)<{ iconSide?: string }>`
 >;
 
 const StyledIcon = styled(Icon)<{ iconSide?: string }>`
+  padding-left: ${scale(0)};
+  padding-right: ${scale(0)};
   color: #1eb8e7;
   margin: auto;
-  ${props =>
-    props.iconSide === 'right'
-      ? 'padding-left: 12px;'
-      : 'padding-right: 12px;'};
-  height: 100%;
-  display: block;
-  /* stylelint-disable max-nesting-depth */
-  span {
-    svg {
-      height: 100;
-    }
-  }
 `;
 
 StyledInput.defaultProps = { as: 'input' };
