@@ -137,6 +137,27 @@ describe('Table', () => {
     });
   });
 
+  test('it reverses columns', () => {
+    const data = generateTableData();
+
+    data.config = {
+      reversedColumns: ['Foo', 'Bar'],
+    };
+
+    data.groups = [
+      {
+        title: 'Bar',
+        entries: [['D', 'E', 'F']],
+      },
+    ];
+
+    const { getByText } = render(<Table {...data} />);
+
+    for (const element of ['Foo', 'Bar']) {
+      expect(getByText(element)).toHaveStyle('text-align: right;');
+    }
+  });
+
   describe('Error handling', () => {
     test('Bad column count', () => {
       const data = generateTableData();

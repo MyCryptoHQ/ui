@@ -22,6 +22,7 @@ export interface TableGroup {
 export interface TableConfig {
   sortableColumn?: string | null;
   hiddenHeadings?: string[];
+  reversedColumns?: string[];
   sortFunction?(a: any, b: any): number;
 }
 
@@ -63,6 +64,7 @@ const TableHead = styled.tr`
 interface HeadingProps {
   isSortable?: boolean;
   isHidden?: boolean;
+  isReversed?: boolean;
 }
 
 const TableHeading = styled(Typography)<HeadingProps>`
@@ -80,6 +82,7 @@ const TableHeading = styled(Typography)<HeadingProps>`
     top: -9999em;
     left: -9999em;
   `}
+  ${props => props.isReversed && 'text-align: right;'}
 ` as StyledComponentClass<
   ClassAttributes<HTMLTableHeaderCellElement> &
     ThHTMLAttributes<HTMLTableHeaderCellElement> &
@@ -111,11 +114,12 @@ const TableCaret = styled(Icon)<{ isFlipped?: boolean }>`
   `};
 `;
 
-const TableCell = styled(Typography)`
+const TableCell = styled(Typography)<{ isReversed?: boolean }>`
   ${sharedCellProperties};
+  ${props => props.isReversed && 'text-align: right;'};
 ` as StyledComponentClass<
   DetailedHTMLProps<
-    TdHTMLAttributes<HTMLTableDataCellElement>,
+    TdHTMLAttributes<HTMLTableDataCellElement> & { isReversed?: boolean },
     HTMLTableDataCellElement
   >,
   Theme
@@ -209,6 +213,10 @@ class AbstractTable extends Component<Props> {
                 config &&
                 config.hiddenHeadings &&
                 config.hiddenHeadings.includes(heading);
+              const isReversedColumn =
+                config &&
+                config.reversedColumns &&
+                config.reversedColumns.includes(heading);
 
               return (
                 <TableHeading
@@ -219,6 +227,7 @@ class AbstractTable extends Component<Props> {
                   role={isSortableColumn ? 'button' : ''}
                   isSortable={isSortableColumn}
                   isHidden={isHiddenHeading}
+                  isReversed={isReversedColumn}
                   data-testid={
                     isSortableColumn ? 'sortable-column-heading' : ''
                   }
@@ -244,6 +253,11 @@ class AbstractTable extends Component<Props> {
               {row.map((cell, cellIndex) => (
                 <TableCell
                   key={cellIndex}
+                  isReversed={
+                    config &&
+                    config.reversedColumns &&
+                    config.reversedColumns.includes(head[cellIndex])
+                  }
                   data-testid={`ungrouped-${rowIndex}-${cellIndex}`}
                 >
                   {cell}
@@ -274,7 +288,16 @@ class AbstractTable extends Component<Props> {
                 entries.map((row, rowIndex) => (
                   <TableRow key={rowIndex}>
                     {row.map((cell, cellIndex) => (
-                      <TableCell key={cellIndex}>{cell}</TableCell>
+                      <TableCell
+                        key={cellIndex}
+                        isReversed={
+                          config &&
+                          config.reversedColumns &&
+                          config.reversedColumns.includes(head[cellIndex])
+                        }
+                      >
+                        {cell}
+                      </TableCell>
                     ))}
                   </TableRow>
                 ))}
