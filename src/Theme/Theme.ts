@@ -13,8 +13,7 @@ export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
 const linkDark = '#1eb8e7';
-const outline = '0 0 0 0.125em white, 0 0 0 0.25em ';
-const outlineDark = '0 0 0 0.125em #214772, 0 0 0 0.25em ';
+const outline = '0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const panelBackgroundDark = '#163150';
 const primary = '#007896';
@@ -90,7 +89,7 @@ export const dark: Theme = {
   iconColor: primaryDark,
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
-  outline: outlineDark + transparentize(0.35, primaryDark),
+  outline: outline + transparentize(0.35, primaryDark),
   panelBackground: panelBackgroundDark,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),
   primary: primaryDark,
