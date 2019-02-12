@@ -12,13 +12,14 @@ import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
 import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ hasIcon?: boolean }>`
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
   padding-top: ${scale(-1)};
   padding-bottom: ${scale(-1)};
+  ${props => !props.hasIcon && 'padding-left: ' + scale(0) + ';'};
   display: flex;
   align-items: center;
   :focus-within {
@@ -84,13 +85,14 @@ export class Input extends Component<
 
   public render() {
     const { icon, iconSide } = this.props;
+    const hasIcon = icon ? true : false;
     const formattedIconSide = iconSide && iconSide.toLowerCase();
     const iconElement = icon && (
       <StyledIcon icon={icon} iconSide={formattedIconSide} />
     );
 
     return (
-      <InputContainer>
+      <InputContainer hasIcon={hasIcon}>
         {formattedIconSide === 'left' && iconElement}
         <StyledInput
           //@ts-ignore
