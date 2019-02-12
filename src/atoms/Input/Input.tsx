@@ -33,9 +33,9 @@ const StyledInput = styled(Typography)<{ iconSide?: string }>`
   font-size: ${scale(0)};
   outline: none;
 
-  ::placeholder: {
+  ::placeholder {
     color: ${props => props.theme.text};
-    opacity: 1;
+    opacity: 0.55;
   }
 ` as StyledComponentClass<
   DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
