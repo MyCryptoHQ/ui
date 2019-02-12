@@ -54,10 +54,7 @@ const StyledIcon = styled(Icon)<{ iconSide?: string }>`
   padding-right: ${scale(0)};
   color: #1eb8e7;
   margin: auto;
-  /* stylelint-disable max-nesting-depth */
-  span {
-    vertical-align: middle;
-  }
+  display: flex;
 `;
 
 StyledInput.defaultProps = { as: 'input' };
