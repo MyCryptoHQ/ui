@@ -1,29 +1,11 @@
-import { padding } from 'polished';
 import React, { Component, createRef, ReactNode } from 'react';
 
-import { borderRadius, scale } from 'src/Theme';
+import ReactTooltip from 'react-tooltip';
+
 import styled from 'styled-components';
 import triangle from './tooltip-triangle.svg';
 
-const Relative = styled.div`
-  position: relative;
-`;
-
-const Absolute = styled.div<{ height: number; boxHeight: number }>`
-  position: absolute;
-  display: block;
-  bottom: ${props => props.height * 4 + 8}px;
-  height: ${props => props.boxHeight}px;
-`;
-
-const Box = styled.div`
-  border: 0.0625em solid #bac9d4;
-  background: ${props => props.theme.controlBackground};
-  border-radius: ${borderRadius};
-  box-shadow: 0 0.1875em 0.375em 0 #00000012,
-    0 0.4375em 0.625em 0.4375em #32325d1a;
-  ${padding(scale(-1))};
-`;
+const StyledTooltip = styled.span``;
 
 const Triangle = styled.img`
   position: relative;
@@ -36,7 +18,7 @@ Triangle.defaultProps = { src: triangle };
 
 export class Tooltip extends Component<{
   tooltip: ReactNode;
-  children(props: Record<'onMouseOver' | 'onMouseOut', () => void>): ReactNode;
+  children: ReactNode;
 }> {
   public ref = createRef<HTMLDivElement>();
   public boxRef = createRef<HTMLDivElement>();
@@ -71,29 +53,13 @@ export class Tooltip extends Component<{
 
   public render() {
     const { children, tooltip } = this.props;
-    const { height, open, boxHeight } = this.state;
+    console.log(children);
+    // const { height, open, boxHeight } = this.state;
 
     return (
-      <div ref={this.containerRef}>
-        <Relative>
-          <div ref={this.ref}>
-            {children({
-              onMouseOver: this.handleMouseOver,
-              onMouseOut: this.handleMouseExit,
-            })}
-          </div>
-
-          {open && (
-            // Height needs to be reduced because the triangle SVG is too tall
-            <Absolute height={(height || 0) - 17} boxHeight={boxHeight || 0}>
-              <div ref={this.boxRef}>
-                <Box>{tooltip}</Box>
-              </div>
-
-              <Triangle />
-            </Absolute>
-          )}
-        </Relative>
+      <div>
+        <StyledTooltip data-tip={tooltip}>{children}</StyledTooltip>
+        <ReactTooltip effect="solid" place="top" />
       </div>
     );
   }

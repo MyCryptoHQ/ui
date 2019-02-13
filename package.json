@@ -17,10 +17,13 @@
   "dependencies": {
     "@types/lodash.throttle": "^4.1.4",
     "@types/react-inlinesvg": "^0.8.0",
+    "@types/react-tooltip": "^3.9.0",
     "ethereum-blockies-base64": "^1.0.2",
     "lodash.throttle": "^4.1.1",
     "polished": "^2.2.0",
-    "react-inlinesvg": "^0.8.3"
+    "react-inlinesvg": "^0.8.3",
+    "react-tooltip": "^3.9.2",
+    "typeface-lato": "^0.0.54"
   },
   "devDependencies": {
     "@babel/core": "^7.1.2",
