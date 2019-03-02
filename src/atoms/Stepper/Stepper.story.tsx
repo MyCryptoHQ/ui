@@ -2,14 +2,14 @@ import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
 
 import Button from '../Button';
-import Panel from '../Panel';
 import Stepper from './Stepper';
 
-const StepOne = <Panel>Step One</Panel>;
-const StepTwo = <Panel>Step Two</Panel>;
-const StepThree = <Panel>Step Three</Panel>;
-
-const steps = [StepOne, StepTwo, StepThree];
+const beforeStep = <h2>Start Stepping!</h2>;
+const stepOne = <h2>Step One</h2>;
+const stepTwo = <h2>Step Two</h2>;
+const stepThree = <h2>Step Three</h2>;
+const afterStep = <h2>All steps are done!</h2>;
+const steps = [beforeStep, stepOne, stepTwo, stepThree, afterStep];
 
 // tslint:disable-next-line: no-empty-interface
 interface StepActionProps {}
@@ -19,7 +19,7 @@ interface StepActionState {
   total: number;
 }
 
-class StepAction extends Component<StepActionProps, StepActionState> {
+class Step extends Component<StepActionProps, StepActionState> {
   public state: StepActionState = { step: 0, total: steps.length };
 
   constructor(props: StepActionProps) {
@@ -28,9 +28,11 @@ class StepAction extends Component<StepActionProps, StepActionState> {
     this.handleClickNext = this.handleClickNext.bind(this);
     this.handleClickBack = this.handleClickBack.bind(this);
   }
+
   public handleClickBack() {
     this.setState(({ step }) => ({ step: step - 1 }));
   }
+
   public handleClickNext() {
     this.setState(({ step }) => ({ step: step + 1 }));
   }
@@ -39,18 +41,23 @@ class StepAction extends Component<StepActionProps, StepActionState> {
     const { step, total } = this.state;
 
     return (
-      <Panel>
-        <div className="ContentPanel-top">
-          <Stepper current={step} total={total} />
-        </div>
-        <div className="ContentPanel-content">
+      <div>
+        <div className="content-panel-top">
+          <Stepper current={step} total={total - 2} />
           {steps[step]}
-          <Button onClick={this.handleClickBack}>Back</Button>
-          <Button onClick={this.handleClickNext}>Next</Button>
         </div>
-      </Panel>
+        <div className="content-panel">
+          {step > 0 ? (
+            <Button onClick={this.handleClickNext}>Next</Button>
+          ) : (
+            <Button onClick={this.handleClickBack}>Back</Button> && (
+              <Button onClick={this.handleClickNext}>Next</Button>
+            )
+          )}
+        </div>
+      </div>
     );
   }
 }
 
-storiesOf('Atoms', module).add('Stepper', () => <StepAction />);
+storiesOf('Atoms', module).add('Stepper', () => <Step />);
