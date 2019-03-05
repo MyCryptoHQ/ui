@@ -1,7 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
 
+import styled from 'src/styled-components';
+import Typography from 'src/Typography';
+
 import Button from '../Button';
+import backArrowIcon from '../Icon/icons/icn-back-arrow.svg';
 import Stepper from './Stepper';
 
 const beforeStep = <h2>Start Stepping!</h2>;
@@ -10,6 +14,23 @@ const stepTwo = <h2>Step Two</h2>;
 const stepThree = <h2>Step Three</h2>;
 const afterStep = <h2>All steps are done!</h2>;
 const steps = [beforeStep, stepOne, stepTwo, stepThree, afterStep];
+
+const StepperBackContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+`;
+
+const CopyContainer = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+const NextButtonContainer = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  display: flex;
+`;
 
 // tslint:disable-next-line: no-empty-interface
 interface StepActionProps {}
@@ -22,40 +43,40 @@ interface StepActionState {
 class Step extends Component<StepActionProps, StepActionState> {
   public state: StepActionState = { step: 0, total: steps.length };
 
-  constructor(props: StepActionProps) {
-    super(props);
-
-    this.handleClickNext = this.handleClickNext.bind(this);
-    this.handleClickBack = this.handleClickBack.bind(this);
-  }
-
-  public handleClickBack() {
+  public handleClickBack = () => {
     this.setState(({ step }) => ({ step: step - 1 }));
-  }
+  };
 
-  public handleClickNext() {
+  public handleClickNext = () => {
     this.setState(({ step }) => ({ step: step + 1 }));
-  }
+  };
 
   public render() {
     const { step, total } = this.state;
 
     return (
-      <div>
-        <div className="content-panel-top">
-          <Stepper current={step} total={total - 2} />
-          {steps[step]}
-        </div>
-        <div className="content-panel">
+      <>
+        <StepperBackContainer>
           {step > 0 ? (
-            <Button onClick={this.handleClickNext}>Next</Button>
+            <Button basic={true} onClick={this.handleClickBack}>
+              <img src={backArrowIcon} alt="Back arrow" /> Back
+            </Button>
           ) : (
-            <Button onClick={this.handleClickBack}>Back</Button> && (
-              <Button onClick={this.handleClickNext}>Next</Button>
-            )
+            <Button basic={true} />
           )}
-        </div>
-      </div>
+          <Stepper current={step} total={total} />
+        </StepperBackContainer>
+        <CopyContainer>
+          <Typography>{steps[step]}</Typography>
+        </CopyContainer>
+        <NextButtonContainer>
+          {step === steps.length - 1 ? (
+            <Button basic={true} />
+          ) : (
+            <Button onClick={this.handleClickNext}>Next</Button>
+          )}
+        </NextButtonContainer>
+      </>
     );
   }
 }
