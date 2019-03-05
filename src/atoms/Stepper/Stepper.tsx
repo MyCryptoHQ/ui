@@ -13,7 +13,7 @@ export const StepperStyled = styled.div`
   width: 0.75em;
   height: 0.75em;
   margin-right: 0.5em;
-  background: #007a99;
+  background: ${props => props.theme.link};
   border-radius: 50%;
 `;
 
@@ -21,14 +21,14 @@ export const Step = styled.div`
   width: 0.5em;
   height: 0.5em;
   margin-right: 0.5em;
-  background: #007a99;
+  background: ${props => props.theme.link};
   border-radius: 50%;
 `;
 
 export const ActiveStep = styled.div`
   width: 0.375em;
   height: 0.375em;
-  background: white;
+  background: ${props => props.theme.background};
   border-radius: 50%;
 `;
 
