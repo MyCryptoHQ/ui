@@ -37,18 +37,29 @@ interface Props {
   total: number;
 }
 
+export enum TestIds {
+  STEPPER_CONTAINER = 'stepper',
+  ACTIVE_STEP_INDEX_PREFIX = 'active-step',
+  STEPPER_STYLED_PREFIX = 'step',
+}
+
 export function Stepper({ current, total }: Props) {
   return (
-    <StepperContainer>
+    <StepperContainer data-testid={TestIds.STEPPER_CONTAINER}>
       {Array.from(
         { length: total },
         (_, index) =>
           index === current ? (
             <StepperStyled key={index}>
-              <ActiveStep />
+              <ActiveStep
+                data-testid={`${TestIds.ACTIVE_STEP_INDEX_PREFIX}-${index}`}
+              />
             </StepperStyled>
           ) : (
-            <Step key={index} />
+            <Step
+              key={index}
+              data-testid={`${TestIds.STEPPER_STYLED_PREFIX}-${index}`}
+            />
           ),
       )}
     </StepperContainer>

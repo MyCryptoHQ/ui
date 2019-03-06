@@ -1,9 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
-
 import styled from 'src/styled-components';
 import Typography from 'src/Typography';
-
 import Button from '../Button';
 import backArrowIcon from '../Icon/icons/icn-back-arrow.svg';
 import Stepper from './Stepper';
@@ -13,7 +11,8 @@ const stepOne = <h2>Step One</h2>;
 const stepTwo = <h2>Step Two</h2>;
 const stepThree = <h2>Step Three</h2>;
 const afterStep = <h2>All steps are done!</h2>;
-const steps = [beforeStep, stepOne, stepTwo, stepThree, afterStep];
+
+export const steps = [beforeStep, stepOne, stepTwo, stepThree, afterStep];
 
 const StepperBackContainer = styled.div`
   display: flex;
@@ -29,7 +28,6 @@ const CopyContainer = styled.div`
 const NextButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;
-  display: flex;
 `;
 
 // tslint:disable-next-line: no-empty-interface
@@ -40,7 +38,7 @@ interface StepActionState {
   total: number;
 }
 
-class Step extends Component<StepActionProps, StepActionState> {
+export class StepperStory extends Component<StepActionProps, StepActionState> {
   public state: StepActionState = { step: 0, total: steps.length };
 
   public handleClickBack = () => {
@@ -81,4 +79,6 @@ class Step extends Component<StepActionProps, StepActionState> {
   }
 }
 
-storiesOf('Atoms', module).add('Stepper', () => <Step />);
+storiesOf('Atoms', module).add('Stepper', () => <StepperStory />);
+
+export default StepperStory;
