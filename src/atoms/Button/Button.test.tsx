@@ -4,8 +4,6 @@ import { render } from 'react-testing-library';
 
 import Button from './Button';
 
-const context = describe;
-
 describe('Button tests', () => {
   const handleClick = jest.fn();
   const { getByText, rerender } = render(
@@ -13,13 +11,13 @@ describe('Button tests', () => {
   );
   const button = getByText('Button');
 
-  context('smoke tests', () => {
+  describe('smoke tests', () => {
     it('should render properly', () => {
       expect(button).toHaveAttribute('type', 'button');
     });
   });
 
-  context('size tests', () => {
+  describe('size tests', () => {
     it('should render as a large button', () => {
       rerender(<Button large={true} />);
     });
