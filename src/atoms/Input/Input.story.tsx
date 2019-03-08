@@ -1,13 +1,30 @@
 import { storiesOf } from '@storybook/react';
-import React, { ChangeEvent, Component } from 'react';
+import React, {
+  ChangeEvent,
+  Component,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+} from 'react';
+import { ThemedOuterStyledProps } from 'styled-components';
 
-import { ExtractProps, Omit } from 'src/types';
+import Omit from 'src/Omit';
+import Theme from 'src/Theme';
 import Typography from 'src/Typography';
 import Panel from '../Panel';
-import Input from './Input';
+import Input, { InputProps } from './Input';
 
 class ControlledInput extends Component<
-  Omit<ExtractProps<typeof Input>, 'ref'>
+  InputProps &
+    Omit<
+      ThemedOuterStyledProps<
+        DetailedHTMLProps<
+          InputHTMLAttributes<HTMLInputElement>,
+          HTMLInputElement
+        >,
+        Theme
+      >,
+      'ref'
+    >
 > {
   public state = { value: '' };
 

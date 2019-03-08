@@ -1,8 +1,10 @@
 import makeBlockie from 'ethereum-blockies-base64';
-import React from 'react';
+import React, { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import { ThemedOuterStyledProps } from 'styled-components';
 
+import Omit from 'src/Omit';
 import styled from 'src/styled-components';
-import { ExtractProps, Omit } from 'src/types';
+import Theme from 'src/Theme';
 
 const RoundedImage = styled.img`
   border-radius: 50%;
@@ -12,7 +14,13 @@ const RoundedImage = styled.img`
 export const Identicon = ({
   address,
   ...rest
-}: { address: string } & Omit<ExtractProps<typeof RoundedImage>, 'ref'>) => {
+}: { address: string } & Omit<
+  ThemedOuterStyledProps<
+    DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+    Theme
+  >,
+  'ref'
+>) => {
   return <RoundedImage src={makeBlockie(address)} {...rest} />;
 };
 

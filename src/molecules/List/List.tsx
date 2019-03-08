@@ -1,11 +1,17 @@
 import { directionalProperty, padding } from 'polished';
-import React, { Children, ReactNode } from 'react';
+import React, {
+  Children,
+  DetailedHTMLProps,
+  HTMLAttributes,
+  ReactNode,
+} from 'react';
 
 import { Panel } from 'src/atoms';
+import { PanelProps } from 'src/atoms/Panel/Panel';
 import styled from 'src/styled-components';
-import { scale } from 'src/Theme';
-import { ExtractProps } from 'src/types';
+import Theme, { scale } from 'src/Theme';
 import Typography from 'src/Typography';
+import { ThemedOuterStyledProps } from 'styled-components';
 
 const GroupItem = styled(Typography)`
   ${props =>
@@ -62,6 +68,13 @@ interface Description {
   definition: string | ReactNode;
 }
 
+interface ListProps extends PanelProps {
+  descriptionData?: Description[];
+  group?: boolean;
+  inline?: boolean;
+  ordered?: boolean;
+}
+
 export const List = ({
   basic,
   children,
@@ -70,14 +83,11 @@ export const List = ({
   inline,
   ordered,
   ...rest
-}: {
-  basic?: boolean;
-  children: ReactNode;
-  descriptionData?: Description[];
-  group?: boolean;
-  inline?: boolean;
-  ordered?: boolean;
-} & ExtractProps<typeof Panel>) => {
+}: ListProps &
+  ThemedOuterStyledProps<
+    DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+    Theme
+  >) => {
   let container;
   if (basic || group) {
     container = undefined;

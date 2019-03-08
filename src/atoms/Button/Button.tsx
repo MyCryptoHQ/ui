@@ -1,11 +1,18 @@
 import { padding, transitions } from 'polished';
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, {
+  ButtonHTMLAttributes,
+  ClassAttributes,
+  DetailedHTMLProps,
+} from 'react';
+import {
+  StyledComponentClass,
+  ThemedOuterStyledProps,
+} from 'styled-components';
 
 import Icon, { icons } from 'src/atoms/Icon';
+import Omit from 'src/Omit';
 import styled from 'src/styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
-import { ExtractProps, Omit } from 'src/types';
 import Typography from 'src/Typography';
 
 export const BasicButton = styled(Typography)`
@@ -21,10 +28,12 @@ export const BasicButton = styled(Typography)`
 
 BasicButton.defaultProps = { as: 'button', type: 'button' };
 
-const StyledButton = styled(BasicButton)<{
+export interface StyledButtonProps {
   large?: boolean;
   secondary?: boolean;
-}>`
+}
+
+const StyledButton = styled(BasicButton)<StyledButtonProps>`
   background: ${props => !props.secondary && props.theme.primary};
   border: ${props => props.secondary && '.125em solid' + props.theme.primary};
   border-radius: ${borderRadius};
@@ -54,15 +63,30 @@ const StyledButton = styled(BasicButton)<{
   }
 `;
 
+export interface ButtonProps {
+  basic?: boolean;
+  icon?: keyof typeof icons;
+}
+
 export function Button({
   basic,
   children,
   icon,
   ...rest
-}: { basic?: boolean; icon?: keyof typeof icons } & Omit<
-  ExtractProps<typeof StyledButton>,
-  'ref'
->) {
+}: ButtonProps &
+  Omit<
+    ThemedOuterStyledProps<
+      DetailedHTMLProps<
+        ButtonHTMLAttributes<HTMLButtonElement>,
+        HTMLButtonElement
+      > &
+        ClassAttributes<HTMLButtonElement> &
+        ButtonHTMLAttributes<HTMLButtonElement> &
+        StyledButtonProps,
+      Theme
+    >,
+    'ref'
+  >) {
   const ButtonComponent = basic || icon ? BasicButton : StyledButton;
 
   return (

@@ -1,11 +1,14 @@
 import { padding } from 'polished';
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
+import {
+  StyledComponentClass,
+  ThemedOuterStyledProps,
+} from 'styled-components';
 
 import { Panel } from 'src/atoms';
+import { PanelProps } from 'src/atoms/Panel/Panel';
 import styled from 'src/styled-components';
 import Theme, { scale } from 'src/Theme';
-import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 
 const ActionPanelBody = styled.div`
@@ -25,16 +28,20 @@ const ActionPanelFooter = styled(Typography)`
 
 ActionPanelFooter.defaultProps = { as: 'footer' };
 
+interface ActionPanelProps extends PanelProps {
+  action: string;
+}
+
 export function ActionPanel({
   action,
   children,
   noPadding,
   ...rest
-}: {
-  action: string;
-  children: ReactNode;
-  noPadding?: boolean;
-} & ExtractProps<typeof Panel>) {
+}: ActionPanelProps &
+  ThemedOuterStyledProps<
+    DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+    Theme
+  >) {
   return (
     <Panel noPadding={true} {...rest}>
       {noPadding ? children : <ActionPanelBody>{children}</ActionPanelBody>}

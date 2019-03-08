@@ -1,19 +1,28 @@
 import { padding, size } from 'polished';
-import React, { ButtonHTMLAttributes, DetailedHTMLProps } from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, {
+  ButtonHTMLAttributes,
+  DetailedHTMLProps,
+  HTMLAttributes,
+} from 'react';
+import {
+  StyledComponentClass,
+  ThemedOuterStyledProps,
+} from 'styled-components';
 
+import Omit from 'src/Omit';
 import styled from 'src/styled-components';
 import Theme, { borderRadiusLarge, scale } from 'src/Theme';
-import { ExtractProps, Omit } from 'src/types';
 
 // Use an empty styled component instead of a plain section tag so components
 // like List can change tags with the as prop.
 const BasicPanel = styled.section``;
 
-const StyledPanel = styled(BasicPanel)<{
+interface StyledPanelProps {
   noPadding?: boolean;
   isPlaceholder?: boolean;
-}>`
+}
+
+const StyledPanel = styled(BasicPanel)<StyledPanelProps>`
   background: ${props =>
     props.isPlaceholder
       ? props.theme.panelBackgroundDark
@@ -41,14 +50,19 @@ const InteractivePanel = styled(StyledPanel)`
     opacity: 0.65;
   }
 ` as StyledComponentClass<
-  DetailedHTMLProps<
-    ButtonHTMLAttributes<HTMLButtonElement>,
-    HTMLButtonElement
-  > & { noPadding?: boolean; isPlaceholder?: boolean },
+  StyledPanelProps &
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    >,
   Theme
 >;
 
 InteractivePanel.defaultProps = { as: 'button', type: 'button' };
+
+export interface PanelProps extends StyledPanelProps {
+  basic?: boolean;
+}
 
 export function Panel({
   basic,
@@ -56,11 +70,14 @@ export function Panel({
   isPlaceholder,
   onClick,
   ...rest
-}: {
-  basic?: boolean;
-  noPadding?: boolean;
-  isPlaceholder?: boolean;
-} & Omit<ExtractProps<typeof BasicPanel>, 'ref'>) {
+}: PanelProps &
+  Omit<
+    ThemedOuterStyledProps<
+      DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
+      Theme
+    >,
+    'ref'
+  >) {
   if (basic) {
     return <BasicPanel {...rest} />;
   } else if (onClick) {

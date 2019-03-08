@@ -5,12 +5,14 @@ import React, {
   DetailedHTMLProps,
   InputHTMLAttributes,
 } from 'react';
-import { StyledComponentClass } from 'styled-components';
+import {
+  StyledComponentClass,
+  ThemedOuterStyledProps,
+} from 'styled-components';
 
 import Icon, { icons } from 'src/atoms/Icon';
 import styled from 'src/styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
-import { ExtractProps } from 'src/types';
 import Typography from 'src/Typography';
 
 const InputContainer = styled.div`
@@ -62,13 +64,22 @@ const StyledIcon = styled(Icon)<{ iconSide?: string }>`
 
 StyledInput.defaultProps = { as: 'input' };
 
+export interface InputProps {
+  value?: string;
+  icon?: keyof typeof icons;
+  iconSide?: string;
+  validator?(value: string): string | undefined;
+}
+
 export class Input extends Component<
-  ExtractProps<typeof StyledInput> & {
-    value?: string;
-    icon?: keyof typeof icons;
-    iconSide?: string;
-    validator?(value: string): string | undefined;
-  }
+  InputProps &
+    ThemedOuterStyledProps<
+      DetailedHTMLProps<
+        InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
+      >,
+      Theme
+    >
 > {
   public static defaultProps = { iconSide: 'left' };
 

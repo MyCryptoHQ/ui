@@ -194,6 +194,7 @@
       "stylelint-config-prettier"
     ],
     "rules": {
+      "block-no-empty": null,
       "color-named": "always-where-possible",
       "declaration-no-important": true,
       "font-family-name-quotes": "always-where-recommended",

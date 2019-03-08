@@ -1,12 +1,32 @@
 import { storiesOf } from '@storybook/react';
-import React, { ChangeEvent, Component } from 'react';
+import React, {
+  ChangeEvent,
+  Component,
+  DetailedHTMLProps,
+  InputHTMLAttributes,
+} from 'react';
+import { ThemedOuterStyledProps } from 'styled-components';
 
 import { Panel } from 'src/atoms';
-import { ExtractProps } from 'src/types';
+import Omit from 'src/Omit';
+import { ComboBoxProps } from 'src/organisms/ComboBox/ComboBox';
+import Theme from 'src/Theme';
 import Typography from 'src/Typography';
 import ComboBox from './ComboBox';
 
-class ControlledComboBox extends Component<ExtractProps<typeof ComboBox>> {
+class ControlledComboBox extends Component<
+  ComboBoxProps &
+    Omit<
+      ThemedOuterStyledProps<
+        DetailedHTMLProps<
+          InputHTMLAttributes<HTMLInputElement>,
+          HTMLInputElement
+        >,
+        Theme
+      >,
+      'ref'
+    >
+> {
   public state = { value: '' };
 
   public handleChange = ({

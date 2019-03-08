@@ -1,8 +1,16 @@
-import React, { Component, ReactNode } from 'react';
-import styled from 'styled-components';
+import React, {
+  ButtonHTMLAttributes,
+  ClassAttributes,
+  Component,
+  DetailedHTMLProps,
+  ReactNode,
+} from 'react';
+import styled, { ThemedOuterStyledProps } from 'styled-components';
 
 import { Button, Icon, Tooltip } from 'src/atoms';
-import { ExtractProps } from 'src/types';
+import { ButtonProps, StyledButtonProps } from 'src/atoms/Button/Button';
+import Omit from 'src/Omit';
+import Theme from 'src/Theme';
 import Typography from 'src/Typography';
 
 const ColoredIcon = styled(Icon)`
@@ -40,7 +48,20 @@ export class Copyable extends Component<{
 
   public renderButton(
     children: ReactNode,
-    props?: ExtractProps<typeof Button>,
+    props?: ButtonProps &
+      Omit<
+        ThemedOuterStyledProps<
+          DetailedHTMLProps<
+            ButtonHTMLAttributes<HTMLButtonElement>,
+            HTMLButtonElement
+          > &
+            ClassAttributes<HTMLButtonElement> &
+            ButtonHTMLAttributes<HTMLButtonElement> &
+            StyledButtonProps,
+          Theme
+        >,
+        'ref'
+      >,
   ) {
     const { text } = this.props;
     const { copied } = this.state;
