@@ -17,33 +17,31 @@ export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 const switchBackgroundGreyable = lighten(0.3, 'grey');
 export const transitionDuration = '0.12s';
 
-type Theme = Record<
-  | 'name'
-  | 'actionPanelBackground'
-  | 'actionPanelBorder'
-  | 'background'
-  | 'cardText'
-  | 'controlBackground'
-  | 'controlBorder'
-  | 'headline'
-  | 'iconColor'
-  | 'link'
-  | 'linkHover'
-  | 'outline'
-  | 'panelBackground'
-  | 'panelBackgroundDark'
-  | 'primary'
-  | 'primaryDark'
-  | 'primaryDarker'
-  | 'switchBackgroundGreyable'
-  | 'tableHeadBackground'
-  | 'tableRowBorder'
-  | 'tableHeadBorder'
-  | 'text',
-  string
->;
+export default interface Theme {
+  name: string;
 
-export default Theme;
+  actionPanelBackground: string;
+  actionPanelBorder: string;
+  background: string;
+  cardText: string;
+  controlBackground: string;
+  controlBorder: string;
+  headline: string;
+  iconColor: string;
+  link: string;
+  linkHover: string;
+  outline: string;
+  panelBackground: string;
+  panelBackgroundDark: string;
+  primary: string;
+  primaryDark: string;
+  primaryDarker: string;
+  switchBackgroundGreyable: string;
+  tableHeadBackground: string;
+  tableRowBorder: string;
+  tableHeadBorder: string;
+  text: string;
+}
 
 export const light: Theme = {
   name: 'Light',
