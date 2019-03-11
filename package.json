@@ -15,6 +15,7 @@
     "dist"
   ],
   "dependencies": {
+    "@types/dom-clipboard-api": "^1.0.1",
     "@types/lodash.throttle": "^4.1.4",
     "@types/react-inlinesvg": "^0.8.0",
     "ethereum-blockies-base64": "^1.0.2",

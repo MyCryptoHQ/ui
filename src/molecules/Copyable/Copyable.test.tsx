@@ -4,7 +4,8 @@ import { fireEvent, render } from 'react-testing-library';
 
 import Copyable from './Copyable';
 
-navigator.clipboard = { ...navigator.clipboard, writeText: jest.fn() };
+// @ts-ignore
+navigator.clipboard = { writeText: jest.fn() };
 
 function truncate(text: string) {
   return `${text[0]}...`;
