@@ -1,4 +1,10 @@
-import { darken, invert, lighten, modularScale } from 'polished';
+import {
+  darken,
+  invert,
+  lighten,
+  modularScale,
+  transparentize,
+} from 'polished';
 
 const backgroundLight = 'white';
 const backgroundDark = '#214772';
@@ -7,8 +13,7 @@ export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
 const linkDark = '#1eb8e7';
-const outline = '0 0 0 0.125em white, 0 0 0 0.25em ';
-const outlineDark = '0 0 0 0.125em #214772, 0 0 0 0.25em ';
+const outline = '0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const panelBackgroundDark = '#163150';
 const primary = '#007896';
@@ -51,12 +56,12 @@ export const light: Theme = {
   background: backgroundLight,
   cardText: '#697685',
   controlBackground: backgroundLight,
-  controlBorder: '#e5ecf3',
+  controlBorder: transparentize(0.95, '#3f3f44'),
   headline: '#163150',
   iconColor: '#424242',
   link: linkLight,
   linkHover: darken(0.1, linkLight),
-  outline: outline + primary,
+  outline: outline + transparentize(0.35, linkLight),
   panelBackground: backgroundLight,
   panelBackgroundDark: darken(lightnessMod, backgroundLight),
   primary,
@@ -76,13 +81,13 @@ export const dark: Theme = {
   actionPanelBorder: invert(light.actionPanelBorder),
   background: backgroundDark,
   cardText: '#dbe0e6',
-  controlBackground: '#214772',
-  controlBorder: panelBackgroundDark,
+  controlBackground: panelBackgroundDark,
+  controlBorder: primaryDark,
   headline: '#FFFFFF',
   iconColor: primaryDark,
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
-  outline: outlineDark + primaryDark,
+  outline: outline + transparentize(0.35, primaryDark),
   panelBackground: panelBackgroundDark,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),
   primary: primaryDark,
