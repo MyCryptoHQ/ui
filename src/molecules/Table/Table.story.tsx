@@ -66,6 +66,7 @@ const accountTable: TableData = {
       return aLabel.localeCompare(bLabel);
     },
     hiddenHeadings: ['Favorite'],
+    reversedColumns: ['Value'],
   },
 };
 const recentTransactionsTable: TableData = {
@@ -116,6 +117,7 @@ const recentTransactionsTable: TableData = {
   config: {
     sortableColumn: 'Date',
     hiddenHeadings: ['Image'],
+    reversedColumns: ['Amount'],
   },
 };
 const addressBookTable: TableData = {
