@@ -1,9 +1,8 @@
-import React, { Component, ReactNode } from 'react';
+import React, { Component } from 'react';
 import styled from 'styled-components';
 
-import { Button, Icon, Tooltip } from 'src/atoms';
+import { Button, Icon } from 'src/atoms';
 import { ExtractProps } from 'src/types';
-import Typography from 'src/Typography';
 
 const ColoredIcon = styled(Icon)`
   color: #b5bfc7;
@@ -13,10 +12,19 @@ const ActiveButton = styled(Icon)`
   color: green;
 `;
 
-export class Copyable extends Component<{
+interface CopyableProps {
   text: string;
-  truncate?(text: string): string;
-}> {
+  props?: ExtractProps<typeof Button>;
+  truncate: boolean;
+  copyable?: boolean;
+}
+interface CopyableState {
+  copied: boolean;
+}
+
+export class Copyable extends Component<CopyableProps, CopyableState> {
+  public static defaultProps: CopyableProps = { truncate: false, text: '' };
+
   public state = { copied: false };
 
   public handleClick = () => {
@@ -26,44 +34,43 @@ export class Copyable extends Component<{
     setTimeout(() => this.setState({ copied: false }), 1000);
   };
 
-  public render() {
-    const { text, truncate } = this.props;
+  public truncate(str: string) {
+    const beginningString = str.substring(0, 6);
+    const stringSpacer = '…';
+    const endingString = str.substring(str.length - 4);
 
-    return truncate ? (
-      <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
-        {props => this.renderButton(truncate(text), props)}
-      </Tooltip>
-    ) : (
-      <div>{this.renderButton(text)}</div>
-    );
+    const truncatedString = `${beginningString + stringSpacer + endingString}`;
+
+    return truncatedString;
   }
 
-  public renderButton(
-    children: ReactNode,
-    props?: ExtractProps<typeof Button>,
-  ) {
-    const { text } = this.props;
+  public render() {
+    const { text, copyable } = this.props;
     const { copied } = this.state;
 
+    const buttonProps = {
+      onClick: this.handleClick,
+      'aria-label': `Copy ${text}`,
+      basic: true,
+    };
+    const buttonText = this.props.truncate ? this.truncate(text) : text;
+
+    const button = copyable ? (
+      copied ? (
+        <ActiveButton icon="warning" {...buttonProps} />
+      ) : (
+        <ColoredIcon icon="copy" {...buttonProps} />
+      )
+    ) : (
+      <Button disabled={true} {...buttonProps} />
+    );
+
     return (
-      <Button
-        onClick={this.handleClick}
-        aria-label={`Copy ${text}`}
-        basic={true}
-        children={
-          <>
-            {children}{' '}
-            {copied ? (
-              <ActiveButton icon="warning" />
-            ) : (
-              <ColoredIcon icon="copy" />
-            )}
-          </>
-        }
-        {...props}
-      />
+      <Button {...buttonProps}>
+        {button}
+        {buttonText}
+      </Button>
     );
   }
 }
-
 export default Copyable;
