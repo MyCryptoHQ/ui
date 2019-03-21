@@ -35,37 +35,41 @@ const Content = styled.div`
   padding-left: ${scale(0)};
 `;
 
-interface NonEditableProps {
+interface BaseAddressLabelProps {
   title: string;
+}
+
+interface NonEditableAddressLabelProps extends BaseAddressLabelProps {
   editable: false;
 }
 
-interface EditableProps {
-  title: string;
+export interface EditableAddressLabelProps extends BaseAddressLabelProps {
   editable: true;
   onSubmit(title: string): void;
 }
 
-export type EditableAddressProps = NonEditableProps | EditableProps;
+export type AddressLabelProps =
+  | NonEditableAddressLabelProps
+  | EditableAddressLabelProps;
 
-export interface EditableAddressState {
+export interface AddressLabelState {
   title: string;
   isTitleEditable: boolean;
 }
 
 const TITLE_PLACEHOLDER = 'John Doe';
 
-export class EditableAddress extends Component<
-  EditableAddressProps,
-  EditableAddressState
+export class AddressLabel extends Component<
+  AddressLabelProps,
+  AddressLabelState
 > {
-  public static defaultProps: EditableAddressProps = {
+  public static defaultProps: AddressLabelProps = {
     title: TITLE_PLACEHOLDER,
     editable: false,
   };
-  public state: EditableAddressState;
+  public state: AddressLabelState;
 
-  constructor(props: EditableAddressProps) {
+  constructor(props: AddressLabelProps) {
     super(props);
 
     this.state = {
@@ -122,11 +126,11 @@ export class EditableAddress extends Component<
     );
   }
 
-  public nonEditableAddress() {
+  public nonEditableTitle() {
     return <Title>{this.props.title}</Title>;
   }
 
-  public editableAddress() {
+  public editableTitle() {
     const { isTitleEditable } = this.state;
 
     return (
@@ -138,8 +142,8 @@ export class EditableAddress extends Component<
 
   public render() {
     const { editable } = this.props;
-    return editable ? this.editableAddress() : this.nonEditableAddress();
+    return editable ? this.editableTitle() : this.nonEditableTitle();
   }
 }
 
-export default EditableAddress;
+export default AddressLabelProps;

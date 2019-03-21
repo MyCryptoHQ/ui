@@ -17,17 +17,18 @@ const DisabledButton = styled(Button)`
   cursor: text;
 `;
 
-interface CopyableProps {
+interface BaseCopyableProps {
   text: string;
-  props?: ExtractProps<typeof Button>;
   truncate: boolean;
-  copyable: true;
 }
 
-interface NonCopyableProps {
-  text: string;
+export interface CopyableProps extends BaseCopyableProps {
+  copyable: true;
+  props?: ExtractProps<typeof Button>;
+}
+
+interface NonCopyableProps extends BaseCopyableProps {
   copyable: false;
-  truncate: boolean;
 }
 
 export type CopyableTextProps = CopyableProps | NonCopyableProps;

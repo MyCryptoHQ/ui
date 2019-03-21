@@ -1,6 +1,5 @@
 import makeBlockie from 'ethereum-blockies-base64';
 import React from 'react';
-
 import styled from 'src/styled-components';
 import { ExtractProps, Omit } from 'src/types';
 

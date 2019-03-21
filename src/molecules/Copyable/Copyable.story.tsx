@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import Typography from 'src/Typography';
 import styled from 'styled-components';
 import Copyable from './Copyable';
-import Typography from 'src/Typography';
 
 const CopyableContainer = styled.div`
   display: flex;
