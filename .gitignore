@@ -4,3 +4,8 @@ coverage
 dist
 node_modules
 storybook-static
+.awcache
+typings
+yarn-error.log*
+npm-debug.log*
+yarn-debug.log*

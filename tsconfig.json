@@ -9,7 +9,10 @@
     "sourceMap": true,
     "strict": true,
     "baseUrl": ".",
-    "paths": { "src*": ["src*"] }
+    "paths": { "src*": ["src*"] },
+    "declaration": true,
+    "declarationDir": "typings",
+    "outDir": "./dist"
   },
   "include": ["src"],
   "inlineSources": true,
