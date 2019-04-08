@@ -9,9 +9,8 @@
   ],
   "author": "MyCrypto",
   "license": "MIT",
-  "main": "dist/UI.node.js",
-  "module": "dist/UI.js",
-  "typings": "typings/index.d.ts",
+  "module": "dist/index.js",
+  "types": "typings/index.d.ts",
   "files": [
     "dist",
     "typings"
@@ -81,9 +80,7 @@
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^20.0.0",
     "webpack": "4.29.6",
-    "webpack-cli": "3.3.0",
-    "webpack-merge": "4.2.1",
-    "webpack-node-externals": "1.7.2"
+    "webpack-cli": "3.3.0"
   },
   "peerDependencies": {
     "react": "^16.5.0",
@@ -98,7 +95,8 @@
     "prepublishOnly": "npm run clean && npm run prepare:prod",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook",
-    "test": "jest"
+    "test": "jest",
+    "watch": "webpack --watch"
   },
   "sideEffects": false,
   "eslintConfig": {
