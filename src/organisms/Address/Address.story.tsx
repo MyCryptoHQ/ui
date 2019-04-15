@@ -31,6 +31,7 @@ class AddressContainer extends Component {
 
 storiesOf('Molecules', module).add('Address', () => (
   <>
+    <Address {...storyProps} title={undefined} />
     <Address {...storyProps} />
     <AddressContainer />
     <Address title={storyProps.title} address="foo.eth" />

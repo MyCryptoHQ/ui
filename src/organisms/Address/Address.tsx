@@ -7,6 +7,7 @@ import { borderRadius, scale } from 'src/Theme';
 import Typography from 'src/Typography';
 
 const Flex = styled.div`
+  align-items: center;
   display: flex;
 `;
 
@@ -45,14 +46,14 @@ SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
 interface Props {
   address: string;
-  title: string;
-  onSubmit?(title: string): void;
+  title?: string;
+  onSubmit?(title?: string): void;
   truncate?(text: string): string;
 }
 
 interface State {
   editing: boolean;
-  title: string;
+  title?: string;
 }
 
 export class Address extends Component<Props, State> {
