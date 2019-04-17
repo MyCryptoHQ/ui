@@ -23,6 +23,13 @@ const Title = styled(Typography)<{ clickable: boolean }>`
 
 Title.defaultProps = { as: 'div' };
 
+const MissingTitle = styled(Title)`
+  color: ${props => props.theme.textLight};
+  font-style: italic;
+`;
+
+MissingTitle.defaultProps = { children: 'No Label' };
+
 const TitleInput = styled.input`
   background: ${props => props.theme.background};
   border: 0.125em solid ${props => props.theme.controlBorder};
@@ -89,6 +96,8 @@ export class Address extends Component<Props, State> {
     const { address, onSubmit, truncate } = this.props;
     const { editing, title } = this.state;
 
+    const TitleComponent = title ? Title : MissingTitle;
+
     return (
       <Flex>
         <Identicon address={address} />
@@ -105,12 +114,12 @@ export class Address extends Component<Props, State> {
             </form>
           ) : (
             <>
-              <Title
+              <TitleComponent
                 onClick={onSubmit && this.handleEditing}
                 clickable={Boolean(onSubmit)}
               >
                 {title}
-              </Title>
+              </TitleComponent>
               {onSubmit && (
                 <>
                   {' '}

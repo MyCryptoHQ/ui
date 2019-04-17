@@ -18,6 +18,9 @@ const panelBackground = '#282c34';
 const panelBackgroundDark = '#163150';
 const primary = '#007896';
 const primaryDark = '#1eb8e7';
+const text = '#424242';
+const textDark = '#FFFFFF';
+const textLightnessMod = lightnessMod * 7.5;
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 const switchBackgroundGreyable = lighten(0.3, 'grey');
 export const transitionDuration = '0.12s';
@@ -46,6 +49,7 @@ export default interface Theme {
   tableRowBorder: string;
   tableHeadBorder: string;
   text: string;
+  textLight: string;
 }
 
 export const light: Theme = {
@@ -71,7 +75,8 @@ export const light: Theme = {
   tableHeadBorder: '#e8eaed',
   tableRowBorder: '#e8eaed',
   switchBackgroundGreyable,
-  text: '#424242',
+  text,
+  textLight: lighten(textLightnessMod, text),
 };
 
 export const dark: Theme = {
@@ -97,5 +102,6 @@ export const dark: Theme = {
   tableHeadBorder: 'rgba(255, 255, 255, .5)',
   tableRowBorder: panelBackgroundDark,
   switchBackgroundGreyable,
-  text: '#FFFFFF',
+  text: textDark,
+  textLight: darken(textLightnessMod, textDark),
 };
