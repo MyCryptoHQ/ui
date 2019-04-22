@@ -23,7 +23,6 @@ const ActiveButton = styled(Icon)`
 
 export class Copyable extends Component<{
   text: string;
-  render?(text: string): ReactNode;
   truncate?(text: string): string;
 }> {
   public state = { copied: false };

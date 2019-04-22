@@ -51,10 +51,6 @@ const SubmitButton = styled(ColoredIconButton)`
 
 SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
-const AddressCode = styled.code`
-  font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Courier New', monospace;
-`;
-
 interface Props {
   address: string;
   title?: string;
@@ -135,7 +131,7 @@ export class Address extends Component<Props, State> {
               )}
             </>
           )}
-          <Copyable text={address} render={AddressCode} truncate={truncate} />
+          <Copyable text={address} truncate={truncate} />
         </Content>
       </Flex>
     );
