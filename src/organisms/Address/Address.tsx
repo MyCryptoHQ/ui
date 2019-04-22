@@ -53,6 +53,7 @@ SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
 interface Props {
   address: string;
+  className?: string;
   title?: string;
   onSubmit?(title?: string): void;
   truncate?(text: string): string;
@@ -93,13 +94,13 @@ export class Address extends Component<Props, State> {
   };
 
   public render() {
-    const { address, onSubmit, truncate } = this.props;
+    const { address, className, onSubmit, truncate } = this.props;
     const { editing, title } = this.state;
 
     const TitleComponent = title ? Title : MissingTitle;
 
     return (
-      <Flex>
+      <Flex className={className}>
         <Identicon address={address} />
 
         <Content>
