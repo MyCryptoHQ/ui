@@ -9,6 +9,11 @@ import Typography from 'src/Typography';
 const Flex = styled.div`
   align-items: center;
   display: flex;
+
+  * {
+    font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+  }
 `;
 
 const Content = styled.div`
