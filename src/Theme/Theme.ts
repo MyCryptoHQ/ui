@@ -24,6 +24,8 @@ const textLightnessMod = lightnessMod * 7.5;
 export const scale = (steps: number) => modularScale(steps, undefined, 1.5);
 const switchBackgroundGreyable = lighten(0.3, 'grey');
 export const transitionDuration = '0.12s';
+export const monospace =
+  "'Roboto Mono', Menlo, Monaco, Consolas, 'Courier New', monospace";
 
 export default interface Theme {
   name: string;

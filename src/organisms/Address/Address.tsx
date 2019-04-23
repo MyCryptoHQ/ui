@@ -3,7 +3,7 @@ import React, { ChangeEvent, Component, FormEvent } from 'react';
 import { Button, Identicon } from 'src/atoms';
 import { Copyable } from 'src/molecules';
 import styled from 'src/styled-components';
-import { borderRadius, scale } from 'src/Theme';
+import { borderRadius, monospace, scale } from 'src/Theme';
 import Typography from 'src/Typography';
 
 const Flex = styled.div`
@@ -11,8 +11,7 @@ const Flex = styled.div`
   display: flex;
 
   * {
-    font-family: 'Roboto Mono', Menlo, Monaco, Consolas, 'Courier New',
-      monospace;
+    font-family: ${monospace};
   }
 `;
 
