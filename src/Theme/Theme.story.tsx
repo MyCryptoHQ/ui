@@ -4,7 +4,7 @@ import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { StyledComponentClass, withTheme } from 'styled-components';
 
 import styled from 'src/styled-components';
-import Theme from 'src/Theme';
+import Theme, { monospace } from 'src/Theme';
 import Typography from 'src/Typography';
 
 const Color = styled.div`
@@ -16,7 +16,7 @@ const Color = styled.div`
 `;
 
 const Code = styled(Typography)`
-  font-family: monospace;
+  font-family: ${monospace};
 ` as StyledComponentClass<
   DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
   Theme

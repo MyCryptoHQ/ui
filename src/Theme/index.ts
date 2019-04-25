@@ -3,6 +3,7 @@ import Theme, {
   borderRadiusLarge,
   dark,
   light,
+  monospace,
   scale,
   transitionDuration,
 } from './Theme';
@@ -13,6 +14,7 @@ export {
   borderRadiusLarge,
   dark,
   light,
+  monospace,
   scale,
   transitionDuration,
 };

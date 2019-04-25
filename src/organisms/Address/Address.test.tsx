@@ -12,8 +12,10 @@ const handleSubmit = jest.fn<(event: FormEvent<HTMLFormElement>) => void>();
 
 test('Copyable', () => {
   const { container, getByText, rerender } = render(
-    <Address address="Address" title="Address" truncate={truncate} />,
+    <Address address="Address" truncate={truncate} />,
   );
+  getByText('No Label');
+  rerender(<Address address="Address" title="Address" truncate={truncate} />);
   rerender(
     <Address
       address="Address"

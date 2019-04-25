@@ -3,11 +3,16 @@ import React, { ChangeEvent, Component, FormEvent } from 'react';
 import { Button, Identicon } from 'src/atoms';
 import { Copyable } from 'src/molecules';
 import styled from 'src/styled-components';
-import { borderRadius, scale } from 'src/Theme';
+import { borderRadius, monospace, scale } from 'src/Theme';
 import Typography from 'src/Typography';
 
 const Flex = styled.div`
+  align-items: center;
   display: flex;
+
+  * {
+    font-family: ${monospace};
+  }
 `;
 
 const Content = styled.div`
@@ -21,6 +26,13 @@ const Title = styled(Typography)<{ clickable: boolean }>`
 `;
 
 Title.defaultProps = { as: 'div' };
+
+const MissingTitle = styled(Title)`
+  color: ${props => props.theme.textLight};
+  font-style: italic;
+`;
+
+MissingTitle.defaultProps = { children: 'No Label' };
 
 const TitleInput = styled.input`
   background: ${props => props.theme.background};
@@ -45,14 +57,15 @@ SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
 interface Props {
   address: string;
-  title: string;
-  onSubmit?(title: string): void;
+  className?: string;
+  title?: string;
+  onSubmit?(title?: string): void;
   truncate?(text: string): string;
 }
 
 interface State {
   editing: boolean;
-  title: string;
+  title?: string;
 }
 
 export class Address extends Component<Props, State> {
@@ -85,11 +98,13 @@ export class Address extends Component<Props, State> {
   };
 
   public render() {
-    const { address, onSubmit, truncate } = this.props;
+    const { address, className, onSubmit, truncate } = this.props;
     const { editing, title } = this.state;
 
+    const TitleComponent = title ? Title : MissingTitle;
+
     return (
-      <Flex>
+      <Flex className={className}>
         <Identicon address={address} />
 
         <Content>
@@ -104,12 +119,12 @@ export class Address extends Component<Props, State> {
             </form>
           ) : (
             <>
-              <Title
+              <TitleComponent
                 onClick={onSubmit && this.handleEditing}
                 clickable={Boolean(onSubmit)}
               >
                 {title}
-              </Title>
+              </TitleComponent>
               {onSubmit && (
                 <>
                   {' '}

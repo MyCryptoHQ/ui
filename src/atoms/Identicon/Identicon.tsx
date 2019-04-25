@@ -1,14 +1,21 @@
 import makeBlockie from 'ethereum-blockies-base64';
-import React, { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
+import React, { ClassAttributes, HTMLAttributes } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
 import Omit from 'src/Omit';
 import styled from 'src/styled-components';
 import Theme from 'src/Theme';
+import Typography from 'src/Typography';
+
+// We need Typography to set the appropriate em size, but without its extra negative space
+const TypographyWrapper = styled(Typography)`
+  line-height: 0;
+  margin: 0;
+`;
 
 const RoundedImage = styled.img`
   border-radius: 50%;
-  height: 3.75em;
+  height: 2.5em;
 `;
 
 export const Identicon = ({
@@ -16,12 +23,17 @@ export const Identicon = ({
   ...rest
 }: { address: string } & Omit<
   ThemedOuterStyledProps<
-    DetailedHTMLProps<ImgHTMLAttributes<HTMLImageElement>, HTMLImageElement>,
+    ClassAttributes<HTMLParagraphElement> &
+      HTMLAttributes<HTMLParagraphElement> & { muted?: boolean; as?: string },
     Theme
   >,
   'ref'
 >) => {
-  return <RoundedImage src={makeBlockie(address)} {...rest} />;
+  return (
+    <TypographyWrapper {...rest}>
+      <RoundedImage src={makeBlockie(address)} />
+    </TypographyWrapper>
+  );
 };
 
 export default Identicon;
