@@ -33,15 +33,12 @@ export class ComboBox extends Component<
 
   public render() {
     const { items, value, ...rest } = this.props;
-    const filteredItems = Array.from(items).filter(
-      item => !value || String(item).includes(String(value)),
-    );
 
     return (
       <>
         <Input list={this.datalistId} value={value} {...rest} />
         <datalist id={this.datalistId}>
-          {filteredItems.map(item => (
+          {Array.from(items).map(item => (
             <option key={item} value={item} />
           ))}
         </datalist>
