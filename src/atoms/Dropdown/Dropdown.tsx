@@ -4,7 +4,7 @@ import { StyledComponentClass } from 'styled-components';
 
 import Omit from 'src/Omit';
 import styled from 'src/styled-components';
-import Theme, { borderRadius, scale } from 'src/Theme';
+import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
 import Typography from 'src/Typography';
 
 export interface DropdownProps {
@@ -17,6 +17,7 @@ const Select = styled(Typography)`
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
   ${padding(scale(-1), scale(0))};
+  transition: border ${transitionDuration}, box-shadow ${transitionDuration};
   width: 100%;
   :focus {
     outline: none;
