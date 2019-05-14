@@ -1,4 +1,5 @@
 import Button from './Button';
+import Dropdown from './Dropdown';
 import Heading from './Heading';
 import Icon, { icons } from './Icon';
 import Identicon from './Identicon';
@@ -13,6 +14,7 @@ import Tooltip from './Tooltip';
 
 export {
   Button,
+  Dropdown,
   Heading,
   Icon,
   icons,

@@ -1,5 +1,6 @@
 import {
   Button,
+  Dropdown,
   Heading,
   Icon,
   icons,
@@ -28,6 +29,7 @@ import Typography from './Typography';
 export {
   // Atoms
   Button,
+  Dropdown,
   Heading,
   Icon,
   icons,
