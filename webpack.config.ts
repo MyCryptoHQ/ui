@@ -25,6 +25,11 @@ const config: Configuration = {
       src: path.resolve(__dirname, 'src'),
     },
   },
+  externals: {
+    react: 'react',
+    'react-dom': 'react-dom',
+    'styled-components': 'styled-components',
+  },
   module: {
     rules: [
       {
