@@ -1,4 +1,5 @@
 /* eslint-disable import/no-nodejs-modules */
+import ForkTsCheckerPlugin from 'fork-ts-checker-webpack-plugin';
 import * as path from 'path';
 import { Configuration } from 'webpack';
 
@@ -27,14 +28,18 @@ const config: Configuration = {
   module: {
     rules: [
       {
-        test: /\.(ts|tsx)$/,
+        test: /\.tsx?$/,
         use: [
           {
-            loader: 'awesome-typescript-loader',
+            loader: 'babel-loader',
             options: {
-              useCache: true,
-              useBabel: true,
-              babelCore: '@babel/core',
+              presets: [
+                '@babel/preset-env',
+                '@babel/preset-typescript',
+                '@babel/preset-react',
+              ],
+              plugins: ['@babel/plugin-proposal-class-properties'],
+              cacheDirectory: true,
             },
           },
         ],
@@ -47,6 +52,7 @@ const config: Configuration = {
     ],
   },
   devtool: 'source-map',
+  plugins: [new ForkTsCheckerPlugin()],
 };
 
 export default config;
