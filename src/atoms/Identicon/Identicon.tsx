@@ -2,9 +2,9 @@ import makeBlockie from 'ethereum-blockies-base64';
 import React, { DetailedHTMLProps, ImgHTMLAttributes } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
-import Omit from 'src/Omit';
-import styled from 'src/styled-components';
-import Theme from 'src/Theme';
+import Omit from '../../Omit';
+import styled from '../../styled-components';
+import Theme from '../../Theme';
 
 const RoundedImage = styled.img`
   border-radius: 50%;

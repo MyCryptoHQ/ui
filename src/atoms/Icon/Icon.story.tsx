@@ -2,9 +2,9 @@ import { storiesOf } from '@storybook/react';
 import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from 'src/styled-components';
-import Theme from 'src/Theme';
-import Typography from 'src/Typography';
+import styled from '../../styled-components';
+import Theme from '../../Theme';
+import Typography from '../../Typography';
 import Icon, { icons } from './Icon';
 
 const Code = styled(Typography)`

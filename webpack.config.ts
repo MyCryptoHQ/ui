@@ -21,9 +21,6 @@ const config: Configuration = {
   },
   resolve: {
     extensions: ['.js', '.ts', '.tsx', '.svg'],
-    alias: {
-      src: path.resolve(__dirname, 'src'),
-    },
   },
   externals: {
     react: 'react',

@@ -6,12 +6,12 @@ import React, {
   ReactNode,
 } from 'react';
 
-import { Panel } from 'src/atoms';
-import { PanelProps } from 'src/atoms/Panel/Panel';
-import styled from 'src/styled-components';
-import Theme, { scale } from 'src/Theme';
-import Typography from 'src/Typography';
 import { ThemedOuterStyledProps } from 'styled-components';
+import { Panel } from '../../atoms';
+import { PanelProps } from '../../atoms/Panel/Panel';
+import styled from '../../styled-components';
+import Theme, { scale } from '../../Theme';
+import Typography from '../../Typography';
 
 const GroupItem = styled(Typography)`
   ${props =>

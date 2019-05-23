@@ -7,11 +7,11 @@ import React, {
 } from 'react';
 import styled, { ThemedOuterStyledProps } from 'styled-components';
 
-import { Button, Icon, Tooltip } from 'src/atoms';
-import { ButtonProps, StyledButtonProps } from 'src/atoms/Button/Button';
-import Omit from 'src/Omit';
-import Theme from 'src/Theme';
-import Typography from 'src/Typography';
+import { Button, Icon, Tooltip } from '../../atoms';
+import { ButtonProps, StyledButtonProps } from '../../atoms/Button/Button';
+import Omit from '../../Omit';
+import Theme from '../../Theme';
+import Typography from '../../Typography';
 
 const ColoredIcon = styled(Icon)`
   color: #b5bfc7;

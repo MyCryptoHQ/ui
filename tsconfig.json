@@ -8,8 +8,6 @@
     "noUnusedLocals": true,
     "sourceMap": true,
     "strict": true,
-    "baseUrl": ".",
-    "paths": { "src*": ["src*"] },
     "declaration": true,
     "declarationDir": "typings",
     "outDir": "./dist"

@@ -1,8 +1,8 @@
 import { padding } from 'polished';
 import React, { Component, createRef, ReactNode } from 'react';
 
-import styled from 'src/styled-components';
-import { borderRadius, scale } from 'src/Theme';
+import styled from '../../styled-components';
+import { borderRadius, scale } from '../../Theme';
 import triangle from './tooltip-triangle.svg';
 
 const Relative = styled.div`

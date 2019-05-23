@@ -7,12 +7,11 @@ import React, {
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
-import { Panel } from 'src/atoms';
-import Omit from 'src/Omit';
-import { ComboBoxProps } from 'src/organisms/ComboBox/ComboBox';
-import Theme from 'src/Theme';
-import Typography from 'src/Typography';
-import ComboBox from './ComboBox';
+import { Panel } from '../../atoms';
+import Omit from '../../Omit';
+import Theme from '../../Theme';
+import Typography from '../../Typography';
+import ComboBox, { ComboBoxProps } from './ComboBox';
 
 class ControlledComboBox extends Component<
   ComboBoxProps &

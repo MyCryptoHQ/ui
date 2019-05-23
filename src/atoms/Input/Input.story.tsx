@@ -7,9 +7,9 @@ import React, {
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
-import Omit from 'src/Omit';
-import Theme from 'src/Theme';
-import Typography from 'src/Typography';
+import Omit from '../../Omit';
+import Theme from '../../Theme';
+import Typography from '../../Typography';
 import Panel from '../Panel';
 import Input, { InputProps } from './Input';
 

@@ -9,9 +9,9 @@ import {
   ThemedOuterStyledProps,
 } from 'styled-components';
 
-import Omit from 'src/Omit';
-import styled from 'src/styled-components';
-import Theme, { borderRadiusLarge, scale } from 'src/Theme';
+import Omit from '../../Omit';
+import styled from '../../styled-components';
+import Theme, { borderRadiusLarge, scale } from '../../Theme';
 
 // Use an empty styled component instead of a plain section tag so components
 // like List can change tags with the as prop.

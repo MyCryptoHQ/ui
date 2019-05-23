@@ -1,9 +1,9 @@
 import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import styled from 'src/styled-components';
-import Theme, { scale } from 'src/Theme';
-import Typography from 'src/Typography';
+import styled from '../../styled-components';
+import Theme, { scale } from '../../Theme';
+import Typography from '../../Typography';
 
 type StackedCardEntry = string | ReactNode;
 
