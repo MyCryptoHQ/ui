@@ -6,7 +6,7 @@ export const Typography = styled.p<{ muted?: boolean; as?: string }>`
   color: ${props =>
     props.muted ? transparentize(0.25, props.theme.text) : props.theme.text};
   ${fluidRange(
-    { prop: 'font-size', fromSize: '16px', toSize: '22px' },
+    { prop: 'font-size', fromSize: '16px', toSize: '18px' },
     '400px',
     '1000px',
   )};

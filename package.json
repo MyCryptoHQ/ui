@@ -1,6 +1,6 @@
 {
   "name": "@mycrypto/ui",
-  "version": "0.14.0",
+  "version": "0.16.0",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
@@ -48,7 +48,7 @@
     "babel-loader": "^8.0.6",
     "coveralls": "^3.0.2",
     "cross-env": "5.2.0",
-    "eslint": "^5.6.0",
+    "eslint": "5.0.0-alpha.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
@@ -79,6 +79,7 @@
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typeface-lato": "^0.0.54",
+    "typeface-roboto-mono": "^0.0.54",
     "typescript": "^3.0.1",
     "typescript-eslint-parser": "^20.0.0",
     "webpack": "4.29.6",
