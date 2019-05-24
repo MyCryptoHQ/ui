@@ -7,17 +7,17 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import { Icon } from 'src/atoms';
+import { Icon } from '../../atoms';
 import {
   StackedCard,
   StackedCardData,
   Table,
   TableConfig,
   TableData,
-} from 'src/molecules';
-import styled from 'src/styled-components';
-import Theme, { scale } from 'src/Theme';
-import Typography from 'src/Typography';
+} from '../../molecules';
+import styled from '../../styled-components';
+import Theme, { scale } from '../../Theme';
+import Typography from '../../Typography';
 
 export enum CollapsibleTableModes {
   Mobile,

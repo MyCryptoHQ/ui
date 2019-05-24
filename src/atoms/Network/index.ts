@@ -1,3 +1,2 @@
-import Network from './Network';
-
-export default Network;
+export { default } from './Network';
+export * from './Network';

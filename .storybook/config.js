@@ -9,8 +9,8 @@ import { configureViewport } from '@storybook/addon-viewport';
 import 'typeface-lato';
 import 'typeface-roboto-mono';
 
-import styled from 'src/styled-components';
-import { dark, light } from 'src/Theme';
+import styled from '../src/styled-components';
+import { dark, light } from '../src/Theme';
 
 addDecorator(
   withOptions({

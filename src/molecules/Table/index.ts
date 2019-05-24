@@ -1,4 +1,2 @@
-import Table, { TableConfig, TableData } from './Table';
-
-export { TableConfig, TableData };
-export default Table;
+export { default } from './Table';
+export * from './Table';

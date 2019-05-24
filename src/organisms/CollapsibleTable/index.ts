@@ -1,3 +1,2 @@
-import CollapsibleTable from './CollapsibleTable';
-
-export default CollapsibleTable;
+export { default } from './CollapsibleTable';
+export * from './CollapsibleTable';

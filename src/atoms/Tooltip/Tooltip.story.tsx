@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import Typography from 'src/Typography';
+import Typography from '../../Typography';
 import Tooltip from './Tooltip';
 
 storiesOf('Atoms', module).add('Tooltip', () => (

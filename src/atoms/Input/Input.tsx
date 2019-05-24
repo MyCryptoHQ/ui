@@ -10,10 +10,10 @@ import {
   ThemedOuterStyledProps,
 } from 'styled-components';
 
-import Icon, { icons } from 'src/atoms/Icon';
-import styled from 'src/styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
-import Typography from 'src/Typography';
+import styled from '../../styled-components';
+import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
+import Typography from '../../Typography';
+import Icon, { icons } from '../Icon';
 
 const InputContainer = styled.div`
   background: ${props => props.theme.controlBackground};

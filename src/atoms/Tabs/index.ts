@@ -1,3 +1,2 @@
-import Tabs from './Tabs';
-
-export default Tabs;
+export { default } from './Tabs';
+export * from './Tabs';

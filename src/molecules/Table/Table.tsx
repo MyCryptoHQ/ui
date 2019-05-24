@@ -8,10 +8,10 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import { Icon } from 'src/atoms';
-import styled from 'src/styled-components';
-import Theme from 'src/Theme';
-import Typography from 'src/Typography';
+import { Icon } from '../../atoms';
+import styled from '../../styled-components';
+import Theme from '../../Theme';
+import Typography from '../../Typography';
 
 export interface TableGroup {
   title: string;

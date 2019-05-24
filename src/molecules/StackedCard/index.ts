@@ -1,4 +1,2 @@
-import StackedCard, { StackedCardData } from './StackedCard';
-
-export { StackedCardData };
-export default StackedCard;
+export { default } from './StackedCard';
+export * from './StackedCard';

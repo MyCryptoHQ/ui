@@ -1,2 +1,2 @@
-import Address from './Address';
-export default Address;
+export { default } from './Address';
+export * from './Address';

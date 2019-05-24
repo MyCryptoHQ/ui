@@ -5,10 +5,10 @@ import React, {
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
-import { Input } from 'src/atoms';
-import { InputProps } from 'src/atoms/Input/Input';
-import Omit from 'src/Omit';
-import Theme from 'src/Theme';
+import { Input } from '../../atoms';
+import { InputProps } from '../../atoms/Input/Input';
+import Omit from '../../Omit';
+import Theme from '../../Theme';
 
 let datalistId = 0;
 

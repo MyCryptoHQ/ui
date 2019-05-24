@@ -8,8 +8,8 @@
     "noUnusedLocals": true,
     "sourceMap": true,
     "strict": true,
-    "baseUrl": ".",
-    "paths": { "src*": ["src*"] }
+    "declaration": true,
+    "declarationMap": true
   },
   "include": ["src"],
   "inlineSources": true,

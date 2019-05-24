@@ -9,11 +9,11 @@ import {
   ThemedOuterStyledProps,
 } from 'styled-components';
 
-import Icon, { icons } from 'src/atoms/Icon';
-import Omit from 'src/Omit';
-import styled from 'src/styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
-import Typography from 'src/Typography';
+import Omit from '../../Omit';
+import styled from '../../styled-components';
+import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
+import Typography from '../../Typography';
+import Icon, { icons } from '../Icon';
 
 export const BasicButton = styled(Typography)`
   background: none;

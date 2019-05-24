@@ -2,9 +2,9 @@ import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
 
-import { List } from 'src/molecules';
-import { Drawer } from 'src/organisms';
-import Typography from 'src/Typography';
+import { Drawer } from '..';
+import { List } from '../../molecules';
+import Typography from '../../Typography';
 
 // function Dummy() {
 //   return <Typography>lol</Typography>;

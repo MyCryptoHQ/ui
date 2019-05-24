@@ -5,10 +5,10 @@ import React, {
 } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import { Icon, icons } from 'src/atoms';
-import styled from 'src/styled-components';
-import Theme from 'src/Theme';
-import Typography from 'src/Typography';
+import { Icon, icons } from '../../atoms';
+import styled from '../../styled-components';
+import Theme from '../../Theme';
+import Typography from '../../Typography';
 
 export const IconTypography = styled(Typography)`
   background: none;
