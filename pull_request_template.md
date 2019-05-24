@@ -1,6 +1,6 @@
 ## Description
 
-## [JIRA Issue](https://mycrypto.atlassian.net/browse/UI-)
+## [Clubhouse Story](https://app.clubhouse.io/mycrypto/story/)
 
 ## [Confluence Component](https://mycrypto.atlassian.net/wiki/spaces/UI/pages/42500097/Components)
 
