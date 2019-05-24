@@ -1,28 +1,12 @@
-import Button from './Button';
-import Heading from './Heading';
-import Icon, { icons } from './Icon';
-import Identicon from './Identicon';
-import Input from './Input';
-import Network from './Network';
-import Panel from './Panel';
-import Stepper from './Stepper';
-import Switch from './Switch';
-import Tabs from './Tabs';
-import Textarea from './Textarea';
-import Tooltip from './Tooltip';
-
-export {
-  Button,
-  Heading,
-  Icon,
-  icons,
-  Identicon,
-  Input,
-  Network,
-  Panel,
-  Stepper,
-  Switch,
-  Tabs,
-  Textarea,
-  Tooltip,
-};
+export { default as Button } from './Button';
+export { default as Heading } from './Heading';
+export { default as Icon, icons } from './Icon';
+export { default as Identicon } from './Identicon';
+export { default as Input } from './Input';
+export { default as Network } from './Network';
+export { default as Panel } from './Panel';
+export { default as Stepper } from './Stepper';
+export { default as Switch } from './Switch';
+export { default as Tabs } from './Tabs';
+export { default as Textarea } from './Textarea';
+export { default as Tooltip } from './Tooltip';

@@ -1,3 +1,1 @@
-import Panel from './Panel';
-
-export default Panel;
+export { default } from './Panel';

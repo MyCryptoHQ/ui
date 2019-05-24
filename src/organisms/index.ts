@@ -1,6 +1,4 @@
-import Address from './Address';
-import CollapsibleTable from './CollapsibleTable';
-import ComboBox from './ComboBox';
-import Drawer from './Drawer';
-
-export { Address, CollapsibleTable, ComboBox, Drawer };
+export { default as Address } from './Address';
+export { default as CollapsibleTable } from './CollapsibleTable';
+export { default as ComboBox } from './ComboBox';
+export { default as Drawer } from './Drawer';
