@@ -1,4 +1,5 @@
-import Theme, {
+export {
+  default,
   borderRadius,
   borderRadiusLarge,
   dark,
@@ -7,14 +8,3 @@ import Theme, {
   scale,
   transitionDuration,
 } from './Theme';
-
-export {
-  Theme as default,
-  borderRadius,
-  borderRadiusLarge,
-  dark,
-  light,
-  monospace,
-  scale,
-  transitionDuration,
-};
