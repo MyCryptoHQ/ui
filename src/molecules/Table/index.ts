@@ -1,1 +1,2 @@
-export { default, TableConfig, TableData } from './Table';
+export { default } from './Table';
+export * from './Table';

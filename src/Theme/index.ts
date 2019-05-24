@@ -1,10 +1,2 @@
-export {
-  default,
-  borderRadius,
-  borderRadiusLarge,
-  dark,
-  light,
-  monospace,
-  scale,
-  transitionDuration,
-} from './Theme';
+export { default } from './Theme';
+export * from './Theme';
