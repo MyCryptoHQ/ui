@@ -1,2 +1,1 @@
-export { default } from './StackedCard';
-export * from './StackedCard';
+export { default, StackedCardData } from './StackedCard';
