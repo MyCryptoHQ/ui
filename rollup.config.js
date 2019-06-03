@@ -17,7 +17,7 @@ const external = [
 export default {
   input: 'src/index.ts',
 
-  output: { file: pkg.module, format: 'es', sourcemap: true },
+  output: { file: pkg.main, format: 'es', sourcemap: true },
 
   // exclude all node modules
   external,
