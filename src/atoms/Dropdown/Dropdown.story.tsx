@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Panel } from 'src/atoms';
-import Typography from 'src/Typography';
+import Typography from '../../Typography';
+import Panel from '../Panel';
 import Dropdown from './Dropdown';
 
 storiesOf('Atoms', module).add('Dropdown', () => (

@@ -2,8 +2,8 @@ import { storiesOf } from '@storybook/react';
 import faker from 'faker';
 import React from 'react';
 
-import styled from 'src/styled-components';
-import Typography from 'src/Typography';
+import styled from '../../styled-components';
+import Typography from '../../Typography';
 import Panel from './Panel';
 
 const TypographyWithoutMargin = styled(Typography)`

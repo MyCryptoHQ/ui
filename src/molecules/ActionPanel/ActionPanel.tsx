@@ -5,11 +5,11 @@ import {
   ThemedOuterStyledProps,
 } from 'styled-components';
 
-import { Panel } from 'src/atoms';
-import { PanelProps } from 'src/atoms/Panel/Panel';
-import styled from 'src/styled-components';
-import Theme, { scale } from 'src/Theme';
-import Typography from 'src/Typography';
+import { Panel } from '../../atoms';
+import { PanelProps } from '../../atoms/Panel/Panel';
+import styled from '../../styled-components';
+import Theme, { scale } from '../../Theme';
+import Typography from '../../Typography';
 
 const ActionPanelBody = styled.div`
   ${padding(scale(1), scale(2))};

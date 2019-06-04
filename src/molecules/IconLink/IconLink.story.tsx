@@ -3,7 +3,7 @@ import React from 'react';
 
 import IconLink from './IconLink';
 
-import Typography from 'src/Typography';
+import Typography from '../../Typography';
 
 storiesOf('Molecules', module).add('IconLink', () =>
   [{}, { href: 'https://example.com/' }].map((props, index) => (

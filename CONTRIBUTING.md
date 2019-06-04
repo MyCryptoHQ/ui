@@ -2,10 +2,10 @@
 
 ## Development / Build Requirements
 
-- Node 8.9.4\*
+- Node 8.16.0\*
 - Yarn >= 1.7.0\*\*
 
-<sub>\*Versions between 8.9.4 and ^11.0.0 should work fine, but may cause inconsistencies. It's suggested you run 8.9.4 using `nvm`.</sub>
+<sub>\*Versions between 8.16.0 and ^11.0.0 should work fine, but may cause inconsistencies. It's suggested you run 8.16.0 using `nvm`.</sub>
 <br/>
 <sub>\*\*npm is NOT supported for package management. MyCrypto uses yarn.lock to ensure sub-dependency versions are pinned, so yarn is required to install node_modules</sub>
 
@@ -26,7 +26,7 @@ All code must follow the folder structure and be formatted with [Prettier](https
 
 Follow these steps if you want to make changes in UI and use them in another package locally.
 
-1. If you use a version manager or multiple Node installations, make sure to use the same version for both UI and the other package. If you're developing UI with the MyCrypto app, it's easiest to use Node 8.9.4 for both.
+1. If you use a version manager or multiple Node installations, make sure to use the same version for both UI and the other package. If you're developing UI with the MyCrypto app, it's easiest to use Node 8.16.0 for both.
 2. Run `yarn link` in UI's directory to allow other packages to link to it globally.
 3. Run `yarn link @mycrypto/ui` in the other package's directory to link it to UI's directory.
 4. In UI's directory, build package once with `yarn` or continue editing and rebuilding with `yarn watch`. Repeat each time you develop.

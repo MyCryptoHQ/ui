@@ -1,3 +1,1 @@
-import ActionPanel from './ActionPanel';
-
-export default ActionPanel;
+export { default } from './ActionPanel';

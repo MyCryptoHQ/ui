@@ -2,10 +2,10 @@ import { padding } from 'polished';
 import React, { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
 import { StyledComponentClass } from 'styled-components';
 
-import Omit from 'src/Omit';
-import styled from 'src/styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from 'src/Theme';
-import Typography from 'src/Typography';
+import Omit from '../../Omit';
+import styled from '../../styled-components';
+import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
+import Typography from '../../Typography';
 
 export interface DropdownProps {
   items: Set<string | number>;

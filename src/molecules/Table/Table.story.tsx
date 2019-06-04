@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Button, Icon, Identicon, Panel } from 'src/atoms';
-import { Copyable } from 'src/molecules';
+import { Copyable } from '..';
+import { Button, Icon, Identicon, Panel } from '../../atoms';
 import Table, { TableData } from './Table';
 
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';

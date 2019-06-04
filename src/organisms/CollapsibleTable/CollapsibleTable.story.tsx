@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Icon } from 'src/atoms';
+import { Icon } from '../../atoms';
 import CollapsibleTable, { CollapsibleTableData } from './CollapsibleTable';
 
 const basicData: CollapsibleTableData = {

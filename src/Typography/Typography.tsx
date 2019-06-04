@@ -1,6 +1,6 @@
 import { fluidRange, transparentize } from 'polished';
 
-import styled from 'src/styled-components';
+import styled from '../styled-components';
 
 export const Typography = styled.p<{ muted?: boolean; as?: string }>`
   color: ${props =>

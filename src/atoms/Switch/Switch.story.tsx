@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import React, { Fragment } from 'react';
 
-import { Switch } from 'src/atoms';
+import { Switch } from './Switch';
 
 storiesOf('Atoms', module).add('Switch', () =>
   [

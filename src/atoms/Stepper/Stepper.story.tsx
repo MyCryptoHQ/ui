@@ -1,8 +1,9 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
-import styled from 'src/styled-components';
-import Typography from 'src/Typography';
+import styled from '../../styled-components';
+import Typography from '../../Typography';
 import Button from '../Button';
+// eslint-disable-next-line import/no-relative-parent-imports
 import backArrowIcon from '../Icon/icons/icn-back-arrow.svg';
 import Stepper from './Stepper';
 

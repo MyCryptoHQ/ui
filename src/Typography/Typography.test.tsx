@@ -2,8 +2,8 @@ import 'jest-dom/extend-expect';
 import React from 'react';
 import { render } from 'react-testing-library';
 
-import { ThemeProvider } from 'src/styled-components';
-import { light } from 'src/Theme';
+import { ThemeProvider } from '../styled-components';
+import { light } from '../Theme';
 import Typography from './Typography';
 
 test('Typography', () => {

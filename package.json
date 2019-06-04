@@ -1,6 +1,6 @@
 {
   "name": "@mycrypto/ui",
-  "version": "0.16.0",
+  "version": "0.16.2",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
@@ -10,7 +10,7 @@
   "author": "MyCrypto",
   "license": "MIT",
   "module": "dist/index.js",
-  "types": "dist/index.ts",
+  "types": "dist/index.d.ts",
   "files": [
     "dist"
   ],
@@ -41,17 +41,15 @@
     "@types/styled-components": "^4.0.2",
     "babel-loader": "^8.0.4",
     "coveralls": "^3.0.2",
-    "eslint": "5.0.0-alpha.0",
+    "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
     "eslint-plugin-react": "^7.11.1",
     "faker": "^4.1.0",
-    "gulp": "^3.9.1",
     "husky": "^1.1.2",
     "jest": "^24.3.1",
     "jest-dom": "^2.0.5",
     "lint-staged": "^7.2.2",
-    "mycrypto-path-alias-resolver": "^1.0.5-alpha",
     "prettier": "^1.14.2",
     "react": "^16.5.0",
     "react-docgen-typescript-loader": "^3.0.0",
@@ -86,11 +84,11 @@
   },
   "scripts": {
     "build": "build-storybook",
-    "prepare": "gulp",
+    "prepare": "rollup -c",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook",
     "test": "jest",
-    "watch": "gulp watch"
+    "watch": "rollup -c -w"
   },
   "sideEffects": false,
   "eslintConfig": {
@@ -152,8 +150,7 @@
   "jest": {
     "collectCoverage": true,
     "moduleNameMapper": {
-      "\\.svg$": "<rootDir>/__mocks__/fileMock.ts",
-      "^src/(.*)$": "<rootDir>/src/$1"
+      "\\.svg$": "<rootDir>/__mocks__/fileMock.ts"
     },
     "preset": "ts-jest",
     "testPathIgnorePatterns": [

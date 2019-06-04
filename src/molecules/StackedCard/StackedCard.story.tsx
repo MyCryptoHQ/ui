@@ -1,8 +1,8 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import { Icon, Panel } from 'src/atoms';
-import { Copyable } from 'src/molecules';
+import { Copyable } from '..';
+import { Icon, Panel } from '../../atoms';
 import StackedCard from './StackedCard';
 
 const truncate = (text: string): string => text.substr(0, 6);
