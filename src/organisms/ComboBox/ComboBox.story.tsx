@@ -24,7 +24,10 @@ class ControlledComboBox extends Component<
         Theme
       >,
       'ref'
-    >
+    >,
+  {
+    value: string;
+  }
 > {
   public state = { value: '' };
 

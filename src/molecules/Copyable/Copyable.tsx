@@ -21,10 +21,15 @@ const ActiveButton = styled(Icon)`
   color: green;
 `;
 
-export class Copyable extends Component<{
-  text: string;
-  truncate?(text: string): string;
-}> {
+export class Copyable extends Component<
+  {
+    text: string;
+    truncate?(text: string): string;
+  },
+  {
+    copied: boolean;
+  }
+> {
   public state = { copied: false };
 
   public handleClick = () => {

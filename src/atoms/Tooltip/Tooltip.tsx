@@ -32,10 +32,18 @@ const Triangle = styled.img`
 
 Triangle.defaultProps = { src: triangle };
 
-export class Tooltip extends Component<{
-  tooltip: ReactNode;
-  children(props: Record<'onMouseOver' | 'onMouseOut', () => void>): ReactNode;
-}> {
+export class Tooltip extends Component<
+  {
+    tooltip: ReactNode;
+    children(
+      props: Record<'onMouseOver' | 'onMouseOut', () => void>,
+    ): ReactNode;
+  },
+  {
+    height?: number;
+    open: boolean;
+  }
+> {
   public ref = createRef<HTMLDivElement>();
   public state = { height: undefined, open: false };
 
