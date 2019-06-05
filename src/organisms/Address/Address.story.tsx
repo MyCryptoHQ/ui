@@ -15,7 +15,12 @@ const storyProps = {
   },
 };
 
-class AddressContainer extends Component {
+class AddressContainer extends Component<
+  {},
+  {
+    title: string;
+  }
+> {
   public state = { title: storyProps.title };
 
   public handleSubmit = (title: string) => this.setState({ title });

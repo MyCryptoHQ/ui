@@ -219,7 +219,7 @@ export class CollapsibleTable extends Component<Props, State> {
   };
 
   private readonly toggleCollapseGroup = (title: string) =>
-    this.setState((prevState: State) => ({
+    this.setState(prevState => ({
       collapsedGroups: {
         ...prevState.collapsedGroups,
         [title]: !prevState.collapsedGroups[title],

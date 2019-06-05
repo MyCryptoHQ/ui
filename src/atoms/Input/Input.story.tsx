@@ -24,7 +24,10 @@ class ControlledInput extends Component<
         Theme
       >,
       'ref'
-    >
+    >,
+  {
+    value: string;
+  }
 > {
   public state = { value: '' };
 

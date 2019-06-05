@@ -45,7 +45,7 @@ type Props = TableData;
 
 interface State {
   collapsedGroups: {
-    [title: string]: true;
+    [title: string]: boolean;
   };
   sortedColumnDirection: ColumnDirections;
 }
@@ -181,7 +181,7 @@ export const getSortedRows = (
   return sortedRows;
 };
 
-class AbstractTable extends Component<Props> {
+class AbstractTable extends Component<Props, State> {
   public static defaultProps = {
     head: [],
     body: [],
@@ -376,7 +376,7 @@ class AbstractTable extends Component<Props> {
   };
 
   private readonly toggleCollapseGroup = (title: string) =>
-    this.setState((prevState: State) => ({
+    this.setState(prevState => ({
       collapsedGroups: {
         ...prevState.collapsedGroups,
         [title]: !prevState.collapsedGroups[title],
@@ -384,7 +384,7 @@ class AbstractTable extends Component<Props> {
     }));
 
   private readonly toggleSortedColumnDirection = () =>
-    this.setState((prevState: State) => ({
+    this.setState(prevState => ({
       sortedColumnDirection:
         prevState.sortedColumnDirection === ColumnDirections.Forward
           ? ColumnDirections.Reverse
