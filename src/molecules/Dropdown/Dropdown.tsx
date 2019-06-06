@@ -45,6 +45,7 @@ const Relative = styled.div`
 const Absolute = styled.div<{ width?: number }>`
   position: absolute;
   ${props => props.width && `width: ${props.width}px`};
+  z-index: 1;
 `;
 
 export class Dropdown extends Component<
