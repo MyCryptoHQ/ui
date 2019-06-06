@@ -1,11 +1,11 @@
 import { padding } from 'polished';
 import React, {
+  ClassAttributes,
   Component,
   createRef,
-  DetailedHTMLProps,
-  SelectHTMLAttributes,
+  HTMLAttributes,
 } from 'react';
-import { StyledComponentClass } from 'styled-components';
+import { ThemedOuterStyledProps } from 'styled-components';
 
 import DataList from '../../atoms/DataList';
 import Option from '../../atoms/Option';
@@ -33,10 +33,7 @@ const DropdownButton = styled(Typography)`
     outline: none;
     box-shadow: ${props => props.theme.outline};
   }
-` as StyledComponentClass<
-  DetailedHTMLProps<SelectHTMLAttributes<HTMLSelectElement>, HTMLSelectElement>,
-  Theme
->;
+`;
 
 const Relative = styled.div`
   position: relative;
@@ -50,9 +47,13 @@ const Absolute = styled.div<{ width?: number }>`
 export class Dropdown extends Component<
   DropdownProps &
     Omit<
-      DetailedHTMLProps<
-        SelectHTMLAttributes<HTMLSelectElement>,
-        HTMLSelectElement
+      ThemedOuterStyledProps<
+        ClassAttributes<HTMLParagraphElement> &
+          HTMLAttributes<HTMLParagraphElement> & {
+            muted?: boolean;
+            as?: string;
+          },
+        Theme
       >,
       'ref'
     >,
