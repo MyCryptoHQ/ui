@@ -6,6 +6,8 @@ import Omit from '../../Omit';
 import styled from '../../styled-components';
 import { scale } from '../../Theme';
 
+import chevronDown from './icons/chevron-down.svg';
+import chevronUp from './icons/chevron-up.svg';
 import combinedShape from './icons/combined-shape.svg';
 import add from './icons/icn-add.svg';
 import add2 from './icons/icn-add_2.svg';
@@ -34,6 +36,8 @@ import lock from './nav_icons/icn-lock.svg';
 import unlock from './nav_icons/icn-unlock.svg';
 
 export const icons = {
+  chevronDown,
+  chevronUp,
   combinedShape,
   add,
   add2,

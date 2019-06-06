@@ -9,6 +9,7 @@ import React, {
 import { ThemedOuterStyledProps } from 'styled-components';
 
 import DataList from '../../atoms/DataList';
+import Icon from '../../atoms/Icon';
 import Option from '../../atoms/Option';
 import Omit from '../../Omit';
 import styled from '../../styled-components';
@@ -36,6 +37,10 @@ const DropdownButton = styled(Typography)`
     outline: none;
     box-shadow: ${props => props.theme.outline};
   }
+`;
+
+const ChevronIcon = styled(Icon)`
+  float: right;
 `;
 
 const Relative = styled.div`
@@ -100,6 +105,7 @@ export class Dropdown extends Component<
           <div ref={this.ref}>
             <DropdownButton onClick={this.handleClick} {...rest}>
               {value || selected}
+              <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
             </DropdownButton>
           </div>
 
