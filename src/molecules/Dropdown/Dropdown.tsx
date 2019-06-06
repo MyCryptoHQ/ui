@@ -68,9 +68,12 @@ export class Dropdown extends Component<
     width: undefined,
   };
 
+  private readonly parentRef = createRef<HTMLDivElement>();
   private readonly ref = createRef<HTMLDivElement>();
 
   public componentDidMount() {
+    addEventListener('mousedown', this.handleClickOutside);
+
     // istanbul ignore else
     if (this.ref.current) {
       const { width } = this.ref.current.getBoundingClientRect();
@@ -78,38 +81,55 @@ export class Dropdown extends Component<
     }
   }
 
+  public componentWillUnmount() {
+    removeEventListener('mousedown', this.handleClickOutside);
+  }
+
   public render() {
     const { items, value, ...rest } = this.props;
     const { open, selected, width } = this.state;
 
     return (
-      <Relative>
-        <div ref={this.ref}>
-          <DropdownButton onClick={this.handleClick} {...rest}>
-            {selected}
-          </DropdownButton>
-        </div>
+      <div ref={this.parentRef}>
+        <Relative>
+          <div ref={this.ref}>
+            <DropdownButton onClick={this.handleClick} {...rest}>
+              {selected}
+            </DropdownButton>
+          </div>
 
-        {open && (
-          <Absolute width={width}>
-            <DataList>
-              {Array.from(items).map(item => (
-                <Option
-                  key={item}
-                  selected={item === selected}
-                  onClick={this.handleChange(item)}
-                >
-                  {item}
-                </Option>
-              ))}
-            </DataList>
-          </Absolute>
-        )}
-      </Relative>
+          {open && (
+            <Absolute width={width}>
+              <DataList>
+                {Array.from(items).map(item => (
+                  <Option
+                    key={item}
+                    selected={item === selected}
+                    onClick={this.handleChange(item)}
+                  >
+                    {item}
+                  </Option>
+                ))}
+              </DataList>
+            </Absolute>
+          )}
+        </Relative>
+      </div>
     );
   }
 
   private readonly handleClick = () => this.setState({ open: true });
+
+  private readonly handleClickOutside = (event: MouseEvent) => {
+    if (
+      !(
+        this.parentRef.current &&
+        this.parentRef.current.contains(event.target as Node | null)
+      )
+    ) {
+      this.setState({ open: false });
+    }
+  };
 
   private readonly handleChange = (selected: string | number) => () =>
     this.setState({ open: false, selected });
