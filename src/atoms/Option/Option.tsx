@@ -5,6 +5,7 @@ import { borderRadius, scale } from '../../Theme';
 import Typography from '../../Typography';
 
 export const Option = styled(Typography)`
+  background: ${props => props.theme.controlBackground};
   cursor: pointer;
   margin: 0;
   ${padding(scale(-1), scale(1))};

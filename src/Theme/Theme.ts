@@ -3,7 +3,6 @@ import {
   invert,
   lighten,
   modularScale,
-  opacify,
   transparentize,
 } from 'polished';
 
@@ -14,7 +13,7 @@ export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
 const linkDark = '#1eb8e7';
-const optionHoverBackground = opacify(-0.8, '#b5bfc7');
+const optionHoverBackground = '#b5bfc7';
 const outline = '0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const panelBackgroundDark = '#163150';
@@ -70,7 +69,7 @@ export const light: Theme = {
   iconColor: '#424242',
   link: linkLight,
   linkHover: darken(0.1, linkLight),
-  optionHoverBackground,
+  optionHoverBackground: lighten(0.2, optionHoverBackground),
   outline: outline + transparentize(0.35, linkLight),
   panelBackground: backgroundLight,
   panelBackgroundDark: darken(lightnessMod, backgroundLight),
@@ -98,7 +97,7 @@ export const dark: Theme = {
   iconColor: primaryDark,
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
-  optionHoverBackground,
+  optionHoverBackground: darken(0.2, optionHoverBackground),
   outline: outline + transparentize(0.35, primaryDark),
   panelBackground: panelBackgroundDark,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),
