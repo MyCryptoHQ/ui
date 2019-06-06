@@ -1,11 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
+import Panel from '../../atoms/Panel';
 import Typography from '../../Typography';
-import Panel from '../Panel';
 import Dropdown from './Dropdown';
 
-storiesOf('Atoms', module).add('Dropdown', () => (
+storiesOf('Molecules', module).add('Dropdown', () => (
   <Panel>
     <Typography as="label">
       Network
