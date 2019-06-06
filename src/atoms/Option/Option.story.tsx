@@ -15,7 +15,7 @@ export default class OptionPreview extends Component<
     const { selected } = this.state;
 
     return [1, 2, 3].map(n => (
-      <Option selected={n === selected} onClick={this.handleSelect(n)}>
+      <Option key={n} selected={n === selected} onClick={this.handleSelect(n)}>
         Click Here for Option 0{n}
       </Option>
     ));
