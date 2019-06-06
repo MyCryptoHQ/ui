@@ -1,7 +1,14 @@
 import { padding } from 'polished';
-import React, { DetailedHTMLProps, SelectHTMLAttributes } from 'react';
+import React, {
+  Component,
+  createRef,
+  DetailedHTMLProps,
+  SelectHTMLAttributes,
+} from 'react';
 import { StyledComponentClass } from 'styled-components';
 
+import DataList from '../../atoms/DataList';
+import Option from '../../atoms/Option';
 import Omit from '../../Omit';
 import styled from '../../styled-components';
 import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
@@ -28,26 +35,81 @@ const Select = styled(Typography)`
   Theme
 >;
 
-Select.defaultProps = { as: 'select' };
+const Relative = styled.div`
+  position: relative;
+`;
 
-export function Dropdown({
-  items,
-  ...rest
-}: DropdownProps &
-  Omit<
-    DetailedHTMLProps<
-      SelectHTMLAttributes<HTMLSelectElement>,
-      HTMLSelectElement
+const Absolute = styled.div<{ width?: number }>`
+  position: absolute;
+  ${props => props.width && `width: ${props.width}px`};
+`;
+
+export class Dropdown extends Component<
+  DropdownProps &
+    Omit<
+      DetailedHTMLProps<
+        SelectHTMLAttributes<HTMLSelectElement>,
+        HTMLSelectElement
+      >,
+      'ref'
     >,
-    'ref'
-  >) {
-  return (
-    <Select {...rest}>
-      {Array.from(items).map(item => (
-        <option key={item}>{item}</option>
-      ))}
-    </Select>
-  );
+  {
+    open: boolean;
+    selected?: string | number;
+    width?: number;
+  }
+> {
+  public state = {
+    open: false,
+    selected: undefined,
+    width: undefined,
+  };
+
+  private readonly ref = createRef<HTMLDivElement>();
+
+  public componentDidMount() {
+    // istanbul ignore else
+    if (this.ref.current) {
+      const { width } = this.ref.current.getBoundingClientRect();
+      this.setState({ width });
+    }
+  }
+
+  public render() {
+    const { items, value, ...rest } = this.props;
+    const { open, selected, width } = this.state;
+
+    return (
+      <Relative>
+        <div ref={this.ref}>
+          <Select onClick={this.handleClick} {...rest}>
+            {selected}
+          </Select>
+        </div>
+
+        {open && (
+          <Absolute width={width}>
+            <DataList>
+              {Array.from(items).map(item => (
+                <Option
+                  key={item}
+                  selected={item === selected}
+                  onClick={this.handleChange(item)}
+                >
+                  {item}
+                </Option>
+              ))}
+            </DataList>
+          </Absolute>
+        )}
+      </Relative>
+    );
+  }
+
+  private readonly handleClick = () => this.setState({ open: true });
+
+  private readonly handleChange = (selected: string | number) => () =>
+    this.setState({ open: false, selected });
 }
 
 export default Dropdown;
