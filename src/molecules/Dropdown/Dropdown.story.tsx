@@ -12,5 +12,13 @@ storiesOf('Molecules', module).add('Dropdown', () => (
       <br />
       <Dropdown items={new Set(['Ethereum', 'Ropsten'])} />
     </Typography>
+
+    <Typography as="label">
+      Custom Content
+      <br />
+      <Dropdown value="Hello, world!">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+      </Dropdown>
+    </Typography>
   </Panel>
 ));

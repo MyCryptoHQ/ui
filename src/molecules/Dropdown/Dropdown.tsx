@@ -16,7 +16,7 @@ import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 
 export interface DropdownProps {
-  items: Set<ReactNode>;
+  items?: Set<ReactNode>;
   value?: ReactNode;
   onChange?(value: ReactNode): void;
 }
@@ -90,7 +90,7 @@ export class Dropdown extends Component<
   }
 
   public render() {
-    const { items, value, ...rest } = this.props;
+    const { children, items, value, ...rest } = this.props;
     const { open, selected, width } = this.state;
 
     return (
@@ -105,15 +105,17 @@ export class Dropdown extends Component<
           {open && (
             <Absolute width={width}>
               <DataList>
-                {Array.from(items).map((item, index) => (
-                  <Option
-                    key={index}
-                    selected={item === (value || selected)}
-                    onClick={this.handleChange(item)}
-                  >
-                    {item}
-                  </Option>
-                ))}
+                {items
+                  ? Array.from(items).map((item, index) => (
+                      <Option
+                        key={index}
+                        selected={item === (value || selected)}
+                        onClick={this.handleChange(item)}
+                      >
+                        {item}
+                      </Option>
+                    ))
+                  : children}
               </DataList>
             </Absolute>
           )}
