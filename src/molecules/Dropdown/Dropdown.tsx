@@ -18,14 +18,17 @@ export interface DropdownProps {
   items: Set<string | number>;
 }
 
-const Select = styled(Typography)`
+const DropdownButton = styled(Typography)`
   appearance: none;
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
+  cursor: pointer;
+  margin: 0;
+  min-height: 1.5em;
   ${padding(scale(-1), scale(0))};
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
-  width: 100%;
+
   :focus {
     outline: none;
     box-shadow: ${props => props.theme.outline};
@@ -82,9 +85,9 @@ export class Dropdown extends Component<
     return (
       <Relative>
         <div ref={this.ref}>
-          <Select onClick={this.handleClick} {...rest}>
+          <DropdownButton onClick={this.handleClick} {...rest}>
             {selected}
-          </Select>
+          </DropdownButton>
         </div>
 
         {open && (
