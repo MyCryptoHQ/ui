@@ -86,7 +86,7 @@ export class Dropdown extends Component<
   }
 
   public render() {
-    const { items, value, ...rest } = this.props;
+    const { items, ...rest } = this.props;
     const { open, selected, width } = this.state;
 
     return (
