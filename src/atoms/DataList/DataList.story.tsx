@@ -1,13 +1,11 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
 
-import Option from '../Option';
+import OptionPreview from '../Option/Option.story';
 import DataList from './DataList';
 
 storiesOf('Atoms', module).add('DataList', () => (
   <DataList>
-    <Option>Click Here for Option 01</Option>
-    <Option>Click Here for Option 02</Option>
-    <Option>Click Here for Option 03</Option>
+    <OptionPreview />
   </DataList>
 ));
