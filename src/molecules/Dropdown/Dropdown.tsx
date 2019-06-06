@@ -17,6 +17,8 @@ import Typography from '../../Typography';
 
 export interface DropdownProps {
   items: Set<ReactNode>;
+  value?: ReactNode;
+  onChange?(value: ReactNode): void;
 }
 
 const DropdownButton = styled(Typography)`
@@ -88,7 +90,7 @@ export class Dropdown extends Component<
   }
 
   public render() {
-    const { items, ...rest } = this.props;
+    const { items, value, ...rest } = this.props;
     const { open, selected, width } = this.state;
 
     return (
@@ -96,7 +98,7 @@ export class Dropdown extends Component<
         <Relative>
           <div ref={this.ref}>
             <DropdownButton onClick={this.handleClick} {...rest}>
-              {selected}
+              {value || selected}
             </DropdownButton>
           </div>
 
@@ -106,7 +108,7 @@ export class Dropdown extends Component<
                 {Array.from(items).map((item, index) => (
                   <Option
                     key={index}
-                    selected={item === selected}
+                    selected={item === (value || selected)}
                     onClick={this.handleChange(item)}
                   >
                     {item}
@@ -133,8 +135,15 @@ export class Dropdown extends Component<
     }
   };
 
-  private readonly handleChange = (selected: ReactNode) => () =>
-    this.setState({ open: false, selected });
+  private readonly handleChange = (selected: ReactNode) => () => {
+    const { onChange } = this.props;
+
+    if (onChange) {
+      onChange(selected);
+    } else {
+      this.setState({ open: false, selected });
+    }
+  };
 }
 
 export default Dropdown;
