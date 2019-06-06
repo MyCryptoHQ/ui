@@ -4,6 +4,7 @@ import React, {
   Component,
   createRef,
   HTMLAttributes,
+  ReactNode,
 } from 'react';
 import { ThemedOuterStyledProps } from 'styled-components';
 
@@ -15,7 +16,7 @@ import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 
 export interface DropdownProps {
-  items: Set<string | number>;
+  items: Set<ReactNode>;
 }
 
 const DropdownButton = styled(Typography)`
@@ -59,7 +60,7 @@ export class Dropdown extends Component<
     >,
   {
     open: boolean;
-    selected?: string | number;
+    selected?: ReactNode;
     width?: number;
   }
 > {
@@ -102,9 +103,9 @@ export class Dropdown extends Component<
           {open && (
             <Absolute width={width}>
               <DataList>
-                {Array.from(items).map(item => (
+                {Array.from(items).map((item, index) => (
                   <Option
-                    key={item}
+                    key={index}
                     selected={item === selected}
                     onClick={this.handleChange(item)}
                   >
@@ -132,7 +133,7 @@ export class Dropdown extends Component<
     }
   };
 
-  private readonly handleChange = (selected: string | number) => () =>
+  private readonly handleChange = (selected: ReactNode) => () =>
     this.setState({ open: false, selected });
 }
 
