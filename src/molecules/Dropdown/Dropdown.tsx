@@ -22,16 +22,18 @@ export interface DropdownProps {
   onChange?(value: ReactNode): void;
 }
 
-const DropdownButton = styled(Typography)`
+const DropdownButton = styled(Typography)<{ open: boolean }>`
   appearance: none;
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
+  ${props =>
+    props.open &&
+    'box-shadow: 0 0.4375em 0.625em 0.3125em rgba(50, 50, 93, 0.1), 0 0.1875em 0.375em 0 rgba(0, 0, 0, 0.07)'};
   cursor: pointer;
   margin: 0;
   min-height: 1.5em;
   ${padding(scale(-1), scale(0))};
-  transition: border ${transitionDuration}, box-shadow ${transitionDuration};
 
   :focus {
     outline: none;
@@ -98,7 +100,7 @@ export class Dropdown extends Component<
 
     return (
       <div ref={this.ref}>
-        <DropdownButton onClick={this.handleClick} {...rest}>
+        <DropdownButton open={open} onClick={this.handleClick} {...rest}>
           {value || selected}
           <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
         </DropdownButton>
