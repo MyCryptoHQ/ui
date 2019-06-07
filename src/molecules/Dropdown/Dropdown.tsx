@@ -120,7 +120,9 @@ export class Dropdown extends Component<
     );
   }
 
-  private readonly handleClick = () => this.setState({ open: true });
+  private readonly handleClick = () => {
+    this.setState(({ open }) => ({ open: !open }));
+  };
 
   private readonly handleClickOutside = (event: MouseEvent) => {
     if (
