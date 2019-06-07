@@ -43,8 +43,11 @@ const ChevronIcon = styled(Icon)`
   float: right;
 `;
 
-const PositionedDataList = styled(DataList)<{ width?: number }>`
+const PositionedDataList = styled(DataList)<{ open: boolean; width?: number }>`
   position: absolute;
+  transform: scaleY(${props => (props.open ? 1 : 0)});
+  transform-origin: top;
+  transition: transform ${transitionDuration};
   ${props => props.width && `width: ${props.width}px`};
 `;
 
@@ -100,21 +103,19 @@ export class Dropdown extends Component<
           <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
         </DropdownButton>
 
-        {open && (
-          <PositionedDataList width={width}>
-            {items
-              ? Array.from(items).map((item, index) => (
-                  <Option
-                    key={index}
-                    selected={item === (value || selected)}
-                    onClick={this.handleChange(item)}
-                  >
-                    {item}
-                  </Option>
-                ))
-              : children}
-          </PositionedDataList>
-        )}
+        <PositionedDataList open={open} width={width}>
+          {items
+            ? Array.from(items).map((item, index) => (
+                <Option
+                  key={index}
+                  selected={item === (value || selected)}
+                  onClick={this.handleChange(item)}
+                >
+                  {item}
+                </Option>
+              ))
+            : children}
+        </PositionedDataList>
       </div>
     );
   }
