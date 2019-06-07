@@ -43,14 +43,9 @@ const ChevronIcon = styled(Icon)`
   float: right;
 `;
 
-const Relative = styled.div`
-  position: relative;
-`;
-
-const Absolute = styled.div<{ width?: number }>`
+const PositionedDataList = styled(DataList)<{ width?: number }>`
   position: absolute;
   ${props => props.width && `width: ${props.width}px`};
-  z-index: 1;
 `;
 
 export class Dropdown extends Component<
@@ -78,7 +73,6 @@ export class Dropdown extends Component<
     width: undefined,
   };
 
-  private readonly parentRef = createRef<HTMLDivElement>();
   private readonly ref = createRef<HTMLDivElement>();
 
   public componentDidMount() {
@@ -100,33 +94,27 @@ export class Dropdown extends Component<
     const { open, selected, width } = this.state;
 
     return (
-      <div ref={this.parentRef}>
-        <Relative>
-          <div ref={this.ref}>
-            <DropdownButton onClick={this.handleClick} {...rest}>
-              {value || selected}
-              <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
-            </DropdownButton>
-          </div>
+      <div ref={this.ref}>
+        <DropdownButton onClick={this.handleClick} {...rest}>
+          {value || selected}
+          <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
+        </DropdownButton>
 
-          {open && (
-            <Absolute width={width}>
-              <DataList>
-                {items
-                  ? Array.from(items).map((item, index) => (
-                      <Option
-                        key={index}
-                        selected={item === (value || selected)}
-                        onClick={this.handleChange(item)}
-                      >
-                        {item}
-                      </Option>
-                    ))
-                  : children}
-              </DataList>
-            </Absolute>
-          )}
-        </Relative>
+        {open && (
+          <PositionedDataList width={width}>
+            {items
+              ? Array.from(items).map((item, index) => (
+                  <Option
+                    key={index}
+                    selected={item === (value || selected)}
+                    onClick={this.handleChange(item)}
+                  >
+                    {item}
+                  </Option>
+                ))
+              : children}
+          </PositionedDataList>
+        )}
       </div>
     );
   }
@@ -136,8 +124,8 @@ export class Dropdown extends Component<
   private readonly handleClickOutside = (event: MouseEvent) => {
     if (
       !(
-        this.parentRef.current &&
-        this.parentRef.current.contains(event.target as Node | null)
+        this.ref.current &&
+        this.ref.current.contains(event.target as Node | null)
       )
     ) {
       this.setState({ open: false });
