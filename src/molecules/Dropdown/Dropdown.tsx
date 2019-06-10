@@ -46,12 +46,22 @@ const ChevronIcon = styled(Icon)`
   float: right;
 `;
 
-const PositionedDataList = styled(DataList)<{ open: boolean; width?: number }>`
+const Relative = styled.div`
+  position: relative;
+`;
+
+const PositionedDataList = styled(DataList)<{
+  height: number;
+  open: boolean;
+  width?: number;
+}>`
   position: absolute;
+  top: ${props => props.height}px;
   transform: scaleY(${props => (props.open ? 1 : 0)});
   transform-origin: top;
   transition: transform ${transitionDuration};
   ${props => props.width && `width: ${props.width}px`};
+  z-index: 1;
 `;
 
 export class Dropdown extends Component<
@@ -68,12 +78,14 @@ export class Dropdown extends Component<
       'ref'
     >,
   {
+    height?: number;
     open: boolean;
     selected?: number;
     width?: number;
   }
 > {
   public state = {
+    height: undefined,
     open: false,
     selected: undefined,
     width: undefined,
@@ -86,8 +98,8 @@ export class Dropdown extends Component<
 
     // istanbul ignore else
     if (this.ref.current) {
-      const { width } = this.ref.current.getBoundingClientRect();
-      this.setState({ width });
+      const { height, width } = this.ref.current.getBoundingClientRect();
+      this.setState({ height, width });
     }
   }
 
@@ -97,7 +109,7 @@ export class Dropdown extends Component<
 
   public render() {
     const { children, items, title, value, ...rest } = this.props;
-    const { open, selected, width } = this.state;
+    const { height, open, selected, width } = this.state;
 
     const selectedIndex = value !== undefined ? value : selected;
     const selectedItem =
@@ -105,24 +117,30 @@ export class Dropdown extends Component<
 
     return (
       <div ref={this.ref}>
-        <DropdownButton open={open} onClick={this.handleClick} {...rest}>
-          {title || selectedItem}
-          <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
-        </DropdownButton>
+        <Relative>
+          <DropdownButton open={open} onClick={this.handleClick} {...rest}>
+            {title || selectedItem}
+            <ChevronIcon icon={open ? 'chevronUp' : 'chevronDown'} />
+          </DropdownButton>
 
-        <PositionedDataList open={open} width={width}>
-          {items
-            ? Array.from(items).map((item, index) => (
-                <Option
-                  key={index}
-                  selected={index === selectedIndex}
-                  onClick={this.handleChange(index)}
-                >
-                  {item}
-                </Option>
-              ))
-            : children}
-        </PositionedDataList>
+          <PositionedDataList
+            height={(height || 0) + 7}
+            open={open}
+            width={width}
+          >
+            {items
+              ? Array.from(items).map((item, index) => (
+                  <Option
+                    key={index}
+                    selected={index === selectedIndex}
+                    onClick={this.handleChange(index)}
+                  >
+                    {item}
+                  </Option>
+                ))
+              : children}
+          </PositionedDataList>
+        </Relative>
       </div>
     );
   }
