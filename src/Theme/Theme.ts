@@ -13,6 +13,8 @@ export const borderRadiusLarge = '0.375em';
 const lightnessMod = 0.06;
 const linkLight = '#007a99';
 const linkDark = '#1eb8e7';
+const optionHoverBackground = '#b5bfc7';
+const optionSelected = '#a682ff';
 const outline = '0 0 0 0.25em ';
 const panelBackground = '#282c34';
 const panelBackgroundDark = '#163150';
@@ -40,6 +42,8 @@ export default interface Theme {
   iconColor: string;
   link: string;
   linkHover: string;
+  optionHoverBackground: string;
+  optionSelected: string;
   outline: string;
   panelBackground: string;
   panelBackgroundDark: string;
@@ -67,6 +71,8 @@ export const light: Theme = {
   iconColor: '#424242',
   link: linkLight,
   linkHover: darken(0.1, linkLight),
+  optionHoverBackground: lighten(0.2, optionHoverBackground),
+  optionSelected,
   outline: outline + transparentize(0.35, linkLight),
   panelBackground: backgroundLight,
   panelBackgroundDark: darken(lightnessMod, backgroundLight),
@@ -94,6 +100,8 @@ export const dark: Theme = {
   iconColor: primaryDark,
   link: linkDark,
   linkHover: lighten(0.1, linkDark),
+  optionHoverBackground: darken(0.2, optionHoverBackground),
+  optionSelected,
   outline: outline + transparentize(0.35, primaryDark),
   panelBackground: panelBackgroundDark,
   panelBackgroundDark: lighten(lightnessMod, panelBackground),
