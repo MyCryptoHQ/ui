@@ -16,7 +16,7 @@ storiesOf('Molecules', module).add('Dropdown', () => (
     <Typography as="label">
       Custom Content
       <br />
-      <Dropdown value="Hello, world!">
+      <Dropdown title="Hello, world!">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit.
       </Dropdown>
     </Typography>
