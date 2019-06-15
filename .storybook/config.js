@@ -1,9 +1,9 @@
 import { withA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
 import { addDecorator, configure, addParameters } from '@storybook/react';
+import { withThemes } from 'storybook-styled-components';
 import { cover } from 'polished';
 import React, { StrictMode } from 'react';
-import { withThemesProvider } from 'storybook-addon-styled-component-theme';
 import 'typeface-lato';
 import 'typeface-roboto-mono';
 
@@ -28,7 +28,12 @@ const Container = styled.div`
 `;
 addDecorator(story => <Container>{story()}</Container>);
 
-addDecorator(withThemesProvider([light, dark]));
+addDecorator(
+  withThemes({
+    Light: light,
+    Dark: dark,
+  }),
+);
 
 addDecorator(story => <StrictMode>{story()}</StrictMode>);
 
