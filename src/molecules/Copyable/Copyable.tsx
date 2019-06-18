@@ -24,6 +24,7 @@ const ActiveButton = styled(Icon)`
 export class Copyable extends Component<
   {
     text: string;
+    isCopyable?: boolean;
     truncate?(text: string): string;
   },
   {
@@ -68,7 +69,7 @@ export class Copyable extends Component<
         'ref'
       >,
   ) {
-    const { text } = this.props;
+    const { text, isCopyable } = this.props;
     const { copied } = this.state;
 
     return (
@@ -79,11 +80,12 @@ export class Copyable extends Component<
         children={
           <>
             {children}{' '}
-            {copied ? (
-              <ActiveButton icon="warning" />
-            ) : (
-              <ColoredIcon icon="copy" />
-            )}
+            {isCopyable &&
+              (copied ? (
+                <ActiveButton icon="warning" />
+              ) : (
+                <ColoredIcon icon="copy" />
+              ))}
           </>
         }
         {...props}
