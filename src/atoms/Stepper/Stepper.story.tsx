@@ -1,17 +1,17 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
 import styled from '../../styled-components';
-import Typography from '../../Typography';
 import Button from '../Button';
+import Heading from '../Heading/Heading';
 // eslint-disable-next-line import/no-relative-parent-imports
 import backArrowIcon from '../Icon/icons/icn-back-arrow.svg';
 import Stepper from './Stepper';
 
-const beforeStep = <h2>Start Stepping!</h2>;
-const stepOne = <h2>Step One</h2>;
-const stepTwo = <h2>Step Two</h2>;
-const stepThree = <h2>Step Three</h2>;
-const afterStep = <h2>All steps are done!</h2>;
+const beforeStep = <Heading as='h2'>Start Stepping!</Heading>;
+const stepOne = <Heading as='h2'>Step One</Heading>;
+const stepTwo = <Heading as='h2'>Step Two</Heading>;
+const stepThree = <Heading as='h2'>Step Three</Heading>;
+const afterStep = <Heading as='h2'>All steps are done!</Heading>;
 
 export const steps = [beforeStep, stepOne, stepTwo, stepThree, afterStep];
 
@@ -66,7 +66,7 @@ export class StepperStory extends Component<StepActionProps, StepActionState> {
           <Stepper current={step} total={total} />
         </StepperBackContainer>
         <CopyContainer>
-          <Typography>{steps[step]}</Typography>
+          <>{steps[step]}</>
         </CopyContainer>
         <NextButtonContainer>
           {step === steps.length - 1 ? (

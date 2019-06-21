@@ -1,25 +1,23 @@
-import { checkA11y } from '@storybook/addon-a11y';
+import { withA11y } from '@storybook/addon-a11y';
 import { withInfo } from '@storybook/addon-info';
-import { withOptions } from '@storybook/addon-options';
-import { addDecorator, configure } from '@storybook/react';
+import { addDecorator, configure, addParameters } from '@storybook/react';
+import { withThemes } from 'storybook-styled-components';
 import { cover } from 'polished';
 import React, { StrictMode } from 'react';
-import { withThemesProvider } from 'storybook-addon-styled-component-theme';
-import { configureViewport } from '@storybook/addon-viewport';
 import 'typeface-lato';
 import 'typeface-roboto-mono';
 
+import theme from './theme';
 import styled from '../src/styled-components';
 import { dark, light } from '../src/Theme';
 
-addDecorator(
-  withOptions({
-    name: 'MyCrypto UI',
-    url: 'https://github.com/MyCryptoHQ/ui',
-  }),
-);
+addParameters({
+  options: {
+    theme,
+  },
+});
 
-addDecorator(checkA11y);
+addDecorator(withA11y);
 
 addDecorator(withInfo);
 
@@ -30,7 +28,12 @@ const Container = styled.div`
 `;
 addDecorator(story => <Container>{story()}</Container>);
 
-addDecorator(withThemesProvider([light, dark]));
+addDecorator(
+  withThemes({
+    Light: light,
+    Dark: dark,
+  }),
+);
 
 addDecorator(story => <StrictMode>{story()}</StrictMode>);
 
@@ -86,6 +89,6 @@ const viewports = {
   },
 };
 
-configureViewport({
-  viewports,
+addParameters({
+  viewport: { viewports },
 });
