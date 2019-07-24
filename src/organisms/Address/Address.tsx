@@ -59,6 +59,7 @@ interface Props {
   address: string;
   className?: string;
   title?: string;
+  isCopyable?: boolean;
   onSubmit?(title?: string): void;
   truncate?(text: string): string;
 }
@@ -97,8 +98,12 @@ export class Address extends Component<Props, State> {
     onSubmit!(title);
   };
 
+  public static defaultProps = {
+    isCopyable: true,
+  };
+
   public render() {
-    const { address, className, onSubmit, truncate } = this.props;
+    const { address, className, isCopyable, onSubmit, truncate } = this.props;
     const { editing, title } = this.state;
 
     const TitleComponent = title ? Title : MissingTitle;
@@ -136,7 +141,11 @@ export class Address extends Component<Props, State> {
               )}
             </>
           )}
-          <Copyable text={address} truncate={truncate} />
+          <Copyable
+            text={address}
+            truncate={truncate}
+            isCopyable={isCopyable}
+          />
         </Content>
       </Flex>
     );
