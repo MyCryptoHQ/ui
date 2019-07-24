@@ -44,7 +44,7 @@ export class Copyable extends Component<
 
     return truncate ? (
       <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
-        {props => this.renderButton(truncate(text), props)}
+        {this.renderButton(truncate(text), this.props)}
       </Tooltip>
     ) : (
       <div>{this.renderButton(text)}</div>

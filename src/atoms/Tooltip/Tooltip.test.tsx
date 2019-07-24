@@ -6,7 +6,7 @@ import Tooltip from './Tooltip';
 test('Tooltip', () => {
   const { getByText, queryByText } = render(
     <Tooltip tooltip="Hello world!">
-      {props => <div {...props}>Hover here!</div>}
+      <div>Hover here!</div>
     </Tooltip>,
   );
   const hoverable = getByText('Hover here!');

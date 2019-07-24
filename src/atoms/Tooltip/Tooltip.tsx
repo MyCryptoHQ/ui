@@ -12,6 +12,8 @@ const Relative = styled.div`
 const Absolute = styled.div<{ height: number }>`
   position: absolute;
   bottom: ${props => props.height}px;
+  display: flex;
+  flex-direction: column;
 `;
 
 const Box = styled.div`
@@ -24,10 +26,11 @@ const Box = styled.div`
 `;
 
 const Triangle = styled.img`
-  position: relative;
-  top: -0.25em;
-  left: 50%;
-  transform: translateX(-50%);
+  /* stylelint-disable unit-whitelist */
+  margin-top: -4px;
+  width: 29px;
+  height: 15px;
+  /* stylelint-enable */
 `;
 
 Triangle.defaultProps = { src: triangle };
@@ -35,9 +38,7 @@ Triangle.defaultProps = { src: triangle };
 export class Tooltip extends Component<
   {
     tooltip: ReactNode;
-    children(
-      props: Record<'onMouseOver' | 'onMouseOut', () => void>,
-    ): ReactNode;
+    children: ReactNode;
   },
   {
     height?: number;
@@ -45,7 +46,7 @@ export class Tooltip extends Component<
   }
 > {
   public ref = createRef<HTMLDivElement>();
-  public state = { height: undefined, open: false };
+  public state = { height: 0, open: false };
 
   public componentDidMount() {
     // istanbul ignore else
@@ -61,16 +62,16 @@ export class Tooltip extends Component<
 
     return (
       <Relative>
-        <div ref={this.ref}>
-          {children({
-            onMouseOver: () => this.setState({ open: true }),
-            onMouseOut: () => this.setState({ open: false }),
-          })}
+        <div
+          onMouseEnter={this.onMouseEnter}
+          onMouseLeave={this.onMouseLeave}
+          ref={this.ref}
+        >
+          {children}
         </div>
 
         {open && (
-          // Height needs to be reduced because the triangle SVG is too tall
-          <Absolute height={(height || 0) - 17}>
+          <Absolute height={height}>
             <Box>{tooltip}</Box>
             <Triangle />
           </Absolute>
@@ -78,6 +79,10 @@ export class Tooltip extends Component<
       </Relative>
     );
   }
+
+  private onMouseEnter = () => this.setState({ open: true });
+
+  private onMouseLeave = () => this.setState({ open: false });
 }
 
 export default Tooltip;
