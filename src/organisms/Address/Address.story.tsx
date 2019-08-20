@@ -15,6 +15,14 @@ const storyProps = {
   },
 };
 
+const withAvatarProps = {
+  ...storyProps,
+  tooltip: {
+    image: 'https://www.w3schools.com/howto/img_avatar.png',
+    content: 'Steve Brule',
+  },
+};
+
 class AddressContainer extends Component<
   {},
   {
@@ -33,14 +41,6 @@ class AddressContainer extends Component<
     );
   }
 }
-
-const withAvatarProps = {
-  ...storyProps,
-  tooltip: {
-    image: 'https://www.w3schools.com/howto/img_avatar.png',
-    content: 'Steve Brule',
-  },
-};
 
 storiesOf('Organisms', module).add('Address', () => (
   <>
