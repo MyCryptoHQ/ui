@@ -1,4 +1,4 @@
-import React, { ChangeEvent, Component, FormEvent } from 'react';
+import React, { ChangeEvent, Component, FormEvent, ReactNode } from 'react';
 
 import { Button, Identicon } from '../../atoms';
 import { Copyable } from '../../molecules';
@@ -55,11 +55,22 @@ const SubmitButton = styled(ColoredIconButton)`
 
 SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
+const RoundedImage = styled.img`
+  border-radius: 50%;
+  height: 2.5em;
+`;
+
+interface Tooltip {
+  image?: string;
+  content: ReactNode | string;
+}
+
 interface Props {
   address: string;
   className?: string;
   title?: string;
   isCopyable?: boolean;
+  tooltip?: Tooltip;
   onSubmit?(title?: string): void;
   truncate?(text: string): string;
 }
@@ -70,6 +81,10 @@ interface State {
 }
 
 export class Address extends Component<Props, State> {
+  public static defaultProps = {
+    isCopyable: true,
+  };
+
   public constructor(props: Props) {
     super(props);
     this.state = { editing: false, title: props.title };
@@ -98,19 +113,28 @@ export class Address extends Component<Props, State> {
     onSubmit!(title);
   };
 
-  public static defaultProps = {
-    isCopyable: true,
-  };
-
   public render() {
-    const { address, className, isCopyable, onSubmit, truncate } = this.props;
+    const {
+      address,
+      className,
+      isCopyable,
+      onSubmit,
+      truncate,
+      tooltip,
+    } = this.props;
     const { editing, title } = this.state;
 
     const TitleComponent = title ? Title : MissingTitle;
+    const ImageComponent = () =>
+      tooltip && tooltip.image ? (
+        <RoundedImage src={tooltip.image} />
+      ) : (
+        <Identicon address={address} />
+      );
 
     return (
       <Flex className={className}>
-        <Identicon address={address} />
+        <ImageComponent />
 
         <Content>
           {editing ? (
