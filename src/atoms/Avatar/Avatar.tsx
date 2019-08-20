@@ -28,7 +28,6 @@ export const Avatar = ({
   >,
   'ref'
 >) => {
-  console.log('src:', src);
   return (
     <TypographyWrapper {...rest}>
       <RoundedImage src={src} alt="Avatar" />
