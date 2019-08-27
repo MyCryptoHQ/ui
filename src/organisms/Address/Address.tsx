@@ -1,6 +1,6 @@
-import React, { ChangeEvent, Component, FormEvent } from 'react';
+import React, { ChangeEvent, Component, FormEvent, ReactNode } from 'react';
 
-import { Button, Identicon } from '../../atoms';
+import { Avatar, Button, Identicon, Tooltip } from '../../atoms';
 import { Copyable } from '../../molecules';
 import styled from '../../styled-components';
 import { borderRadius, monospace, scale } from '../../Theme';
@@ -55,11 +55,17 @@ const SubmitButton = styled(ColoredIconButton)`
 
 SubmitButton.defaultProps = { type: 'submit', icon: 'exit' };
 
+interface TooltipType {
+  image?: string;
+  content: ReactNode | string;
+}
+
 interface Props {
   address: string;
   className?: string;
   title?: string;
   isCopyable?: boolean;
+  tooltip?: TooltipType;
   onSubmit?(title?: string): void;
   truncate?(text: string): string;
 }
@@ -70,6 +76,10 @@ interface State {
 }
 
 export class Address extends Component<Props, State> {
+  public static defaultProps = {
+    isCopyable: true,
+  };
+
   public constructor(props: Props) {
     super(props);
     this.state = { editing: false, title: props.title };
@@ -98,20 +108,28 @@ export class Address extends Component<Props, State> {
     onSubmit!(title);
   };
 
-  public static defaultProps = {
-    isCopyable: true,
-  };
-
   public render() {
-    const { address, className, isCopyable, onSubmit, truncate } = this.props;
+    const {
+      address,
+      className,
+      isCopyable,
+      onSubmit,
+      truncate,
+      tooltip,
+    } = this.props;
     const { editing, title } = this.state;
 
     const TitleComponent = title ? Title : MissingTitle;
-
-    return (
-      <Flex className={className}>
+    const ImageComponent = () =>
+      tooltip && tooltip.image ? (
+        <Avatar src={tooltip.image} />
+      ) : (
         <Identicon address={address} />
+      );
 
+    const addressContent = (
+      <Flex className={className}>
+        <ImageComponent />
         <Content>
           {editing ? (
             <form onSubmit={this.handleSubmit}>
@@ -148,6 +166,14 @@ export class Address extends Component<Props, State> {
           />
         </Content>
       </Flex>
+    );
+
+    return tooltip ? (
+      <Tooltip tooltip={<Typography as="div">{tooltip.content}</Typography>}>
+        {addressContent}
+      </Tooltip>
+    ) : (
+      <>{addressContent}</>
     );
   }
 }

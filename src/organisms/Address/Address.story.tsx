@@ -15,6 +15,14 @@ const storyProps = {
   },
 };
 
+const withAvatarProps = {
+  ...storyProps,
+  tooltip: {
+    image: 'https://www.w3schools.com/howto/img_avatar.png',
+    content: 'Steve Brule',
+  },
+};
+
 class AddressContainer extends Component<
   {},
   {
@@ -34,12 +42,13 @@ class AddressContainer extends Component<
   }
 }
 
-storiesOf('Molecules', module).add('Address', () => (
+storiesOf('Organisms', module).add('Address', () => (
   <>
     <Address {...storyProps} title={undefined} />
     <Address {...storyProps} />
     <Address {...storyProps} isCopyable={false} />
     <AddressContainer />
     <Address title={storyProps.title} address="foo.eth" />
+    <Address {...withAvatarProps} />
   </>
 ));
