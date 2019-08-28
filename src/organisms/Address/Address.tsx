@@ -127,7 +127,7 @@ export class Address extends Component<Props, State> {
         <Identicon address={address} />
       );
 
-    const addressContent = (
+    const renderAddressContent = (disableCopyableTooltip?: boolean) => (
       <Flex className={className}>
         <ImageComponent />
         <Content>
@@ -163,6 +163,7 @@ export class Address extends Component<Props, State> {
             text={address}
             truncate={truncate}
             isCopyable={isCopyable}
+            disableTooltip={disableCopyableTooltip}
           />
         </Content>
       </Flex>
@@ -170,10 +171,10 @@ export class Address extends Component<Props, State> {
 
     return tooltip ? (
       <Tooltip tooltip={<Typography as="div">{tooltip.content}</Typography>}>
-        {addressContent}
+        {renderAddressContent(true)}
       </Tooltip>
     ) : (
-      <>{addressContent}</>
+      renderAddressContent()
     );
   }
 }
