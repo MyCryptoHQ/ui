@@ -107,6 +107,12 @@ const TableGroupHead = styled(TableRow)`
 
 const TableCaret = styled(Icon)<{ isFlipped?: boolean }>`
   margin-left: 0.5em;
+  vertical-align: middle;
+
+  svg {
+    color: #55b6e2;
+  }
+
   ${props =>
     props.isFlipped &&
     `
