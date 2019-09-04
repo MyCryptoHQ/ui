@@ -19,7 +19,12 @@ const withAvatarProps = {
   ...storyProps,
   tooltip: {
     image: 'https://www.w3schools.com/howto/img_avatar.png',
-    content: 'Steve Brule',
+    content: (
+      <div>
+        <div>{storyProps.title}</div>
+        <div>{storyProps.address}</div>
+      </div>
+    ),
   },
 };
 

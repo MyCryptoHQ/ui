@@ -25,6 +25,7 @@ export class Copyable extends Component<
   {
     text: string;
     isCopyable?: boolean;
+    disableTooltip?: boolean;
     truncate?(text: string): string;
   },
   {
@@ -41,14 +42,15 @@ export class Copyable extends Component<
   };
 
   public render() {
-    const { text, truncate } = this.props;
+    const { text, truncate, disableTooltip } = this.props;
+    const renderedText = truncate ? truncate(text) : text;
 
-    return truncate ? (
+    return truncate && !disableTooltip ? (
       <Tooltip tooltip={<Typography as="div">{text}</Typography>}>
-        {this.renderButton(truncate(text), this.props)}
+        {this.renderButton(renderedText, this.props)}
       </Tooltip>
     ) : (
-      <div>{this.renderButton(text)}</div>
+      <div>{this.renderButton(renderedText)}</div>
     );
   }
 
