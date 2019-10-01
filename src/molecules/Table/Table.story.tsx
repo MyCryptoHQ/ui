@@ -1,9 +1,16 @@
 import { storiesOf } from '@storybook/react';
 import React from 'react';
+import styled from 'styled-components';
 
 import { Copyable } from '..';
 import { Button, Icon, Identicon, Panel } from '../../atoms';
 import Table, { TableData } from './Table';
+
+const FullWidthRow = styled.div`
+  height: 2rem;
+  width: 100%;
+  background-color: gray;
+`;
 
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
 const truncate = (text: string): string => text.substr(0, 6);
@@ -122,6 +129,8 @@ const recentTransactionsTable: TableData = {
 };
 const addressBookTable: TableData = {
   head: ['Favorite', 'Label', 'Address', 'Notes', ''],
+  overlay: <FullWidthRow>haha</FullWidthRow>,
+  overlayRows: [1, 2],
   body: [
     [
       <Icon key={0} icon="star" style={{ marginLeft: '1rem' }} />,
