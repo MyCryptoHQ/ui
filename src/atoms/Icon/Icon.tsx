@@ -13,6 +13,7 @@ import add from './icons/icn-add.svg';
 import add2 from './icons/icn-add_2.svg';
 import announcement from './icons/icn-announcement.svg';
 import backArrow from './icons/icn-back-arrow.svg';
+import checkmark from './icons/icn-checkmark.svg';
 import copy from './icons/icn-copy.svg';
 import create from './icons/icn-create-wallet.svg';
 import exit from './icons/icn-exit.svg';
@@ -53,6 +54,7 @@ export const icons = {
   star,
   shape,
   warning,
+  checkmark,
 
   bankVsMyCrypto,
   champagne,
