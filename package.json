@@ -207,6 +207,7 @@
       "max-nesting-depth": 1,
       "unit-whitelist": [
         "%",
+        "px",
         "em",
         "rem"
       ]
