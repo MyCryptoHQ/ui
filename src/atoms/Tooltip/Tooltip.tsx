@@ -71,7 +71,11 @@ export class Tooltip extends Component<
         </div>
 
         {open && (
-          <Absolute height={height}>
+          <Absolute
+            height={height}
+            onMouseEnter={this.onMouseEnter}
+            onMouseLeave={this.onMouseLeave}
+          >
             <Box>{tooltip}</Box>
             <Triangle />
           </Absolute>
