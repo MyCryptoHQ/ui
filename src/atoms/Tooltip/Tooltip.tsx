@@ -17,7 +17,7 @@ const Absolute = styled.div<{ height: number }>`
 `;
 
 const Box = styled.div`
-  border: 0.0625em solid #bac9d4;
+  border: 1px solid #bac9d4;
   background: ${props => props.theme.controlBackground};
   border-radius: ${borderRadius};
   box-shadow: 0 0.1875em 0.375em 0 #00000012,
@@ -27,7 +27,7 @@ const Box = styled.div`
 
 const Triangle = styled.img`
   /* stylelint-disable unit-whitelist */
-  margin-top: -4px;
+  margin-top: -1px;
   width: 29px;
   height: 15px;
   /* stylelint-enable */

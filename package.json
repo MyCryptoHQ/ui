@@ -1,6 +1,6 @@
 {
   "name": "@mycrypto/ui",
-  "version": "0.20.1",
+  "version": "0.20.2",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
@@ -207,6 +207,7 @@
       "max-nesting-depth": 1,
       "unit-whitelist": [
         "%",
+        "px",
         "em",
         "rem"
       ]
