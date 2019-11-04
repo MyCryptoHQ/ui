@@ -63,15 +63,19 @@ const StyledIcon = styled(Icon)<{ iconSide?: string }>`
 
 StyledInput.defaultProps = { as: 'input' };
 
-export interface InputProps {
-  value?: string;
-  icon?: keyof typeof icons;
+export interface IconProps {
+  icon?: (keyof typeof icons) | string;
   iconSide?: string;
+}
+
+export interface InputProps<T> extends IconProps {
+  value?: string;
+  iconComponent?: React.ComponentClass<T> | React.StatelessComponent<T>;
   validator?(value: string): string | undefined;
 }
 
 export class Input extends Component<
-  InputProps &
+  InputProps<any> &
     ThemedOuterStyledProps<
       DetailedHTMLProps<
         InputHTMLAttributes<HTMLInputElement>,
@@ -92,12 +96,24 @@ export class Input extends Component<
       this.ref.current.reportValidity();
     }
   }
-
   public render() {
-    const { icon, iconSide } = this.props;
+    const {
+      icon,
+      iconSide,
+      iconComponent = ({
+        icon: iconValue,
+        iconSide: iconSideValue,
+      }: IconProps) => (
+        <StyledIcon
+          icon={iconValue as keyof typeof icons}
+          iconSide={iconSideValue}
+        />
+      ),
+    } = this.props;
+    const IconComponent = iconComponent;
     const formattedIconSide = iconSide && iconSide.toLowerCase();
     const iconElement = icon && (
-      <StyledIcon icon={icon} iconSide={formattedIconSide} />
+      <IconComponent icon={icon} iconSide={formattedIconSide} />
     );
 
     return (

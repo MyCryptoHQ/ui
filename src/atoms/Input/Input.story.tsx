@@ -14,7 +14,7 @@ import Panel from '../Panel';
 import Input, { InputProps } from './Input';
 
 class ControlledInput extends Component<
-  InputProps &
+  InputProps<any> &
     Omit<
       ThemedOuterStyledProps<
         DetailedHTMLProps<
@@ -47,6 +47,10 @@ function validator(value: string) {
   }
 }
 
+const testComponent = ({ icon }: { icon: string }) => (
+  <img alt="ETH" src={icon} />
+);
+
 storiesOf('Atoms', module).add('Input', () => (
   <Panel>
     {Object.entries({
@@ -64,6 +68,14 @@ storiesOf('Atoms', module).add('Input', () => (
         />
       ),
       Network: <ControlledInput validator={validator} />,
+      Amount: (
+        <Input
+          icon="https://cdn.mycryptoapi.com/v1/icons/eth.svg"
+          placeholder="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
+          iconSide="right"
+          iconComponent={testComponent}
+        />
+      ),
     }).map(([label, element]) => (
       <Typography as="label" key={label}>
         {label}
