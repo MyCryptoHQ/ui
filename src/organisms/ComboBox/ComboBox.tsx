@@ -12,7 +12,7 @@ import Theme from '../../Theme';
 
 let datalistId = 0;
 
-export interface ComboBoxProps extends InputProps<any> {
+export interface ComboBoxProps extends InputProps {
   items: Set<string | number>;
 }
 
