@@ -15,12 +15,13 @@ import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 import Icon, { icons } from '../Icon';
 
-const InputContainer = styled.div`
+const InputContainer = styled.div<{ invert?: boolean }>`
   background: ${props => props.theme.controlBackground};
   border: 0.125em solid ${props => props.theme.controlBorder};
   border-radius: ${borderRadius};
   transition: border ${transitionDuration}, box-shadow ${transitionDuration};
   ${padding(scale(-1), scale(0))};
+  flex-direction: ${props => (props.invert ? 'row-reverse' : 'row')};
   display: flex;
   :focus-within {
     outline: none;
@@ -48,25 +49,24 @@ const StyledIcon = styled(Icon)<{ iconSide?: string }>`
   color: #1eb8e7;
   margin: auto;
   ${props =>
-    props.iconSide === 'right'
-      ? 'padding-left: 12px;'
-      : 'padding-right: 12px;'};
+    props.iconSide === 'right' ? 'padding-left: 1ch;' : 'padding-right: 1ch;'};
   height: 100%;
   display: block;
-  /* stylelint-disable max-nesting-depth */
-  span {
-    svg {
-      height: 100;
-    }
+  svg {
+    display: inline-block;
+    vertical-align: middle;
   }
 `;
 
 StyledInput.defaultProps = { as: 'input' };
 
-export interface InputProps {
-  value?: string;
-  icon?: keyof typeof icons;
+export interface IconProps {
+  icon?: (keyof typeof icons) | React.ReactType<IconProps>;
   iconSide?: string;
+}
+
+export interface InputProps extends IconProps {
+  value?: string;
   validator?(value: string): string | undefined;
 }
 
@@ -92,23 +92,25 @@ export class Input extends Component<
       this.ref.current.reportValidity();
     }
   }
-
   public render() {
     const { icon, iconSide } = this.props;
-    const formattedIconSide = iconSide && iconSide.toLowerCase();
-    const iconElement = icon && (
-      <StyledIcon icon={icon} iconSide={formattedIconSide} />
-    );
+    const IconComponent = (typeof icon === 'string'
+      ? ({ icon: iconValue, iconSide: iconSideValue }: IconProps) => (
+          <StyledIcon
+            icon={iconValue as keyof typeof icons}
+            iconSide={iconSideValue}
+          />
+        )
+      : icon) as React.ReactType<IconProps>;
 
     return (
-      <InputContainer>
-        {formattedIconSide === 'left' && iconElement}
+      <InputContainer invert={iconSide === 'right'}>
+        {icon && <IconComponent icon={icon} iconSide={iconSide} />}
         <StyledInput
           //@ts-ignore
           ref={this.ref}
           {...this.props}
         />
-        {formattedIconSide === 'right' && iconElement}
       </InputContainer>
     );
   }

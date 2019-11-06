@@ -47,6 +47,14 @@ function validator(value: string) {
   }
 }
 
+const CustomIcon = () => (
+  <img
+    alt="ETH"
+    style={{ marginRight: '1em' }}
+    src={'https://cdn.mycryptoapi.com/v1/icons/eth.svg'}
+  />
+);
+
 storiesOf('Atoms', module).add('Input', () => (
   <Panel>
     {Object.entries({
@@ -64,6 +72,7 @@ storiesOf('Atoms', module).add('Input', () => (
         />
       ),
       Network: <ControlledInput validator={validator} />,
+      Amount: <Input icon={CustomIcon} placeholder="0.00" iconSide="right" />,
     }).map(([label, element]) => (
       <Typography as="label" key={label}>
         {label}
