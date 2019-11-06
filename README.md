@@ -32,3 +32,23 @@ Our designs use the [Lato](http://www.latofonts.com/) and [Roboto Mono](https://
 - Use [typeface-lato](https://www.npmjs.com/package/typeface-lato) and [typeface-roboto-mono](https://www.npmjs.com/package/typeface-roboto-mono) to self-host your typefaces when using npm/yarn with Webpack or any other build tool with CSS and font loaders ([instructions](https://github.com/KyleAMathews/typefaces#how))
 - Use [Google Fonts](https://fonts.google.com/?selection.family=Lato:400,700,900|Roboto+Mono) to load the fonts from a CDN (over the Internet) without any configuration (note that [Google collects some usage data](https://developers.google.com/fonts/faq#what_does_using_the_google_fonts_api_mean_for_the_privacy_of_my_users))
 - Download [Lato](http://www.latofonts.com/) and [Roboto Mono](https://fonts.google.com/specimen/Roboto+Mono) directly if you need more control over font loading or if you only plan on using the fonts locally
+
+### Development
+
+You can launch the storybook simply by running `yarn start`
+
+### Deployment
+
+The npm package is automatically updated by Travis whenever a new tag is pushed to the remote.
+To facilitate version management we use [yarn version](https://yarnpkg.com/lang/en/docs/cli/version/) this step To release a new version you just need to run:
+
+```
+  yarn version --major|--minor|--patch
+```
+
+This command will bump the version in the `package.json` file AND create an associated `tag`.
+After this, you must simply push the code and the tag to the remote.
+
+```
+  git push && git push --tags
+```
