@@ -1,7 +1,12 @@
 import { storiesOf } from '@storybook/react';
 import React, { Component } from 'react';
 
+import styled from '../../styled-components';
 import Address from './Address';
+
+const Wrapper = styled.div`
+  max-width: 250px;
+`;
 
 const storyProps = {
   address: '0x4bbeEB066D09B7AEd07bF39EE20460DFa261520',
@@ -54,6 +59,8 @@ storiesOf('Organisms', module).add('Address', () => (
     <Address {...storyProps} isCopyable={false} />
     <AddressContainer />
     <Address title={storyProps.title} address="foo.eth" />
-    <Address {...withAvatarProps} />
+    <Wrapper>
+      <Address {...withAvatarProps} />
+    </Wrapper>
   </>
 ));
