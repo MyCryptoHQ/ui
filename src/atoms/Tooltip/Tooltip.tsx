@@ -1,92 +1,174 @@
-import { padding } from 'polished';
-import React, { Component, createRef, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
+import TooltipTrigger from 'react-popper-tooltip';
+import { TooltipArg } from 'react-popper-tooltip/dist/types';
 
 import styled from '../../styled-components';
-import { borderRadius, scale } from '../../Theme';
-import triangle from './tooltip-triangle.svg';
 
-const Relative = styled.div`
-  position: relative;
+interface TooltipWrapperProps {
+  maxWidth?: string;
+}
+
+const TooltipWrapper = styled.div<TooltipWrapperProps>`
+  max-width: ${props => props.maxWidth || '500px'};
+  word-break: break-word;
 `;
 
-const Absolute = styled.div<{ height: number }>`
-  position: absolute;
-  bottom: ${props => props.height}px;
+// styles are based on react-popper-tooltip/blob/master/src/styles.css
+/* stylelint-disable max-nesting-depth */
+const TooltipContainer = styled.div`
+  background: ${props => `${props.theme.controlBackground}`};
+  border-radius: 3px;
+  border: 1px solid silver;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.18);
   display: flex;
   flex-direction: column;
+  margin: 0.4rem;
+  padding: 0.4rem;
+  transition: opacity 0.3s; /* stylelint-disable-line unit-whitelist */
+  z-index: 2147483647;
 `;
 
-const Box = styled.div`
-  border: 1px solid #bac9d4;
-  background: ${props => props.theme.controlBackground};
-  border-radius: ${borderRadius};
-  box-shadow: 0 0.1875em 0.375em 0 #00000012,
-    0 0.4375em 0.625em 0.4375em #32325d1a;
-  ${padding(scale(-1))};
-`;
-
-const Triangle = styled.img`
-  /* stylelint-disable unit-whitelist */
-  margin-top: -1px;
-  width: 29px;
-  height: 15px;
-  /* stylelint-enable */
-`;
-
-Triangle.defaultProps = { src: triangle };
-
-export class Tooltip extends Component<
-  {
-    tooltip: ReactNode;
-    children: ReactNode;
-  },
-  {
-    height?: number;
-    open: boolean;
+const TooltipArrow = styled.div`
+  height: 1rem;
+  position: absolute;
+  width: 1rem;
+  &::before {
+    border-style: solid;
+    content: '';
+    display: block;
+    height: 0;
+    margin: auto;
+    width: 0;
   }
-> {
-  public ref = createRef<HTMLDivElement>();
-  public state = { height: 0, open: false };
-
-  public componentDidMount() {
-    // istanbul ignore else
-    if (this.ref.current) {
-      const { height } = this.ref.current.getBoundingClientRect();
-      this.setState({ height });
+  &::after {
+    border-style: solid;
+    content: '';
+    display: block;
+    height: 0;
+    margin: auto;
+    position: absolute;
+    width: 0;
+  }
+  &[data-placement*='bottom'] {
+    height: 1rem;
+    left: 0;
+    margin-top: -0.4rem;
+    top: 0;
+    width: 1rem;
+    &::before {
+      border-color: transparent transparent silver transparent;
+      border-width: 0 0.5rem 0.4rem 0.5rem;
+      position: absolute;
+      top: -1px;
+    }
+    ::after {
+      border-color: transparent transparent white transparent;
+      border-width: 0 0.5rem 0.4rem 0.5rem;
     }
   }
-
-  public render() {
-    const { children, tooltip } = this.props;
-    const { height, open } = this.state;
-
-    return (
-      <Relative>
-        <div
-          onMouseEnter={this.onMouseEnter}
-          onMouseLeave={this.onMouseLeave}
-          ref={this.ref}
-        >
-          {children}
-        </div>
-
-        {open && (
-          <Absolute
-            height={height}
-            onMouseEnter={this.onMouseEnter}
-            onMouseLeave={this.onMouseLeave}
-          >
-            <Box>{tooltip}</Box>
-            <Triangle />
-          </Absolute>
-        )}
-      </Relative>
-    );
+  &[data-placement*='top'] {
+    bottom: 0;
+    height: 1rem;
+    left: 0;
+    margin-bottom: -1rem;
+    width: 1rem;
+    &::before {
+      border-color: silver transparent transparent transparent;
+      border-width: 0.4rem 0.5rem 0 0.5rem;
+      position: absolute;
+      top: 1px;
+    }
+    &::after {
+      border-color: white transparent transparent transparent;
+      border-width: 0.4rem 0.5rem 0 0.5rem;
+    }
   }
+  &[data-placement*='right'] {
+    height: 1rem;
+    left: 0;
+    margin-left: -0.7rem;
+    width: 1rem;
+    &::before {
+      border-color: transparent silver transparent transparent;
+      border-width: 0.5rem 0.4rem 0.5rem 0;
+    }
+    &::after {
+      border-color: transparent white transparent transparent;
+      border-width: 0.5rem 0.4rem 0.5rem 0;
+      left: 6px;
+      top: 0;
+    }
+  }
+  &[data-placement*='left'] {
+    height: 1rem;
+    margin-right: -0.7rem;
+    right: 0;
+    width: 1rem;
+    &::before {
+      border-color: transparent transparent transparent silver;
+      border-width: 0.5rem 0 0.5rem 0.4em;
+    }
+    &::after {
+      border-color: transparent transparent transparent white;
+      border-width: 0.5rem 0 0.5rem 0.4em;
+      left: 3px;
+      top: 0;
+    }
+  }
+`;
 
-  private onMouseEnter = () => this.setState({ open: true });
+const TooltipElement = (tooltip: ReactNode, maxWidth?: string) => ({
+  arrowRef,
+  tooltipRef,
+  getArrowProps,
+  getTooltipProps,
+  placement,
+}: TooltipArg) => (
+  <TooltipContainer
+    {...getTooltipProps({
+      ref: tooltipRef,
+    })}
+  >
+    <TooltipArrow
+      {...getArrowProps({
+        ref: arrowRef,
+        'data-placement': placement,
+      })}
+    />
+    <TooltipWrapper maxWidth={maxWidth}>{tooltip}</TooltipWrapper>
+  </TooltipContainer>
+);
 
-  private onMouseLeave = () => this.setState({ open: false });
+interface TooltipProps {
+  tooltip: ReactNode;
+  children: ReactNode;
+  maxWidth?: string;
+  placement?: TooltipArg['placement'];
 }
+
+const Tooltip = ({
+  children,
+  tooltip,
+  maxWidth,
+  placement,
+  ...props
+}: TooltipProps) => (
+  <TooltipTrigger
+    placement={placement || 'top'}
+    delayHide={200}
+    {...props}
+    tooltip={TooltipElement(tooltip, maxWidth)}
+  >
+    {({ getTriggerProps, triggerRef }) => (
+      <span
+        {...getTriggerProps({
+          ref: triggerRef,
+        })}
+      >
+        {children}
+      </span>
+    )}
+  </TooltipTrigger>
+);
 
 export default Tooltip;

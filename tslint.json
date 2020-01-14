@@ -35,7 +35,7 @@
     "no-import-side-effect": [
       true,
       {
-        "ignore-module": "jest-dom/extend-expect|react-testing-library/cleanup-after-each"
+        "ignore-module": "jest-dom/extend-expect|react-testing-library/cleanup-after-each|mutationobserver-shim"
       }
     ],
     "no-reference-import": true,
@@ -44,7 +44,8 @@
       true,
       "jest-dom/extend-expect",
       "react-testing-library/cleanup-after-each",
-      "src"
+      "src",
+      "react-popper-tooltip"
     ]
   }
 }
