@@ -9,9 +9,9 @@
   ],
   "author": "MyCrypto",
   "license": "MIT",
-  "main": "dist/index.js",
-  "module": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "main": "dist/cjs/index.js",
+  "module": "dist/es/index.js",
+  "types": "dist/es/index.d.ts",
   "files": [
     "dist"
   ],
@@ -89,8 +89,10 @@
   },
   "scripts": {
     "build": "build-storybook",
+    "build:rollup:es": "rollup -c --file dist/es/index.js --dir dist/es",
+    "build:rollup:cjs": "rollup -c --format cjs --file dist/cjs/index.js --dir dist/cjs",
     "clean": "rimraf ./dist",
-    "prepare": "yarn clean && rollup -c",
+    "prepare": "yarn clean && yarn build:rollup:cjs && yarn build:rollup:es",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook",
     "test": "jest",
