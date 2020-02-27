@@ -17,7 +17,9 @@ import checkmark from './icons/icn-checkmark.svg';
 import copy from './icons/icn-copy.svg';
 import create from './icons/icn-create-wallet.svg';
 import exit from './icons/icn-exit.svg';
+import minus from './icons/icn-minus.svg';
 import navDownCaret from './icons/icn-nav-down-caret.svg';
+import plus from './icons/icn-plus.svg';
 import settings from './icons/icn-settings.svg';
 import showNetworks from './icons/icn-show-networks.svg';
 import starO from './icons/icn-star-o.svg';
@@ -47,7 +49,9 @@ export const icons = {
   copy,
   create,
   exit,
+  minus,
   navDownCaret,
+  plus,
   settings,
   showNetworks,
   starO,
