@@ -48,9 +48,10 @@ const AccordionItemIcon = styled(Icon)`
 `;
 
 const StyledAccordionItemContent = styled.div<StyledAccordionItemProps>`
-  padding: 0 5px;
+  padding-top: ${({ extended }) => (extended ? '8px' : '0')};
   height: ${({ extended }) => (extended ? '100%' : '0')};
   overflow: hidden;
+  line-height: 24px;
 `;
 
 interface AccordionItemProps {

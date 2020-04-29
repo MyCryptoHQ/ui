@@ -8,16 +8,20 @@ import Accordion from './Accordion';
 const ACCORDION_ITEMS = [
   {
     title: 'Is Compound safe?',
-    component: <Typography>{faker.lorem.paragraphs()}</Typography>,
+    component: <Typography as="span">{faker.lorem.paragraphs()}</Typography>,
   },
   {
     title:
       'How is the MyCrypto Compound integration different than the main Compound Interface?',
-    component: <Typography>{faker.lorem.paragraphs()}</Typography>,
+    component: <Typography as="span">{faker.lorem.paragraphs()}</Typography>,
   },
   {
     title: 'How are interest rates set?',
-    component: <Typography>{faker.lorem.paragraphs()}</Typography>,
+    component: <Typography as="span">{faker.lorem.paragraphs()}</Typography>,
+  },
+  {
+    title: 'How are interest rates set?',
+    component: faker.lorem.paragraphs(),
   },
 ];
 
