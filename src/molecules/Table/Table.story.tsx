@@ -15,7 +15,7 @@ const FullWidthRow = styled.div`
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
 const truncate = (text: string): string => text.substr(0, 6);
 const accountTable: TableData = {
-  head: ['Favorite', 'Label', 'Address', 'Network', 'Value'],
+  head: ['', 'Label', 'Address', 'Network', 'Value'],
   body: [
     [
       <Icon key={0} icon="star" />,
@@ -211,7 +211,6 @@ const accountTable: TableData = {
       return aLabel.localeCompare(bLabel);
     },
     reversedColumns: ['Value'],
-    maxHeight: '450px',
   },
 };
 const recentTransactionsTable: TableData = {

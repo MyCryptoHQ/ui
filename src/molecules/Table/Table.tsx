@@ -120,10 +120,8 @@ const TableCaret = styled(Icon)<{ isFlipped?: boolean }>`
 `;
 
 const TableContainer = styled('div')<{ maxHeight?: string }>`
-  display: block;
   overflow: auto;
   max-height: ${({ maxHeight }) => maxHeight};
-  width: 100%;
 `;
 
 const TableHeaderContainer = styled.thead`
