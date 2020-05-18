@@ -63,6 +63,144 @@ const accountTable: TableData = {
       'Ethereum',
       '$1337.70',
     ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
   ],
   config: {
     sortableColumn: 'Label',
@@ -72,8 +210,8 @@ const accountTable: TableData = {
 
       return aLabel.localeCompare(bLabel);
     },
-    hiddenHeadings: ['Favorite'],
     reversedColumns: ['Value'],
+    maxHeight: '450px',
   },
 };
 const recentTransactionsTable: TableData = {
@@ -123,10 +261,11 @@ const recentTransactionsTable: TableData = {
   ],
   config: {
     sortableColumn: 'Date',
-    hiddenHeadings: ['Image'],
     reversedColumns: ['Amount'],
+    maxHeight: '250px',
   },
 };
+
 const addressBookTable: TableData = {
   head: ['Favorite', 'Label', 'Address', 'Notes', ''],
   overlay: <FullWidthRow>haha</FullWidthRow>,
@@ -162,7 +301,6 @@ const addressBookTable: TableData = {
   ],
   config: {
     sortableColumn: 'Label',
-    hiddenHeadings: ['Favorite'],
   },
 };
 
