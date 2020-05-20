@@ -16,7 +16,6 @@ import Typography from '../../Typography';
 export interface TableGroup {
   title: string;
   entries: ReactNode[][];
-  offset?: number;
 }
 
 export interface TableConfig {
@@ -301,17 +300,13 @@ class AbstractTable extends Component<Props, State> {
                 )}
               </TableRow>
             ))}
-            {groups!.map(({ title, entries, offset = 0 }) => (
+            {groups!.map(({ title, entries }) => (
               <React.Fragment key={title}>
                 <TableGroupHead
                   onClick={this.toggleCollapseGroup.bind(this, title)}
                   role="button"
                 >
-                  {/* Enter ghost cells to facilitate the offset. */}
-                  {Array.from({ length: offset }, (_, index) => (
-                    <td key={index} />
-                  ))}
-                  <TableHeading colSpan={head.length - offset}>
+                  <TableHeading colSpan={head.length}>
                     {title}
                     <TableCaret
                       icon="navDownCaret"
@@ -373,7 +368,7 @@ class AbstractTable extends Component<Props, State> {
       }
     });
 
-    groups!.forEach(({ title, entries, offset }) => {
+    groups!.forEach(({ title, entries }) => {
       if (!title || title === '') {
         throw new Error(
           `Untitled group in <Table /> -- all table groups must have a title.`,
@@ -387,10 +382,6 @@ class AbstractTable extends Component<Props, State> {
           );
         }
       });
-
-      if (offset && offset > columnCount - 1) {
-        throw new Error(`Bad offset in group "${title}" found in <Table />.`);
-      }
     });
 
     const { sortableColumn } = config!;

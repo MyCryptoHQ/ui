@@ -206,22 +206,6 @@ describe('Table', () => {
       );
     });
 
-    test('Bad group offset', () => {
-      const data = generateTableData();
-
-      data.groups = [
-        {
-          title: 'Derp',
-          entries: [['D', 'E', 'F']],
-          offset: 3,
-        },
-      ];
-
-      expect(() => render(<Table {...data} />)).toThrow(
-        `Bad offset in group "Derp" found in <Table />.`,
-      );
-    });
-
     test('Nonexistent sortable column', () => {
       const data = generateTableData();
 

@@ -235,7 +235,6 @@ const recentTransactionsTable: TableData = {
           '42.69 OMG',
         ],
       ],
-      offset: 1,
     },
     {
       title: 'Completed',
@@ -255,7 +254,6 @@ const recentTransactionsTable: TableData = {
           '13.37 OMG',
         ],
       ],
-      offset: 1,
     },
   ],
   config: {
