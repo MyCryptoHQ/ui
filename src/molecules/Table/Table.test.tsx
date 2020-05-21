@@ -47,20 +47,6 @@ describe('Table', () => {
     expect(queryByText('F')).toBeTruthy();
   });
 
-  test('It hides headings', () => {
-    const data = generateTableData();
-
-    data.config = {
-      hiddenHeadings: ['Foo'],
-    };
-
-    const { getByText } = render(<Table {...data} />);
-
-    expect(getByText('Foo')).toHaveStyle(
-      'position: fixed; top: -9999em; left: -9999em;',
-    );
-  });
-
   describe('Column sorting', () => {
     test('It sorts columns using the default sortFunction', () => {
       const data = generateTableData();
@@ -220,22 +206,6 @@ describe('Table', () => {
       );
     });
 
-    test('Bad group offset', () => {
-      const data = generateTableData();
-
-      data.groups = [
-        {
-          title: 'Derp',
-          entries: [['D', 'E', 'F']],
-          offset: 3,
-        },
-      ];
-
-      expect(() => render(<Table {...data} />)).toThrow(
-        `Bad offset in group "Derp" found in <Table />.`,
-      );
-    });
-
     test('Nonexistent sortable column', () => {
       const data = generateTableData();
 
@@ -245,18 +215,6 @@ describe('Table', () => {
 
       expect(() => render(<Table {...data} />)).toThrow(
         `Nonexistent sortable column provided to <Table />.`,
-      );
-    });
-
-    test('Unused hidden heading', () => {
-      const data = generateTableData();
-
-      data.config = {
-        hiddenHeadings: ['Hmm'],
-      };
-
-      expect(() => render(<Table {...data} />)).toThrow(
-        `Unused heading Hmm found in hiddenHeadings in <Table />`,
       );
     });
   });

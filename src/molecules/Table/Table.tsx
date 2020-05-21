@@ -16,13 +16,12 @@ import Typography from '../../Typography';
 export interface TableGroup {
   title: string;
   entries: ReactNode[][];
-  offset?: number;
 }
 
 export interface TableConfig {
   sortableColumn?: string | null;
-  hiddenHeadings?: string[];
   reversedColumns?: string[];
+  maxHeight?: string;
   sortFunction?(a: any, b: any): number;
 }
 
@@ -63,14 +62,12 @@ const sharedCellProperties = ({ isReversed }: CellProps) => `
 `;
 
 const TableHead = styled.tr`
-  border-top: 0.0625em solid ${props => props.theme.tableHeadBorder};
   border-bottom: 0.0625em solid ${props => props.theme.tableHeadBorder};
   background: ${props => props.theme.tableHeadBackground};
 `;
 
 interface HeadingProps extends CellProps {
   isSortable?: boolean;
-  isHidden?: boolean;
 }
 
 const TableHeading = styled(Typography)<HeadingProps>`
@@ -79,14 +76,11 @@ const TableHeading = styled(Typography)<HeadingProps>`
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
-  cursor: ${props => (props.isSortable ? 'pointer' : 'inherit')}
-    ${props =>
-      props.isHidden &&
-      `
-    position: fixed;
-    top: -9999em;
-    left: -9999em;
-  `}
+  border-top: '0px';
+  position: sticky;
+  top: 0;
+  background: ${props => props.theme.tableHeadBackground};
+  cursor: ${props => (props.isSortable ? 'pointer' : 'inherit')};
 ` as StyledComponentClass<
   ClassAttributes<HTMLTableHeaderCellElement> &
     ThHTMLAttributes<HTMLTableHeaderCellElement> &
@@ -122,6 +116,16 @@ const TableCaret = styled(Icon)<{ isFlipped?: boolean }>`
       transform: rotateX(180deg);
     }
   `};
+`;
+
+const TableContainer = styled('div')<{ maxHeight?: string }>`
+  overflow: auto;
+  max-height: ${({ maxHeight }) => maxHeight};
+`;
+
+const TableHeaderContainer = styled.thead`
+  & th {
+  }
 `;
 
 const TableCell = styled(Typography)`
@@ -217,54 +221,61 @@ class AbstractTable extends Component<Props, State> {
       config.reversedColumns.includes(heading);
 
     return (
-      <table {...rest}>
-        <thead>
-          <TableHead>
-            {head.map((heading, index) => {
-              const isSortableColumn =
-                config && config.sortableColumn === heading;
-              const isHiddenHeading =
-                config &&
-                config.hiddenHeadings &&
-                config.hiddenHeadings.includes(heading);
+      <TableContainer maxHeight={config && config.maxHeight}>
+        <table {...rest}>
+          <TableHeaderContainer>
+            <TableHead>
+              {head.map((heading, index) => {
+                const isSortableColumn =
+                  config && config.sortableColumn === heading;
 
-              return (
-                <TableHeading
-                  key={index}
-                  onClick={
-                    isSortableColumn ? this.toggleSortedColumnDirection : noop
-                  }
-                  role={isSortableColumn ? 'button' : ''}
-                  isSortable={isSortableColumn}
-                  isHidden={isHiddenHeading}
-                  isReversed={isReversedColumn(heading)}
-                  data-testid={
-                    isSortableColumn ? 'sortable-column-heading' : ''
-                  }
-                >
-                  {heading}
-                  {isSortableColumn && (
-                    <TableCaret
-                      icon="navDownCaret"
-                      isFlipped={
-                        sortedColumnDirection === ColumnDirections.Reverse
-                      }
-                    />
-                  )}
-                </TableHeading>
-              );
-            })}
-          </TableHead>
-        </thead>
-        <tbody>
-          {/* Ungrouped rows are placed on top of grouped rows. */}
-          {body.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
-              {overlay ? (
-                overlayRows ? (
-                  // Render overlay component for any row in the overlay list
-                  overlayRows.includes(rowIndex) ? (
-                    <td colSpan={head.length}>{overlay}</td>
+                return (
+                  <TableHeading
+                    key={index}
+                    onClick={
+                      isSortableColumn ? this.toggleSortedColumnDirection : noop
+                    }
+                    role={isSortableColumn ? 'button' : ''}
+                    isSortable={isSortableColumn}
+                    isReversed={isReversedColumn(heading)}
+                    data-testid={
+                      isSortableColumn ? 'sortable-column-heading' : ''
+                    }
+                  >
+                    {heading}
+                    {isSortableColumn && (
+                      <TableCaret
+                        icon="navDownCaret"
+                        isFlipped={
+                          sortedColumnDirection === ColumnDirections.Reverse
+                        }
+                      />
+                    )}
+                  </TableHeading>
+                );
+              })}
+            </TableHead>
+          </TableHeaderContainer>
+          <tbody>
+            {/* Ungrouped rows are placed on top of grouped rows. */}
+            {body.map((row, rowIndex) => (
+              <TableRow key={rowIndex}>
+                {overlay ? (
+                  overlayRows ? (
+                    // Render overlay component for any row in the overlay list
+                    overlayRows.includes(rowIndex) ? (
+                      <td colSpan={head.length}>{overlay}</td>
+                    ) : (
+                      row.map((cell, cellIndex) => (
+                        <TableCell
+                          key={cellIndex}
+                          isReversed={isReversedColumn(head[cellIndex])}
+                          data-testid={`ungrouped-${rowIndex}-${cellIndex}`}
+                        >
+                          {cell}
+                        </TableCell>
+                      ))
+                    )
                   ) : (
                     row.map((cell, cellIndex) => (
                       <TableCell
@@ -286,56 +297,42 @@ class AbstractTable extends Component<Props, State> {
                       {cell}
                     </TableCell>
                   ))
-                )
-              ) : (
-                row.map((cell, cellIndex) => (
-                  <TableCell
-                    key={cellIndex}
-                    isReversed={isReversedColumn(head[cellIndex])}
-                    data-testid={`ungrouped-${rowIndex}-${cellIndex}`}
-                  >
-                    {cell}
-                  </TableCell>
-                ))
-              )}
-            </TableRow>
-          ))}
-          {groups!.map(({ title, entries, offset = 0 }) => (
-            <React.Fragment key={title}>
-              <TableGroupHead
-                onClick={this.toggleCollapseGroup.bind(this, title)}
-                role="button"
-              >
-                {/* Enter ghost cells to facilitate the offset. */}
-                {Array.from({ length: offset }, (_, index) => (
-                  <td key={index} />
-                ))}
-                <TableHeading colSpan={head.length - offset}>
-                  {title}
-                  <TableCaret
-                    icon="navDownCaret"
-                    isFlipped={collapsedGroups[title]}
-                  />
-                </TableHeading>
-              </TableGroupHead>
-              {/* Display group rows if not collapsed. */}
-              {!collapsedGroups[title] &&
-                entries.map((row, rowIndex) => (
-                  <TableRow key={rowIndex}>
-                    {row.map((cell, cellIndex) => (
-                      <TableCell
-                        key={cellIndex}
-                        isReversed={isReversedColumn(head[cellIndex])}
-                      >
-                        {cell}
-                      </TableCell>
-                    ))}
-                  </TableRow>
-                ))}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
+                )}
+              </TableRow>
+            ))}
+            {groups!.map(({ title, entries }) => (
+              <React.Fragment key={title}>
+                <TableGroupHead
+                  onClick={this.toggleCollapseGroup.bind(this, title)}
+                  role="button"
+                >
+                  <TableHeading colSpan={head.length}>
+                    {title}
+                    <TableCaret
+                      icon="navDownCaret"
+                      isFlipped={collapsedGroups[title]}
+                    />
+                  </TableHeading>
+                </TableGroupHead>
+                {/* Display group rows if not collapsed. */}
+                {!collapsedGroups[title] &&
+                  entries.map((row, rowIndex) => (
+                    <TableRow key={rowIndex}>
+                      {row.map((cell, cellIndex) => (
+                        <TableCell
+                          key={cellIndex}
+                          isReversed={isReversedColumn(head[cellIndex])}
+                        >
+                          {cell}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))}
+              </React.Fragment>
+            ))}
+          </tbody>
+        </table>
+      </TableContainer>
     );
   }
 
@@ -371,7 +368,7 @@ class AbstractTable extends Component<Props, State> {
       }
     });
 
-    groups!.forEach(({ title, entries, offset }) => {
+    groups!.forEach(({ title, entries }) => {
       if (!title || title === '') {
         throw new Error(
           `Untitled group in <Table /> -- all table groups must have a title.`,
@@ -385,13 +382,9 @@ class AbstractTable extends Component<Props, State> {
           );
         }
       });
-
-      if (offset && offset > columnCount - 1) {
-        throw new Error(`Bad offset in group "${title}" found in <Table />.`);
-      }
     });
 
-    const { sortableColumn, hiddenHeadings } = config!;
+    const { sortableColumn } = config!;
 
     if (sortableColumn) {
       const sortedColumnExists = head.includes(sortableColumn);
@@ -399,16 +392,6 @@ class AbstractTable extends Component<Props, State> {
       if (!sortedColumnExists) {
         throw new Error(`Nonexistent sortable column provided to <Table />.`);
       }
-    }
-
-    if (hiddenHeadings) {
-      hiddenHeadings.forEach(heading => {
-        if (!head.includes(heading)) {
-          throw new Error(
-            `Unused heading ${heading} found in hiddenHeadings in <Table />`,
-          );
-        }
-      });
     }
   };
 

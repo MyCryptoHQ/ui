@@ -38,7 +38,6 @@ const iconData: CollapsibleTableData = {
   config: {
     primaryColumn: 'Name',
     iconColumns: ['Favorite', 'Watching'],
-    hiddenHeadings: ['Favorite', 'Watching'],
   },
 };
 

@@ -15,7 +15,7 @@ const FullWidthRow = styled.div`
 const address = '0x80200997f095da94E404F7E0d581AAb1fFba9f7d';
 const truncate = (text: string): string => text.substr(0, 6);
 const accountTable: TableData = {
-  head: ['Favorite', 'Label', 'Address', 'Network', 'Value'],
+  head: ['', 'Label', 'Address', 'Network', 'Value'],
   body: [
     [
       <Icon key={0} icon="star" />,
@@ -63,6 +63,144 @@ const accountTable: TableData = {
       'Ethereum',
       '$1337.70',
     ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
+    [
+      <Icon key={0} icon="starO" />,
+      <div
+        key={1}
+        style={{
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <Identicon
+          address={address}
+          style={{
+            width: '35px',
+            height: '35px',
+            marginRight: '1rem',
+          }}
+        />
+        Spongebob's Life Savings
+      </div>,
+      <Copyable key={2} text={address} truncate={truncate} />,
+      'Ethereum',
+      '$1337.70',
+    ],
   ],
   config: {
     sortableColumn: 'Label',
@@ -72,7 +210,6 @@ const accountTable: TableData = {
 
       return aLabel.localeCompare(bLabel);
     },
-    hiddenHeadings: ['Favorite'],
     reversedColumns: ['Value'],
   },
 };
@@ -98,7 +235,6 @@ const recentTransactionsTable: TableData = {
           '42.69 OMG',
         ],
       ],
-      offset: 1,
     },
     {
       title: 'Completed',
@@ -118,15 +254,15 @@ const recentTransactionsTable: TableData = {
           '13.37 OMG',
         ],
       ],
-      offset: 1,
     },
   ],
   config: {
     sortableColumn: 'Date',
-    hiddenHeadings: ['Image'],
     reversedColumns: ['Amount'],
+    maxHeight: '250px',
   },
 };
+
 const addressBookTable: TableData = {
   head: ['Favorite', 'Label', 'Address', 'Notes', ''],
   overlay: <FullWidthRow>haha</FullWidthRow>,
@@ -162,7 +298,6 @@ const addressBookTable: TableData = {
   ],
   config: {
     sortableColumn: 'Label',
-    hiddenHeadings: ['Favorite'],
   },
 };
 
