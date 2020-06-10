@@ -5,21 +5,13 @@ import React, {
   DetailedHTMLProps,
   ReactNode,
 } from 'react';
-import styled, { ThemedOuterStyledProps } from 'styled-components';
+import { ThemedOuterStyledProps } from 'styled-components';
 
 import { Button, Icon, Tooltip } from '../../atoms';
 import { ButtonProps, StyledButtonProps } from '../../atoms/Button/Button';
 import Omit from '../../Omit';
 import Theme from '../../Theme';
 import Typography from '../../Typography';
-
-const ColoredIcon = styled(Icon)`
-  color: #b5bfc7;
-`;
-
-const ActiveButton = styled(Icon)`
-  color: green;
-`;
 
 export class Copyable extends Component<
   {
@@ -83,11 +75,7 @@ export class Copyable extends Component<
           <>
             {children}{' '}
             {isCopyable &&
-              (copied ? (
-                <ActiveButton icon="checkmark" />
-              ) : (
-                <ColoredIcon icon="copy" />
-              ))}
+              (copied ? <Icon icon="checkmark-black" /> : <Icon icon="copy" />)}
           </>
         }
         {...props}
