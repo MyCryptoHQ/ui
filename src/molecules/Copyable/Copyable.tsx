@@ -84,7 +84,7 @@ export class Copyable extends Component<
             {children}{' '}
             {isCopyable &&
               (copied ? (
-                <ActiveButton icon="warning" />
+                <ActiveButton icon="checkmark" />
               ) : (
                 <ColoredIcon icon="copy" />
               ))}
