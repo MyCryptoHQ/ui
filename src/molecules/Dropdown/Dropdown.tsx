@@ -6,20 +6,20 @@ import React, {
   HTMLAttributes,
   ReactNode,
 } from 'react';
-import { ThemedOuterStyledProps } from 'styled-components';
 
 import DataList from '../../atoms/DataList';
 import Icon from '../../atoms/Icon';
 import Option from '../../atoms/Option';
 import Omit from '../../Omit';
 import styled from '../../styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
+import { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 
 export interface DropdownProps {
   items?: Set<ReactNode>;
   title?: ReactNode;
   value?: number;
+
   onChange?(value: number): void;
 }
 
@@ -67,14 +67,11 @@ const PositionedDataList = styled(DataList)<{
 export class Dropdown extends Component<
   DropdownProps &
     Omit<
-      ThemedOuterStyledProps<
-        ClassAttributes<HTMLParagraphElement> &
-          HTMLAttributes<HTMLParagraphElement> & {
-            muted?: boolean;
-            as?: string;
-          },
-        Theme
-      >,
+      ClassAttributes<HTMLParagraphElement> &
+        HTMLAttributes<HTMLParagraphElement> & {
+          muted?: boolean;
+          as?: keyof JSX.IntrinsicElements;
+        },
       'ref'
     >,
   {

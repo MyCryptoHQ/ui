@@ -1,9 +1,5 @@
-import React, { ClassAttributes, HTMLAttributes } from 'react';
-import { ThemedOuterStyledProps } from 'styled-components';
-
-import Omit from '../../Omit';
+import React from 'react';
 import styled from '../../styled-components';
-import Theme from '../../Theme';
 import Typography from '../../Typography';
 
 // We need Typography to set the appropriate em size, but without its extra negative space
@@ -17,17 +13,7 @@ const RoundedImage = styled.img`
   height: 2.5em;
 `;
 
-export const Avatar = ({
-  src,
-  ...rest
-}: { src: string } & Omit<
-  ThemedOuterStyledProps<
-    ClassAttributes<HTMLParagraphElement> &
-      HTMLAttributes<HTMLParagraphElement> & { muted?: boolean; as?: string },
-    Theme
-  >,
-  'ref'
->) => {
+export const Avatar = ({ src, ...rest }: { src: string }) => {
   return (
     <TypographyWrapper {...rest}>
       <RoundedImage src={src} alt="Avatar" />

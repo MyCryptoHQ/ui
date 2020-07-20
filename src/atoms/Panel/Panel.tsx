@@ -1,17 +1,9 @@
 import { padding, size } from 'polished';
-import React, {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  HTMLAttributes,
-} from 'react';
-import {
-  StyledComponentClass,
-  ThemedOuterStyledProps,
-} from 'styled-components';
+import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
 
 import Omit from '../../Omit';
 import styled from '../../styled-components';
-import Theme, { borderRadiusLarge, scale } from '../../Theme';
+import { borderRadiusLarge, scale } from '../../Theme';
 
 // Use an empty styled component instead of a plain section tag so components
 // like List can change tags with the as prop.
@@ -49,19 +41,13 @@ const InteractivePanel = styled(StyledPanel)`
   :active {
     opacity: 0.65;
   }
-` as StyledComponentClass<
-  StyledPanelProps &
-    DetailedHTMLProps<
-      ButtonHTMLAttributes<HTMLButtonElement>,
-      HTMLButtonElement
-    >,
-  Theme
->;
+`;
 
 InteractivePanel.defaultProps = { as: 'button', type: 'button' };
 
 export interface PanelProps extends StyledPanelProps {
   basic?: boolean;
+  as?: keyof JSX.IntrinsicElements;
 }
 
 export function Panel({
@@ -71,13 +57,7 @@ export function Panel({
   onClick,
   ...rest
 }: PanelProps &
-  Omit<
-    ThemedOuterStyledProps<
-      DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-      Theme
-    >,
-    'ref'
-  >) {
+  Omit<DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>, 'ref'>) {
   if (basic) {
     return <BasicPanel {...rest} />;
   } else if (onClick) {
