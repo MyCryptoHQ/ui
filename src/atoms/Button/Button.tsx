@@ -4,14 +4,10 @@ import React, {
   ClassAttributes,
   DetailedHTMLProps,
 } from 'react';
-import {
-  StyledComponentClass,
-  ThemedOuterStyledProps,
-} from 'styled-components';
 
 import Omit from '../../Omit';
 import styled from '../../styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
+import { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 import Icon, { icons } from '../Icon';
 
@@ -21,10 +17,7 @@ export const BasicButton = styled(Typography)`
   cursor: pointer;
   font-size: ${scale(0)};
   padding: 0;
-` as StyledComponentClass<
-  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-  Theme
->;
+`;
 
 BasicButton.defaultProps = { as: 'button', type: 'button' };
 
@@ -76,16 +69,13 @@ export function Button({
   ...rest
 }: ButtonProps &
   Omit<
-    ThemedOuterStyledProps<
-      DetailedHTMLProps<
-        ButtonHTMLAttributes<HTMLButtonElement>,
-        HTMLButtonElement
-      > &
-        ClassAttributes<HTMLButtonElement> &
-        ButtonHTMLAttributes<HTMLButtonElement> &
-        StyledButtonProps,
-      Theme
-    >,
+    DetailedHTMLProps<
+      ButtonHTMLAttributes<HTMLButtonElement>,
+      HTMLButtonElement
+    > &
+      ClassAttributes<HTMLButtonElement> &
+      ButtonHTMLAttributes<HTMLButtonElement> &
+      StyledButtonProps,
     'ref'
   >) {
   const ButtonComponent = basic || icon ? BasicButton : StyledButton;

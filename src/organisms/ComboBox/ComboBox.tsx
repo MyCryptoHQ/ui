@@ -3,12 +3,10 @@ import React, {
   DetailedHTMLProps,
   InputHTMLAttributes,
 } from 'react';
-import { ThemedOuterStyledProps } from 'styled-components';
 
 import { Input } from '../../atoms';
 import { InputProps } from '../../atoms/Input/Input';
 import Omit from '../../Omit';
-import Theme from '../../Theme';
 
 let datalistId = 0;
 
@@ -19,12 +17,9 @@ export interface ComboBoxProps extends InputProps {
 export class ComboBox extends Component<
   ComboBoxProps &
     Omit<
-      ThemedOuterStyledProps<
-        DetailedHTMLProps<
-          InputHTMLAttributes<HTMLInputElement>,
-          HTMLInputElement
-        >,
-        Theme
+      DetailedHTMLProps<
+        InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
       >,
       'ref'
     >

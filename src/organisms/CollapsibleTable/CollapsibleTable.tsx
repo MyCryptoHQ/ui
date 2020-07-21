@@ -1,11 +1,5 @@
 import throttle from 'lodash.throttle';
-import React, {
-  Component,
-  DetailedHTMLProps,
-  HTMLAttributes,
-  ReactNode,
-} from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, { Component, ReactNode } from 'react';
 
 import { Icon } from '../../atoms';
 import {
@@ -16,7 +10,7 @@ import {
   TableData,
 } from '../../molecules';
 import styled from '../../styled-components';
-import Theme, { scale } from '../../Theme';
+import { scale } from '../../Theme';
 import Typography from '../../Typography';
 
 export enum CollapsibleTableModes {
@@ -36,11 +30,6 @@ export interface CollapsibleTableData extends TableData {
 interface CollapsedGroups {
   [title: string]: boolean;
 }
-
-type StyledHTMLElement = StyledComponentClass<
-  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-  Theme
->;
 
 interface Flippable {
   isFlipped?: boolean;
@@ -119,7 +108,7 @@ const GroupHeading = styled(Typography)`
   text-transform: uppercase;
   font-size: ${scale(1)};
   cursor: pointer;
-` as StyledHTMLElement;
+`;
 
 GroupHeading.defaultProps = {
   as: 'section',

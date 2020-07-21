@@ -1,13 +1,7 @@
-import React, {
-  ButtonHTMLAttributes,
-  DetailedHTMLProps,
-  HTMLAttributes,
-} from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, { HTMLAttributes } from 'react';
 
 import { Icon, icons } from '../../atoms';
 import styled from '../../styled-components';
-import Theme from '../../Theme';
 import Typography from '../../Typography';
 
 export const IconTypography = styled(Typography)`
@@ -20,10 +14,7 @@ export const IconTypography = styled(Typography)`
   :hover {
     color: ${props => props.theme.primaryDark};
   }
-` as StyledComponentClass<
-  DetailedHTMLProps<ButtonHTMLAttributes<HTMLButtonElement>, HTMLButtonElement>,
-  Theme
->;
+`;
 
 IconTypography.defaultProps = { as: 'button', type: 'button' };
 

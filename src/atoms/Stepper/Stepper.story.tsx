@@ -7,11 +7,11 @@ import Heading from '../Heading/Heading';
 import backArrowIcon from '../Icon/icons/icn-back-arrow.svg';
 import Stepper from './Stepper';
 
-const beforeStep = <Heading as='h2'>Start Stepping!</Heading>;
-const stepOne = <Heading as='h2'>Step One</Heading>;
-const stepTwo = <Heading as='h2'>Step Two</Heading>;
-const stepThree = <Heading as='h2'>Step Three</Heading>;
-const afterStep = <Heading as='h2'>All steps are done!</Heading>;
+const beforeStep = <Heading as="h2">Start Stepping!</Heading>;
+const stepOne = <Heading as="h2">Step One</Heading>;
+const stepTwo = <Heading as="h2">Step Two</Heading>;
+const stepThree = <Heading as="h2">Step Three</Heading>;
+const afterStep = <Heading as="h2">All steps are done!</Heading>;
 
 export const steps = [beforeStep, stepOne, stepTwo, stepThree, afterStep];
 

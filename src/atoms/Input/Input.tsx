@@ -3,15 +3,12 @@ import React, {
   Component,
   createRef,
   DetailedHTMLProps,
+  ElementType,
   InputHTMLAttributes,
 } from 'react';
-import {
-  StyledComponentClass,
-  ThemedOuterStyledProps,
-} from 'styled-components';
 
 import styled from '../../styled-components';
-import Theme, { borderRadius, scale, transitionDuration } from '../../Theme';
+import { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 import Icon, { icons } from '../Icon';
 
@@ -40,10 +37,7 @@ const StyledInput = styled(Typography)`
     color: ${props => props.theme.text};
     opacity: 0.55;
   }
-` as StyledComponentClass<
-  DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>,
-  Theme
->;
+`;
 
 const StyledIcon = styled(Icon)<{ iconSide?: string }>`
   color: #1eb8e7;
@@ -72,13 +66,7 @@ export interface InputProps extends IconProps {
 
 export class Input extends Component<
   InputProps &
-    ThemedOuterStyledProps<
-      DetailedHTMLProps<
-        InputHTMLAttributes<HTMLInputElement>,
-        HTMLInputElement
-      >,
-      Theme
-    >
+    DetailedHTMLProps<InputHTMLAttributes<HTMLInputElement>, HTMLInputElement>
 > {
   public static defaultProps = { iconSide: 'left' };
 
@@ -101,7 +89,7 @@ export class Input extends Component<
             iconSide={iconSideValue}
           />
         )
-      : icon) as React.ReactType<IconProps>;
+      : icon) as ElementType<IconProps>;
 
     return (
       <InputContainer invert={iconSide === 'right'}>

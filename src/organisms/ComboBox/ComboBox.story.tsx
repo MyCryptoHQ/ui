@@ -5,23 +5,18 @@ import React, {
   DetailedHTMLProps,
   InputHTMLAttributes,
 } from 'react';
-import { ThemedOuterStyledProps } from 'styled-components';
 
 import { Panel } from '../../atoms';
 import Omit from '../../Omit';
-import Theme from '../../Theme';
 import Typography from '../../Typography';
 import ComboBox, { ComboBoxProps } from './ComboBox';
 
 class ControlledComboBox extends Component<
   ComboBoxProps &
     Omit<
-      ThemedOuterStyledProps<
-        DetailedHTMLProps<
-          InputHTMLAttributes<HTMLInputElement>,
-          HTMLInputElement
-        >,
-        Theme
+      DetailedHTMLProps<
+        InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
       >,
       'ref'
     >,

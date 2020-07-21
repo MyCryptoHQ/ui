@@ -6,11 +6,10 @@ import React, {
   ReactNode,
 } from 'react';
 
-import { ThemedOuterStyledProps } from 'styled-components';
 import { Panel } from '../../atoms';
 import { PanelProps } from '../../atoms/Panel/Panel';
 import styled from '../../styled-components';
-import Theme, { scale } from '../../Theme';
+import { scale } from '../../Theme';
 import Typography from '../../Typography';
 
 const GroupItem = styled(Typography)`
@@ -83,12 +82,8 @@ export const List = ({
   inline,
   ordered,
   ...rest
-}: ListProps &
-  ThemedOuterStyledProps<
-    DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-    Theme
-  >) => {
-  let container;
+}: ListProps & DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>) => {
+  let container: keyof JSX.IntrinsicElements | undefined;
   if (basic || group) {
     container = undefined;
   } else if (ordered) {

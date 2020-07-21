@@ -1,8 +1,7 @@
-import React, { DetailedHTMLProps, HTMLAttributes, ReactNode } from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, { ReactNode } from 'react';
 
 import styled from '../../styled-components';
-import Theme, { scale } from '../../Theme';
+import { scale } from '../../Theme';
 import Typography from '../../Typography';
 
 type StackedCardEntry = string | ReactNode;
@@ -56,11 +55,6 @@ const StackedCardEntry = styled.dl`
   margin-bottom: 1.4375em;
 `;
 
-type StyledHTMLElement = StyledComponentClass<
-  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-  Theme
->;
-
 const StackedCardLabel = styled(Typography)`
   flex: 1 0;
   margin: 0;
@@ -68,7 +62,7 @@ const StackedCardLabel = styled(Typography)`
   letter-spacing: 0.106875em;
   text-transform: uppercase;
   font-weight: bold;
-` as StyledHTMLElement;
+`;
 
 StackedCardLabel.defaultProps = {
   as: 'dt',
@@ -77,7 +71,7 @@ StackedCardLabel.defaultProps = {
 const StackedCardValue = styled(Typography)`
   flex: 1 0;
   margin: 0;
-` as StyledHTMLElement;
+`;
 
 StackedCardValue.defaultProps = {
   as: 'dd',
