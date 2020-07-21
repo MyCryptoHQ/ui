@@ -5,10 +5,8 @@ import React, {
   DetailedHTMLProps,
   InputHTMLAttributes,
 } from 'react';
-import { ThemedOuterStyledProps } from 'styled-components';
 
 import Omit from '../../Omit';
-import Theme from '../../Theme';
 import Typography from '../../Typography';
 import Panel from '../Panel';
 import Input, { InputProps } from './Input';
@@ -16,12 +14,9 @@ import Input, { InputProps } from './Input';
 class ControlledInput extends Component<
   InputProps &
     Omit<
-      ThemedOuterStyledProps<
-        DetailedHTMLProps<
-          InputHTMLAttributes<HTMLInputElement>,
-          HTMLInputElement
-        >,
-        Theme
+      DetailedHTMLProps<
+        InputHTMLAttributes<HTMLInputElement>,
+        HTMLInputElement
       >,
       'ref'
     >,

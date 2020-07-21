@@ -1,7 +1,7 @@
 import { storiesOf } from '@storybook/react';
 import { margin, size } from 'polished';
-import React, { DetailedHTMLProps, HTMLAttributes } from 'react';
-import { StyledComponentClass, withTheme } from 'styled-components';
+import React from 'react';
+import { withTheme } from 'styled-components';
 
 import styled from '../styled-components';
 import Theme, { monospace } from '../Theme';
@@ -17,10 +17,7 @@ const Color = styled.div`
 
 const Code = styled(Typography)`
   font-family: ${monospace};
-` as StyledComponentClass<
-  DetailedHTMLProps<HTMLAttributes<HTMLElement>, HTMLElement>,
-  Theme
->;
+`;
 
 Code.defaultProps = { as: 'code' };
 

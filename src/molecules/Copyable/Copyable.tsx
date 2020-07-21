@@ -5,12 +5,11 @@ import React, {
   DetailedHTMLProps,
   ReactNode,
 } from 'react';
-import styled, { ThemedOuterStyledProps } from 'styled-components';
 
 import { Button, Icon, Tooltip } from '../../atoms';
 import { ButtonProps, StyledButtonProps } from '../../atoms/Button/Button';
 import Omit from '../../Omit';
-import Theme from '../../Theme';
+import styled from '../../styled-components';
 import Typography from '../../Typography';
 
 const ColoredIcon = styled(Icon)`
@@ -58,16 +57,13 @@ export class Copyable extends Component<
     children: ReactNode,
     props?: ButtonProps &
       Omit<
-        ThemedOuterStyledProps<
-          DetailedHTMLProps<
-            ButtonHTMLAttributes<HTMLButtonElement>,
-            HTMLButtonElement
-          > &
-            ClassAttributes<HTMLButtonElement> &
-            ButtonHTMLAttributes<HTMLButtonElement> &
-            StyledButtonProps,
-          Theme
-        >,
+        DetailedHTMLProps<
+          ButtonHTMLAttributes<HTMLButtonElement>,
+          HTMLButtonElement
+        > &
+          ClassAttributes<HTMLButtonElement> &
+          ButtonHTMLAttributes<HTMLButtonElement> &
+          StyledButtonProps,
         'ref'
       >,
   ) {

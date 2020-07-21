@@ -1,16 +1,7 @@
-import React, {
-  ClassAttributes,
-  Component,
-  DetailedHTMLProps,
-  ReactNode,
-  TdHTMLAttributes,
-  ThHTMLAttributes,
-} from 'react';
-import { StyledComponentClass } from 'styled-components';
+import React, { Component, ReactNode } from 'react';
 
 import { Icon } from '../../atoms';
 import styled from '../../styled-components';
-import Theme from '../../Theme';
 import Typography from '../../Typography';
 
 export interface TableGroup {
@@ -22,6 +13,7 @@ export interface TableConfig {
   sortableColumn?: string | null;
   reversedColumns?: string[];
   maxHeight?: string;
+
   sortFunction?(a: any, b: any): number;
 }
 
@@ -71,22 +63,17 @@ interface HeadingProps extends CellProps {
 }
 
 const TableHeading = styled(Typography)<HeadingProps>`
-  ${sharedCellProperties}
+  ${sharedCellProperties};
   color: ${props => props.theme.headline};
   font-weight: normal;
   text-transform: uppercase;
   letter-spacing: 0.0625em;
-  border-top: '0px';
+  border-top: 0;
   position: sticky;
   top: 0;
   background: ${props => props.theme.tableHeadBackground};
   cursor: ${props => (props.isSortable ? 'pointer' : 'inherit')};
-` as StyledComponentClass<
-  ClassAttributes<HTMLTableHeaderCellElement> &
-    ThHTMLAttributes<HTMLTableHeaderCellElement> &
-    HeadingProps,
-  Theme
->;
+`;
 
 TableHeading.defaultProps = {
   as: 'th',
@@ -130,13 +117,7 @@ const TableHeaderContainer = styled.thead`
 
 const TableCell = styled(Typography)`
   ${sharedCellProperties};
-` as StyledComponentClass<
-  DetailedHTMLProps<
-    TdHTMLAttributes<HTMLTableDataCellElement> & CellProps,
-    HTMLTableDataCellElement
-  >,
-  Theme
->;
+`;
 
 TableCell.defaultProps = {
   as: 'td',
