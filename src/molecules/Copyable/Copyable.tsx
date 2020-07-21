@@ -9,16 +9,7 @@ import React, {
 import { Button, Icon, Tooltip } from '../../atoms';
 import { ButtonProps, StyledButtonProps } from '../../atoms/Button/Button';
 import Omit from '../../Omit';
-import styled from '../../styled-components';
 import Typography from '../../Typography';
-
-const ColoredIcon = styled(Icon)`
-  color: #b5bfc7;
-`;
-
-const ActiveButton = styled(Icon)`
-  color: green;
-`;
 
 export class Copyable extends Component<
   {
@@ -79,11 +70,7 @@ export class Copyable extends Component<
           <>
             {children}{' '}
             {isCopyable &&
-              (copied ? (
-                <ActiveButton icon="warning" />
-              ) : (
-                <ColoredIcon icon="copy" />
-              ))}
+              (copied ? <Icon icon="checkmark-black" /> : <Icon icon="copy" />)}
           </>
         }
         {...props}

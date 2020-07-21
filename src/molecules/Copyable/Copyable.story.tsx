@@ -16,8 +16,9 @@ storiesOf('Molecules', module).add('Copyable', () => (
   <>
     <Typography>Before</Typography>
     <Copyable
-      text="0x4bbeEB066D09B7AEd07bF39EE20460DFa261520"
+      text="0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520"
       truncate={truncate}
+      isCopyable={true}
     />
     <Copyable text="foo.eth" />
     <Typography>After</Typography>
