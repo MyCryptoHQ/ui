@@ -1,6 +1,8 @@
 import { size } from 'polished';
 import React from 'react';
-import InlineSVG, { Props } from 'react-inlinesvg';
+import InlineSVG from 'react-inlinesvg';
+// tslint:disable-next-line
+import { Props } from 'react-inlinesvg/lib/types';
 
 import Omit from '../../Omit';
 import styled from '../../styled-components';
