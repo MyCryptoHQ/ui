@@ -22,7 +22,7 @@
     "ethereum-blockies-base64": "^1.0.2",
     "lodash.throttle": "^4.1.1",
     "polished": "^2.2.0",
-    "react-inlinesvg": "^0.8.4",
+    "react-inlinesvg": "^2.0.0",
     "react-popper-tooltip": "^2.10.1"
   },
   "devDependencies": {

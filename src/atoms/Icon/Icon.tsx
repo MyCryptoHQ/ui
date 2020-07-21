@@ -1,6 +1,6 @@
 import { size } from 'polished';
-import React from 'react';
-import InlineSVG, { Props } from 'react-inlinesvg';
+import React, { ComponentProps } from 'react';
+import InlineSVG from 'react-inlinesvg';
 
 import Omit from '../../Omit';
 import styled from '../../styled-components';
@@ -83,7 +83,10 @@ export function Icon({
   'aria-label': ariaLabel,
   icon,
   ...rest
-}: { 'aria-label'?: string; icon: keyof typeof icons } & Omit<Props, 'src'>) {
+}: { 'aria-label'?: string; icon: keyof typeof icons } & Omit<
+  ComponentProps<typeof InlineSVG>,
+  'src'
+>) {
   return (
     <span role="img" aria-label={ariaLabel || icon}>
       <StyledInlineSVG src={icons[icon]} {...rest} />
