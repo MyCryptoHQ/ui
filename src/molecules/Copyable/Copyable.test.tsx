@@ -28,4 +28,8 @@ test('Copyable', async () => {
   expect(navigator.clipboard.writeText).toHaveBeenCalledWith('Copyable');
   // Allow setTimeout to play out.
   await sleep(1000);
+
+  rerender(<Copyable text="Copyable" isCopyable={false} />);
+  fireEvent.click(copyable);
+  expect(navigator.clipboard.writeText).toHaveBeenCalledTimes(2);
 });

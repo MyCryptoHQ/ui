@@ -22,13 +22,19 @@ export class Copyable extends Component<
     copied: boolean;
   }
 > {
+
+  public static defaultProps = {
+    isCopyable: true,
+  };
   public state = { copied: false };
 
   public handleClick = () => {
-    const { text } = this.props;
-    navigator.clipboard.writeText(text);
-    this.setState({ copied: true });
-    setTimeout(() => this.setState({ copied: false }), 1000);
+    const { text, isCopyable } = this.props;
+    if (isCopyable) {
+      navigator.clipboard.writeText(text);
+      this.setState({ copied: true });
+      setTimeout(() => this.setState({ copied: false }), 1000);
+    }
   };
 
   public render() {
