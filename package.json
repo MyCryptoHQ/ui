@@ -26,7 +26,12 @@
     "react-popper-tooltip": "^2.10.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.12.1",
     "@babel/core": "^7.1.2",
+    "@babel/plugin-transform-modules-commonjs": "^7.12.1",
+    "@babel/preset-env": "^7.12.1",
+    "@babel/preset-react": "^7.12.5",
+    "@babel/preset-typescript": "^7.12.1",
     "@storybook/addon-a11y": "^5.1.8",
     "@storybook/addon-info": "^5.1.8",
     "@storybook/addon-viewport": "^5.1.8",
@@ -41,6 +46,7 @@
     "@types/storybook__react": "^4.0.2",
     "@types/styled-components": "^5.1.0",
     "coveralls": "^3.0.2",
+    "cross-env": "^7.0.2",
     "eslint": "^5.16.0",
     "eslint-plugin-import": "^2.14.0",
     "eslint-plugin-jsx-a11y": "^6.1.1",
@@ -72,9 +78,8 @@
     "tslint-react": "^3.6.0",
     "typeface-lato": "^0.0.54",
     "typeface-roboto-mono": "^0.0.54",
-    "typescript": "^3.0.1",
-    "typescript-eslint-parser": "^20.0.0",
-    "webpack": "^3.0.0"
+    "typescript": "^4.0.5",
+    "typescript-eslint-parser": "^20.0.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -84,10 +89,11 @@
   },
   "scripts": {
     "build": "build-storybook",
-    "build:rollup:es": "rollup -c --file dist/es/index.js --dir dist/es",
-    "build:rollup:cjs": "rollup -c --format cjs --file dist/cjs/index.js --dir dist/cjs",
+    "build:source": "yarn run build:source:cjs && yarn run build:source:es",
+    "build:source:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --extensions '.ts' --source-maps --out-dir lib/cjs",
+    "build:source:es": "cross-env NODE_ENV=production BABEL_ENV=es babel src --extensions '.ts' --source-maps --out-dir lib/es",
     "clean": "rimraf ./dist",
-    "prepare": "yarn clean",
+    "prepare": "yarn clean && yarn build:source",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook",
     "test": "jest",

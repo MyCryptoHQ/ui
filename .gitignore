@@ -1,7 +1,7 @@
 .cache
 .rpt2_cache
 coverage
-dist
+lib
 node_modules
 storybook-static
 yarn-error.log*
