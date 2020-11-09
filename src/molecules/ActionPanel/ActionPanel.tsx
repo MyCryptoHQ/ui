@@ -11,15 +11,13 @@ const ActionPanelBody = styled.div`
   ${padding(scale(1), scale(2))};
 `;
 
-const ActionPanelFooter = styled(Typography)`
+const ActionPanelFooter = styled(Typography).attrs({ as: 'footer' })`
   background: ${props => props.theme.actionPanelBackground};
   border-top: 0.0416em solid ${props => props.theme.actionPanelBorder};
   display: block;
   padding: ${scale(1)};
   text-decoration: none;
 `;
-
-ActionPanelFooter.defaultProps = { as: 'footer' };
 
 interface ActionPanelProps extends PanelProps {
   action: string;

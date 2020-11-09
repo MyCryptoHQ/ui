@@ -25,7 +25,7 @@ const StackedCardHead = styled.section`
   justify-content: space-between;
 `;
 
-const StackedCardHeading = styled(Typography)`
+const StackedCardHeading = styled(Typography).attrs({ as: 'header' })`
   display: flex;
   align-items: center;
   margin: 0;
@@ -33,10 +33,6 @@ const StackedCardHeading = styled(Typography)`
   line-height: 1.31;
   font-size: ${scale(1)};
 `;
-
-StackedCardHeading.defaultProps = {
-  as: 'header',
-};
 
 const StackedCardIcons = styled.div`
   display: flex;
@@ -55,7 +51,7 @@ const StackedCardEntry = styled.dl`
   margin-bottom: 1.4375em;
 `;
 
-const StackedCardLabel = styled(Typography)`
+const StackedCardLabel = styled(Typography).attrs({ as: 'dt' })`
   flex: 1 0;
   margin: 0;
   color: ${props => props.theme.cardText};
@@ -64,18 +60,10 @@ const StackedCardLabel = styled(Typography)`
   font-weight: bold;
 `;
 
-StackedCardLabel.defaultProps = {
-  as: 'dt',
-};
-
-const StackedCardValue = styled(Typography)`
+const StackedCardValue = styled(Typography).attrs({ as: 'dd' })`
   flex: 1 0;
   margin: 0;
 `;
-
-StackedCardValue.defaultProps = {
-  as: 'dd',
-};
 
 export const StackedCard = ({ heading, icons, entries, ...rest }: Props) => {
   return (

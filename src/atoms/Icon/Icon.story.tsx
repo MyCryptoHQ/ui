@@ -6,12 +6,10 @@ import { monospace } from '../../Theme';
 import Typography from '../../Typography';
 import Icon, { icons } from './Icon';
 
-const Code = styled(Typography)`
+const Code = styled(Typography).attrs({ as: 'code' })`
   display: block;
   font-family: ${monospace};
 `;
-
-Code.defaultProps = { as: 'code' };
 
 storiesOf('Atoms', module).add('Icon', () => (
   <Typography>

@@ -19,20 +19,16 @@ const Content = styled.div`
   padding-left: ${scale(0)};
 `;
 
-const Title = styled(Typography)<{ clickable: boolean }>`
+const Title = styled(Typography).attrs({ as: 'div' })<{ clickable: boolean }>`
   display: inline;
   font-size: ${scale(0.5)};
   ${props => props.clickable && `cursor: pointer;`};
 `;
 
-Title.defaultProps = { as: 'div' };
-
-const MissingTitle = styled(Title)`
+const MissingTitle = styled(Title).attrs({ children: 'No Label' })`
   color: ${props => props.theme.textLight};
   font-style: italic;
 `;
-
-MissingTitle.defaultProps = { children: 'No Label' };
 
 const TitleInput = styled.input`
   background: ${props => props.theme.background};

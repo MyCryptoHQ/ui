@@ -11,15 +11,16 @@ import { borderRadius, scale, transitionDuration } from '../../Theme';
 import Typography from '../../Typography';
 import Icon, { icons } from '../Icon';
 
-export const BasicButton = styled(Typography)`
+export const BasicButton = styled(Typography).attrs({
+  as: 'button',
+  type: 'button',
+})`
   background: none;
   border: none;
   cursor: pointer;
   font-size: ${scale(0)};
   padding: 0;
 `;
-
-BasicButton.defaultProps = { as: 'button', type: 'button' };
 
 export interface StyledButtonProps {
   large?: boolean;

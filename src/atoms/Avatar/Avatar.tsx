@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { FunctionComponent } from 'react';
 import styled from '../../styled-components';
 import Typography from '../../Typography';
 
@@ -13,7 +13,11 @@ const RoundedImage = styled.img`
   height: 2.5em;
 `;
 
-export const Avatar = ({ src, ...rest }: { src: string }) => {
+interface Props {
+  src: string;
+}
+
+export const Avatar: FunctionComponent<Props> = ({ src, ...rest }) => {
   return (
     <TypographyWrapper {...rest}>
       <RoundedImage src={src} alt="Avatar" />

@@ -40,7 +40,7 @@ const DefinitionEntry = styled.dl`
   margin-bottom: 1.4375em;
 `;
 
-const DefinitionLabel = styled(Typography)`
+const DefinitionLabel = styled(Typography).attrs({ as: 'dt' })`
   flex: 1 0;
   margin: 0;
   color: ${props => props.theme.cardText};
@@ -49,18 +49,10 @@ const DefinitionLabel = styled(Typography)`
   font-weight: bold;
 `;
 
-DefinitionLabel.defaultProps = {
-  as: 'dt',
-};
-
-const DefinitionValue = styled(Typography)`
+const DefinitionValue = styled(Typography).attrs({ as: 'dd' })`
   flex: 1 0;
   margin: 0;
 `;
-
-DefinitionValue.defaultProps = {
-  as: 'dd',
-};
 
 interface Description {
   term: string;

@@ -6,13 +6,12 @@
     "lib": ["dom", "es2017"],
     "noErrorTruncation": true,
     "noUnusedLocals": true,
-    "sourceMap": true,
     "strict": true,
     "declaration": true,
     "declarationMap": true,
-    "skipLibCheck": true
+    "emitDeclarationOnly": true,
+    "skipLibCheck": true,
+    "outDir": "./types"
   },
-  "include": ["src"],
-  "inlineSources": true,
-  "inlineSourceMap": true
+  "include": ["src"]
 }

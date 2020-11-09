@@ -4,7 +4,10 @@ import { Icon, icons } from '../../atoms';
 import styled from '../../styled-components';
 import Typography from '../../Typography';
 
-export const IconTypography = styled(Typography)`
+export const IconTypography = styled(Typography).attrs({
+  as: 'button',
+  type: 'button',
+})`
   background: none;
   border: none;
   padding: 0;
@@ -15,8 +18,6 @@ export const IconTypography = styled(Typography)`
     color: ${props => props.theme.primaryDark};
   }
 `;
-
-IconTypography.defaultProps = { as: 'button', type: 'button' };
 
 export function IconLink({
   href,

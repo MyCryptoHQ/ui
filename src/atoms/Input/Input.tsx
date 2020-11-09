@@ -39,7 +39,7 @@ const StyledInput = styled(Typography)`
   }
 `;
 
-const StyledIcon = styled(Icon)<{ iconSide?: string }>`
+const StyledIcon = styled(Icon).attrs({ as: 'input' })<{ iconSide?: string }>`
   color: #1eb8e7;
   margin: auto;
   ${props =>
@@ -51,8 +51,6 @@ const StyledIcon = styled(Icon)<{ iconSide?: string }>`
     vertical-align: middle;
   }
 `;
-
-StyledInput.defaultProps = { as: 'input' };
 
 export interface IconProps {
   icon?: (keyof typeof icons) | React.ReactType<IconProps>;

@@ -15,11 +15,9 @@ const Color = styled.div`
   border-radius: 50%;
 `;
 
-const Code = styled(Typography)`
+const Code = styled(Typography).attrs({ as: 'code' })`
   font-family: ${monospace};
 `;
-
-Code.defaultProps = { as: 'code' };
 
 const VerticallyCentered = styled.div`
   display: flex;

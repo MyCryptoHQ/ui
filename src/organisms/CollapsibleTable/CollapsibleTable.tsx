@@ -98,7 +98,10 @@ export const transformTableToCards = (
 export const screenIsMobileSized = (breakpoint: number): boolean =>
   window.matchMedia(`(max-width: ${breakpoint}px)`).matches;
 
-const GroupHeading = styled(Typography)`
+const GroupHeading = styled(Typography).attrs({
+  as: 'section',
+  role: 'button',
+})`
   display: flex;
   align-items: center;
   margin: 0;
@@ -109,11 +112,6 @@ const GroupHeading = styled(Typography)`
   font-size: ${scale(1)};
   cursor: pointer;
 `;
-
-GroupHeading.defaultProps = {
-  as: 'section',
-  role: 'button',
-};
 
 const GroupHeadingCaret = styled(Icon)<Flippable>`
   margin-left: 0.5em;

@@ -62,7 +62,7 @@ interface HeadingProps extends CellProps {
   isSortable?: boolean;
 }
 
-const TableHeading = styled(Typography)<HeadingProps>`
+const TableHeading = styled(Typography).attrs({ as: 'th' })<HeadingProps>`
   ${sharedCellProperties};
   color: ${props => props.theme.headline};
   font-weight: normal;
@@ -74,10 +74,6 @@ const TableHeading = styled(Typography)<HeadingProps>`
   background: ${props => props.theme.tableHeadBackground};
   cursor: ${props => (props.isSortable ? 'pointer' : 'inherit')};
 `;
-
-TableHeading.defaultProps = {
-  as: 'th',
-};
 
 const TableRow = styled.tr`
   border-bottom: 0.0625em solid ${props => props.theme.tableRowBorder};
@@ -115,13 +111,9 @@ const TableHeaderContainer = styled.thead`
   }
 `;
 
-const TableCell = styled(Typography)`
+const TableCell = styled(Typography).attrs({ as: 'td' })`
   ${sharedCellProperties};
 `;
-
-TableCell.defaultProps = {
-  as: 'td',
-};
 
 // tslint:disable-next-line
 const noop = () => {};
