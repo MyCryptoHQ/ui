@@ -5,7 +5,11 @@ module.exports = ({ config }) => {
       {
         loader: 'ts-loader',
         options: {
-          compilerOptions: { declaration: false, declarationMap: false },
+          compilerOptions: {
+            declaration: false,
+            declarationMap: false,
+            emitDeclarationOnly: false,
+          },
           transpileOnly: true,
         },
       },

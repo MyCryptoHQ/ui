@@ -82,7 +82,7 @@ export function Button({
   const ButtonComponent = basic || icon ? BasicButton : StyledButton;
 
   return (
-    <ButtonComponent {...rest}>
+    <ButtonComponent as="button" {...rest}>
       {icon ? <Icon icon={icon} /> : children}
     </ButtonComponent>
   );

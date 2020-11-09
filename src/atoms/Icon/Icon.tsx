@@ -87,7 +87,7 @@ export function Icon({
   ...rest
 }: { 'aria-label'?: string; icon: keyof typeof icons } & Omit<
   ComponentProps<typeof InlineSVG>,
-  'src'
+  'src' | 'ref' | 'as'
 >) {
   return (
     <span role="img" aria-label={ariaLabel || icon}>

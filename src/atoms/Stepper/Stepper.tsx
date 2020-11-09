@@ -46,21 +46,19 @@ export enum TestIds {
 export function Stepper({ current, total }: Props) {
   return (
     <StepperContainer data-testid={TestIds.STEPPER_CONTAINER}>
-      {Array.from(
-        { length: total },
-        (_, index) =>
-          index === current ? (
-            <StepperStyled key={index}>
-              <ActiveStep
-                data-testid={`${TestIds.ACTIVE_STEP_INDEX_PREFIX}-${index}`}
-              />
-            </StepperStyled>
-          ) : (
-            <Step
-              key={index}
-              data-testid={`${TestIds.STEPPER_STYLED_PREFIX}-${index}`}
+      {Array.from({ length: total }, (_, index) =>
+        index === current ? (
+          <StepperStyled key={index}>
+            <ActiveStep
+              data-testid={`${TestIds.ACTIVE_STEP_INDEX_PREFIX}-${index}`}
             />
-          ),
+          </StepperStyled>
+        ) : (
+          <Step
+            key={index}
+            data-testid={`${TestIds.STEPPER_STYLED_PREFIX}-${index}`}
+          />
+        ),
       )}
     </StepperContainer>
   );

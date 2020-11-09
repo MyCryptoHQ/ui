@@ -6,7 +6,10 @@ import CollapsibleTable, { CollapsibleTableData } from './CollapsibleTable';
 
 const basicData: CollapsibleTableData = {
   head: ['Name', 'Age'],
-  body: [['Connor', '26'], ['David', '29']],
+  body: [
+    ['Connor', '26'],
+    ['David', '29'],
+  ],
   config: {
     primaryColumn: 'Name',
   },
@@ -17,7 +20,10 @@ const groupData: CollapsibleTableData = {
   groups: [
     {
       title: 'Employees',
-      entries: [['Natalie', '22'], ['Andrea', '50']],
+      entries: [
+        ['Natalie', '22'],
+        ['Andrea', '50'],
+      ],
     },
   ],
   config: {
@@ -41,10 +47,12 @@ const iconData: CollapsibleTableData = {
   },
 };
 
-storiesOf('Organisms', module).add('CollapsibleTable', () =>
-  [basicData, groupData, iconData].map((data, index) => (
-    <div key={index} style={{ marginBottom: '10rem' }}>
-      <CollapsibleTable breakpoint={450} {...data} />
-    </div>
-  )),
-);
+storiesOf('Organisms', module).add('CollapsibleTable', () => (
+  <>
+    {[basicData, groupData, iconData].map((data, index) => (
+      <div key={index} style={{ marginBottom: '10rem' }}>
+        <CollapsibleTable breakpoint={450} {...data} />
+      </div>
+    ))}
+  </>
+));

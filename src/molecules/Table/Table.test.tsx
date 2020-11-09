@@ -222,7 +222,10 @@ describe('Table', () => {
 
 describe('getSortedRows', () => {
   const head = ['A', 'B', 'C'];
-  const body = [['FooA', 'Bar', 'Baz'], ['FooB', 'Bar', 'Baz']];
+  const body = [
+    ['FooA', 'Bar', 'Baz'],
+    ['FooB', 'Bar', 'Baz'],
+  ];
   const config = {
     sortableColumn: 'A',
     sortFunction: defaultColumnSort,

@@ -37,7 +37,10 @@ describe('transformRowToCards', () => {
 describe('transformTableToCards', () => {
   test('It correctly transforms a table into StackedCard data (no groups)', () => {
     const head = ['Foo', 'Bar', 'Baz'];
-    const body = [['A', 'B', 'C'], ['D', 'E', 'F']];
+    const body = [
+      ['A', 'B', 'C'],
+      ['D', 'E', 'F'],
+    ];
     const config = {
       primaryColumn: 'Foo',
       iconColumns: ['Baz'],
@@ -65,7 +68,10 @@ describe('transformTableToCards', () => {
 
   test('It correctly transforms a table into StackedCard data (groups, not collapsed)', () => {
     const head = ['Foo', 'Bar', 'Baz'];
-    const body = [['A', 'B', 'C'], ['D', 'E', 'F']];
+    const body = [
+      ['A', 'B', 'C'],
+      ['D', 'E', 'F'],
+    ];
     const groups = [
       {
         title: 'Derp',
@@ -106,7 +112,10 @@ describe('transformTableToCards', () => {
 
   test('It correctly transforms a table into StackedCard data (groups, collapsed)', () => {
     const head = ['Foo', 'Bar', 'Baz'];
-    const body = [['A', 'B', 'C'], ['D', 'E', 'F']];
+    const body = [
+      ['A', 'B', 'C'],
+      ['D', 'E', 'F'],
+    ];
     const groups = [
       {
         title: 'Derp',

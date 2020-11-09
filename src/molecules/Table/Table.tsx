@@ -60,6 +60,7 @@ const TableHead = styled.tr`
 
 interface HeadingProps extends CellProps {
   isSortable?: boolean;
+  colSpan?: number;
 }
 
 const TableHeading = styled(Typography).attrs({ as: 'th' })<HeadingProps>`
@@ -140,15 +141,16 @@ export const getSortedRows = (
   // Determine which column to order.
   const sortableColumnIndex = head.indexOf(sortableColumn);
   // Create an array containing the data from each row in the specified column.
-  const sortableColumnEntries = body.map(row => row[sortableColumnIndex]).map(
-    entry =>
+  const sortableColumnEntries = body
+    .map(row => row[sortableColumnIndex])
+    .map(entry =>
       // If the entry is a string, wrap it.
       typeof entry === 'string' ? (
         <React.Fragment>{entry}</React.Fragment>
       ) : (
         entry
       ),
-  );
+    );
   // Rearrange that array based on the selected sort.
   const sortedColumnEntries = [...sortableColumnEntries].sort(sortFunction);
   // Translate the new order into the indexes of the original order to determine the change.
@@ -317,13 +319,10 @@ class AbstractTable extends Component<Props, State> {
       throw new Error('A <Table /> must have at least one column.');
     }
 
-    const titleCounts = head.reduce(
-      (prev, next) => {
-        prev[next] = prev[next] ? prev[next] + 1 : 1;
-        return prev;
-      },
-      {} as Record<string, number>,
-    );
+    const titleCounts = head.reduce((prev, next) => {
+      prev[next] = prev[next] ? prev[next] + 1 : 1;
+      return prev;
+    }, {} as Record<string, number>);
 
     Object.entries(titleCounts).forEach(([key, value]) => {
       if (key !== '' && value > 1) {

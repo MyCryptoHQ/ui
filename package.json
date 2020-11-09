@@ -32,19 +32,18 @@
     "@babel/preset-env": "^7.12.1",
     "@babel/preset-react": "^7.12.5",
     "@babel/preset-typescript": "^7.12.1",
-    "@storybook/addon-a11y": "^5.1.8",
-    "@storybook/addon-info": "^5.1.8",
-    "@storybook/addon-viewport": "^5.1.8",
-    "@storybook/addons": "^5.1.8",
-    "@storybook/react": "^5.1.8",
-    "@storybook/theming": "^5.1.8",
+    "@storybook/addon-a11y": "^6.0.28",
+    "@storybook/addon-info": "^5.3.21",
+    "@storybook/addon-viewport": "^6.0.28",
+    "@storybook/addons": "^6.0.28",
+    "@storybook/react": "^6.0.28",
+    "@storybook/theming": "^6.0.28",
     "@types/faker": "^4.1.4",
     "@types/jest": "^23.3.2",
-    "@types/react": "^16.9.23",
-    "@types/storybook__addon-info": "^4.1.2",
-    "@types/storybook__addon-options": "^4.0.2",
-    "@types/storybook__react": "^4.0.2",
+    "@types/react": "^16.9.56",
     "@types/styled-components": "^5.1.4",
+    "@typescript-eslint/eslint-plugin": "^4.7.0",
+    "@typescript-eslint/parser": "^4.7.0",
     "babel-loader": "^8.1.0",
     "coveralls": "^3.0.2",
     "cross-env": "^7.0.2",
@@ -54,7 +53,7 @@
     "eslint-plugin-react": "^7.11.1",
     "faker": "^4.1.0",
     "husky": "^1.1.2",
-    "jest": "^24.3.1",
+    "jest": "^26.6.3",
     "jest-dom": "^2.0.5",
     "lint-staged": "^7.2.2",
     "mutationobserver-shim": "^0.3.3",
@@ -65,6 +64,7 @@
     "react-dom": "^16.12.0",
     "react-is": "^16.8.0",
     "react-testing-library": "^5.0.1",
+    "regenerator-runtime": "^0.13.7",
     "rimraf": "^3.0.0",
     "storybook-styled-components": "^1.1.4",
     "styled-components": "^5.2.1",
@@ -73,14 +73,16 @@
     "stylelint-config-standard": "^18.2.0",
     "stylelint-config-styled-components": "^0.1.1",
     "stylelint-processor-styled-components": "^1.3.2",
-    "ts-jest": "^24.0.0",
+    "ts-jest": "^26.4.4",
+    "ts-loader": "^8.0.11",
     "tslint": "^5.11.0",
     "tslint-config-prettier": "^1.15.0",
     "tslint-react": "^3.6.0",
     "typeface-lato": "^0.0.54",
     "typeface-roboto-mono": "^0.0.54",
     "typescript": "^4.0.5",
-    "typescript-eslint-parser": "^20.0.0"
+    "typescript-eslint-parser": "^20.0.0",
+    "webpack": "^5.4.0"
   },
   "peerDependencies": {
     "react": "^16.8.0",
@@ -91,15 +93,15 @@
   "scripts": {
     "build": "build-storybook",
     "build:source": "yarn run build:source:cjs && yarn run build:source:es",
-    "build:source:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --extensions '.ts' --source-maps --out-dir lib/cjs",
-    "build:source:es": "cross-env NODE_ENV=production BABEL_ENV=es babel src --extensions '.ts' --source-maps --out-dir lib/es",
+    "build:source:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --extensions '.ts' --extensions '.tsx' --source-maps --out-dir lib/cjs",
+    "build:source:es": "cross-env NODE_ENV=production BABEL_ENV=es babel src --extensions '.ts' --extensions '.tsx' --source-maps --out-dir lib/es",
     "build:types": "tsc",
     "clean": "rimraf ./lib ./types",
     "prepare": "yarn clean && yarn build:source && yarn build:types",
     "report-coverage": " cat ./coverage/lcov.info | coveralls",
     "start": "start-storybook",
     "test": "jest",
-    "watch": "TODO"
+    "watch": "babel src --extensions '.ts' --extensions '.tsx' --out-dir lib/es --watch"
   },
   "sideEffects": false,
   "eslintConfig": {
@@ -107,7 +109,7 @@
       "plugin:import/recommended",
       "plugin:jsx-a11y/recommended"
     ],
-    "parser": "typescript-eslint-parser",
+    "parser": "@typescript-eslint/parser",
     "parserOptions": {
       "sourceType": "module"
     },
@@ -117,10 +119,6 @@
       "react"
     ],
     "rules": {
-      "import/extensions": [
-        "error",
-        "ignorePackages"
-      ],
       "import/first": "error",
       "import/named": "off",
       "import/newline-after-import": "error",
@@ -170,7 +168,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged && tsc --noEmit && yarn test"
+      "pre-commit": "lint-staged && tsc && yarn test"
     }
   },
   "lint-staged": {

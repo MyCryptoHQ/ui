@@ -53,7 +53,7 @@ const StyledIcon = styled(Icon).attrs({ as: 'input' })<{ iconSide?: string }>`
 `;
 
 export interface IconProps {
-  icon?: (keyof typeof icons) | React.ReactType<IconProps>;
+  icon?: keyof typeof icons | React.ReactType<IconProps>;
   iconSide?: string;
 }
 

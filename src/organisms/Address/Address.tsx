@@ -25,7 +25,7 @@ const Title = styled(Typography).attrs({ as: 'div' })<{ clickable: boolean }>`
   ${props => props.clickable && `cursor: pointer;`};
 `;
 
-const MissingTitle = styled(Title).attrs({ children: 'No Label' })`
+const MissingTitle = styled(Title)`
   color: ${props => props.theme.textLight};
   font-style: italic;
 `;
@@ -142,7 +142,7 @@ export class Address extends Component<Props, State> {
                 onClick={onSubmit && this.handleEditing}
                 clickable={Boolean(onSubmit)}
               >
-                {title}
+                {title || 'No Label'}
               </TitleComponent>
               {onSubmit && (
                 <>

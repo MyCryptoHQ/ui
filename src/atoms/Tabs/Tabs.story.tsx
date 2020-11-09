@@ -15,10 +15,12 @@ const links = [
   </a>,
 ];
 
-storiesOf('Atoms', module).add('Tabs', () =>
-  [{}].map((props, index) => (
-    <Tabs key={index} {...props}>
-      {links}
-    </Tabs>
-  )),
-);
+storiesOf('Atoms', module).add('Tabs', () => (
+  <>
+    {[{}].map((props, index) => (
+      <Tabs key={index} {...props}>
+        {links}
+      </Tabs>
+    ))}
+  </>
+));

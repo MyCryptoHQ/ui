@@ -1,17 +1,10 @@
 {
-  "presets": [
-    "@babel/preset-typescript",
-    "@babel/preset-react"
-  ],
+  "presets": ["@babel/preset-typescript", "@babel/preset-react"],
+  "comments": false,
+  "ignore": ["**/*.d.ts", "**/*.test.ts", "**/*.test.tsx", "**/*.story.tsx"],
   "env": {
     "cjs": {
-      "comments": false,
-      "ignore": ["**/*.d.ts", "**/__mocks__/**/*", "**/*.test.ts"],
       "plugins": ["@babel/plugin-transform-modules-commonjs"]
-    },
-    "es": {
-      "comments": false,
-      "ignore": ["**/*.d.ts", "**/__mocks__/**/*", "**/*.test.ts"]
     },
     "test": {
       "presets": [

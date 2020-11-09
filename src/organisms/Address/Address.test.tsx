@@ -1,5 +1,5 @@
 import 'jest-dom/extend-expect';
-import React, { FormEvent } from 'react';
+import React from 'react';
 import { fireEvent, render } from 'react-testing-library';
 
 import Address from './Address';
@@ -8,7 +8,7 @@ function truncate(text: string) {
   return `${text[0]}...`;
 }
 
-const handleSubmit = jest.fn<(event: FormEvent<HTMLFormElement>) => void>();
+const handleSubmit = jest.fn();
 
 test('Copyable', () => {
   const { container, getByText, rerender } = render(

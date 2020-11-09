@@ -22,7 +22,6 @@ export class Copyable extends Component<
     copied: boolean;
   }
 > {
-
   public static defaultProps = {
     isCopyable: true,
   };
