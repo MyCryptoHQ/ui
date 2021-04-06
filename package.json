@@ -1,5 +1,5 @@
 {
-  "name": "@mycrypto/ui",
+  "name": "@mycrypto/ui-legacy",
   "version": "0.24.1",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
