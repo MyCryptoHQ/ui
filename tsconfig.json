@@ -1,18 +1,20 @@
 {
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "react",
-    "lib": ["dom", "es2017"],
-    "noErrorTruncation": true,
-    "noUnusedLocals": true,
-    "sourceMap": true,
+    "noEmit": true,
+    "outDir": "lib",
+    "target": "esnext",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "jsx": "preserve",
     "strict": true,
+    "noEmitOnError": true,
+    "esModuleInterop": true,
     "declaration": true,
-    "declarationMap": true,
-    "skipLibCheck": true
+    "sourceMap": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "skipLibCheck": true,
+    "resolveJsonModule": true
   },
-  "include": ["src"],
-  "inlineSources": true,
-  "inlineSourceMap": true
+  "include": ["src"]
 }
