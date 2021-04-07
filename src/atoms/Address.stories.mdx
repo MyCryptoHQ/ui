@@ -1,0 +1,18 @@
+import { Address } from './Address';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="atoms/Address"
+  component={Address}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Address
+
+Address!
+
+<Canvas>
+  <Story name="Default">
+    <Address address={'0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520'} />
+  </Story>
+</Canvas>

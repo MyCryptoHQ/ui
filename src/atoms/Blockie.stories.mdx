@@ -1,0 +1,18 @@
+import { Blockie } from './Blockie';
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+<Meta
+  title="atoms/Blockie"
+  component={Blockie}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Blockie
+
+Blockie!
+
+<Canvas>
+  <Story name="Default">
+    <Blockie address={'0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520'} />
+  </Story>
+</Canvas>
