@@ -9,6 +9,7 @@
       }
     ]
   ],
+  "plugins": ["babel-plugin-tsconfig-paths"],
   "env": {
     "cjs": {
       "plugins": ["@babel/plugin-transform-modules-commonjs"],
