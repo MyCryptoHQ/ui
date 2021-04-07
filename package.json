@@ -43,6 +43,7 @@
     "@fontsource/lato": "^4.2.2",
     "@fontsource/roboto-mono": "^4.2.2",
     "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addon-storyshots": "6.2.5",
     "@storybook/addons": "^6.2.3",
     "@storybook/builder-webpack5": "^6.2.3",
     "@storybook/components": "^6.2.3",
