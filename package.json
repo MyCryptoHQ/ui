@@ -15,208 +15,86 @@
   "files": [
     "dist"
   ],
-  "dependencies": {
-    "@types/dom-clipboard-api": "^1.0.1",
-    "@types/lodash.throttle": "^4.1.4",
-    "@types/react-inlinesvg": "^0.8.1",
-    "ethereum-blockies-base64": "^1.0.2",
-    "lodash.throttle": "^4.1.1",
-    "polished": "^2.2.0",
-    "react-inlinesvg": "^2.0.0",
-    "react-popper-tooltip": "^2.10.1"
-  },
-  "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@emotion/core": "^0.13.1",
-    "@storybook/addon-a11y": "^5.1.8",
-    "@storybook/addon-info": "^5.1.8",
-    "@storybook/addon-viewport": "^5.1.8",
-    "@storybook/addons": "^5.1.8",
-    "@storybook/react": "^5.1.8",
-    "@storybook/theming": "^5.1.8",
-    "@types/faker": "^4.1.4",
-    "@types/jest": "^23.3.2",
-    "@types/react": "^16.9.23",
-    "@types/storybook__addon-info": "^4.1.2",
-    "@types/storybook__addon-options": "^4.0.2",
-    "@types/storybook__react": "^4.0.2",
-    "@types/styled-components": "^5.1.0",
-    "babel-loader": "^8.0.4",
-    "coveralls": "^3.0.2",
-    "eslint": "^5.16.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-jsx-a11y": "^6.1.1",
-    "eslint-plugin-react": "^7.11.1",
-    "faker": "^4.1.0",
-    "husky": "^1.1.2",
-    "jest": "^24.3.1",
-    "jest-dom": "^2.0.5",
-    "lint-staged": "^7.2.2",
-    "mutationobserver-shim": "^0.3.3",
-    "prettier": "^1.14.2",
-    "prop-types": "^15.0.0",
-    "react": "^16.12.0",
-    "react-docgen-typescript-loader": "^3.1.0",
-    "react-dom": "^16.12.0",
-    "react-is": "^16.8.0",
-    "react-testing-library": "^5.0.1",
-    "rimraf": "^3.0.0",
-    "rollup": "^0.66.1",
-    "rollup-plugin-sourcemaps": "^0.4.2",
-    "rollup-plugin-typescript2": "^0.17.0",
-    "rollup-plugin-url": "^2.0.1",
-    "storybook-styled-components": "^1.1.4",
-    "styled-components": "^5.1.0",
-    "stylelint": "^9.5.0",
-    "stylelint-config-prettier": "^4.0.0",
-    "stylelint-config-standard": "^18.2.0",
-    "stylelint-config-styled-components": "^0.1.1",
-    "stylelint-processor-styled-components": "^1.3.2",
-    "ts-jest": "^24.0.0",
-    "ts-loader": "^5.2.2",
-    "tslint": "^5.11.0",
-    "tslint-config-prettier": "^1.15.0",
-    "tslint-react": "^3.6.0",
-    "typeface-lato": "^0.0.54",
-    "typeface-roboto-mono": "^0.0.54",
-    "typescript": "^3.0.1",
-    "typescript-eslint-parser": "^20.0.0",
-    "webpack": "^3.0.0"
-  },
-  "peerDependencies": {
-    "react": "^16.8.0",
-    "react-dom": "^16.8.0",
-    "react-is": "^16.8.0",
-    "styled-components": "^5.1.0"
-  },
+  "sideEffects": false,
   "scripts": {
-    "build": "build-storybook",
-    "build:rollup:es": "rollup -c --file dist/es/index.js --dir dist/es",
-    "build:rollup:cjs": "rollup -c --format cjs --file dist/cjs/index.js --dir dist/cjs",
-    "clean": "rimraf ./dist",
-    "prepare": "yarn clean && yarn build:rollup:cjs && yarn build:rollup:es",
-    "report-coverage": " cat ./coverage/lcov.info | coveralls",
+    "clean": "rimraf lib",
+    "build": "yarn run clean && yarn run build:source && yarn run build:declarations",
+    "build:source": "yarn run build:source:cjs && yarn run build:source:es",
+    "build:source:cjs": "cross-env NODE_ENV=production BABEL_ENV=cjs babel src --extensions '.ts,.tsx' --source-maps --out-dir lib/cjs",
+    "build:source:es": "cross-env NODE_ENV=production BABEL_ENV=es babel src --extensions '.ts,.tsx' --source-maps --out-dir lib/es",
+    "build:declarations": "tsc -p tsconfig.build.json",
+    "build:storybook": "build-storybook",
     "start": "start-storybook",
     "test": "jest",
-    "watch": "rollup -c -w"
+    "lint": "yarn run lint:types && yarn run lint:source && yarn run lint:format",
+    "lint:types": "tsc --noEmit",
+    "lint:source": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js,.jsx",
+    "lint:format": "prettier --check --ignore-path .gitignore '**/*.{ts,tsx,js,json,yml}'",
+    "format": "prettier --write --ignore-path .gitignore '**/*.{ts,tsx,js,json,yml}'",
+    "prepare": "simple-git-hooks"
   },
-  "sideEffects": false,
-  "eslintConfig": {
-    "extends": [
-      "plugin:import/recommended",
-      "plugin:jsx-a11y/recommended"
-    ],
-    "parser": "typescript-eslint-parser",
-    "parserOptions": {
-      "sourceType": "module"
-    },
-    "plugins": [
-      "import",
-      "jsx-a11y",
-      "react"
-    ],
-    "rules": {
-      "import/extensions": [
-        "error",
-        "ignorePackages"
-      ],
-      "import/first": "error",
-      "import/named": "off",
-      "import/newline-after-import": "error",
-      "import/no-amd": "error",
-      "import/no-commonjs": "error",
-      "import/no-cycle": "error",
-      "import/no-extraneous-dependencies": "error",
-      "import/no-mutable-exports": "error",
-      "import/no-named-as-default-member": "error",
-      "import/no-named-default": "error",
-      "import/no-nodejs-modules": "error",
-      "import/no-relative-parent-imports": "error",
-      "import/no-self-import": "error",
-      "import/no-unassigned-import": [
-        "error",
-        {
-          "allow": [
-            "jest-dom/extend-expect",
-            "react-testing-library/cleanup-after-each"
-          ]
-        }
-      ],
-      "import/no-unresolved": "off",
-      "import/no-useless-path-segments": "error",
-      "import/prefer-default-export": "error",
-      "react/destructuring-assignment": "error",
-      "jsx-a11y/label-has-for": [
-        "error",
-        {
-          "required": "id"
-        }
-      ]
-    }
+  "dependencies": {
+    "@fontsource/lato": "^4.2.2",
+    "@fontsource/roboto-mono": "^4.2.2"
   },
-  "eslintIgnore": [
-    "dist"
-  ],
-  "jest": {
-    "collectCoverage": true,
-    "moduleNameMapper": {
-      "\\.svg$": "<rootDir>/__mocks__/fileMock.ts"
-    },
-    "preset": "ts-jest",
-    "testPathIgnorePatterns": [
-      "dist"
-    ]
+  "devDependencies": {
+    "@babel/cli": "^7.13.14",
+    "@babel/core": "^7.13.14",
+    "@babel/preset-env": "^7.13.12",
+    "@babel/preset-react": "^7.13.13",
+    "@babel/preset-typescript": "^7.13.0",
+    "@storybook/addon-essentials": "^6.2.3",
+    "@storybook/addons": "^6.2.3",
+    "@storybook/builder-webpack5": "^6.2.3",
+    "@storybook/components": "^6.2.3",
+    "@storybook/core-events": "^6.2.3",
+    "@storybook/react": "^6.2.3",
+    "@testing-library/jest-dom": "^5.11.10",
+    "@testing-library/react": "^11.2.6",
+    "@types/jest": "^26.0.22",
+    "@types/react": "^17.0.3",
+    "@types/styled-components": "^5.1.9",
+    "@typescript-eslint/eslint-plugin": "^4.18.0",
+    "@typescript-eslint/parser": "^4.18.0",
+    "babel-jest": "^26.6.3",
+    "babel-loader": "^8.2.2",
+    "babel-plugin-tsconfig-paths": "^1.0.1",
+    "cross-env": "^7.0.3",
+    "eslint": "^7.22.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-jest": "^24.3.2",
+    "eslint-plugin-react": "^7.23.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "jest": "^26.6.3",
+    "jest-dom": "^4.0.0",
+    "lint-staged": "^10.5.4",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-is": "^17.0.2",
+    "rimraf": "^3.0.2",
+    "simple-git-hooks": "^2.3.1",
+    "storybook-addon-styled-component-theme": "^2.0.0",
+    "styled-components": "^5.2.3",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.2.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged && tsc --noEmit && yarn test"
-    }
+  "peerDependencies": {
+    "react": "^17.0.0",
+    "react-dom": "^17.0.0",
+    "react-is": "^17.0.0",
+    "styled-components": "^5.2.3"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "yarn lint-staged"
   },
   "lint-staged": {
-    "*.{js,jsx,ts,tsx,json,md}": [
-      "prettier --write",
-      "git add"
-    ],
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix --ext js,jsx,ts,tsx",
-      "stylelint",
-      "git add"
+      "eslint --fix"
     ],
-    "*.{ts,tsx}": [
-      "tslint --fix",
-      "git add"
+    "*.{js,jsx,ts,tsx,json,md,mdx}": [
+      "prettier --write"
     ]
-  },
-  "prettier": {
-    "printWidth": 80,
-    "singleQuote": true,
-    "useTabs": false,
-    "semi": true,
-    "tabWidth": 2,
-    "trailingComma": "all"
-  },
-  "stylelint": {
-    "processors": [
-      "stylelint-processor-styled-components"
-    ],
-    "extends": [
-      "stylelint-config-standard",
-      "stylelint-config-styled-components",
-      "stylelint-config-prettier"
-    ],
-    "rules": {
-      "block-no-empty": null,
-      "color-named": "always-where-possible",
-      "declaration-no-important": true,
-      "font-family-name-quotes": "always-where-recommended",
-      "font-weight-notation": "named-where-possible",
-      "max-nesting-depth": 1,
-      "unit-whitelist": [
-        "%",
-        "px",
-        "em",
-        "rem"
-      ]
-    }
   }
 }

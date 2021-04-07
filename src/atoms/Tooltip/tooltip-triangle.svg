@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="20px" height="10px" viewBox="0 0 20 10" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 53.2 (72643) - https://sketchapp.com -->
-    <title>tooltip-triangle</title>
-    <desc>Created with Sketch.</desc>
-    <g id="tooltip-triangle" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <path d="M10,5.46966991 L19.0946699,-3.625 L0.905330086,-3.625 L10,5.46966991 Z" id="Triangle" stroke="#B9C9D3" stroke-width="0.75" fill="#FFFFFF" fill-rule="nonzero"></path>
-    </g>
-</svg>
