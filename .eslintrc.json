@@ -17,10 +17,18 @@
     "import/order": [
       "error",
       {
-        "newlines-between": "never",
+        "newlines-between": "always",
+        "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]],
+        "pathGroups": [
+          {
+            "pattern": "@{atoms,types}{**,**/**}",
+            "group": "internal"
+          }
+        ],
+        "pathGroupsExcludedImportTypes": [],
         "alphabetize": {
           "order": "asc",
-          "caseInsensitive": false
+          "caseInsensitive": true
         }
       }
     ],
@@ -30,16 +38,15 @@
   },
   "overrides": [
     {
-      "files": ["*.ts"],
-      "extends": ["plugin:@typescript-eslint/recommended", "plugin:eslint-plugin-import/typescript"],
-      "plugins": ["@typescript-eslint"],
+      "files": ["*.ts", "*.tsx"],
+      "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:eslint-plugin-import/typescript",
+        "plugin:eslint-plugin-react/recommended",
+        "plugin:eslint-plugin-react-hooks/recommended"
+      ],
+      "plugins": ["@typescript-eslint", "eslint-plugin-react"],
       "rules": {
-        "@typescript-eslint/array-type": [
-          "error",
-          {
-            "default": "array-simple"
-          }
-        ],
         "@typescript-eslint/consistent-type-assertions": [
           "error",
           {
@@ -55,7 +62,41 @@
           }
         ],
         "@typescript-eslint/method-signature-style": ["error", "method"],
-        "@typescript-eslint/no-non-null-assertion": "off"
+        "@typescript-eslint/no-empty-function": [
+          "error",
+          {
+            "allow": ["private-constructors"]
+          }
+        ],
+        "@typescript-eslint/no-inferrable-types": [
+          "error",
+          {
+            "ignoreParameters": true
+          }
+        ],
+        "@typescript-eslint/no-non-null-assertion": "off",
+        "@typescript-eslint/no-unused-vars": [
+          "error",
+          {
+            "ignoreRestSiblings": true,
+            "argsIgnorePattern": "^_"
+          }
+        ],
+        "react/display-name": "off",
+        "react/no-unescaped-entities": "off",
+        "react/prop-types": "off",
+        "react/react-in-jsx-scope": "off",
+        "react-hooks/exhaustive-deps": "off"
+      },
+      "settings": {
+        "react": {
+          "version": "detect"
+        }
+      },
+      "parserOptions": {
+        "ecmaFeatures": {
+          "jsx": true
+        }
       }
     },
     {
