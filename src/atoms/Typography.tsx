@@ -22,7 +22,7 @@ export const Body = ({ children, as = 'p', ...props }: TextProps) => (
 );
 
 export const Code = ({ children, as = 'p', ...props }: TextProps) => (
-  <Text as={as} variant="body" fontFamily="monospace" {...props}>
+  <Text as={as} variant="body" fontFamily="mono" {...props}>
     {children}
   </Text>
 );

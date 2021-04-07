@@ -13,28 +13,33 @@ export const theme: DefaultTheme = {
   lineHeights: ['16px', '24px', '48px'],
   text: {
     heading: {
+      fontFamily: 'body',
       fontSize: 5,
       lineHeight: 3,
       fontWeight: 700,
       color: 'DARK_BLUE'
     },
     subHeading: {
+      fontFamily: 'body',
       fontSize: 4,
       lineHeight: 2,
       color: 'DARK_BLUE',
       fontWeight: 700
     },
     body: {
+      fontFamily: 'body',
       fontSize: 2,
       lineHeight: 1,
       color: 'BODY'
     },
     muted: {
+      fontFamily: 'body',
       fontSize: 2,
       lineHeight: 1,
       color: 'BLUE_GREY'
     },
     error: {
+      fontFamily: 'body',
       fontSize: 2,
       lineHeight: 1,
       color: 'RED'
