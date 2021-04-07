@@ -33,16 +33,15 @@
     "format": "prettier --write --ignore-path .gitignore '**/*.{ts,tsx,js,json,yml}'",
     "prepare": "simple-git-hooks"
   },
-  "dependencies": {
-    "@fontsource/lato": "^4.2.2",
-    "@fontsource/roboto-mono": "^4.2.2"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.13.14",
     "@babel/core": "^7.13.14",
     "@babel/preset-env": "^7.13.12",
     "@babel/preset-react": "^7.13.13",
     "@babel/preset-typescript": "^7.13.0",
+    "@fontsource/lato": "^4.2.2",
+    "@fontsource/roboto-mono": "^4.2.2",
     "@storybook/addon-essentials": "^6.2.3",
     "@storybook/addons": "^6.2.3",
     "@storybook/builder-webpack5": "^6.2.3",
