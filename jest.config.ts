@@ -1,4 +1,4 @@
 export default {
   setupFilesAfterEnv: ['./.jest/setup.ts'],
-  collectCoverageFrom: ['!**/src/types/**']
+  collectCoverageFrom: ['**/src/**/*.{js,jsx,ts,tsx}', '!**/src/types/**']
 };
