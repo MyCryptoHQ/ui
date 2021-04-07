@@ -3005,7 +3005,7 @@
     "@types/scheduler" "*"
     csstype "^3.0.2"
 
-"@types/rebass@*", "@types/rebass@4.0.8":
+"@types/rebass@4.0.8":
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/@types/rebass/-/rebass-4.0.8.tgz#06d7f1ae0078aa6fb08168fe2336b9383c7bea68"
   integrity sha512-IxYGm8KlZ1c7VHlybGFRpkF+CPVaBZXtkHlZ/4qGjk89cZ82MK7gV26Dolmd1i1kY05Yy5ebh5YUET4ko588Nw==
@@ -3014,15 +3014,6 @@
     "@types/styled-components" "*"
     "@types/styled-system" "*"
     "@types/styled-system__css" "*"
-
-"@types/rebass__forms@4.0.4":
-  version "4.0.4"
-  resolved "https://registry.yarnpkg.com/@types/rebass__forms/-/rebass__forms-4.0.4.tgz#d3f65acaa2deaca1dd1d0b88890a333d1ec40850"
-  integrity sha512-G6PeyEne2JNSVQ9nEc8rXdw+FexQYERLT2Ga3UTqW620aPjZQ8njqakXiFMeEHwuklbONq6p1ZOU33/3x5uNUQ==
-  dependencies:
-    "@types/react" "*"
-    "@types/rebass" "*"
-    "@types/styled-system" "*"
 
 "@types/scheduler@*":
   version "0.16.1"
