@@ -1,8 +1,9 @@
 import { Address } from './Address';
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import { fAddress } from '@fixtures';
 
 <Meta
-  title="atoms/Address"
+  title="molecules/Address"
   component={Address}
   parameters={{ actions: { argTypesRegex: '^on.*' } }}
 />
@@ -13,6 +14,6 @@ Address!
 
 <Canvas>
   <Story name="Default">
-    <Address address={'0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520'} />
+    <Address address={fAddress} />
   </Story>
 </Canvas>

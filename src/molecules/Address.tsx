@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 
-import type { FlexProps } from '.';
-import { Blockie, Body, Flex } from '.';
+import type { FlexProps } from '@atoms';
+import { Blockie, Body, Flex } from '@atoms';
 
 interface Props extends Omit<FlexProps, 'variant'> {
   address: string;
