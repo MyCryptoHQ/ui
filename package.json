@@ -92,7 +92,8 @@
     "styled-components": "^5.2.3"
   },
   "simple-git-hooks": {
-    "pre-commit": "yarn lint-staged"
+    "pre-commit": "yarn lint-staged",
+    "pre-push": "yarn test"
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx,mdx}": [
