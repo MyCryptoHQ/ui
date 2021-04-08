@@ -29,8 +29,8 @@
     "lint": "yarn run lint:types && yarn run lint:source && yarn run lint:format",
     "lint:types": "tsc --noEmit",
     "lint:source": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js,.jsx,.mdx",
-    "lint:format": "prettier --check --ignore-path .gitignore '**/*.{ts,tsx,js,json,yml,mdx}'",
-    "format": "prettier --write --ignore-path .gitignore '**/*.{ts,tsx,js,json,yml,mdx}'",
+    "lint:format": "prettier --check --ignore-path .gitignore \"**/*.{ts,tsx,js,json,yml,mdx}\"",
+    "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,json,yml,mdx}\"",
     "prepare": "simple-git-hooks"
   },
   "dependencies": {
