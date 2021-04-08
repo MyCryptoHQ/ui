@@ -1,13 +1,13 @@
-import React from 'react';
+import type { FunctionComponent } from 'react';
 
 import type { FlexProps } from '.';
 import { Blockie, Body, Flex } from '.';
 
-interface Props {
+interface Props extends Omit<FlexProps, 'variant'> {
   address: string;
 }
 
-export const Address = ({ address, ...props }: Props & Omit<FlexProps, 'variant'>) => (
+export const Address: FunctionComponent<Props> = ({ address, ...props }) => (
   <Flex variant="rowAlign" {...props}>
     <Blockie address={address} width="30px" minWidth="30px" height="30px" mr="3" />
     <Body
