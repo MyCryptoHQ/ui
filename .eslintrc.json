@@ -107,6 +107,21 @@
       },
       "extends": ["plugin:eslint-plugin-jest/recommended", "plugin:eslint-plugin-jest/style"],
       "plugins": ["eslint-plugin-jest"]
+    },
+    {
+      "files": ["*.mdx"],
+      "extends": ["plugin:eslint-plugin-mdx/recommended"],
+      "plugins": ["eslint-plugin-mdx"],
+      "rules": {
+        "no-unused-vars": "off"
+      },
+      "parserOptions": {
+        "ecmaVersion": 11,
+        "sourceType": "module",
+        "ecmaFeatures": {
+          "jsx": true
+        }
+      }
     }
   ]
 }
