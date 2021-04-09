@@ -26,3 +26,9 @@ export const Code: FunctionComponent<TextProps> = ({ children, as = 'p', ...prop
     {children}
   </Text>
 );
+
+export const InlineBody: FunctionComponent<TextProps> = ({ children, as = 'span', ...props }) => (
+  <Text as={as} display="inline-block" variant="body" {...props}>
+    {children}
+  </Text>
+);
