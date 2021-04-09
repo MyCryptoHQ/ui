@@ -1,5 +1,7 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
+import { fAddress } from '@fixtures';
+
 import { Blockie } from './Blockie';
 
 <Meta
@@ -12,8 +14,10 @@ import { Blockie } from './Blockie';
 
 Blockie!
 
+export const Template = (props) => <Blockie {...props} />;
+
 <Canvas>
-  <Story name="Default">
-    <Blockie address={'0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520'} />
+  <Story name="Default" args={{ address: fAddress }}>
+    {Template.bind({})}
   </Story>
 </Canvas>

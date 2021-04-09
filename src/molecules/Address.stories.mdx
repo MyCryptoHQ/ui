@@ -14,8 +14,10 @@ import { Address } from './Address';
 
 Address!
 
+export const Template = (props) => <Address {...props} />;
+
 <Canvas>
-  <Story name="Default">
-    <Address address={fAddress} />
+  <Story name="Default" args={{ address: fAddress }}>
+    {Template.bind({})}
   </Story>
 </Canvas>

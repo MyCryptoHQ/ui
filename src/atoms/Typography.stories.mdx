@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
-import { Heading, SubHeading, Body, Code } from './Typography';
+import { Heading, SubHeading, Body, Code, Text } from '../atoms';
 
 <Meta title="atoms/Typography" parameters={{ actions: { argTypesRegex: '^on.*' } }} />
 
@@ -8,26 +8,42 @@ import { Heading, SubHeading, Body, Code } from './Typography';
 
 Typography components
 
+export const HeadingTemplate = (props) => <Heading {...props} />;
+
 <Canvas>
-  <Story name="Heading">
-    <Heading>Heading</Heading>
+  <Story name="Heading" args={{ children: 'Heading' }}>
+    {HeadingTemplate.bind({})}
   </Story>
 </Canvas>
 
+export const SubHeadingTemplate = (props) => <SubHeading {...props} />;
+
 <Canvas>
-  <Story name="SubHeading">
-    <SubHeading>SubHeading</SubHeading>
+  <Story name="SubHeading" args={{ children: 'SubHeading' }}>
+    {SubHeadingTemplate.bind({})}
   </Story>
 </Canvas>
 
+export const BodyTemplate = (props) => <Body {...props} />;
+
 <Canvas>
-  <Story name="Body">
-    <Body>Body</Body>
+  <Story name="Body" args={{ children: 'Body' }}>
+    {BodyTemplate.bind({})}
   </Story>
 </Canvas>
 
+export const CodeTemplate = (props) => <Code {...props} />;
+
 <Canvas>
-  <Story name="Code">
-    <Code>Code</Code>
+  <Story name="Code" args={{ children: 'Code' }}>
+    {CodeTemplate.bind({})}
+  </Story>
+</Canvas>
+
+export const TextTemplate = (props) => <Text {...props} />;
+
+<Canvas>
+  <Story name="Text" args={{ children: 'Text', variant: 'body' }}>
+    {TextTemplate.bind({})}
   </Story>
 </Canvas>

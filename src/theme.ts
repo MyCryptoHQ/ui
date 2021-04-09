@@ -32,6 +32,12 @@ export const theme: DefaultTheme = {
       lineHeight: 1,
       color: 'BODY'
     },
+    code: {
+      fontFamily: 'mono',
+      fontSize: 2,
+      lineHeight: 1,
+      color: 'BODY'
+    },
     muted: {
       fontFamily: 'body',
       fontSize: 2,
