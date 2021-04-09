@@ -57,13 +57,21 @@ export const theme: DefaultTheme = {
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
-  lineHeights: ['16px', '24px', '48px'],
+  lineHeights: ['1rem', '1.5rem', '3rem'],
+  fontWeights: {
+    body: 400,
+    heading: 700,
+    bold: 700
+  },
+  radii: {
+    avatar: '50%'
+  },
   text: {
     heading: {
       fontFamily: 'body',
       fontSize: 5,
       lineHeight: 3,
-      fontWeight: 700,
+      fontWeight: 'heading',
       color: 'text.secondary'
     },
     subHeading: {
@@ -71,7 +79,7 @@ export const theme: DefaultTheme = {
       fontSize: 4,
       lineHeight: 2,
       color: 'text.secondary',
-      fontWeight: 700
+      fontWeight: 'heading'
     },
     body: {
       fontFamily: 'body',
@@ -101,7 +109,7 @@ export const theme: DefaultTheme = {
   variants: {
     ...FLEX_VARIANTS,
     avatar: {
-      borderRadius: '50%'
+      borderRadius: 'avatar'
     }
   }
 };
