@@ -1,5 +1,6 @@
 export * from './Blockie';
 export * from './Typography';
+export * from './Address';
 
 // Re-export as these should be used over the ones imported from rebass!
 export {

@@ -1,0 +1,21 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { fAddress } from '@fixtures';
+
+import { BlockieAddress } from './BlockieAddress';
+
+<Meta
+  title="molecules/BlockieAddress"
+  component={BlockieAddress}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# BlockieAddress
+
+Address with a Blockie!
+
+<Canvas>
+  <Story name="Default" args={{ address: fAddress }}>
+    {(props) => <BlockieAddress {...props} />}
+  </Story>
+</Canvas>

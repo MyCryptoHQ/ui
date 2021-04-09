@@ -1,1 +1,1 @@
-export * from './Address';
+export * from './BlockieAddress';
