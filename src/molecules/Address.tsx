@@ -7,11 +7,11 @@ interface Props extends Omit<FlexProps, 'variant'> {
   address: string;
 }
 
-export const Address: FunctionComponent<Props> = ({ address, ...props }) => (
+export const Address: FunctionComponent<Props> = ({ address, fontSize = undefined, ...props }) => (
   <Flex variant="rowAlign" {...props}>
     <Blockie address={address} width="30px" minWidth="30px" height="30px" mr="3" />
     <Body
-      fontSize="14px"
+      fontSize={fontSize}
       sx={{
         wordBreak: 'break-word'
       }}>
