@@ -33,6 +33,13 @@ const FLEX_VARIANTS = {
   }
 };
 
+const COLORS = {
+  BODY: '#424242',
+  DARK_BLUE: '#1c314e',
+  BLUE_GREY: '#B5BFC7',
+  RED: '#EF4747'
+};
+
 export const theme: DefaultTheme = {
   fonts: {
     body: 'Lato, sans-serif',
@@ -42,43 +49,12 @@ export const theme: DefaultTheme = {
     primary: '#007896',
     secondary: '#163150',
 
-    // @todo: CONVERT COLORS TO NAMED THEME COLORS
-
-    DEFAULT_BACKGROUND: '#fbfbfb',
-
-    // BLUE
-    BLUE: '#027796',
-    DARK_BLUE: '#1c314e',
-    LIGHT_BLUE: '#55B6E2',
-    BLUE_LIGHT: '#007896',
-    BLUE_LIGHT_DARKISH: '#006077',
-    BLUE_DARK_SLATE: '#163150',
-    BLUE_GREY: '#B5BFC7',
-    BLUE_BRIGHT: '#1eb8e7',
-
-    // BLACK
-    BODY: '#424242',
-
-    // GREY
-    BG_GREY: '#C4C4C4',
-    BG_GREY_MUTED: '#F6F8FA',
-    GREY_ATHENS: '#e8eaed',
-    GREY_LIGHTEST: '#f7f7f7',
-    GREY_LIGHTER: '#e5ecf3',
-    GREY_LIGHT: '#d8d8d8',
-    GREY_TEXT: '#828282',
-
-    // ORANGE
-    ORANGE: '#FA873F',
-
-    // GREEN
-    GREEN: '#B3DD87',
-
-    // RED
-    RED: '#EF4747',
-
-    // PURPLE
-    PURPLE: '#A682FF'
+    text: {
+      primary: COLORS.BODY,
+      secondary: COLORS.DARK_BLUE,
+      discrete: COLORS.BLUE_GREY,
+      warning: COLORS.RED
+    }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
   lineHeights: ['16px', '24px', '48px'],
@@ -88,38 +64,38 @@ export const theme: DefaultTheme = {
       fontSize: 5,
       lineHeight: 3,
       fontWeight: 700,
-      color: 'DARK_BLUE'
+      color: 'text.secondary'
     },
     subHeading: {
       fontFamily: 'body',
       fontSize: 4,
       lineHeight: 2,
-      color: 'DARK_BLUE',
+      color: 'text.secondary',
       fontWeight: 700
     },
     body: {
       fontFamily: 'body',
       fontSize: 2,
       lineHeight: 1,
-      color: 'BODY'
+      color: 'text.primary'
     },
     code: {
       fontFamily: 'mono',
       fontSize: 2,
       lineHeight: 1,
-      color: 'BODY'
+      color: 'text.primary'
     },
     muted: {
       fontFamily: 'body',
       fontSize: 2,
       lineHeight: 1,
-      color: 'BLUE_GREY'
+      color: 'text.discrete'
     },
     error: {
       fontFamily: 'body',
       fontSize: 2,
       lineHeight: 1,
-      color: 'RED'
+      color: 'text.warning'
     }
   },
   variants: {
