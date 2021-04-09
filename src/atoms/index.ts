@@ -1,4 +1,3 @@
-export * from './Test';
 export * from './Blockie';
 export * from './Typography';
 
