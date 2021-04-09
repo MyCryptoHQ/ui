@@ -1,5 +1,38 @@
 import type { DefaultTheme } from 'styled-components';
 
+const FLEX_RECIPES = {
+  align: {
+    alignItems: 'center'
+  },
+  center: {
+    justifyContent: 'center',
+    alignItems: 'center'
+  }
+};
+
+const FLEX_VARIANTS = {
+  rowAlign: {
+    display: 'flex',
+    flexDirection: 'row',
+    ...FLEX_RECIPES.align
+  },
+  rowCenter: {
+    display: 'flex',
+    flexDirection: 'row',
+    ...FLEX_RECIPES.center
+  },
+  columnAlign: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...FLEX_RECIPES.align
+  },
+  columnCenter: {
+    display: 'flex',
+    flexDirection: 'column',
+    ...FLEX_RECIPES.center
+  }
+};
+
 export const theme: DefaultTheme = {
   fonts: {
     body: 'Lato, sans-serif',
@@ -52,6 +85,7 @@ export const theme: DefaultTheme = {
     }
   },
   variants: {
+    ...FLEX_VARIANTS,
     avatar: {
       borderRadius: '50%'
     }
