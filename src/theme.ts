@@ -9,7 +9,7 @@ export const theme: DefaultTheme = {
     primary: '#007896',
     secondary: '#163150'
   },
-  fontSizes: ['10px', '12px', '16px', '18px', '20px', '40px'],
+  fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
   lineHeights: ['16px', '24px', '48px'],
   text: {
     heading: {
