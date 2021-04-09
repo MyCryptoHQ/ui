@@ -4,10 +4,10 @@ import type { FunctionComponent } from 'react';
 import type { ImageProps } from '@atoms';
 import { Image } from '@atoms';
 
-interface Props extends ImageProps {
+export interface BlockieProps extends ImageProps {
   address: string;
 }
 
-export const Blockie: FunctionComponent<Props> = ({ address, ...props }) => (
+export const Blockie: FunctionComponent<BlockieProps> = ({ address, ...props }) => (
   <Image src={makeBlockie(address)} variant="avatar" {...props} />
 );

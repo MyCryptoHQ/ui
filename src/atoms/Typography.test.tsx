@@ -1,21 +1,21 @@
-import { render } from '@testing-library/react';
+import { simpleRender } from 'test-utils';
 
 import { Heading, SubHeading, Body, Code } from './Typography';
 
 describe('Typography', () => {
   it('renders Heading correctly', () => {
-    expect(() => render(<Heading>Heading</Heading>)).not.toThrow();
+    expect(() => simpleRender(<Heading>Heading</Heading>)).not.toThrow();
   });
 
   it('renders SubHeading correctly', () => {
-    expect(() => render(<SubHeading>SubHeading</SubHeading>)).not.toThrow();
+    expect(() => simpleRender(<SubHeading>SubHeading</SubHeading>)).not.toThrow();
   });
 
   it('renders Body correctly', () => {
-    expect(() => render(<Body>Body</Body>)).not.toThrow();
+    expect(() => simpleRender(<Body>Body</Body>)).not.toThrow();
   });
 
   it('renders Code correctly', () => {
-    expect(() => render(<Code>Code</Code>)).not.toThrow();
+    expect(() => simpleRender(<Code>Code</Code>)).not.toThrow();
   });
 });

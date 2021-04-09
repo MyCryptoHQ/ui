@@ -1,4 +1,4 @@
-import { render } from '@testing-library/react';
+import { simpleRender } from 'test-utils';
 
 import { fAddress } from '@fixtures';
 
@@ -6,6 +6,6 @@ import { Blockie } from './Blockie';
 
 describe('Blockie', () => {
   it('renders correctly', () => {
-    expect(() => render(<Blockie address={fAddress} />)).not.toThrow();
+    expect(() => simpleRender(<Blockie address={fAddress} />)).not.toThrow();
   });
 });
