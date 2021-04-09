@@ -14,10 +14,8 @@ import { Blockie } from './Blockie';
 
 Blockie!
 
-export const Template = (props) => <Blockie {...props} />;
-
 <Canvas>
   <Story name="Default" args={{ address: fAddress }}>
-    {Template.bind({})}
+    {(props) => <Blockie {...props} />}
   </Story>
 </Canvas>
