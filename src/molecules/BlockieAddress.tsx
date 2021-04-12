@@ -3,11 +3,11 @@ import type { FunctionComponent } from 'react';
 import type { FlexProps } from '@atoms';
 import { Blockie, Flex, Address } from '@atoms';
 
-interface Props extends Omit<FlexProps, 'variant'> {
+export interface BlockieAddressProps extends Omit<FlexProps, 'variant'> {
   address: string;
 }
 
-export const BlockieAddress: FunctionComponent<Props> = ({
+export const BlockieAddress: FunctionComponent<BlockieAddressProps> = ({
   address,
   fontSize = undefined,
   ...props
