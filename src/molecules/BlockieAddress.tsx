@@ -12,7 +12,7 @@ export const BlockieAddress: FunctionComponent<BlockieAddressProps> = ({
   fontSize = undefined,
   ...props
 }) => (
-  <Flex variant="rowAlign" {...props}>
+  <Flex variant="horizontal-start" {...props}>
     <Blockie address={address} width="30px" minWidth="30px" height="30px" mr="3" />
     <Address address={address} fontSize={fontSize} />
   </Flex>

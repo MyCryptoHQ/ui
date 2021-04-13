@@ -11,22 +11,22 @@ const FLEX_RECIPES = {
 };
 
 const FLEX_VARIANTS = {
-  rowAlign: {
+  'horizontal-start': {
     display: 'flex',
     flexDirection: 'row',
     ...FLEX_RECIPES.align
   },
-  rowCenter: {
+  'horizontal-center': {
     display: 'flex',
     flexDirection: 'row',
     ...FLEX_RECIPES.center
   },
-  columnAlign: {
+  'vertical-start': {
     display: 'flex',
     flexDirection: 'column',
     ...FLEX_RECIPES.align
   },
-  columnCenter: {
+  'vertical-center': {
     display: 'flex',
     flexDirection: 'column',
     ...FLEX_RECIPES.center
@@ -41,6 +41,7 @@ const COLORS = {
 };
 
 export const theme: DefaultTheme = {
+  breakpoints: ['512px', '850px', '1080px', '1280px', '1440px', '1600px'],
   fonts: {
     body: 'Lato, sans-serif',
     mono: 'Roboto Mono, Menlo, Monaco, Consolas, Courier New, monospace'
