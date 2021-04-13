@@ -1,6 +1,6 @@
 import { simpleRender } from 'test-utils';
 
-import { Heading, SubHeading, Body, Code } from './Typography';
+import { Heading, SubHeading, Body, Code, InlineBody } from './Typography';
 
 describe('Typography', () => {
   it('renders Heading correctly', () => {
@@ -17,5 +17,9 @@ describe('Typography', () => {
 
   it('renders Code correctly', () => {
     expect(() => simpleRender(<Code>Code</Code>)).not.toThrow();
+  });
+
+  it('renders InlineBody correctly', () => {
+    expect(() => simpleRender(<InlineBody>InlineBody</InlineBody>)).not.toThrow();
   });
 });
