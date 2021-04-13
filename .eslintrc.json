@@ -21,7 +21,7 @@
         "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]],
         "pathGroups": [
           {
-            "pattern": "@{atoms,types}{**,**/**}",
+            "pattern": "@{atoms,molecules,types,fixtures}{**,**/**}",
             "group": "internal"
           }
         ],

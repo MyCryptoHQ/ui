@@ -1,0 +1,45 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Heading, SubHeading, Body, Code, Text, InlineBody } from '../atoms';
+
+<Meta title="atoms/Typography" parameters={{ actions: { argTypesRegex: '^on.*' } }} />
+
+# Typography
+
+Typography components
+
+<Canvas>
+  <Story name="Heading" args={{ children: 'Heading' }}>
+    {(props) => <Heading {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="SubHeading" args={{ children: 'SubHeading' }}>
+    {(props) => <SubHeading {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Body" args={{ children: 'Body' }}>
+    {(props) => <Body {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Code" args={{ children: 'Code' }}>
+    {(props) => <Code {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Text" args={{ children: 'Text', variant: 'body' }}>
+    {(props) => <Text {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="InlineBody" args={{ children: 'InlineBody', variant: 'body' }}>
+    {(props) => <InlineBody {...props} />}
+  </Story>
+</Canvas>

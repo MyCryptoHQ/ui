@@ -17,6 +17,8 @@
     "skipLibCheck": true,
     "resolveJsonModule": true,
     "paths": {
+      "@fixtures": ["../.jest/__fixtures__"],
+      "test-utils": ["../.jest/test-utils"],
       "@*": ["./*"]
     }
   },
