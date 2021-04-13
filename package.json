@@ -9,11 +9,12 @@
   ],
   "author": "MyCrypto",
   "license": "MIT",
-  "main": "dist/cjs/index.js",
-  "module": "dist/es/index.js",
-  "types": "dist/es/index.d.ts",
+  "main": "lib/cjs/index.js",
+  "module": "lib/es/index.js",
+  "types": "typings/index.d.ts",
   "files": [
-    "dist"
+    "lib",
+    "typings"
   ],
   "sideEffects": false,
   "scripts": {
@@ -96,5 +97,8 @@
     "*.{js,jsx,ts,tsx,json,md,mdx}": [
       "prettier --write"
     ]
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
