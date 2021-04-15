@@ -11,7 +11,7 @@
   "license": "MIT",
   "main": "lib/cjs/index.js",
   "module": "lib/es/index.js",
-  "types": "typings/index.d.ts",
+  "types": "typings/src/index.d.ts",
   "files": [
     "lib",
     "typings"
