@@ -1,7 +1,7 @@
 # [MyCrypto UI](https://mycryptobuilds.com/ui)
 
-[![Build Status](https://travis-ci.org/MyCryptoHQ/ui.svg?branch=master)](https://travis-ci.org/MyCryptoHQ/ui)
-[![Coverage Status](https://coveralls.io/repos/github/MyCryptoHQ/ui/badge.svg?branch=master)](https://coveralls.io/github/MyCryptoHQ/ui?branch=master)
+[![Build Status](https://github.com/MyCryptoHQ/ui/workflows/CI/badge.svg)](https://github.com/MyCryptoHQ/ui/actions)
+[![Codecov](https://codecov.io/gh/MyCryptoHQ/ui/branch/master/graph/badge.svg)](https://app.codecov.io/gh/MyCryptoHQ/ui)
 
 The shared UI component library used across all MyCrypto products.
 
@@ -13,15 +13,14 @@ Requires a bundler with ES module support.
 
 `yarn add @mycrypto/ui styled-components`
 
-Wrap your app in a `ThemeProvider` to use the included `light` and `dark` themes.
+Wrap your app in a `ThemeProvider` to use the included theme.
 
 ```js
-import { Button, light } from '@mycrypto/ui';
-import React from 'react';
+import { Body, theme } from '@mycrypto/ui';
 import { ThemeProvider } from 'styled-components';
 
-<ThemeProvider theme={light}>
-  <Button>Button</Button>
+<ThemeProvider theme={theme}>
+  <Body>Hello, world!</Body>
 </ThemeProvider>;
 ```
 
@@ -35,20 +34,17 @@ Our designs use the [Lato](http://www.latofonts.com/) and [Roboto Mono](https://
 
 ## Development
 
-You can launch the storybook simply by running `yarn start`
+You can launch the storybook simply by running `yarn start`. To test changes inside other projects directly, you can use `yarn link`:
+
+```
+# Inside the UI folder
+yarn link
+yarn build
+
+# Inside your own project
+yarn link @mycrypto/ui
+```
 
 ## Deployment
 
-The npm package is automatically updated by Travis whenever a new tag is pushed to the remote.
-To facilitate version management we use [yarn version](https://yarnpkg.com/lang/en/docs/cli/version/). To release a new version you just need to run:
-
-```
-  yarn version --major|--minor|--patch
-```
-
-This command will bump the version in the `package.json` file AND create an associated `tag`.
-After this, you must simply push the code and the tag to Github.
-
-```
-  git push && git push --tags
-```
+The npm package is automatically updated by GitHub CI whenever the version is changed inside `package.json`.
