@@ -32,7 +32,8 @@
     "lint:source": "eslint . --ignore-path .gitignore --ext .ts,.tsx,.js,.jsx,.mdx",
     "lint:format": "prettier --check --ignore-path .gitignore \"**/*.{ts,tsx,js,json,yml,mdx}\"",
     "format": "prettier --write --ignore-path .gitignore \"**/*.{ts,tsx,js,json,yml,mdx}\"",
-    "prepare": "simple-git-hooks"
+    "prepare": "simple-git-hooks",
+    "prepack": "yarn build"
   },
   "dependencies": {
     "@rebass/forms": "4.0.6",
