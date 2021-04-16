@@ -54,7 +54,6 @@ export const theme: DefaultTheme = {
     secondary: '#163150',
 
     button: {
-      shadow: '#59a8bc',
       primary: {
         hover: COLORS.DARKER_BLUE,
         disabled: COLORS.GREY_LIGHT
