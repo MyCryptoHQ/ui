@@ -36,8 +36,10 @@ const FLEX_VARIANTS = {
 const COLORS = {
   BODY: '#424242',
   DARK_BLUE: '#1c314e',
+  DARKER_BLUE: '#006077',
   BLUE_GREY: '#B5BFC7',
-  RED: '#EF4747'
+  RED: '#EF4747',
+  WHITE: '#ffffff'
 };
 
 export const theme: DefaultTheme = {
@@ -50,11 +52,25 @@ export const theme: DefaultTheme = {
     primary: '#007896',
     secondary: '#163150',
 
+    button: {
+      shadow: '#59a8bc',
+      primary: {
+        hover: COLORS.DARKER_BLUE
+      },
+      secondary: {
+        hover: COLORS.DARK_BLUE
+      },
+      inverted: {
+        hover: '#007896'
+      }
+    },
+
     text: {
       primary: COLORS.BODY,
       secondary: COLORS.DARK_BLUE,
       discrete: COLORS.BLUE_GREY,
-      warning: COLORS.RED
+      warning: COLORS.RED,
+      inverted: COLORS.WHITE
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -65,6 +81,7 @@ export const theme: DefaultTheme = {
     bold: 700
   },
   radii: {
+    small: '3px',
     avatar: '50%'
   },
   text: {
@@ -105,6 +122,63 @@ export const theme: DefaultTheme = {
       fontSize: 2,
       lineHeight: 1,
       color: 'text.warning'
+    }
+  },
+  buttons: {
+    primary: {
+      cursor: 'pointer',
+      backgroundColor: 'primary',
+      color: 'text.inverted',
+      fontSize: 2,
+      fontFamily: 'body',
+      padding: '0.75rem 2.25rem',
+      borderRadius: 'small',
+      transition: 'color 0.12s ease 0s, background 0.12s ease 0s, box-shadow 0.12s ease 0s',
+      '&:hover': {
+        backgroundColor: 'button.primary.hover'
+      },
+      '&:focus': {
+        boxShadow: '#59a8bc 0 0 0 0.25rem',
+        outline: 'none'
+      }
+    },
+    secondary: {
+      cursor: 'pointer',
+      backgroundColor: 'secondary',
+      color: 'text.inverted',
+      fontSize: 2,
+      fontFamily: 'body',
+      padding: '0.75rem 2.25rem',
+      borderRadius: 'small',
+      transition: 'color 0.12s ease 0s, background 0.12s ease 0s, box-shadow 0.12s ease 0s',
+      '&:hover': {
+        backgroundColor: 'button.primary.hover'
+      },
+      '&:focus': {
+        boxShadow: '#59a8bc 0 0 0 0.25rem',
+        outline: 'none'
+      }
+    },
+    inverted: {
+      cursor: 'pointer',
+      background: 'none',
+      color: 'primary',
+      fontSize: 2,
+      fontFamily: 'body',
+      padding: '0.625rem 2.125rem',
+      borderRadius: 'small',
+      borderWidth: '0.125rem',
+      borderStyle: 'solid',
+      borderColor: 'primary',
+      transition: 'color 0.12s ease 0s, background 0.12s ease 0s, box-shadow 0.12s ease 0s',
+      '&:hover': {
+        backgroundColor: 'button.inverted.hover',
+        color: 'text.inverted'
+      },
+      '&:focus': {
+        boxShadow: '#59a8bc 0 0 0 0.25rem',
+        outline: 'none'
+      }
     }
   },
   variants: {

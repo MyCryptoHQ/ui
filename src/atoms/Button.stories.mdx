@@ -1,0 +1,54 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Button } from './Button';
+
+<Meta
+  title="atoms/Button"
+  component={Button}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    variant: {
+      control: {
+        type: 'select',
+        options: ['primary', 'secondary', 'inverted']
+      }
+    },
+    compact: {
+      defaultValue: false,
+      control: {
+        type: 'radio',
+        options: [true, false]
+      }
+    }
+  }}
+/>
+
+# Button
+
+A simple button component.
+
+export const Template = (props) => <Button {...props} />;
+
+<Canvas>
+  <Story name="Primary" args={{ variant: 'primary', children: 'Button' }}>
+    {(props) => <Button {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Secondary" args={{ variant: 'secondary', children: 'Button' }}>
+    {(props) => <Button {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Inverted" args={{ variant: 'inverted', children: 'Button' }}>
+    {(props) => <Button {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Compact" args={{ variant: 'primary', compact: true, children: 'Button' }}>
+    {(props) => <Button {...props} />}
+  </Story>
+</Canvas>
