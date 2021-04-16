@@ -10,9 +10,9 @@ export type ButtonProps = OwnProps & RebassButtonProps;
 
 export const Button: FunctionComponent<ButtonProps> = ({ compact = false, children, ...props }) => (
   <RebassButton
-    {...props}
     p={compact ? '0.625rem 2rem' : undefined}
-    fontSize={compact ? '0.9rem' : undefined}>
+    fontSize={compact ? '0.9rem' : undefined}
+    {...props}>
     {children}
   </RebassButton>
 );
