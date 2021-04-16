@@ -1,5 +1,4 @@
-import { simpleRender } from 'test-utils';
-
+import { simpleRender } from '../../.jest/test-utils';
 import { Heading, SubHeading, Body, Code, InlineBody } from './Typography';
 
 describe('Typography', () => {

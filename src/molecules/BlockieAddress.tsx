@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 
-import type { FlexProps } from '@atoms';
-import { Blockie, Flex, Address } from '@atoms';
+import type { FlexProps } from '../atoms';
+import { Blockie, Flex, Address } from '../atoms';
 
 export interface BlockieAddressProps extends Omit<FlexProps, 'variant'> {
   address: string;
