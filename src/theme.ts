@@ -39,7 +39,8 @@ const COLORS = {
   DARKER_BLUE: '#006077',
   BLUE_GREY: '#B5BFC7',
   RED: '#EF4747',
-  WHITE: '#ffffff'
+  WHITE: '#ffffff',
+  GREY_LIGHT: '#d8d8d8'
 };
 
 export const theme: DefaultTheme = {
@@ -55,10 +56,12 @@ export const theme: DefaultTheme = {
     button: {
       shadow: '#59a8bc',
       primary: {
-        hover: COLORS.DARKER_BLUE
+        hover: COLORS.DARKER_BLUE,
+        disabled: COLORS.GREY_LIGHT
       },
       secondary: {
-        hover: COLORS.DARK_BLUE
+        hover: COLORS.DARK_BLUE,
+        disabled: COLORS.GREY_LIGHT
       },
       inverted: {
         hover: '#007896'
@@ -83,6 +86,9 @@ export const theme: DefaultTheme = {
   radii: {
     small: '3px',
     avatar: '50%'
+  },
+  shadows: {
+    button: '#59a8bc 0 0 0 0.25rem'
   },
   text: {
     heading: {
@@ -138,8 +144,12 @@ export const theme: DefaultTheme = {
         backgroundColor: 'button.primary.hover'
       },
       '&:focus': {
-        boxShadow: '#59a8bc 0 0 0 0.25rem',
+        boxShadow: 'button',
         outline: 'none'
+      },
+      '&:disabled': {
+        cursor: 'default',
+        backgroundColor: 'button.primary.disabled'
       }
     },
     secondary: {
@@ -155,8 +165,12 @@ export const theme: DefaultTheme = {
         backgroundColor: 'button.primary.hover'
       },
       '&:focus': {
-        boxShadow: '#59a8bc 0 0 0 0.25rem',
+        boxShadow: 'button',
         outline: 'none'
+      },
+      '&:disabled': {
+        cursor: 'default',
+        backgroundColor: 'button.primary.disabled'
       }
     },
     inverted: {
@@ -176,8 +190,17 @@ export const theme: DefaultTheme = {
         color: 'text.inverted'
       },
       '&:focus': {
-        boxShadow: '#59a8bc 0 0 0 0.25rem',
+        boxShadow: 'button',
         outline: 'none'
+      },
+      '&:disabled': {
+        cursor: 'default',
+        borderColor: 'button.primary.disabled',
+        color: 'button.primary.disabled',
+        '&:hover': {
+          background: 'none',
+          color: 'button.primary.disabled'
+        }
       }
     }
   },

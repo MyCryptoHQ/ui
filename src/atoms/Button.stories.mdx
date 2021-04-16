@@ -16,8 +16,7 @@ import { Button } from './Button';
     compact: {
       defaultValue: false,
       control: {
-        type: 'radio',
-        options: [true, false]
+        type: 'boolean'
       }
     }
   }}
@@ -43,6 +42,12 @@ export const Template = (props) => <Button {...props} />;
 
 <Canvas>
   <Story name="Inverted" args={{ variant: 'inverted', children: 'Button' }}>
+    {(props) => <Button {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Disabled" args={{ variant: 'primary', disabled: true, children: 'Button' }}>
     {(props) => <Button {...props} />}
   </Story>
 </Canvas>
