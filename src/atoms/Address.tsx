@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 
-import type { TextProps } from '@atoms';
-import { Body } from '@atoms';
+import type { TextProps } from '.';
+import { Body } from './Typography';
 
 export interface AddressProps extends Omit<TextProps, 'variant'> {
   address: string;

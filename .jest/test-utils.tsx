@@ -1,7 +1,7 @@
 import { render } from '@testing-library/react';
 import { ReactElement } from 'react';
 import { ThemeProvider } from 'styled-components';
-import { theme } from '@theme';
+import { theme } from '../src/theme';
 
 export const Wrapper = ({ children }: { children: React.ReactNode }) => (
   <ThemeProvider theme={theme}>{children}</ThemeProvider>

@@ -1,8 +1,8 @@
 import makeBlockie from 'ethereum-blockies-base64';
 import type { FunctionComponent } from 'react';
 
-import type { ImageProps } from '@atoms';
-import { Image } from '@atoms';
+import type { ImageProps } from '.';
+import { Image } from '.';
 
 export interface BlockieProps extends ImageProps {
   address: string;

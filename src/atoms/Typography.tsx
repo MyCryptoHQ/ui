@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 
-import type { TextProps } from '@atoms';
-import { Text } from '@atoms';
+import type { TextProps } from '.';
+import { Text } from '.';
 
 export const Heading: FunctionComponent<TextProps> = ({ children, as = 'h1', ...props }) => (
   <Text as={as} variant="heading" {...props}>

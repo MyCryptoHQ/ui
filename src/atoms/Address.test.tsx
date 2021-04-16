@@ -1,7 +1,5 @@
-import { simpleRender } from 'test-utils';
-
-import { fAddress } from '@fixtures';
-
+import { fAddress } from '../../.jest/__fixtures__';
+import { simpleRender } from '../../.jest/test-utils';
 import { Address } from './Address';
 
 describe('Address', () => {

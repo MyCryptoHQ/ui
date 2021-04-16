@@ -19,12 +19,6 @@
       {
         "newlines-between": "always",
         "groups": [["builtin", "external"], "internal", ["parent", "sibling", "index"]],
-        "pathGroups": [
-          {
-            "pattern": "@{atoms,molecules,types,fixtures}{**,**/**}",
-            "group": "internal"
-          }
-        ],
         "pathGroupsExcludedImportTypes": [],
         "alphabetize": {
           "order": "asc",
