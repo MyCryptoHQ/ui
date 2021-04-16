@@ -1,6 +1,6 @@
 import { fireEvent } from '@testing-library/react';
-import { simpleRender } from 'test-utils';
 
+import { simpleRender } from '../../.jest/test-utils';
 import { Button } from './Button';
 
 describe('Button', () => {
