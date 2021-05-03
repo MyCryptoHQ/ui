@@ -1,0 +1,19 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { default as Spinner } from './Spinner';
+
+<Meta
+  title="atoms/Spinner"
+  component={Spinner}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Spinner
+
+Spinner!
+
+<Canvas>
+  <Story name="Default" args={{ size: 1, color: 'spinner' }}>
+    {(props) => <Spinner {...props} />}
+  </Story>
+</Canvas>
