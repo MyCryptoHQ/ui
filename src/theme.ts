@@ -53,6 +53,8 @@ export const theme: DefaultTheme = {
     primary: '#007896',
     secondary: '#163150',
 
+    spinner: '#a086f7',
+
     button: {
       primary: {
         hover: COLORS.DARKER_BLUE,
