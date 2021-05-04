@@ -1,5 +1,3 @@
-import type { DefaultTheme } from 'styled-components';
-
 const FLEX_RECIPES = {
   align: {
     alignItems: 'center'
@@ -43,7 +41,9 @@ const COLORS = {
   GREY_LIGHT: '#d8d8d8'
 };
 
-export const theme: DefaultTheme = {
+export type Theme = typeof theme;
+
+export const theme = {
   breakpoints: ['512px', '850px', '1080px', '1280px', '1440px', '1600px'],
   fonts: {
     body: 'Lato, sans-serif',
@@ -54,6 +54,7 @@ export const theme: DefaultTheme = {
     secondary: '#163150',
 
     spinner: '#a086f7',
+    loadingSpinner: '#7c9ec3',
 
     button: {
       primary: {

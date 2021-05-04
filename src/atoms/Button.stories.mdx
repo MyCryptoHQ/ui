@@ -13,6 +13,12 @@ import { Button } from './Button';
         options: ['primary', 'secondary', 'inverted']
       }
     },
+    loading: {
+      defaultValue: false,
+      control: {
+        type: 'boolean'
+      }
+    },
     compact: {
       defaultValue: false,
       control: {
@@ -48,6 +54,12 @@ export const Template = (props) => <Button {...props} />;
 
 <Canvas>
   <Story name="Disabled" args={{ variant: 'primary', disabled: true, children: 'Button' }}>
+    {(props) => <Button {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Loading" args={{ variant: 'primary', loading: true, children: 'Button' }}>
     {(props) => <Button {...props} />}
   </Story>
 </Canvas>
