@@ -22,7 +22,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
     p={compact ? '0.625rem 2rem' : undefined}
     pl={loading ? '1.5rem' : undefined}
     fontSize={compact ? '0.9rem' : undefined}
-    disabled={loading ? true : disabled}
+    disabled={loading || disabled}
     {...props}>
     <Flex variant="horizontal-center">
       {loading && <Spinner color="loadingSpinner" mr="1" />}
