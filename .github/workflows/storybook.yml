@@ -16,6 +16,7 @@ on:
 
 jobs:
   storybook-build:
+    name: Storybook Build
     runs-on: ubuntu-latest
 
     steps:
