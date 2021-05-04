@@ -37,16 +37,16 @@ jobs:
         with:
           node-version: ${{ steps.nvm.outputs.NVMRC }}
 
-      - name: Cache node modules
+      - name: Cache Dependencies
         uses: actions/cache@v2.1.4
         with:
           path: node_modules
-          key: ${{ runner.OS }}-build-${{ hashFiles('**/yarn.lock') }}
+          key: yarn-${{ hashFiles('yarn.lock') }}
 
       - name: Install Dependencies
         run: yarn install --frozen-lockfile --ignore-scripts
 
-      - name: yarn build:storybook
+      - name: Build Storybook
         run: yarn build:storybook
 
       - name: S3 Sync - Storybook SHA
