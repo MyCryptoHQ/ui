@@ -3,22 +3,24 @@ import styled, { keyframes, withTheme } from 'styled-components';
 import type { SpaceProps } from 'styled-system';
 import { space } from 'styled-system';
 
+import type { Theme } from '../theme';
+
 const rotate = keyframes`
    100% { transform: rotate(360deg)}
 `;
 
 const Svg = styled.svg<{ $size: number } & SpaceProps>`
-  ${space}
+  ${space};
   animation: ${rotate} 0.8s linear infinite;
 
-  ${(p) => p.$size && `width: ${p.$size}em;`}
-  ${(p) => p.$size && `height: ${p.$size}em;`}
+  ${(p) => p.$size && `width: ${p.$size}em;`};
+  ${(p) => p.$size && `height: ${p.$size}em;`};
 `;
 
 export interface SpinnerProps extends SpaceProps {
   size?: number;
   color?: string;
-  theme: any;
+  theme: Theme;
 }
 
 const Spinner: FunctionComponent<SpinnerProps> = ({
@@ -41,7 +43,7 @@ const Spinner: FunctionComponent<SpinnerProps> = ({
         cy="25"
         r="20"
         fill="none"
-        stroke={theme.colors[color] || color}
+        stroke={(theme.colors[color as keyof Theme['colors']] as string) || color}
         strokeWidth="5"
         strokeDasharray="90, 150"
         strokeDashoffset={0}

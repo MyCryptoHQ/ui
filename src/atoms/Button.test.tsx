@@ -17,4 +17,10 @@ describe('Button', () => {
 
     expect(fn).toHaveBeenCalledTimes(1);
   });
+
+  it('shows a spinner when loading', () => {
+    const { getByTestId } = simpleRender(<Button loading={true}>Button</Button>);
+
+    expect(() => getByTestId('spinner')).not.toThrow();
+  });
 });
