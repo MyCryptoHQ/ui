@@ -38,7 +38,8 @@ const COLORS = {
   BLUE_GREY: '#B5BFC7',
   RED: '#EF4747',
   WHITE: '#ffffff',
-  GREY_LIGHT: '#d8d8d8'
+  GREY_LIGHT: '#d8d8d8',
+  GREY_ATHENS: '#e8eaed'
 };
 
 export type Theme = typeof theme;
@@ -86,11 +87,56 @@ export const theme = {
     bold: 700
   },
   radii: {
+    input: '2px',
     small: '3px',
     avatar: '50%'
   },
+  forms: {
+    label: {
+      marginBottom: '6px'
+    },
+    input: {
+      fontFamily: 'body',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: COLORS.GREY_ATHENS,
+      boxShadow: 'input',
+      borderRadius: 'input',
+      '&:focus': {
+        outline: 'none'
+      }
+    },
+    textarea: {
+      fontFamily: 'body',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: COLORS.GREY_ATHENS,
+      boxShadow: 'input',
+      borderRadius: 'input',
+      '&:focus': {
+        outline: 'none'
+      }
+    },
+    error: {
+      fontFamily: 'body',
+      borderWidth: '1px',
+      borderStyle: 'solid',
+      borderColor: COLORS.RED,
+      boxShadow: 'input',
+      borderRadius: 'input',
+      '&:focus': {
+        outline: 'none'
+      }
+    },
+    none: {
+      margin: '0',
+      padding: '0',
+      border: 'none'
+    }
+  },
   shadows: {
-    button: '#59a8bc 0 0 0 0.25rem'
+    button: '#59a8bc 0 0 0 0.25rem',
+    input: '0px 1px 1px rgba(232, 234, 237, 0.5), inset 0px 1px 3px rgba(232, 234, 237, 0.5)'
   },
   text: {
     heading: {
