@@ -17,4 +17,13 @@ export {
   TextProps,
   HeadingProps
 } from 'rebass/styled-components';
-export { Input, Label, Textarea, Select } from '@rebass/forms/styled-components';
+export {
+  Input,
+  Label,
+  Textarea,
+  Select,
+  InputProps,
+  LabelProps,
+  TextareaProps,
+  SelectProps
+} from '@rebass/forms/styled-components';
