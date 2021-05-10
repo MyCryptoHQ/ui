@@ -1,0 +1,22 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Input } from '.';
+import { fAddress } from '../../.jest/__fixtures__';
+
+<Meta title="atoms/Input" component={Input} parameters={{ actions: { argTypesRegex: '^on.*' } }} />
+
+# Input
+
+Inputs!
+
+<Canvas>
+  <Story name="Default" args={{ value: fAddress }}>
+    {(props) => <Input {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Error" args={{ value: fAddress, variant: 'error' }}>
+    {(props) => <Input {...props} />}
+  </Story>
+</Canvas>

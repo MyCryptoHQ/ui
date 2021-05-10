@@ -1,0 +1,26 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Textarea } from '.';
+import { fAddress } from '../../.jest/__fixtures__';
+
+<Meta
+  title="atoms/Textarea"
+  component={Textarea}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Textarea
+
+Textarea!
+
+<Canvas>
+  <Story name="Default" args={{ value: fAddress }}>
+    {(props) => <Textarea {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Error" args={{ value: fAddress, variant: 'error' }}>
+    {(props) => <Textarea {...props} />}
+  </Story>
+</Canvas>
