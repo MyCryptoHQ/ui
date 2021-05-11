@@ -9,18 +9,18 @@ jobs:
   deploy:
     name: Deploy
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version:
-          - 12
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Setup Node.js ${{ matrix.node-version }}
+      - name: Read .nvmrc
+        run: echo "##[set-output name=NVMRC;]$(cat .nvmrc)"
+        id: nvm
+
+      - name: Setup Node.js ${{ steps.nvm.outputs.NVMRC }}
         uses: actions/setup-node@v2.1.5
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: ${{ steps.nvm.outputs.NVMRC }}
 
       - name: Cache Dependencies
         uses: actions/cache@v2.1.4
