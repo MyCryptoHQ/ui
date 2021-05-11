@@ -55,7 +55,7 @@ jobs:
         with:
           args: --acl public-read --cache-control max-age=0 --follow-symlinks --exclude '.git/*'
         env:
-          DEST_DIR: 'ui/storybook/${GITHUB_SHA}'
+          DEST_DIR: 'ui/${GITHUB_SHA}'
           SOURCE_DIR: 'storybook-static'
 
       - name: S3 Sync - Storybook Branch - push
@@ -64,7 +64,7 @@ jobs:
         with:
           args: --acl public-read --cache-control max-age=0 --follow-symlinks --delete --exclude '.git/*'
         env:
-          DEST_DIR: 'ui/storybook/${GITHUB_REF##*/}'
+          DEST_DIR: 'ui/${GITHUB_REF##*/}'
           SOURCE_DIR: 'storybook-static'
 
       - name: S3 Sync - Storybook Branch - pull_request
@@ -73,7 +73,7 @@ jobs:
         with:
           args: --acl public-read --cache-control max-age=0 --follow-symlinks --delete --exclude '.git/*'
         env:
-          DEST_DIR: 'ui/storybook/${{ github.head_ref }}'
+          DEST_DIR: 'ui/${{ github.head_ref }}'
           SOURCE_DIR: 'storybook-static'
 
       - name: S3 Sync - Storybook - PR Number - pull_request
@@ -82,5 +82,5 @@ jobs:
         with:
           args: --acl public-read --cache-control max-age=0 --follow-symlinks --delete --exclude '.git/*'
         env:
-          DEST_DIR: 'ui/storybook/pr/${PR_NUMBER}'
+          DEST_DIR: 'ui/pr/${PR_NUMBER}'
           SOURCE_DIR: 'storybook-static'
