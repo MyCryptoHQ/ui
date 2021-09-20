@@ -1,0 +1,44 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Icon } from './Icon';
+
+<Meta
+  title="atoms/Icon"
+  component={Icon}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    width: {
+      control: {
+        type: 'range',
+        min: 15,
+        max: 100
+      }
+    }
+  }}
+/>
+
+# Icon
+
+## Help
+
+<Canvas>
+  <Story name="Help" args={{ width: 25, type: 'help' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Home
+
+<Canvas>
+  <Story name="Home" args={{ width: 25, type: 'home' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Present
+
+<Canvas>
+  <Story name="Present" args={{ width: 25, type: 'present' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
