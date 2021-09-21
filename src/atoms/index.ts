@@ -2,6 +2,7 @@ export * from './Blockie';
 export * from './Typography';
 export * from './Address';
 export * from './Button';
+export * from './Badge';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';

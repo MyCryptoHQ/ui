@@ -1,14 +1,14 @@
 import type { FunctionComponent, PropsWithChildren } from 'react';
 import { useState } from 'react';
 
-import { Body, Box, Flex, Image } from '.';
+import { Body, Box, Flex, Image } from '..';
 import error from '../assets/icons/alert-red.svg';
 import caret from '../assets/icons/caret.svg';
 import success from '../assets/icons/circle-checkmark.svg';
 import warning from '../assets/icons/circle-warning.svg';
 import info from '../assets/icons/info.svg';
 import action from '../assets/icons/queue-waiting.svg';
-import { Badge } from './Badge';
+import { Badge } from '../atoms';
 
 export type BannerType = 'success' | 'info' | 'action' | 'warning' | 'error' | 'clear';
 
@@ -53,7 +53,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
           <Image src={icons[type]} alt="type" width="20px" minWidth="20px" height="20px" mr="2" />
           <Body
             color="inherit"
-            fontSize="12px"
+            fontSize="1"
             fontWeight="bold"
             sx={{ textTransform: 'uppercase', wordBreak: 'break-word' }}>
             {label}
@@ -74,7 +74,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
         </Flex>
       </Flex>
       {children && isExtended && (
-        <Body fontSize="14px" p="2" pt="0">
+        <Body fontSize="0.875rem" p="2" pt="0">
           {children}
         </Body>
       )}

@@ -25,3 +25,9 @@ Banners!
     {(props) => <Banner {...props} />}
   </Story>
 </Canvas>
+
+<Canvas>
+  <Story name="Extended" args={{ label: 'Default', type: 'info', children: 'Expanded Text' }}>
+    {(props) => <Banner {...props}>{props.children}</Banner>}
+  </Story>
+</Canvas>
