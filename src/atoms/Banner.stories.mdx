@@ -7,6 +7,14 @@ import { Banner } from './Banner';
   title="atoms/Banner"
   component={Banner}
   parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    type: {
+      control: {
+        type: 'select',
+        options: ['success', 'info', 'action', 'warning', 'error', 'clear']
+      }
+    }
+  }}
 />
 
 # Banner

@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { FunctionComponent, PropsWithChildren } from 'react';
 import { useTheme } from 'styled-components';
 
 import { Body, Box } from '.';
@@ -8,7 +8,10 @@ interface BadgeProps {
   type: BannerType;
 }
 
-export const Badge = ({ type, children }: PropsWithChildren<Pick<BadgeProps, 'type'>>) => {
+export const Badge: FunctionComponent<BadgeProps> = ({
+  type,
+  children
+}: PropsWithChildren<Pick<BadgeProps, 'type'>>) => {
   const theme = useTheme();
 
   return (

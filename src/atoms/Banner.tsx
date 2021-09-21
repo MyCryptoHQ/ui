@@ -1,4 +1,4 @@
-import type { PropsWithChildren } from 'react';
+import type { FunctionComponent, PropsWithChildren } from 'react';
 import { useState } from 'react';
 
 import { Body, Box, Flex, Image } from '.';
@@ -28,7 +28,7 @@ const icons: { [key in BannerType]: string } = {
   clear: action
 };
 
-export const Banner = ({
+export const Banner: FunctionComponent<BannerProps> = ({
   type,
   label,
   badge,
