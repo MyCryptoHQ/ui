@@ -1,4 +1,4 @@
-import type { FunctionComponent, PropsWithChildren } from 'react';
+import type { FunctionComponent } from 'react';
 import { useState } from 'react';
 
 import { Body, Box, Flex, Image } from '..';
@@ -34,7 +34,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
   badge,
   extended,
   children
-}: PropsWithChildren<BannerProps>) => {
+}) => {
   const [isExtended, setExtended] = useState(extended);
 
   const handleToggle = () => setExtended((value) => !value);
