@@ -1,0 +1,33 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Banner } from './Banner';
+
+<Meta
+  title="atoms/Banner"
+  component={Banner}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    type: {
+      control: {
+        type: 'select',
+        options: ['success', 'info', 'action', 'warning', 'error', 'clear']
+      }
+    }
+  }}
+/>
+
+# Banner
+
+Banners!
+
+<Canvas>
+  <Story name="Default" args={{ label: 'Default', type: 'info' }}>
+    {(props) => <Banner {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Extended" args={{ label: 'Default', type: 'info', children: 'Expanded Text' }}>
+    {(props) => <Banner {...props}>{props.children}</Banner>}
+  </Story>
+</Canvas>

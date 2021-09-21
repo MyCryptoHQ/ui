@@ -1,9 +1,7 @@
 import 'styled-components';
+import type { Theme } from '../../theme';
 
 declare module 'styled-components' {
-  interface ThemeValue {
-    [key: string]: string | string[] | number | number[] | ThemeValue;
-  }
-
-  export type DefaultTheme = ThemeValue;
+  // eslint-disable-next-line @typescript-eslint/no-empty-interface
+  export interface DefaultTheme extends Theme {}
 }
