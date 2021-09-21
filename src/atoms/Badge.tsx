@@ -2,10 +2,11 @@ import type { FunctionComponent } from 'react';
 import { useTheme } from 'styled-components';
 
 import { Body, Box } from '.';
-import type { BannerType } from '../molecules';
+
+export type BadgeType = 'success' | 'info' | 'action' | 'warning' | 'error' | 'clear';
 
 export interface BadgeProps {
-  type: BannerType;
+  type: BadgeType;
 }
 
 export const Badge: FunctionComponent<BadgeProps> = ({ type, children }) => {

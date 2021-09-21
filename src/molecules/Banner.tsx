@@ -8,18 +8,17 @@ import success from '../assets/icons/circle-checkmark.svg';
 import warning from '../assets/icons/circle-warning.svg';
 import info from '../assets/icons/info.svg';
 import action from '../assets/icons/queue-waiting.svg';
+import type { BadgeType } from '../atoms';
 import { Badge } from '../atoms';
 
-export type BannerType = 'success' | 'info' | 'action' | 'warning' | 'error' | 'clear';
-
 export interface BannerProps {
-  type: BannerType;
+  type: BadgeType;
   label: string;
   badge?: string;
   extended?: boolean;
 }
 
-const icons: { [key in BannerType]: string } = {
+const icons: { [key in BadgeType]: string } = {
   success,
   info,
   action,
