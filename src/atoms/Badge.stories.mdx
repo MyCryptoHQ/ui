@@ -1,0 +1,15 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Badge } from './Badge';
+
+<Meta title="atoms/Badge" component={Badge} parameters={{ actions: { argTypesRegex: '^on.*' } }} />
+
+# Badge
+
+Badges!
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Default', type: 'info' }}>
+    {(props) => <Badge {...props}>{props.children}</Badge>}
+  </Story>
+</Canvas>

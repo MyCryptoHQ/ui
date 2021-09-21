@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { fAddress } from '../../.jest/__fixtures__';
+import { Banner } from './Banner';
+
+<Meta
+  title="atoms/Banner"
+  component={Banner}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Banner
+
+Banners!
+
+<Canvas>
+  <Story name="Default" args={{ label: 'Default', type: 'info' }}>
+    {(props) => <Banner {...props} />}
+  </Story>
+</Canvas>

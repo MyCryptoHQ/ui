@@ -77,6 +77,10 @@ export const theme = {
       discrete: COLORS.BLUE_GREY,
       warning: COLORS.RED,
       inverted: COLORS.WHITE
+    },
+
+    badge: {
+      muted: '#F6F8FA'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -89,7 +93,9 @@ export const theme = {
   radii: {
     input: '2px',
     small: '3px',
-    avatar: '50%'
+    avatar: '50%',
+    banner: '3px',
+    badge: '4px'
   },
   forms: {
     label: {
@@ -256,6 +262,51 @@ export const theme = {
     ...FLEX_VARIANTS,
     avatar: {
       borderRadius: 'avatar'
+    },
+    clear: {
+      bg: 'DEFAULT_BACKGROUND',
+      boxShadow: 'none',
+      borderColor: 'none',
+      padding: '24px',
+      paddingTop: '0'
+    },
+    badge: {
+      borderRadius: 'badge',
+      bg: 'PURPLE',
+      py: '1',
+      px: '2',
+      color: 'WHITE',
+      fontSize: '14px',
+      lineHeight: '20px',
+      nonce: {
+        bg: 'badge.muted'
+      }
+    },
+    banner: {
+      success: {
+        background: '#f4faed',
+        color: '#b4dd88'
+      },
+      info: {
+        background: '#f4f6f7',
+        color: '#b6c0c8'
+      },
+      action: {
+        background: '#f2ecff',
+        color: '#a682ff'
+      },
+      warning: {
+        background: '#feede2',
+        color: '#fa873f'
+      },
+      error: {
+        background: '#fde4e4',
+        color: '#ef4747'
+      },
+      clear: {
+        background: 'none',
+        color: '#a682ff'
+      }
     }
   }
 };
