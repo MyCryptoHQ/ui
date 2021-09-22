@@ -5,6 +5,7 @@ export * from './Button';
 export * from './Badge';
 export * from './Logo';
 export * from './Icon';
+export * from './Container';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';

@@ -81,6 +81,10 @@ export const theme = {
 
     badge: {
       muted: '#F6F8FA'
+    },
+
+    header: {
+      background: COLORS.WHITE
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
