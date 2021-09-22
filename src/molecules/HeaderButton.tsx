@@ -1,5 +1,4 @@
 import type { FunctionComponent } from 'react';
-import styled from 'styled-components';
 
 import type { BoxProps, Icons } from '../atoms';
 import { Body, Box, Icon } from '../atoms';
@@ -9,7 +8,7 @@ export interface HeaderButtonProps {
   text: string;
 }
 
-const RawHeaderButton: FunctionComponent<HeaderButtonProps & BoxProps> = ({
+export const HeaderButton: FunctionComponent<HeaderButtonProps & BoxProps> = ({
   icon,
   text,
   ...props
@@ -21,6 +20,3 @@ const RawHeaderButton: FunctionComponent<HeaderButtonProps & BoxProps> = ({
     </Body>
   </Box>
 );
-
-// Exported as styled component to make it referable
-export const HeaderButton = styled(RawHeaderButton)``;
