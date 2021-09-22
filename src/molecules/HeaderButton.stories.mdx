@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { icons } from '../atoms';
+import { HeaderButton } from './HeaderButton';
+
+<Meta
+  title="molecules/HeaderButton"
+  component={HeaderButton}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    icon: {
+      control: {
+        type: 'select',
+        options: Object.keys(icons)
+      }
+    }
+  }}
+/>
+
+# HeaderButton
+
+A button component made to be used together with the Header component.
+
+<Canvas>
+  <Story name="Default" args={{ icon: 'home', text: 'MyCrypto.com' }}>
+    {(props) => <HeaderButton {...props} />}
+  </Story>
+</Canvas>

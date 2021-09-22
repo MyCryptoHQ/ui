@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Logo } from '../atoms';
+import { HeaderButton } from '../molecules';
+import { Header } from './Header';
+
+<Meta
+  title="organisms/Header"
+  component={Header}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Header
+
+A generic header component.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      leftComponents: <HeaderButton icon="home" text="Home" />,
+      centerComponents: <Logo />,
+      rightComponents: (
+        <>
+          <HeaderButton icon="help" text="Contact" />
+          <HeaderButton icon="present" text="Latest" />
+        </>
+      )
+    }}>
+    {(props) => <Header {...props} />}
+  </Story>
+</Canvas>

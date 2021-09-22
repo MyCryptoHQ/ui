@@ -1,0 +1,92 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Icon } from './Icon';
+
+<Meta
+  title="atoms/Icon"
+  component={Icon}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    width: {
+      control: {
+        type: 'range',
+        min: 15,
+        max: 100
+      }
+    }
+  }}
+/>
+
+# Icon
+
+## Alert
+
+<Canvas>
+  <Story name="Alert" args={{ width: 25, type: 'alert' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Caret
+
+<Canvas>
+  <Story name="Caret" args={{ width: 25, type: 'caret' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Checkmark
+
+<Canvas>
+  <Story name="Checkmark" args={{ width: 25, type: 'checkmark' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Help
+
+<Canvas>
+  <Story name="Help" args={{ width: 25, type: 'help' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Home
+
+<Canvas>
+  <Story name="Home" args={{ width: 25, type: 'home' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Info
+
+<Canvas>
+  <Story name="Info" args={{ width: 25, type: 'info' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Present
+
+<Canvas>
+  <Story name="Present" args={{ width: 25, type: 'present' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Waiting
+
+<Canvas>
+  <Story name="Waiting" args={{ width: 25, type: 'waiting' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Warning
+
+<Canvas>
+  <Story name="Warning" args={{ width: 25, type: 'warning' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>

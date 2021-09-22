@@ -1,0 +1,19 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Container } from './Container';
+
+<Meta
+  title="atoms/Container"
+  component={Container}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Container
+
+A container that limits the content width to 1136 pixels.
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Content' }}>
+    {(props) => <Container {...props} />}
+  </Story>
+</Canvas>

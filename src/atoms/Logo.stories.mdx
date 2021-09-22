@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Logo } from './Logo';
+
+<Meta
+  title="atoms/Logo"
+  component={Logo}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    width: {
+      control: {
+        type: 'range',
+        min: 100,
+        max: 1000
+      }
+    }
+  }}
+/>
+
+# Logo
+
+The MyCrypto logo as SVG. Works with any width.
+
+<Canvas>
+  <Story name="Default" args={{ width: 500 }}>
+    {(props) => <Logo {...props} />}
+  </Story>
+</Canvas>

@@ -1,13 +1,8 @@
 import type { FunctionComponent } from 'react';
 import { useState } from 'react';
 
-import { Body, Box, Flex, Image } from '..';
-import error from '../assets/icons/alert-red.svg';
-import caret from '../assets/icons/caret.svg';
-import success from '../assets/icons/circle-checkmark.svg';
-import warning from '../assets/icons/circle-warning.svg';
-import info from '../assets/icons/info.svg';
-import action from '../assets/icons/queue-waiting.svg';
+import type { Icons } from '..';
+import { Body, Box, Flex, Icon } from '..';
 import type { BadgeType } from '../atoms';
 import { Badge } from '../atoms';
 
@@ -18,13 +13,13 @@ export interface BannerProps {
   extended?: boolean;
 }
 
-const icons: { [key in BadgeType]: string } = {
-  success,
-  info,
-  action,
-  warning,
-  error,
-  clear: action
+const icons: { [key in BadgeType]: Icons } = {
+  success: 'checkmark',
+  info: 'info',
+  action: 'waiting',
+  warning: 'warning',
+  error: 'alert',
+  clear: 'waiting'
 };
 
 export const Banner: FunctionComponent<BannerProps> = ({
@@ -49,7 +44,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
         sx={{ cursor: children && 'pointer' }}
         data-testid="banner-toggle">
         <Flex variant="horizontal-start">
-          <Image src={icons[type]} alt="type" width="20px" minWidth="20px" height="20px" mr="2" />
+          <Icon type={icons[type]} width="20px" minWidth="20px" height="20px" mr="2" />
           <Body
             color="inherit"
             fontSize="1"
@@ -61,13 +56,12 @@ export const Banner: FunctionComponent<BannerProps> = ({
         <Flex variant="horizontal-start" minWidth="10px">
           {badge && <Badge type={type}>{badge}</Badge>}
           {children && (
-            <Image
-              src={caret}
-              alt="Caret"
+            <Icon
+              type="caret"
               ml="2"
               width="10px"
               minWidth="10px"
-              sx={{ userSelect: 'none', transform: isExtended && 'rotate(180deg)' }}
+              sx={{ userSelect: 'none', transform: isExtended ? 'rotate(180deg)' : '' }}
             />
           )}
         </Flex>

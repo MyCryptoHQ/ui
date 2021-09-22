@@ -3,7 +3,7 @@ import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 import { Banner } from './Banner';
 
 <Meta
-  title="atoms/Banner"
+  title="molecules/Banner"
   component={Banner}
   parameters={{ actions: { argTypesRegex: '^on.*' } }}
   argTypes={{
@@ -27,7 +27,9 @@ Banners!
 </Canvas>
 
 <Canvas>
-  <Story name="Extended" args={{ label: 'Default', type: 'info', children: 'Expanded Text' }}>
+  <Story
+    name="Extended"
+    args={{ label: 'Default', type: 'info', extended: true, children: 'Extended text' }}>
     {(props) => <Banner {...props}>{props.children}</Banner>}
   </Story>
 </Canvas>
