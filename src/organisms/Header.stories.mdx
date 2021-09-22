@@ -18,12 +18,14 @@ A generic header component.
   <Story
     name="Default"
     args={{
-      leftComponents: [<HeaderButton icon="home" text="Home" />],
-      centerComponents: [<Logo />],
-      rightComponents: [
-        <HeaderButton icon="help" text="Contact" />,
-        <HeaderButton icon="present" text="Latest" />
-      ]
+      leftComponents: <HeaderButton icon="home" text="Home" />,
+      centerComponents: <Logo />,
+      rightComponents: (
+        <>
+          <HeaderButton icon="help" text="Contact" />
+          <HeaderButton icon="present" text="Latest" />
+        </>
+      )
     }}>
     {(props) => <Header {...props} />}
   </Story>

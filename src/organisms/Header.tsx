@@ -1,12 +1,12 @@
-import type { ComponentType, FunctionComponent } from 'react';
+import type { FunctionComponent, ReactElement } from 'react';
 import styled from 'styled-components';
 
 import { Box, Container, Flex } from '../atoms';
 
 export interface HeaderProps {
-  leftComponents?: ComponentType[];
-  centerComponents?: ComponentType[];
-  rightComponents?: ComponentType[];
+  leftComponents?: ReactElement;
+  centerComponents?: ReactElement;
+  rightComponents?: ReactElement;
 }
 
 export const HeaderWrapper = styled(Flex).attrs({ alignItems: 'center' })``;
@@ -29,25 +29,13 @@ export const Header: FunctionComponent<HeaderProps> = ({
     <Container display="flex" flexDirection="column" justifyContent="center" minHeight="90px">
       <Flex>
         <HeaderSection>
-          <HeaderWrapper mx="-16px">
-            {leftComponents?.map((component, index) => (
-              <Box key={`left-${index}`}>{component}</Box>
-            ))}
-          </HeaderWrapper>
+          <HeaderWrapper mx="-16px">{leftComponents ?? null}</HeaderWrapper>
         </HeaderSection>
         <HeaderSection>
-          <HeaderWrapper>
-            {centerComponents?.map((component, index) => (
-              <Box key={`center-${index}`}>{component}</Box>
-            ))}
-          </HeaderWrapper>
+          <HeaderWrapper>{centerComponents ?? null}</HeaderWrapper>
         </HeaderSection>
         <HeaderSection>
-          <HeaderWrapper mr="-16px">
-            {rightComponents?.map((component, index) => (
-              <Box key={`right-${index}`}>{component}</Box>
-            ))}
-          </HeaderWrapper>
+          <HeaderWrapper mr="-16px">{rightComponents ?? null}</HeaderWrapper>
         </HeaderSection>
       </Flex>
     </Container>
