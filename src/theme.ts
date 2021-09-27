@@ -87,6 +87,11 @@ export const theme = {
 
     header: {
       background: COLORS.WHITE
+    },
+
+    panel: {
+      background: COLORS.WHITE,
+      muted: '#F6F8FA'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -99,6 +104,7 @@ export const theme = {
   radii: {
     input: '2px',
     small: '3px',
+    large: '6px',
     avatar: '50%',
     banner: '3px',
     badge: '4px'
