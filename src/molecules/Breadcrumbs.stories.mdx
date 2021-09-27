@@ -1,0 +1,32 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Breadcrumb } from '../atoms/Breadcrumb';
+import { Breadcrumbs } from './Breadcrumbs';
+
+<Meta
+  title="molecules/Breadcrumbs"
+  component={Breadcrumbs}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Breadcrumbs
+
+A container element for breadcrumbs.
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <Breadcrumbs {...props}>
+        <Breadcrumb>
+          <a href="#">Foo</a>
+        </Breadcrumb>
+        <Breadcrumb>
+          <a href="#">Bar</a>
+        </Breadcrumb>
+        <Breadcrumb>
+          <a href="#">Baz</a>
+        </Breadcrumb>
+      </Breadcrumbs>
+    )}
+  </Story>
+</Canvas>
