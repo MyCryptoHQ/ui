@@ -3,17 +3,23 @@ import type { FunctionComponent } from 'react';
 import type { BoxProps } from '.';
 import { Box } from '.';
 
+export type PanelType = 'default' | 'muted';
+
 export interface PanelProps {
-  muted?: boolean;
+  type?: PanelType;
 }
 
-export const Panel: FunctionComponent<PanelProps & BoxProps> = ({ muted, children, ...props }) => (
+export const Panel: FunctionComponent<PanelProps & BoxProps> = ({
+  type = 'default',
+  children,
+  ...props
+}) => (
   <Box
+    variant={`panel.${type}`}
     p="24px"
     sx={{
       borderRadius: 'large',
-      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.07)',
-      backgroundColor: muted ? 'panel.muted' : 'panel.background'
+      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.07)'
     }}
     {...props}>
     {children}

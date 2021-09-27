@@ -8,10 +8,11 @@ import { Body } from './Typography';
   component={Panel}
   parameters={{ actions: { argTypesRegex: '^on.*' } }}
   argTypes={{
-    muted: {
-      defaultValue: false,
+    type: {
+      defaultValue: 'default',
       control: {
-        type: 'boolean'
+        type: 'select',
+        options: ['default', 'muted']
       }
     }
   }}
@@ -32,7 +33,7 @@ A simple panel component.
 </Canvas>
 
 <Canvas>
-  <Story name="Muted" args={{ children: 'Panel', muted: true }}>
+  <Story name="Muted" args={{ children: 'Panel', type: 'muted' }}>
     {({ children, ...props }) => (
       <Panel {...props}>
         <Body>{children}</Body>
