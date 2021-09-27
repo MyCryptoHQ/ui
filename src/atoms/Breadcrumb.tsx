@@ -17,4 +17,9 @@ const RawBreadcrumb: FunctionComponent = ({ children, ...props }) => (
   </Box>
 );
 
-export const Breadcrumb = styled(RawBreadcrumb)``;
+export const Breadcrumb = styled(RawBreadcrumb)`
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+`;

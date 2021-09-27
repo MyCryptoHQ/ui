@@ -17,9 +17,15 @@ A container element for breadcrumbs.
   <Story name="Default">
     {(props) => (
       <Breadcrumbs {...props}>
-        <Breadcrumb>Foo</Breadcrumb>
-        <Breadcrumb>Bar</Breadcrumb>
-        <Breadcrumb>Baz</Breadcrumb>
+        <Breadcrumb>
+          <a href="#">Foo</a>
+        </Breadcrumb>
+        <Breadcrumb>
+          <a href="#">Bar</a>
+        </Breadcrumb>
+        <Breadcrumb>
+          <a href="#">Baz</a>
+        </Breadcrumb>
       </Breadcrumbs>
     )}
   </Story>
