@@ -54,6 +54,8 @@ export const theme = {
     primary: '#007896',
     secondary: '#163150',
 
+    link: '#55B6E2',
+
     spinner: '#a086f7',
     loadingSpinner: '#7c9ec3',
 

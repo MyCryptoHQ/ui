@@ -3,6 +3,7 @@ import type { FunctionComponent } from 'react';
 import type { ImageProps } from '.';
 import { Image } from '.';
 import alert from '../assets/icons/alert.svg';
+import arrow from '../assets/icons/arrow.svg';
 import caret from '../assets/icons/caret.svg';
 import checkmark from '../assets/icons/checkmark.svg';
 import help from '../assets/icons/help.svg';
@@ -14,6 +15,7 @@ import warning from '../assets/icons/warning.svg';
 
 export const icons = {
   alert,
+  arrow,
   caret,
   checkmark,
   help,
