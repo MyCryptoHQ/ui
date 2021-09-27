@@ -99,6 +99,7 @@ export const theme = {
   radii: {
     input: '2px',
     small: '3px',
+    large: '6px',
     avatar: '50%',
     banner: '3px',
     badge: '4px'
@@ -312,6 +313,14 @@ export const theme = {
       clear: {
         background: 'none',
         color: '#a682ff'
+      }
+    },
+    panel: {
+      default: {
+        background: COLORS.WHITE
+      },
+      muted: {
+        background: '#F6F8FA'
       }
     }
   }

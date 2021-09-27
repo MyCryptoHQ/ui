@@ -1,0 +1,43 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Panel } from './Panel';
+import { Body } from './Typography';
+
+<Meta
+  title="atoms/Panel"
+  component={Panel}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    type: {
+      defaultValue: 'default',
+      control: {
+        type: 'select',
+        options: ['default', 'muted']
+      }
+    }
+  }}
+/>
+
+# Panel
+
+A simple panel component.
+
+<Canvas>
+  <Story name="Default" args={{ children: 'Panel' }}>
+    {({ children, ...props }) => (
+      <Panel {...props}>
+        <Body>{children}</Body>
+      </Panel>
+    )}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="Muted" args={{ children: 'Panel', type: 'muted' }}>
+    {({ children, ...props }) => (
+      <Panel {...props}>
+        <Body>{children}</Body>
+      </Panel>
+    )}
+  </Story>
+</Canvas>
