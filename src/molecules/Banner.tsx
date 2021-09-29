@@ -1,4 +1,4 @@
-import type { FunctionComponent } from 'react';
+import type { FunctionComponent, ReactElement } from 'react';
 import { useState } from 'react';
 
 import type { Icons } from '..';
@@ -8,8 +8,8 @@ import { Badge } from '../atoms';
 
 export interface BannerProps {
   type: BadgeType;
-  label: string;
-  badge?: string;
+  label: string | ReactElement;
+  badge?: string | ReactElement;
   extended?: boolean;
 }
 
