@@ -8,6 +8,7 @@ export * from './Icon';
 export * from './Container';
 export * from './Breadcrumb';
 export * from './Panel';
+export * from './FooterSeparator';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';

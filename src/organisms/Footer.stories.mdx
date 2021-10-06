@@ -1,0 +1,17 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Footer } from './Footer';
+
+<Meta
+  title="organisms/Footer"
+  component={Footer}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Footer
+
+The MyCrypto footer used across different products.
+
+<Canvas>
+  <Story name="Default">{(props) => <Footer {...props} />}</Story>
+</Canvas>
