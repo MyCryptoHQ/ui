@@ -109,12 +109,12 @@ export const FooterLinks: FunctionComponent = () => (
         alignItems="center"
         width={1 / 3}
         my={{ _: '20px', sm: 'auto' }}>
-        <Body fontWeight="500" color="white" mb="10px">
+        <Body fontWeight="500" color="text.footer" mb="10px">
           {column.heading}
         </Body>
         {column.links.map((link, index) => (
-          <Body key={index} sx={{ textDecoration: 'none' }} mb="10px" href={link.url}>
-            <InlineBody variant="footerLink" color="rgb(187, 194, 203)">
+          <Body key={index} sx={{ textDecoration: 'none' }} mb="8px" href={link.url}>
+            <InlineBody color="text.footer" fontWeight="300">
               {link.title}
             </InlineBody>
           </Body>
