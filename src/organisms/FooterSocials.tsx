@@ -47,7 +47,7 @@ export const FooterSocials: FunctionComponent = () => (
   <Flex flexDirection="row" my={{ _: '20px', lg: 0 }}>
     {SOCIAL_LINKS.map((social, index) => (
       <Body href={social.url} key={index} mr="15px">
-        <Icon type={social.icon} width="13px" color="white" />
+        <Icon type={social.icon} width="13px" fill="white" />
       </Body>
     ))}
   </Flex>
