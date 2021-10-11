@@ -44,10 +44,10 @@ export const SOCIAL_LINKS: SocialLink[] = [
 ];
 
 export const FooterSocials: FunctionComponent = () => (
-  <Flex flexDirection="row" my={{ _: '20px', lg: 0 }}>
+  <Flex flexDirection="row" my="16px">
     {SOCIAL_LINKS.map((social, index) => (
       <Body as="a" href={social.url} rel="noreferrer noopener" key={index} mr="15px">
-        <Icon type={social.icon} width="13px" fill="white" />
+        <Icon type={social.icon} width="13px" fill="white" verticalAlign="middle" />
       </Body>
     ))}
   </Flex>

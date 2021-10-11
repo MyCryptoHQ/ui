@@ -38,7 +38,7 @@
   "dependencies": {
     "@rebass/forms": "4.0.6",
     "ethereum-blockies-base64": "1.0.2",
-    "isomorphic-unfetch": "^3.1.0",
+    "isomorphic-unfetch": "3.1.0",
     "react-copy-to-clipboard": "5.0.4",
     "react-inlinesvg": "^2.3.0",
     "rebass": "4.0.7"

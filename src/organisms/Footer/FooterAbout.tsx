@@ -8,7 +8,6 @@ export const FooterAbout: FunctionComponent = () => (
     height="100%"
     width={{ _: '100%', lg: '20%' }}
     flexDirection="column"
-    justifyContent="space-evenly"
     alignItems={{ _: 'center', lg: 'flex-start' }}
     order={0}>
     <Logo white={true} width="152px" />
@@ -27,7 +26,7 @@ export const FooterAbout: FunctionComponent = () => (
       <Body
         variant="small"
         color="white"
-        mt="20px">{`© ${new Date().getFullYear()} MyCrypto, Inc.`}</Body>
+        mt="16px">{`© ${new Date().getFullYear()} MyCrypto, Inc.`}</Body>
     </Box>
   </Flex>
 );
