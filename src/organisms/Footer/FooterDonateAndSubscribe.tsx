@@ -13,7 +13,7 @@ interface DonateButtonProps {
   onCopy(): void;
 }
 
-const DonateButton: FunctionComponent<DonateButtonProps> = ({
+export const DonateButton: FunctionComponent<DonateButtonProps> = ({
   icon,
   address,
   onCopy,
@@ -43,7 +43,7 @@ interface SubscribeInputProps {
   tag: string;
 }
 
-const SubscribeInput: FunctionComponent<SubscribeInputProps> = ({ listId, tag }) => {
+export const SubscribeInput: FunctionComponent<SubscribeInputProps> = ({ listId, tag }) => {
   const subscribe = useSubscribe(listId, tag);
   const [emailAddress, setEmailAddress] = useState<string>('');
   const [isSubscribed, setSubscribed] = useState<boolean>(false);

@@ -1,3 +1,5 @@
+import fetch from 'isomorphic-unfetch';
+
 /**
  * A function that takes an email address and returns a Promise with the subscription status: true
  * for success, false for failure.
@@ -7,7 +9,7 @@
  */
 export type SubscribeFunction = (emailAddress: string) => Promise<boolean>;
 
-const API_ENDPOINT = 'https://proxy.mycryptoapi.com/mc';
+export const API_ENDPOINT = 'https://proxy.mycryptoapi.com/mc';
 
 /**
  * `useSubscribe` hook which returns a subscribe function.
@@ -31,6 +33,10 @@ export const useSubscribe = (listId: string, tag: string): SubscribeFunction => 
       })
     });
 
-    return response.ok;
+    if (!response.ok) {
+      throw new Error();
+    }
+
+    return true;
   };
 };
