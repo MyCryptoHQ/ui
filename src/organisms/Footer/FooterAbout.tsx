@@ -1,6 +1,6 @@
 import type { FunctionComponent } from 'react';
 
-import { Flex, Box, Logo, Body } from '../atoms';
+import { Flex, Box, Logo, Body } from '../../atoms';
 import { FooterSocials } from './FooterSocials';
 
 export const FooterAbout: FunctionComponent = () => (

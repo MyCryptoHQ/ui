@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 
-import type { Icons } from '../atoms';
-import { Flex, Icon, Body } from '../atoms';
+import type { Icons } from '../../atoms';
+import { Flex, Icon, Body } from '../../atoms';
 
 interface SocialLink {
   url: string;
@@ -46,7 +46,7 @@ export const SOCIAL_LINKS: SocialLink[] = [
 export const FooterSocials: FunctionComponent = () => (
   <Flex flexDirection="row" my={{ _: '20px', lg: 0 }}>
     {SOCIAL_LINKS.map((social, index) => (
-      <Body href={social.url} key={index} mr="15px">
+      <Body as="a" href={social.url} rel="noreferrer noopener" key={index} mr="15px">
         <Icon type={social.icon} width="13px" fill="white" />
       </Body>
     ))}

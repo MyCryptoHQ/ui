@@ -1,17 +1,18 @@
-import type { FunctionComponent } from 'react';
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { Flex, Body, InlineBody } from '../atoms';
+import { FooterSeparator, Body } from '../../atoms';
+import { Footer } from './Footer';
+import { FooterAbout } from './FooterAbout';
+import { FooterDonateAndSubscribe } from './FooterDonateAndSubscribe';
+import { FooterLinkColumn, FooterLinks, FooterLink } from './FooterLinks';
 
-interface FooterLink {
-  heading: string;
-  links: {
-    title: string;
-    url: string;
-    internal?: boolean;
-  }[];
-}
+<Meta
+  title="organisms/Footer"
+  component={Footer}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
 
-export const LINK_COLUMNS: FooterLink[] = [
+export const FOOTER_LINK_COLUMNS = [
   {
     heading: 'Company',
     links: [
@@ -94,32 +95,32 @@ export const LINK_COLUMNS: FooterLink[] = [
   }
 ];
 
-export const FooterLinks: FunctionComponent = () => (
-  <Flex
-    flexDirection={{ _: 'column', sm: 'row' }}
-    justifyContent={{ _: 'center', lg: 'space-between' }}
-    alignItems="center"
-    width={{ _: '100%', lg: '40%' }}
-    order={{ _: 4, lg: 2 }}>
-    {LINK_COLUMNS.map((column, index) => (
-      <Flex
-        key={index}
-        minWidth="120px"
-        flexDirection="column"
-        alignItems="center"
-        width={1 / 3}
-        my={{ _: '20px', sm: 'auto' }}>
-        <Body fontWeight="500" color="text.footer" mb="10px">
-          {column.heading}
-        </Body>
-        {column.links.map((link, index) => (
-          <Body key={index} sx={{ textDecoration: 'none' }} mb="8px" href={link.url}>
-            <InlineBody color="text.footer" fontWeight="300">
-              {link.title}
-            </InlineBody>
-          </Body>
-        ))}
-      </Flex>
-    ))}
-  </Flex>
-);
+# Footer
+
+The MyCrypto footer used across different products.
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <Footer {...props}>
+        <FooterAbout />
+        <FooterSeparator order={1} />
+        <FooterLinks>
+          {FOOTER_LINK_COLUMNS.map((column) => (
+            <FooterLinkColumn heading={column.heading}>
+              {column.links.map((link, index) => (
+                <FooterLink key={index}>
+                  <Body as="a" href={link.url} color="inherit" sx={{ textDecoration: 'none' }}>
+                    {link.title}
+                  </Body>
+                </FooterLink>
+              ))}
+            </FooterLinkColumn>
+          ))}
+        </FooterLinks>
+        <FooterSeparator order={3} />
+        <FooterDonateAndSubscribe listId="foo" tag="bar" />
+      </Footer>
+    )}
+  </Story>
+</Canvas>

@@ -2,9 +2,9 @@ import type { ChangeEvent, FormEvent, FunctionComponent } from 'react';
 import { useEffect, useState } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-import type { Icons } from '../atoms';
-import { Body, Button, Flex, Icon, Input } from '../atoms';
-import { useSubscribe } from '../hooks';
+import type { Icons } from '../../atoms';
+import { Body, Button, Flex, Icon, InlineBody, Input } from '../../atoms';
+import { useSubscribe } from '../../hooks';
 
 interface DonateButtonProps {
   icon: Icons;
@@ -38,9 +38,13 @@ const DonateButton: FunctionComponent<DonateButtonProps> = ({
   );
 };
 
-const SubscribeInput = () => {
-  // TODO
-  const subscribe = useSubscribe('', '');
+interface SubscribeInputProps {
+  listId: string;
+  tag: string;
+}
+
+const SubscribeInput: FunctionComponent<SubscribeInputProps> = ({ listId, tag }) => {
+  const subscribe = useSubscribe(listId, tag);
   const [emailAddress, setEmailAddress] = useState<string>('');
   const [isSubscribed, setSubscribed] = useState<boolean>(false);
   const [isError, setError] = useState<boolean>(false);
@@ -105,7 +109,15 @@ const SubscribeInput = () => {
   );
 };
 
-export const FooterDonateAndSubscribe: FunctionComponent = () => {
+export interface FooterDonateAndSubscribeProps {
+  listId: string;
+  tag: string;
+}
+
+export const FooterDonateAndSubscribe: FunctionComponent<FooterDonateAndSubscribeProps> = ({
+  listId,
+  tag
+}) => {
   const [displayMessage, setDisplayMessage] = useState(false);
 
   useEffect(() => {
@@ -174,7 +186,7 @@ export const FooterDonateAndSubscribe: FunctionComponent = () => {
         <Body fontSize="14px" lineHeight="17px" fontWeight="300" color="text.footer" mb="10px">
           Get updates from MyCrypto straight to your inbox!
         </Body>
-        <SubscribeInput />
+        <SubscribeInput listId={listId} tag={tag} />
         <Flex flexDirection="row" alignItems="baseline" flexWrap="wrap">
           <Body
             variant="small"
@@ -184,9 +196,15 @@ export const FooterDonateAndSubscribe: FunctionComponent = () => {
             color="footer.muted"
             mt="10px">
             By submitting your email, you <strong>affirmatively</strong> agree to our{' '}
-            <Body variant="link" fontSize="10px" color="link">
+            <InlineBody
+              as="a"
+              href="https://mycrypto.com/privacy"
+              variant="link"
+              fontSize="10px"
+              color="link"
+              sx={{ textDecoration: 'none' }}>
               Privacy Policy
-            </Body>
+            </InlineBody>
           </Body>
         </Flex>
       </Flex>
