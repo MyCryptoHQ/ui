@@ -67,5 +67,5 @@ export const Icon: FunctionComponent<IconProps & BoxProps> = ({
     return <Box as={InlineSVG} src={icons[type]} width={width} fill={fill} {...props} />;
   }
 
-  return <Box as="img" src={icons[type]} width={width} fill={fill} {...props} />;
+  return <Box as="img" src={icons[type]} width={width} {...props} />;
 };
