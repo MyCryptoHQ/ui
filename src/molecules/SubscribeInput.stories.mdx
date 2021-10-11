@@ -1,0 +1,19 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { SubscribeInput } from './SubscribeInput';
+
+<Meta
+  title="molecules/SubscribeInput"
+  component={SubscribeInput}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# SubscribeInput
+
+An input to subscribe to the newsletter.
+
+<Canvas>
+  <Story name="Default" args={{ listId: 'foo', tag: 'bar' }}>
+    {(props) => <SubscribeInput {...props} />}
+  </Story>
+</Canvas>

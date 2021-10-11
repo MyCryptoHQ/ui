@@ -1,0 +1,21 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { DonateButton } from './DonateButton';
+
+<Meta
+  title="molecules/DonateButton"
+  component={DonateButton}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# DonateButton
+
+A button that will copy the address when clicking.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{ icon: 'ether', address: '0x4bbeEB066eD09B7AEd07bF39EEe0460DFa261520' }}>
+    {(props) => <DonateButton {...props}>Ethereum</DonateButton>}
+  </Story>
+</Canvas>

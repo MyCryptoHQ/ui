@@ -1,5 +1,4 @@
 import type { FunctionComponent } from 'react';
-import type { Props as SVGProps } from 'react-inlinesvg';
 import InlineSVG from 'react-inlinesvg';
 
 import type { BoxProps } from '.';
@@ -55,10 +54,18 @@ export type Icons = keyof typeof icons;
 
 export interface IconProps {
   type: Icons;
+  fill?: string;
 }
 
-export const Icon: FunctionComponent<IconProps & BoxProps & Omit<SVGProps, 'src'>> = ({
+export const Icon: FunctionComponent<IconProps & BoxProps> = ({
   type,
   width = '15',
+  fill,
   ...props
-}) => <Box as={InlineSVG} src={icons[type]} width={width} {...props} />;
+}) => {
+  if (fill) {
+    return <Box as={InlineSVG} src={icons[type]} width={width} fill={fill} {...props} />;
+  }
+
+  return <Box as="img" src={icons[type]} width={width} fill={fill} {...props} />;
+};
