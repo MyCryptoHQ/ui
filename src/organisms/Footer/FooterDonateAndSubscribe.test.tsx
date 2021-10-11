@@ -1,4 +1,4 @@
-import { fireEvent, waitFor } from '@testing-library/react';
+import { fireEvent } from '@testing-library/react';
 import copy from 'copy-to-clipboard';
 import nock from 'nock';
 
@@ -7,6 +7,10 @@ import { API_ENDPOINT } from '../../hooks';
 import { DonateButton, FooterDonateAndSubscribe, SubscribeInput } from './FooterDonateAndSubscribe';
 
 jest.mock('copy-to-clipboard');
+
+afterEach(() => {
+  jest.useRealTimers();
+});
 
 describe('DonateButton', () => {
   it('copies the address when clicking', async () => {
@@ -18,6 +22,7 @@ describe('DonateButton', () => {
         foo
       </DonateButton>
     );
+
     const button = getByText('foo');
 
     fireEvent.click(button);
@@ -33,15 +38,14 @@ describe('SubscribeInput', () => {
     const { findByText, getByText, getByPlaceholderText } = simpleRender(
       <SubscribeInput listId="foo" tag="bar" />
     );
+
     const input = getByPlaceholderText('Email Address');
     const button = getByText('Subscribe');
 
     fireEvent.change(input, { target: { value: 'foo@example.com' } });
     fireEvent.click(button);
 
-    await waitFor(() =>
-      expect(findByText('Your email was added to our mailing list!')).toBeDefined()
-    );
+    await expect(findByText('Your email was added to our mailing list!')).resolves.toBeDefined();
   });
 
   it('shows an error', async () => {
@@ -50,24 +54,40 @@ describe('SubscribeInput', () => {
     const { findByText, getByText, getByPlaceholderText } = simpleRender(
       <SubscribeInput listId="foo" tag="bar" />
     );
+
     const input = getByPlaceholderText('Email Address');
     const button = getByText('Subscribe');
 
     fireEvent.change(input, { target: { value: 'foo@example.com' } });
     fireEvent.click(button);
 
-    await waitFor(() =>
-      expect(
-        findByText(
-          'Your email could not be added to the mailing list. You may be subscribed already.'
-        )
-      ).resolves.toBeDefined()
-    );
+    await expect(
+      findByText(
+        'Your email could not be added to the mailing list. You may be subscribed already.'
+      )
+    ).resolves.toBeDefined();
   });
 });
 
 describe('FooterDonateAndSubscribe', () => {
   it('renders correctly', () => {
     expect(() => simpleRender(<FooterDonateAndSubscribe listId="foo" tag="bar" />)).not.toThrow();
+  });
+
+  it('shows a message when copying address', async () => {
+    jest.useFakeTimers();
+
+    const { findByText, getByText } = simpleRender(
+      <FooterDonateAndSubscribe listId="foo" tag="bar" />
+    );
+    const button = getByText('Ethereum');
+
+    fireEvent.click(button);
+
+    await expect(findByText('Address Copied to Clipboard!')).resolves.toBeDefined();
+
+    jest.runAllTimers();
+
+    await expect(findByText('Address Copied to Clipboard!')).rejects.toThrow();
   });
 });
