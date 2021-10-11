@@ -39,13 +39,30 @@ const COLORS = {
   RED: '#EF4747',
   WHITE: '#ffffff',
   GREY_LIGHT: '#d8d8d8',
-  GREY_ATHENS: '#e8eaed'
+  GREY_ATHENS: '#e8eaed',
+  GREY_SECONDARY: '#b5bfc7'
 };
+
+const breakpoints: string[] & {
+  xs?: string;
+  sm?: string;
+  md?: string;
+  lg?: string;
+  xl?: string;
+  xxl?: string;
+} = ['512px', '850px', '1080px', '1280px', '1441px', '1920px'];
+
+breakpoints.xs = breakpoints[0];
+breakpoints.sm = breakpoints[1];
+breakpoints.md = breakpoints[2];
+breakpoints.lg = breakpoints[3];
+breakpoints.xl = breakpoints[4];
+breakpoints.xxl = breakpoints[5];
 
 export type Theme = typeof theme;
 
 export const theme = {
-  breakpoints: ['512px', '850px', '1080px', '1280px', '1440px', '1600px'],
+  breakpoints,
   fonts: {
     body: 'Lato, sans-serif',
     mono: 'Roboto Mono, Menlo, Monaco, Consolas, Courier New, monospace'
@@ -78,7 +95,8 @@ export const theme = {
       secondary: COLORS.DARK_BLUE,
       discrete: COLORS.BLUE_GREY,
       warning: COLORS.RED,
-      inverted: COLORS.WHITE
+      inverted: COLORS.WHITE,
+      footer: COLORS.WHITE
     },
 
     badge: {
@@ -87,6 +105,13 @@ export const theme = {
 
     header: {
       background: COLORS.WHITE
+    },
+
+    footer: {
+      muted: COLORS.GREY_SECONDARY,
+      donate: '#3f566f',
+      border: '#4d6075',
+      separator: '#e8e8e8'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -189,6 +214,12 @@ export const theme = {
       fontSize: 2,
       lineHeight: 1,
       color: 'text.warning'
+    },
+    small: {
+      fontFamily: 'body',
+      fontSize: '10px',
+      lineHeight: '12px',
+      color: 'text.primary'
     }
   },
   buttons: {

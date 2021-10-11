@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { FooterSeparator } from './FooterSeparator';
+
+<Meta
+  title="atoms/FooterSeparator"
+  component={FooterSeparator}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# FooterSeparator
+
+A separator to be used in the footer.
+
+<Canvas>
+  <Story name="Default">{(props) => <FooterSeparator {...props} />}</Story>
+</Canvas>
