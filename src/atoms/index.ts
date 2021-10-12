@@ -9,6 +9,8 @@ export * from './Container';
 export * from './Breadcrumb';
 export * from './Panel';
 export * from './FooterSeparator';
+export * from './IconButton';
+export * from './Copyable';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';
