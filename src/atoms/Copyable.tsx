@@ -29,12 +29,7 @@ export const Copyable: FunctionComponent<CopyableProps> = ({ text, children }) =
     <CopyToClipboard text={text} onCopy={handleCopy}>
       <Flex sx={{ cursor: 'pointer' }}>
         {children}
-        <Icon
-          type={copied ? 'checkmark' : 'copy'}
-          fill="#B5BFC7"
-          ml="1"
-          data-testid="copyable-icon"
-        />
+        <Icon type={copied ? 'checkmark' : 'copy'} fill="#B5BFC7" ml="1" />
       </Flex>
     </CopyToClipboard>
   );
