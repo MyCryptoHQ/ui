@@ -1,11 +1,11 @@
 import type { FunctionComponent } from 'react';
 
-import type { Icons } from '../../atoms';
+import type { IconType } from '../../atoms';
 import { Flex, Icon, Body } from '../../atoms';
 
 interface SocialLink {
   url: string;
-  icon: Icons;
+  icon: IconType;
 }
 
 export const SOCIAL_LINKS: SocialLink[] = [

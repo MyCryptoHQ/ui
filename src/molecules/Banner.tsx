@@ -1,7 +1,7 @@
 import type { FunctionComponent, ReactElement } from 'react';
 import { useState } from 'react';
 
-import type { Icons } from '..';
+import type { IconType } from '..';
 import { Body, Box, Flex, Icon } from '..';
 import type { BadgeType } from '../atoms';
 import { Badge } from '../atoms';
@@ -13,7 +13,7 @@ export interface BannerProps {
   extended?: boolean;
 }
 
-const icons: { [key in BadgeType]: Icons } = {
+const icons: { [key in BadgeType]: IconType } = {
   success: 'checkmark',
   info: 'info',
   action: 'waiting',
