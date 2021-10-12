@@ -1,0 +1,20 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Copyable } from './Copyable';
+import { Body } from './Typography';
+
+<Meta
+  title="atoms/Copyable"
+  component={Copyable}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Copyable
+
+Copyable text.
+
+<Canvas>
+  <Story name="Default" args={{ text: 'Foo bar', children: <Body>Foo bar</Body> }}>
+    {(props) => <Copyable {...props} />}
+  </Story>
+</Canvas>
