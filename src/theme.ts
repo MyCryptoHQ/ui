@@ -294,6 +294,15 @@ export const theme = {
           color: 'button.primary.disabled'
         }
       }
+    },
+    clear: {
+      cursor: 'pointer',
+      background: 'none',
+      color: 'text.primary',
+      fontSize: 2,
+      fontFamily: 'body',
+      padding: '8px',
+      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.07)'
     }
   },
   variants: {

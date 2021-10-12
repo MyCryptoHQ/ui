@@ -1,0 +1,25 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { IconButton } from './IconButton';
+
+<Meta
+  title="atoms/IconButton"
+  component={IconButton}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# IconButton
+
+A button with an icon, with or without text.
+
+<Canvas>
+  <Story name="Default" args={{ icon: 'home' }}>
+    {(props) => <IconButton {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story name="With Text" args={{ icon: 'home', children: 'Home' }}>
+    {(props) => <IconButton {...props} />}
+  </Story>
+</Canvas>

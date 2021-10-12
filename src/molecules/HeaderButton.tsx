@@ -1,10 +1,10 @@
 import type { FunctionComponent } from 'react';
 
-import type { BoxProps, Icons } from '../atoms';
+import type { BoxProps, IconType } from '../atoms';
 import { Body, Box, Icon } from '../atoms';
 
 export interface HeaderButtonProps {
-  icon: Icons;
+  icon: IconType;
   text: string;
 }
 

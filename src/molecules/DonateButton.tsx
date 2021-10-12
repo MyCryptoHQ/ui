@@ -1,11 +1,11 @@
 import type { FunctionComponent } from 'react';
 import CopyToClipboard from 'react-copy-to-clipboard';
 
-import type { Icons } from '../atoms';
+import type { IconType } from '../atoms';
 import { Body, Button, Flex, Icon } from '../atoms';
 
 export interface DonateButtonProps {
-  icon: Icons;
+  icon: IconType;
   address: string;
 
   onCopy(): void;

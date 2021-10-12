@@ -11,7 +11,10 @@ import help from '../assets/icons/help.svg';
 import home from '../assets/icons/home.svg';
 import info from '../assets/icons/info.svg';
 import link from '../assets/icons/link.svg';
+import lock from '../assets/icons/lock.svg';
 import present from '../assets/icons/present.svg';
+import press from '../assets/icons/press.svg';
+import team from '../assets/icons/team.svg';
 import waiting from '../assets/icons/waiting.svg';
 import warning from '../assets/icons/warning.svg';
 import bitcoin from '../assets/logos/bitcoin.svg';
@@ -34,7 +37,10 @@ export const icons = {
   home,
   info,
   link,
+  lock,
   present,
+  press,
+  team,
   waiting,
   warning,
 
@@ -50,10 +56,10 @@ export const icons = {
   twitter
 };
 
-export type Icons = keyof typeof icons;
+export type IconType = keyof typeof icons;
 
 export interface IconProps {
-  type: Icons;
+  type: IconType;
   fill?: string;
 }
 
