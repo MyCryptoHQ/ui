@@ -8,6 +8,8 @@ jest.mock('copy-to-clipboard');
 
 describe('Copyable', () => {
   it('copies the text to the clipboard', () => {
+    jest.useFakeTimers();
+
     const { getByText } = simpleRender(<Copyable text="foo bar">baz qux</Copyable>);
 
     const button = getByText('baz qux');
@@ -15,5 +17,7 @@ describe('Copyable', () => {
     fireEvent.click(button);
 
     expect(copy).toHaveBeenCalledWith('foo bar', undefined);
+
+    jest.runAllTimers();
   });
 });
