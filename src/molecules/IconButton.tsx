@@ -1,9 +1,8 @@
 import type { FunctionComponent } from 'react';
 import type { ButtonProps } from 'rebass/styled-components';
 
-import { Button } from './Button';
-import type { IconType } from './Icon';
-import { Icon } from './Icon';
+import { Button, Icon } from '../atoms';
+import type { IconType } from '../atoms';
 
 export interface IconButtonProps {
   icon: IconType;

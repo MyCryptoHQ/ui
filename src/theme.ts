@@ -302,7 +302,11 @@ export const theme = {
       fontSize: 2,
       fontFamily: 'body',
       padding: '8px',
-      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.07)'
+      boxShadow: '0px 3px 6px rgba(0, 0, 0, 0.07)',
+      transition: 'transform 0.3s ease 0s',
+      '&:hover': {
+        transform: 'scale(1.05)'
+      }
     }
   },
   variants: {
