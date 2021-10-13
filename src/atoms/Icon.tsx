@@ -5,6 +5,7 @@ import type { BoxProps } from '.';
 import { Box } from '.';
 import alert from '../assets/icons/alert.svg';
 import arrow from '../assets/icons/arrow.svg';
+import blog from '../assets/icons/blog.svg';
 import caret from '../assets/icons/caret.svg';
 import checkmark from '../assets/icons/checkmark.svg';
 import copy from '../assets/icons/copy.svg';
@@ -33,6 +34,7 @@ import twitter from '../assets/logos/twitter.svg';
 export const icons = {
   alert,
   arrow,
+  blog,
   caret,
   checkmark,
   copy,
