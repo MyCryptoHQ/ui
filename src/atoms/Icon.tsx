@@ -8,6 +8,7 @@ import arrow from '../assets/icons/arrow.svg';
 import caret from '../assets/icons/caret.svg';
 import checkmark from '../assets/icons/checkmark.svg';
 import copy from '../assets/icons/copy.svg';
+import external from '../assets/icons/external.svg';
 import help from '../assets/icons/help.svg';
 import home from '../assets/icons/home.svg';
 import info from '../assets/icons/info.svg';
@@ -35,6 +36,7 @@ export const icons = {
   caret,
   checkmark,
   copy,
+  external,
   help,
   home,
   info,
