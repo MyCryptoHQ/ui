@@ -28,6 +28,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
   <Box
     backgroundColor="header.background"
     sx={{
+      zIndex: '1',
       boxShadow:
         '0px 100px 80px rgba(0, 0, 0, 0.02), 0px 64px 47px rgba(0, 0, 0, 0.015), 0px 38px 25.4815px rgba(0, 0, 0, 0.012), 0px 20px 13px rgba(0, 0, 0, 0.01), 0px 8px 6px rgba(0, 0, 0, 0.008), 0px 2px 3px rgba(0, 0, 0, 0.005)'
     }}>
