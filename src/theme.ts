@@ -366,6 +366,28 @@ export const theme = {
       muted: {
         background: '#F6F8FA'
       }
+    },
+    input: {
+      default: {
+        input: {
+          color: 'text.primary',
+          background: 'white'
+        }
+      },
+      simple: {
+        input: {
+          background: '#F6F8FA',
+          borderRadius: '4px',
+          padding: '15px 18px',
+          height: 'auto',
+          border: 'none',
+          boxShadow: 'none',
+          color: 'text.primary',
+          '::placeholder': {
+            color: 'text.discrete'
+          }
+        }
+      }
     }
   }
 };

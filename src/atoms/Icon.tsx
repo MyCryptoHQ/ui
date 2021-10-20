@@ -17,6 +17,7 @@ import link from '../assets/icons/link.svg';
 import lock from '../assets/icons/lock.svg';
 import present from '../assets/icons/present.svg';
 import press from '../assets/icons/press.svg';
+import search from '../assets/icons/search.svg';
 import team from '../assets/icons/team.svg';
 import waiting from '../assets/icons/waiting.svg';
 import warning from '../assets/icons/warning.svg';
@@ -46,6 +47,7 @@ export const icons = {
   lock,
   present,
   press,
+  search,
   team,
   waiting,
   warning,
