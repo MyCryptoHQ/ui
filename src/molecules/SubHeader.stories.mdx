@@ -1,0 +1,24 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Body } from '../atoms';
+import { SubHeader } from './SubHeader';
+
+<Meta
+  title="molecules/SubHeader"
+  component={SubHeader}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# SubHeader
+
+A sub header to be used in combination with the Header component.
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <SubHeader {...props}>
+        <Body>Foo bar</Body>
+      </SubHeader>
+    )}
+  </Story>
+</Canvas>
