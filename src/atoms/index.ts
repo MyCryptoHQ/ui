@@ -24,10 +24,5 @@ export type {
   HeadingProps
 } from 'rebass/styled-components';
 
-export { Input, Label, Textarea, Select } from '@rebass/forms/styled-components';
-export type {
-  InputProps,
-  LabelProps,
-  TextareaProps,
-  SelectProps
-} from '@rebass/forms/styled-components';
+export { Label, Textarea, Select } from '@rebass/forms/styled-components';
+export type { LabelProps, TextareaProps, SelectProps } from '@rebass/forms/styled-components';

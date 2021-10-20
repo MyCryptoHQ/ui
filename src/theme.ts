@@ -76,6 +76,10 @@ export const theme = {
     spinner: '#a086f7',
     loadingSpinner: '#7c9ec3',
 
+    background: {
+      muted: '#f6f8fa'
+    },
+
     button: {
       primary: {
         hover: COLORS.DARKER_BLUE,
@@ -97,10 +101,6 @@ export const theme = {
       warning: COLORS.RED,
       inverted: COLORS.WHITE,
       footer: COLORS.WHITE
-    },
-
-    badge: {
-      muted: '#F6F8FA'
     },
 
     header: {
@@ -330,7 +330,7 @@ export const theme = {
       fontSize: '14px',
       lineHeight: '20px',
       nonce: {
-        bg: 'badge.muted'
+        backgroundColor: 'background.muted'
       }
     },
     banner: {
@@ -364,7 +364,29 @@ export const theme = {
         background: COLORS.WHITE
       },
       muted: {
-        background: '#F6F8FA'
+        backgroundColor: 'background.muted'
+      }
+    },
+    input: {
+      default: {
+        input: {
+          color: 'text.primary',
+          background: 'white'
+        }
+      },
+      simple: {
+        input: {
+          backgroundColor: 'background.muted',
+          borderRadius: '4px',
+          padding: '15px 18px',
+          height: 'auto',
+          border: 'none',
+          boxShadow: 'none',
+          color: 'text.primary',
+          '::placeholder': {
+            color: 'text.discrete'
+          }
+        }
       }
     }
   }
