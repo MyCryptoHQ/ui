@@ -23,7 +23,8 @@ export const HeaderSection = styled(Flex).attrs({ justifyContent: 'center', flex
 export const Header: FunctionComponent<HeaderProps> = ({
   leftComponents,
   centerComponents,
-  rightComponents
+  rightComponents,
+  children
 }) => (
   <Box
     backgroundColor="header.background"
@@ -45,5 +46,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         </HeaderSection>
       </Flex>
     </Container>
+
+    {children}
   </Box>
 );

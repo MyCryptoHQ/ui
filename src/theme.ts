@@ -104,7 +104,8 @@ export const theme = {
     },
 
     header: {
-      background: COLORS.WHITE
+      background: COLORS.WHITE,
+      subHeader: '#f8f8f8'
     },
 
     footer: {

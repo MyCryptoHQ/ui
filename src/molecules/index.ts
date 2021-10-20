@@ -6,3 +6,4 @@ export * from './DonateButton';
 export * from './SubscribeInput';
 export * from './IconButton';
 export * from './Input';
+export * from './SubHeader';

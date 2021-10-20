@@ -1,7 +1,7 @@
 import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
 
-import { Logo } from '../atoms';
-import { HeaderButton } from '../molecules';
+import { Body, Logo } from '../atoms';
+import { HeaderButton, SubHeader } from '../molecules';
 import { Header } from './Header';
 
 <Meta
@@ -28,5 +28,28 @@ A generic header component.
       )
     }}>
     {(props) => <Header {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
+    name="With Sub Header"
+    args={{
+      leftComponents: <HeaderButton icon="home" text="Home" />,
+      centerComponents: <Logo />,
+      rightComponents: (
+        <>
+          <HeaderButton icon="help" text="Contact" />
+          <HeaderButton icon="present" text="Latest" />
+        </>
+      )
+    }}>
+    {(props) => (
+      <Header {...props}>
+        <SubHeader>
+          <Body>Foo bar</Body>
+        </SubHeader>
+      </Header>
+    )}
   </Story>
 </Canvas>
