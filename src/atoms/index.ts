@@ -10,7 +10,6 @@ export * from './Breadcrumb';
 export * from './Panel';
 export * from './FooterSeparator';
 export * from './Copyable';
-export * from './Input';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';

@@ -2,8 +2,8 @@ import type { InputProps as FormInputProps } from '@rebass/forms/styled-componen
 import { Input as FormInput } from '@rebass/forms/styled-components';
 import type { FunctionComponent } from 'react';
 
-import type { IconType } from '.';
-import { Flex, Icon } from '.';
+import type { IconType } from '../atoms';
+import { Flex, Icon } from '../atoms';
 
 export interface InputProps {
   variant?: 'default' | 'simple';
