@@ -4,11 +4,11 @@ import type { BoxProps } from 'rebass';
 import type { BadgeType } from '.';
 import { Body, Box } from '.';
 
-export interface LabelProps {
+export interface TagProps {
   type: BadgeType;
 }
 
-export const Label: FunctionComponent<LabelProps & BoxProps> = ({ type, children, ...props }) => (
+export const Tag: FunctionComponent<TagProps & BoxProps> = ({ type, children, ...props }) => (
   <Box
     mb="2"
     px="2"
