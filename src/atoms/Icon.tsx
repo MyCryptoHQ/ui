@@ -17,8 +17,10 @@ import link from '../assets/icons/link.svg';
 import lock from '../assets/icons/lock.svg';
 import present from '../assets/icons/present.svg';
 import press from '../assets/icons/press.svg';
+import question from '../assets/icons/question.svg';
 import search from '../assets/icons/search.svg';
 import team from '../assets/icons/team.svg';
+import tool from '../assets/icons/tool.svg';
 import waiting from '../assets/icons/waiting.svg';
 import warning from '../assets/icons/warning.svg';
 import bitcoin from '../assets/logos/bitcoin.svg';
@@ -47,8 +49,10 @@ export const icons = {
   lock,
   present,
   press,
+  question,
   search,
   team,
+  tool,
   waiting,
   warning,
 
