@@ -8,7 +8,7 @@ export interface LabelProps {
   type: BadgeType;
 }
 
-export const Label: FunctionComponent<LabelProps & BoxProps> = ({ type, children, ...props }) => (
+export const Tag: FunctionComponent<LabelProps & BoxProps> = ({ type, children, ...props }) => (
   <Box
     mb="2"
     px="2"

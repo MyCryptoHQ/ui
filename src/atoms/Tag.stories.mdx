@@ -1,10 +1,10 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
-import { Label } from './Label';
+import { Tag } from './Tag';
 
 <Meta
-  title="atoms/Label"
-  component={Label}
+  title="atoms/Tag"
+  component={Tag}
   parameters={{ actions: { argTypesRegex: '^on.*' } }}
   argTypes={{
     type: {
@@ -16,12 +16,12 @@ import { Label } from './Label';
   }}
 />
 
-# Label
+# Tag
 
-Labels!
+Tags!
 
 <Canvas>
   <Story name="Default" args={{ children: 'Default', type: 'info' }}>
-    {(props) => <Label {...props}>{props.children}</Label>}
+    {(props) => <Tag {...props}>{props.children}</Tag>}
   </Story>
 </Canvas>
