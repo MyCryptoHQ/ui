@@ -1,8 +1,8 @@
 import type { FunctionComponent } from 'react';
 import styled from 'styled-components';
 
-import { Box } from '../atoms';
-import { Breadcrumb, BreadcrumbIcon } from '../atoms/Breadcrumb';
+import type { BoxProps } from '../atoms';
+import { Box, Breadcrumb, BreadcrumbIcon } from '../atoms';
 
 export const BreadcrumbsContainer = styled(Box)`
   ${Breadcrumb}:last-child {
@@ -18,8 +18,8 @@ export const BreadcrumbsContainer = styled(Box)`
   }
 `;
 
-export const Breadcrumbs: FunctionComponent = ({ children }) => (
-  <BreadcrumbsContainer as="ol" mx="0" px="0">
+export const Breadcrumbs: FunctionComponent<BoxProps> = ({ children, ...props }) => (
+  <BreadcrumbsContainer as="ol" mx="0" px="0" {...props}>
     {children}
   </BreadcrumbsContainer>
 );
