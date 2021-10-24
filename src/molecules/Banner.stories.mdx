@@ -33,3 +33,17 @@ Banners!
     {(props) => <Banner {...props}>{props.children}</Banner>}
   </Story>
 </Canvas>
+
+<Canvas>
+  <Story
+    name="Non-extendable"
+    args={{
+      label: 'Default',
+      type: 'info',
+      extended: true,
+      extendable: false,
+      children: 'Extended text'
+    }}>
+    {(props) => <Banner {...props}>{props.children}</Banner>}
+  </Story>
+</Canvas>

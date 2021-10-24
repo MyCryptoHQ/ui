@@ -11,6 +11,7 @@ export interface BannerProps {
   label: string | ReactElement;
   badge?: string | ReactElement;
   extended?: boolean;
+  extendable?: boolean;
 }
 
 const icons: { [key in BadgeType]: IconType } = {
@@ -27,6 +28,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
   label,
   badge,
   extended,
+  extendable = true,
   children
 }) => {
   const [isExtended, setExtended] = useState(extended);
@@ -37,11 +39,12 @@ export const Banner: FunctionComponent<BannerProps> = ({
     <Box mb="2" variant={`banner.${type}`} sx={{ borderRadius: 'banner' }}>
       <Flex
         variant="horizontal-start"
-        p="2"
+        p={extendable ? '2' : '3'}
+        pb={'2'}
         px={type === 'clear' && '0'}
         justifyContent="space-between"
-        onClick={children && handleToggle}
-        sx={{ cursor: children && 'pointer' }}
+        onClick={children && extendable && handleToggle}
+        sx={{ cursor: children && extendable && 'pointer' }}
         data-testid="banner-toggle">
         <Flex variant="horizontal-start">
           <Icon type={icons[type]} width="20px" minWidth="20px" height="20px" mr="2" />
@@ -55,7 +58,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
         </Flex>
         <Flex variant="horizontal-start" minWidth="10px">
           {badge && <Badge type={type}>{badge}</Badge>}
-          {children && (
+          {children && extendable && (
             <Icon
               type="caret"
               ml="2"
@@ -66,8 +69,8 @@ export const Banner: FunctionComponent<BannerProps> = ({
           )}
         </Flex>
       </Flex>
-      {children && isExtended && (
-        <Body fontSize="0.875rem" p="2" pt="0">
+      {children && (isExtended || !extendable) && (
+        <Body fontSize="0.875rem" p={extendable ? '2' : '3'} pt="0">
           {children}
         </Body>
       )}
