@@ -7,6 +7,10 @@ import { Copyable } from './Copyable';
 jest.mock('copy-to-clipboard');
 
 describe('Copyable', () => {
+  it('renders an icon', () => {
+    expect(() => simpleRender(<Copyable text="foo" icon="link" />)).not.toThrow();
+  });
+
   it('copies the text to the clipboard', () => {
     jest.useFakeTimers();
 
