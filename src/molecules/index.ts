@@ -7,3 +7,5 @@ export * from './SubscribeInput';
 export * from './IconButton';
 export * from './Input';
 export * from './SubHeader';
+export * from './Accordion';
+export * from './AccordionItem';

@@ -113,6 +113,11 @@ export const theme = {
       donate: '#3f566f',
       border: '#4d6075',
       separator: '#e8e8e8'
+    },
+
+    accordion: {
+      border: COLORS.GREY_ATHENS,
+      background: '#fafcfc'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],

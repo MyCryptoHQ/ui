@@ -1,0 +1,50 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Body } from '../atoms';
+import { Accordion } from './Accordion';
+import { AccordionItem } from './AccordionItem';
+
+<Meta
+  title="molecules/Accordion"
+  component={Accordion}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Accordion
+
+A container element for accordion items.
+
+<Canvas>
+  <Story name="Default">
+    {(props) => (
+      <Accordion {...props}>
+        <AccordionItem title="What is the MyCrypto Membership?">
+          <Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in sagittis magna, sed
+            sodales ante. Aenean sollicitudin nunc faucibus nibh venenatis aliquam. Nulla vel
+            ullamcorper metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            ultricies sem justo, vitae tincidunt ligula auctor eu. Nam id finibus sem. Duis pulvinar
+            mauris non nisi imperdiet egestas. Sed convallis vestibulum pulvinar. Fusce blandit,
+            libero vel euismod sodales, leo nibh egestas felis, ac scelerisque nisi purus ac turpis.
+            Donec ultricies orci at quam tristique mollis. Duis volutpat, lectus id sollicitudin
+            vehicula, nunc dolor auctor ipsum, vitae condimentum tortor purus nec erat. Aenean porta
+            facilisis ex, eu placerat dolor pretium non.
+          </Body>
+        </AccordionItem>
+        <AccordionItem title="How much does the MyCrypto Membership cost?">
+          <Body>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in sagittis magna, sed
+            sodales ante. Aenean sollicitudin nunc faucibus nibh venenatis aliquam. Nulla vel
+            ullamcorper metus. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec
+            ultricies sem justo, vitae tincidunt ligula auctor eu. Nam id finibus sem. Duis pulvinar
+            mauris non nisi imperdiet egestas. Sed convallis vestibulum pulvinar. Fusce blandit,
+            libero vel euismod sodales, leo nibh egestas felis, ac scelerisque nisi purus ac turpis.
+            Donec ultricies orci at quam tristique mollis. Duis volutpat, lectus id sollicitudin
+            vehicula, nunc dolor auctor ipsum, vitae condimentum tortor purus nec erat. Aenean porta
+            facilisis ex, eu placerat dolor pretium non.
+          </Body>
+        </AccordionItem>
+      </Accordion>
+    )}
+  </Story>
+</Canvas>
