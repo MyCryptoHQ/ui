@@ -15,6 +15,8 @@ import home from '../assets/icons/home.svg';
 import info from '../assets/icons/info.svg';
 import link from '../assets/icons/link.svg';
 import lock from '../assets/icons/lock.svg';
+import minus from '../assets/icons/minus.svg';
+import plus from '../assets/icons/plus.svg';
 import present from '../assets/icons/present.svg';
 import press from '../assets/icons/press.svg';
 import question from '../assets/icons/question.svg';
@@ -48,6 +50,8 @@ export const icons = {
   info,
   link,
   lock,
+  minus,
+  plus,
   present,
   press,
   question,
