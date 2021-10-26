@@ -43,6 +43,7 @@
     "isomorphic-unfetch": "3.1.0",
     "react-copy-to-clipboard": "5.0.4",
     "react-inlinesvg": "2.3.0",
+    "react-popper-tooltip": "4.3.1",
     "rebass": "4.0.7"
   },
   "devDependencies": {

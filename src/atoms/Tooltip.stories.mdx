@@ -1,0 +1,50 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { Tooltip } from './Tooltip';
+import { Body } from './Typography';
+
+<Meta
+  title="atoms/Tooltip"
+  component={Tooltip}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# Tooltip
+
+## Top
+
+<Canvas>
+  <Story name="Top" args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body> }}>
+    {(props) => <Tooltip {...props} />}
+  </Story>
+</Canvas>
+
+## Right
+
+<Canvas>
+  <Story
+    name="Right"
+    args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body>, placement: 'right' }}>
+    {(props) => <Tooltip {...props} />}
+  </Story>
+</Canvas>
+
+## Bottom
+
+<Canvas>
+  <Story
+    name="Bottom"
+    args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body>, placement: 'bottom' }}>
+    {(props) => <Tooltip {...props} />}
+  </Story>
+</Canvas>
+
+## Left
+
+<Canvas>
+  <Story
+    name="Left"
+    args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body>, placement: 'left' }}>
+    {(props) => <Tooltip {...props} />}
+  </Story>
+</Canvas>
