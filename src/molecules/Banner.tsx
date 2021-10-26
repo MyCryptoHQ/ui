@@ -43,7 +43,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
         pb={'2'}
         px={type === 'clear' && '0'}
         justifyContent="space-between"
-        onClick={children && extendable && handleToggle}
+        onClick={children && extendable ? handleToggle : undefined}
         sx={{ cursor: children && extendable && 'pointer' }}
         data-testid="banner-toggle">
         <Flex variant="horizontal-start">
