@@ -2,7 +2,7 @@ import type { FunctionComponent, ReactNode } from 'react';
 import type { PopperOptions } from 'react-popper-tooltip';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
-import { Box, Flex } from '.';
+import { Body, Box, Flex } from '.';
 
 export interface TooltipProps {
   tooltip: ReactNode;
@@ -32,12 +32,15 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
         <Flex
           ref={setTooltipRef}
           flexDirection="column"
-          p="2"
-          backgroundColor="white"
+          px="2"
+          py="1"
+          backgroundColor="tooltip.background"
           sx={{
             boxShadow: '0 2px 4px rgba(0, 0, 0, 0.18)',
             borderRadius: 'small',
-            border: '1px solid silver',
+            borderWidth: '1px',
+            borderStyle: 'solid',
+            borderColor: 'tooltip.border',
             zIndex: '9999',
             '&[data-popper-interactive="false"]': {
               pointerEvents: 'none'
@@ -47,13 +50,15 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
               left: '0',
               marginTop: '-0.4rem',
               '::before': {
-                borderColor: 'transparent transparent silver transparent',
+                borderColor: 'transparent',
+                borderBottomColor: 'tooltip.border',
                 borderWidth: '0 0.5rem 0.4rem 0.5rem',
                 position: 'absolute',
                 top: '-1px'
               },
               '::after': {
-                borderColor: 'transparent transparent white transparent',
+                borderColor: 'transparent',
+                borderBottomColor: 'tooltip.background',
                 borderWidth: '0 0.5rem 0.4rem 0.5rem'
               }
             },
@@ -63,13 +68,15 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
               marginBottom: '-1rem',
               width: '1rem',
               '::before': {
-                borderColor: 'silver transparent transparent transparent',
+                borderColor: 'transparent',
+                borderTopColor: 'tooltip.border',
                 borderWidth: '0.4rem 0.5rem 0 0.5rem',
                 position: 'absolute',
                 top: '1px'
               },
               '::after': {
-                borderColor: 'white transparent transparent transparent',
+                borderColor: 'transparent',
+                borderTopColor: 'tooltip.background',
                 borderWidth: '0.4rem 0.5rem 0 0.5rem'
               }
             },
@@ -79,11 +86,13 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
               width: '1rem',
               height: '1rem',
               '::before': {
-                borderColor: 'transparent transparent transparent silver',
+                borderColor: 'transparent',
+                borderLeftColor: 'tooltip.border',
                 borderWidth: '0.5rem 0 0.5rem 0.4em'
               },
               '::after': {
-                borderColor: 'transparent transparent transparent white',
+                borderColor: 'transparent',
+                borderLeftColor: 'tooltip.background',
                 borderWidth: '0.5rem 0 0.5rem 0.4em',
                 left: '3px',
                 top: '0'
@@ -95,11 +104,13 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
               width: '1rem',
               height: '1rem',
               '::before': {
-                borderColor: 'transparent silver transparent transparent',
+                borderColor: 'transparent',
+                borderRightColor: 'tooltip.border',
                 borderWidth: '0.5rem 0.4rem 0.5rem 0'
               },
               '::after': {
-                borderColor: 'transparent white transparent transparent',
+                borderColor: 'transparent',
+                borderRightColor: 'tooltip.background',
                 borderWidth: '0.5rem 0.4rem 0.5rem 0',
                 left: '6px',
                 top: '0'
@@ -107,7 +118,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
             }
           }}
           {...getTooltipProps()}>
-          {tooltip}
+          {typeof tooltip === 'string' ? <Body>{tooltip}</Body> : tooltip}
           <Box
             width="1rem"
             height="1rem"

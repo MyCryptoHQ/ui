@@ -118,6 +118,11 @@ export const theme = {
     accordion: {
       border: COLORS.GREY_ATHENS,
       background: '#fafcfc'
+    },
+
+    tooltip: {
+      background: 'white',
+      border: COLORS.GREY_SECONDARY
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],

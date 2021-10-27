@@ -14,7 +14,7 @@ import { Body } from './Typography';
 ## Top
 
 <Canvas>
-  <Story name="Top" args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body> }}>
+  <Story name="Top" args={{ children: <Body>Foo bar</Body>, tooltip: 'Baz qux' }}>
     {(props) => <Tooltip {...props} />}
   </Story>
 </Canvas>
@@ -24,7 +24,7 @@ import { Body } from './Typography';
 <Canvas>
   <Story
     name="Right"
-    args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body>, placement: 'right' }}>
+    args={{ children: <Body>Foo bar</Body>, tooltip: 'Baz qux', placement: 'right' }}>
     {(props) => <Tooltip {...props} />}
   </Story>
 </Canvas>
@@ -34,7 +34,7 @@ import { Body } from './Typography';
 <Canvas>
   <Story
     name="Bottom"
-    args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body>, placement: 'bottom' }}>
+    args={{ children: <Body>Foo bar</Body>, tooltip: 'Baz qux', placement: 'bottom' }}>
     {(props) => <Tooltip {...props} />}
   </Story>
 </Canvas>
@@ -44,7 +44,7 @@ import { Body } from './Typography';
 <Canvas>
   <Story
     name="Left"
-    args={{ children: <Body>Foo bar</Body>, tooltip: <Body>Baz qux</Body>, placement: 'left' }}>
+    args={{ children: <Body>Foo bar</Body>, tooltip: 'Baz qux', placement: 'left' }}>
     {(props) => <Tooltip {...props} />}
   </Story>
 </Canvas>
