@@ -1,18 +1,18 @@
 import type { FunctionComponent, ReactNode } from 'react';
-import type { PopperOptions } from 'react-popper-tooltip';
+import type { Config } from 'react-popper-tooltip';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
 import { Body, Box, Flex } from '.';
 
 export interface TooltipProps {
   tooltip: ReactNode;
-  placement?: PopperOptions['placement'];
 }
 
-export const Tooltip: FunctionComponent<TooltipProps> = ({
+export const Tooltip: FunctionComponent<TooltipProps & Config> = ({
   tooltip,
   placement = 'top',
-  children
+  children,
+  ...config
 }) => {
   const {
     getArrowProps,
@@ -20,7 +20,7 @@ export const Tooltip: FunctionComponent<TooltipProps> = ({
     setTooltipRef,
     setTriggerRef,
     visible
-  } = usePopperTooltip({ placement }, { placement });
+  } = usePopperTooltip({ placement, ...config });
 
   return (
     <>
