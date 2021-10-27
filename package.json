@@ -1,6 +1,6 @@
 {
   "name": "@mycrypto/ui",
-  "version": "1.8.1",
+  "version": "1.9.0",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
@@ -43,6 +43,7 @@
     "isomorphic-unfetch": "3.1.0",
     "react-copy-to-clipboard": "5.0.4",
     "react-inlinesvg": "2.3.0",
+    "react-popper-tooltip": "4.3.1",
     "rebass": "4.0.7"
   },
   "devDependencies": {
