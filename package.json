@@ -1,6 +1,6 @@
 {
   "name": "@mycrypto/ui",
-  "version": "1.9.1",
+  "version": "1.9.2",
   "description": "The shared UI component library used across all MyCrypto products.",
   "repository": "MyCryptoHQ/ui",
   "keywords": [
