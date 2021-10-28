@@ -1,9 +1,10 @@
 import type { FunctionComponent } from 'react';
+import type { DefaultTheme } from 'styled-components';
 import { useTheme } from 'styled-components';
 
 import { Body, Box } from '.';
 
-export type BadgeType = 'success' | 'info' | 'action' | 'warning' | 'error' | 'clear';
+export type BadgeType = keyof DefaultTheme['variants']['banner'];
 
 export interface BadgeProps {
   type: BadgeType;
