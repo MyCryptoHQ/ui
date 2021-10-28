@@ -1,9 +1,10 @@
 import type { FunctionComponent } from 'react';
+import type { DefaultTheme } from 'styled-components';
 
 import type { BoxProps } from '.';
 import { Box } from '.';
 
-export type PanelType = 'default' | 'muted';
+export type PanelType = keyof DefaultTheme['variants']['panel'];
 
 export interface PanelProps {
   type?: PanelType;
