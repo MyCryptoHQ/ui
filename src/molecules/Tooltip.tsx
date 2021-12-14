@@ -6,7 +6,7 @@ import type { IconType } from '../atoms';
 import { Body, Box, Flex, Icon } from '../atoms';
 
 export interface TooltipProps {
-  tooltip?: ReactNode;
+  tooltip: ReactNode;
   icon?: IconType;
   fill?: string;
 }
