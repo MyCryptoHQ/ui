@@ -2,8 +2,8 @@ import type { FunctionComponent, ReactNode } from 'react';
 import type { Config } from 'react-popper-tooltip';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
-import type { IconType } from '.';
-import { Body, Box, Flex, Icon } from '.';
+import type { IconType } from '../atoms';
+import { Body, Box, Flex, Icon } from '../atoms';
 
 export interface TooltipProps {
   tooltip?: ReactNode;
