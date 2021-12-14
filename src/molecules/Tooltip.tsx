@@ -2,14 +2,19 @@ import type { FunctionComponent, ReactNode } from 'react';
 import type { Config } from 'react-popper-tooltip';
 import { usePopperTooltip } from 'react-popper-tooltip';
 
-import { Body, Box, Flex } from '.';
+import type { IconType } from '../atoms';
+import { Body, Box, Flex, Icon } from '../atoms';
 
 export interface TooltipProps {
   tooltip: ReactNode;
+  icon?: IconType;
+  fill?: string;
 }
 
 export const Tooltip: FunctionComponent<TooltipProps & Config> = ({
   tooltip,
+  icon = 'question',
+  fill = 'black',
   placement = 'top',
   children,
   ...config
@@ -25,7 +30,7 @@ export const Tooltip: FunctionComponent<TooltipProps & Config> = ({
   return (
     <>
       <Box ref={setTriggerRef} sx={{ display: 'inline-block' }}>
-        {children}
+        {children ?? <Icon type={icon} fill={fill} verticalAlign="middle" />}
       </Box>
 
       {visible && (

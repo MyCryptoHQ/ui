@@ -11,7 +11,6 @@ export * from './Panel';
 export * from './FooterSeparator';
 export * from './Copyable';
 export * from './Tag';
-export * from './Tooltip';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';

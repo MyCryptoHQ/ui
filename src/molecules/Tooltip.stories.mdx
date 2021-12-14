@@ -1,7 +1,7 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
+import { Body } from '../atoms/Typography';
 import { Tooltip } from './Tooltip';
-import { Body } from './Typography';
 
 <Meta
   title="atoms/Tooltip"
@@ -45,6 +45,14 @@ import { Body } from './Typography';
   <Story
     name="Left"
     args={{ children: <Body>Foo bar</Body>, tooltip: 'Baz qux', placement: 'left' }}>
+    {(props) => <Tooltip {...props} />}
+  </Story>
+</Canvas>
+
+## Icon
+
+<Canvas>
+  <Story name="Icon" args={{ tooltip: 'Foo bar', placement: 'right' }}>
     {(props) => <Tooltip {...props} />}
   </Story>
 </Canvas>

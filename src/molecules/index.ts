@@ -9,3 +9,4 @@ export * from './Input';
 export * from './SubHeader';
 export * from './Accordion';
 export * from './AccordionItem';
+export * from './Tooltip';
