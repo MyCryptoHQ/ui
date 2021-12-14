@@ -8,7 +8,7 @@ describe('Tooltip', () => {
 
   it('shows a tooltip', async () => {
     const { getByText, findByText } = simpleRender(
-      <Tooltip tooltip="Foo bar" trigger="click">
+      <Tooltip tooltip="Foo bar" config={{ trigger: 'click' }}>
         Baz qux
       </Tooltip>
     );
