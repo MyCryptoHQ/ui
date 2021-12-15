@@ -21,6 +21,19 @@ Inputs!
 
 <Canvas>
   <Story
+    name="Error"
+    args={{
+      value: fAddress,
+      variant: 'default',
+      hasError: true,
+      placeholder: 'Enter some text...'
+    }}>
+    {(props) => <Input {...props} />}
+  </Story>
+</Canvas>
+
+<Canvas>
+  <Story
     name="Simple"
     args={{ value: fAddress, variant: 'simple', placeholder: 'Enter some text...' }}>
     {(props) => <Input {...props} />}
