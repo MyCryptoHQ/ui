@@ -11,6 +11,7 @@ export * from './Panel';
 export * from './FooterSeparator';
 export * from './Copyable';
 export * from './Tag';
+export * from './Textarea';
 
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';
@@ -25,5 +26,5 @@ export type {
   HeadingProps
 } from 'rebass/styled-components';
 
-export { Label, Textarea, Select } from '@rebass/forms/styled-components';
-export type { LabelProps, TextareaProps, SelectProps } from '@rebass/forms/styled-components';
+export { Label, Select } from '@rebass/forms/styled-components';
+export type { LabelProps, SelectProps } from '@rebass/forms/styled-components';
