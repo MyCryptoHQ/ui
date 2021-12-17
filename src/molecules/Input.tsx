@@ -4,6 +4,7 @@ import type { FunctionComponent } from 'react';
 
 import type { IconType } from '../atoms';
 import { Flex, Icon } from '../atoms';
+import { getMarginProps, omitMarginProps } from '../utils';
 
 export interface InputProps {
   hasError?: boolean;
@@ -19,6 +20,7 @@ export const Input: FunctionComponent<InputProps & FormInputProps> = ({
 }) => (
   <Flex
     variant={`input.${variant}`}
+    {...getMarginProps(props)}
     sx={{ position: 'relative', borderColor: hasError ? 'error' : undefined }}>
     {icon && (
       <Icon
@@ -34,6 +36,9 @@ export const Input: FunctionComponent<InputProps & FormInputProps> = ({
         }}
       />
     )}
-    <FormInput {...props} sx={{ textIndent: icon ? '30px' : '0', border: 'none' }} />
+    <FormInput
+      {...omitMarginProps(props)}
+      sx={{ textIndent: icon ? '30px' : '0', border: 'none' }}
+    />
   </Flex>
 );
