@@ -80,6 +80,8 @@ export const theme = {
       muted: '#f6f8fa'
     },
 
+    error: COLORS.RED,
+
     button: {
       primary: {
         hover: COLORS.DARKER_BLUE,
@@ -144,33 +146,11 @@ export const theme = {
     label: {
       marginBottom: '6px'
     },
-    input: {
-      fontFamily: 'body',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: COLORS.GREY_ATHENS,
-      boxShadow: 'input',
-      borderRadius: 'input',
-      '&:focus': {
-        outline: 'none'
-      }
-    },
     textarea: {
       fontFamily: 'body',
       borderWidth: '1px',
       borderStyle: 'solid',
       borderColor: COLORS.GREY_ATHENS,
-      boxShadow: 'input',
-      borderRadius: 'input',
-      '&:focus': {
-        outline: 'none'
-      }
-    },
-    error: {
-      fontFamily: 'body',
-      borderWidth: '1px',
-      borderStyle: 'solid',
-      borderColor: COLORS.RED,
       boxShadow: 'input',
       borderRadius: 'input',
       '&:focus': {
@@ -380,9 +360,18 @@ export const theme = {
     },
     input: {
       default: {
+        fontFamily: 'body',
+        borderWidth: '1px',
+        borderStyle: 'solid',
+        borderColor: COLORS.GREY_ATHENS,
+        boxShadow: 'input',
+        borderRadius: 'input',
         input: {
           color: 'text.primary',
-          background: 'white'
+          background: 'white',
+          '&:focus': {
+            outline: 'none'
+          }
         }
       },
       simple: {
@@ -396,6 +385,9 @@ export const theme = {
           color: 'text.primary',
           '::placeholder': {
             color: 'text.discrete'
+          },
+          '&:focus': {
+            outline: 'none'
           }
         }
       }

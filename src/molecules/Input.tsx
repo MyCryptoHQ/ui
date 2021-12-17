@@ -6,16 +6,20 @@ import type { IconType } from '../atoms';
 import { Flex, Icon } from '../atoms';
 
 export interface InputProps {
+  hasError?: boolean;
   variant?: 'default' | 'simple';
   icon?: IconType;
 }
 
 export const Input: FunctionComponent<InputProps & FormInputProps> = ({
   variant = 'default',
+  hasError,
   icon,
   ...props
 }) => (
-  <Flex variant={`input.${variant}`} sx={{ position: 'relative' }}>
+  <Flex
+    variant={`input.${variant}`}
+    sx={{ position: 'relative', borderColor: hasError ? 'error' : undefined }}>
     {icon && (
       <Icon
         type={icon}
@@ -30,6 +34,6 @@ export const Input: FunctionComponent<InputProps & FormInputProps> = ({
         }}
       />
     )}
-    <FormInput {...props} sx={{ textIndent: icon ? '30px' : '0' }} />
+    <FormInput {...props} sx={{ textIndent: icon ? '30px' : '0', border: 'none' }} />
   </Flex>
 );
