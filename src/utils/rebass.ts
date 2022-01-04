@@ -1,6 +1,21 @@
 import { keys } from './keys';
 
-const MRE = /^m[trblxy]?$/;
+const marginProps = [
+  'm',
+  'margin',
+  'mt',
+  'marginTop',
+  'mr',
+  'marginRight',
+  'mb',
+  'marginBottom',
+  'ml',
+  'marginLeft',
+  'mx',
+  'marginX',
+  'my',
+  'marginY'
+];
 
 const getProps = (test: (key: string) => boolean) => (props: any) =>
   keys(props)
@@ -9,5 +24,5 @@ const getProps = (test: (key: string) => boolean) => (props: any) =>
       return { ...obj, [key]: props[key] };
     }, {});
 
-export const getMarginProps = getProps((k) => MRE.test(k));
-export const omitMarginProps = getProps((k) => !MRE.test(k));
+export const getMarginProps = getProps((k) => marginProps.includes(k));
+export const omitMarginProps = getProps((k) => !marginProps.includes(k));
