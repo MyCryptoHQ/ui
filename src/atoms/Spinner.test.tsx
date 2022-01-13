@@ -1,5 +1,5 @@
 import { simpleRender } from '../../.jest/test-utils';
-import { default as Spinner } from './Spinner';
+import { Spinner } from './Spinner';
 
 describe('Spinner', () => {
   it('renders correctly', () => {

@@ -12,9 +12,7 @@ export * from './FooterSeparator';
 export * from './Copyable';
 export * from './Tag';
 export * from './Textarea';
-
-export { default as Spinner } from './Spinner';
-export type { SpinnerProps } from './Spinner';
+export * from './Spinner';
 
 // Re-export as these should be used over the ones imported from rebass!
 export { Box, Flex, Image, Link, Text } from 'rebass/styled-components';
