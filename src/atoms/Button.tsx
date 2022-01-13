@@ -2,7 +2,7 @@ import type { FunctionComponent } from 'react';
 import type { ButtonProps as RebassButtonProps } from 'rebass/styled-components';
 import { Button as RebassButton, Flex } from 'rebass/styled-components';
 
-import Spinner from './Spinner';
+import { Spinner } from './Spinner';
 
 interface OwnProps {
   compact?: boolean;
