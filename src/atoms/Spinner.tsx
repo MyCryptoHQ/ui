@@ -1,5 +1,5 @@
 import type { FunctionComponent } from 'react';
-import styled, { keyframes, withTheme } from 'styled-components';
+import styled, { keyframes, useTheme } from 'styled-components';
 import type { SpaceProps } from 'styled-system';
 import { space } from 'styled-system';
 
@@ -22,12 +22,12 @@ export interface SpinnerProps extends SpaceProps {
   color?: string;
 }
 
-const Spinner: FunctionComponent<SpinnerProps & { theme: Theme }> = ({
+export const Spinner: FunctionComponent<SpinnerProps> = ({
   size = 1,
   color = 'spinner',
-  theme,
   ...props
 }) => {
+  const theme = useTheme();
   return (
     <Svg
       data-testid="spinner"
@@ -51,5 +51,3 @@ const Spinner: FunctionComponent<SpinnerProps & { theme: Theme }> = ({
     </Svg>
   );
 };
-
-export default withTheme(Spinner);
