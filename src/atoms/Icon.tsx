@@ -1,5 +1,7 @@
 import type { FunctionComponent } from 'react';
 import InlineSVG from 'react-inlinesvg';
+import { withTheme } from 'styled-components';
+import type { Theme } from 'theme';
 
 import type { BoxProps } from '.';
 import { Box } from '.';
@@ -81,15 +83,26 @@ export interface IconProps {
   fill?: string;
 }
 
-export const Icon: FunctionComponent<IconProps & BoxProps> = ({
+const Icon: FunctionComponent<IconProps & BoxProps & { theme: Theme }> = ({
   type,
   width = '15',
   fill,
+  theme,
   ...props
 }) => {
   if (fill) {
-    return <Box as={InlineSVG} src={icons[type]} width={width} fill={fill} {...props} />;
+    return (
+      <Box
+        as={InlineSVG}
+        src={icons[type]}
+        width={width}
+        fill={(theme.colors[fill as keyof Theme['colors']] as string) || fill}
+        {...props}
+      />
+    );
   }
 
   return <Box as="img" src={icons[type]} width={width} {...props} />;
 };
+
+export default withTheme(Icon);

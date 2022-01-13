@@ -20,10 +20,9 @@ const Svg = styled.svg<{ $size: number } & SpaceProps>`
 export interface SpinnerProps extends SpaceProps {
   size?: number;
   color?: string;
-  theme: Theme;
 }
 
-const Spinner: FunctionComponent<SpinnerProps> = ({
+const Spinner: FunctionComponent<SpinnerProps & { theme: Theme }> = ({
   size = 1,
   color = 'spinner',
   theme,

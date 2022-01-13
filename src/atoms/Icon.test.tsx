@@ -1,5 +1,5 @@
 import { simpleRender } from '../../.jest/test-utils';
-import { Icon } from './Icon';
+import { default as Icon } from './Icon';
 
 describe('Icon', () => {
   it('renders correctly', () => {

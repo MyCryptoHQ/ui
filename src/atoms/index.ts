@@ -4,7 +4,6 @@ export * from './Address';
 export * from './Button';
 export * from './Badge';
 export * from './Logo';
-export * from './Icon';
 export * from './Container';
 export * from './Breadcrumb';
 export * from './Panel';
@@ -13,6 +12,8 @@ export * from './Copyable';
 export * from './Tag';
 export * from './Textarea';
 
+export { default as Icon } from './Icon';
+export type { IconProps, IconType } from './Icon';
 export { default as Spinner } from './Spinner';
 export type { SpinnerProps } from './Spinner';
 

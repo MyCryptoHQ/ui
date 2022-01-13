@@ -1,6 +1,6 @@
 import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
 
-import { Icon } from './Icon';
+import { default as Icon } from './Icon';
 
 <Meta
   title="atoms/Icon"
@@ -225,6 +225,14 @@ import { Icon } from './Icon';
 
 <Canvas>
   <Story name="Twitter" args={{ width: 25, type: 'twitter' }}>
+    {(props) => <Icon {...props} />}
+  </Story>
+</Canvas>
+
+## Fill
+
+<Canvas>
+  <Story name="Fill" args={{ width: 25, type: 'info', fill: 'error' }}>
     {(props) => <Icon {...props} />}
   </Story>
 </Canvas>
