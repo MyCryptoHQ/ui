@@ -1,12 +1,12 @@
 import type { FunctionComponent } from 'react';
 import styled from 'styled-components';
-import type { SpaceProps } from 'styled-system';
 
+import type { BoxProps } from '.';
 import { Box } from '.';
 
 const steps = ['#EF4747', '#FA873F', '#FFD166', '#7BBE34'];
 
-export interface PasswordStrengthProps extends SpaceProps {
+export interface PasswordStrengthProps extends BoxProps {
   strength: number;
 }
 
@@ -18,9 +18,10 @@ const SBox = styled(Box)`
 
 export const PasswordStrength: FunctionComponent<PasswordStrengthProps> = ({
   strength,
+  height = '10px',
   ...props
 }) => (
-  <Box variant="passwordBar" height="10px" {...props}>
-    <SBox variant="passwordBar" height="10px" strength={strength} />
+  <Box variant="passwordBar" height={height} {...props}>
+    <SBox variant="passwordBar" height={height} strength={strength} />
   </Box>
 );
