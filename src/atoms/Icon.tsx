@@ -1,6 +1,7 @@
 import type { FunctionComponent } from 'react';
 import InlineSVG from 'react-inlinesvg';
 import { useTheme } from 'styled-components';
+import { get } from 'styled-system';
 import type { Theme } from 'theme';
 
 import type { BoxProps } from '.';
@@ -96,7 +97,7 @@ export const Icon: FunctionComponent<IconProps & BoxProps> = ({
         as={InlineSVG}
         src={icons[type]}
         width={width}
-        fill={(theme.colors[fill as keyof Theme['colors']] as string) || fill}
+        fill={get(theme.colors, (fill as keyof Theme['colors']) as string) || fill}
         {...props}
       />
     );

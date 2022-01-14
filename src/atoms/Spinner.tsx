@@ -1,7 +1,7 @@
 import type { FunctionComponent } from 'react';
 import styled, { keyframes, useTheme } from 'styled-components';
 import type { SpaceProps } from 'styled-system';
-import { space } from 'styled-system';
+import { space, get } from 'styled-system';
 
 import type { Theme } from '../theme';
 
@@ -42,7 +42,7 @@ export const Spinner: FunctionComponent<SpinnerProps> = ({
         cy="25"
         r="20"
         fill="none"
-        stroke={(theme.colors[color as keyof Theme['colors']] as string) || color}
+        stroke={get(theme.colors, (color as keyof Theme['colors']) as string) || color}
         strokeWidth="5"
         strokeDasharray="90, 150"
         strokeDashoffset={0}
