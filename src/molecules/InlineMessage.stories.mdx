@@ -1,0 +1,28 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+
+import { fAddress } from '../../.jest/__fixtures__';
+import { InlineMessage } from './InlineMessage';
+
+<Meta
+  title="molecules/InlineMessage"
+  component={InlineMessage}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    type: {
+      control: {
+        type: 'select',
+        options: ['success', 'info', 'action', 'warning', 'error']
+      }
+    }
+  }}
+/>
+
+# InlineMessage
+
+InlineMessage!
+
+<Canvas>
+  <Story name="Default" args={{ type: 'success', children: 'Default' }}>
+    {(props) => <InlineMessage {...props} />}
+  </Story>
+</Canvas>

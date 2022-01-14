@@ -125,6 +125,14 @@ export const theme = {
     tooltip: {
       background: 'white',
       border: COLORS.GREY_SECONDARY
+    },
+
+    banner: {
+      success: '#b4dd88',
+      info: '#b6c0c8',
+      action: '#a682ff',
+      warning: '#fa873f',
+      error: '#ef4747'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -327,27 +335,27 @@ export const theme = {
     banner: {
       success: {
         background: '#f4faed',
-        color: '#b4dd88'
+        color: 'banner.success'
       },
       info: {
         background: '#f4f6f7',
-        color: '#b6c0c8'
+        color: 'banner.info'
       },
       action: {
         background: '#f2ecff',
-        color: '#a682ff'
+        color: 'banner.action'
       },
       warning: {
         background: '#feede2',
-        color: '#fa873f'
+        color: 'banner.warning'
       },
       error: {
         background: '#fde4e4',
-        color: '#ef4747'
+        color: 'banner.error'
       },
       clear: {
         background: 'none',
-        color: '#a682ff'
+        color: 'banner.action'
       }
     },
     panel: {
