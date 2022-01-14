@@ -12,8 +12,8 @@ export interface PasswordStrengthProps extends SpaceProps {
 
 const SBox = styled(Box)`
   transition: width 1s ease-in-out;
-  width: ${(props) => `${((props.strength + 1) / steps.length) * 100}%`};
-  background-color: ${(props) => `${steps[props.strength]}`};
+  width: ${(props) => `${Math.min(((props.strength + 1) / steps.length) * 100, 100)}%`};
+  background-color: ${(props) => `${steps[Math.min(props.strength, steps.length - 1)]}`};
 `;
 
 export const PasswordStrength: FunctionComponent<PasswordStrengthProps> = ({
