@@ -401,6 +401,10 @@ export const theme = {
           }
         }
       }
+    },
+    passwordBar: {
+      backgroundColor: COLORS.GREY_ATHENS,
+      borderRadius: '100px'
     }
   }
 };
