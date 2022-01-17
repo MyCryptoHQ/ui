@@ -10,3 +10,4 @@ export * from './SubHeader';
 export * from './Accordion';
 export * from './AccordionItem';
 export * from './Tooltip';
+export * from './InlineMessage';
