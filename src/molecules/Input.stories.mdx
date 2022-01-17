@@ -52,3 +52,18 @@ Inputs!
     {(props) => <Input {...props} />}
   </Story>
 </Canvas>
+
+<Canvas>
+  <Story
+    name="Custom Width/Height"
+    args={{
+      value: fAddress,
+      variant: 'simple',
+      icon: 'search',
+      height: '50px',
+      width: '300px',
+      placeholder: 'Enter some text...'
+    }}>
+    {(props) => <Input {...props} />}
+  </Story>
+</Canvas>
