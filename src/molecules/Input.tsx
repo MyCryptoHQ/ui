@@ -16,10 +16,14 @@ export const Input: FunctionComponent<InputProps & FormInputProps> = ({
   variant = 'default',
   hasError,
   icon,
+  width,
+  height,
   ...props
 }) => (
   <Flex
     variant={`input.${variant}`}
+    width={width}
+    height={height}
     {...getMarginProps(props)}
     sx={{ position: 'relative', borderColor: hasError ? 'error' : undefined }}>
     {icon && (
