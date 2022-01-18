@@ -3,6 +3,7 @@ import type { DefaultTheme } from 'styled-components';
 
 import type { IconType, TextProps } from '../atoms';
 import { Body, Flex, Icon } from '../atoms';
+import { omitMarginProps } from '../utils';
 
 export type InlineMessageType = keyof DefaultTheme['colors']['banner'];
 
@@ -25,7 +26,7 @@ export const InlineMessage: FunctionComponent<InlineMessageProps & TextProps> = 
 }) => (
   <Flex display="inline-flex" {...props}>
     <Icon type={icons[type]} fill={`banner.${type}`} mr="1" minWidth="15px" />
-    <Body color={`banner.${type}`} as="span" verticalAlign="middle" {...props}>
+    <Body color={`banner.${type}`} as="span" verticalAlign="middle" {...omitMarginProps(props)}>
       {children}
     </Body>
   </Flex>
