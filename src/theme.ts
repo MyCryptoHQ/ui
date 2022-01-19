@@ -375,6 +375,7 @@ export const theme = {
         boxShadow: 'input',
         borderRadius: 'input',
         input: {
+          fontFamily: 'body',
           color: 'text.primary',
           background: 'white',
           '&:focus': {
@@ -384,6 +385,7 @@ export const theme = {
       },
       simple: {
         input: {
+          fontFamily: 'body',
           backgroundColor: 'background.muted',
           borderRadius: '4px',
           padding: '15px 18px',
