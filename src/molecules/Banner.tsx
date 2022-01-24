@@ -3,8 +3,9 @@ import { useState } from 'react';
 
 import type { IconType } from '..';
 import { Body, Box, Flex, Icon } from '..';
-import type { BadgeType } from '../atoms';
+import type { BadgeType, BoxProps } from '../atoms';
 import { Badge } from '../atoms';
+import { getMarginProps, omitMarginProps } from '../utils';
 
 export interface BannerProps {
   type: BadgeType;
@@ -23,20 +24,25 @@ const icons: { [key in BadgeType]: IconType } = {
   clear: 'waiting'
 };
 
-export const Banner: FunctionComponent<BannerProps> = ({
+export const Banner: FunctionComponent<BannerProps & BoxProps> = ({
   type,
   label,
   badge,
   extended,
   extendable = true,
-  children
+  children,
+  ...props
 }) => {
   const [isExtended, setExtended] = useState(extended);
 
   const handleToggle = () => setExtended((value) => !value);
 
   return (
-    <Box mb="2" variant={`banner.${type}`} sx={{ borderRadius: 'banner' }}>
+    <Box
+      mb="2"
+      sx={{ borderRadius: 'banner' }}
+      {...getMarginProps(props)}
+      variant={`banner.${type}`}>
       <Flex
         variant="horizontal-start"
         p={extendable ? '2' : '3'}
@@ -45,6 +51,7 @@ export const Banner: FunctionComponent<BannerProps> = ({
         justifyContent="space-between"
         onClick={children && extendable ? handleToggle : undefined}
         sx={{ cursor: children && extendable && 'pointer' }}
+        {...omitMarginProps(props)}
         data-testid="banner-toggle">
         <Flex variant="horizontal-start">
           <Icon type={icons[type]} width="20px" minWidth="20px" height="20px" mr="2" />
