@@ -24,7 +24,7 @@ const icons: { [key in BadgeType]: IconType } = {
   clear: 'waiting'
 };
 
-export const Banner: FunctionComponent<BannerProps & BoxProps> = ({
+export const Banner: FunctionComponent<BannerProps & Omit<BoxProps, 'label'>> = ({
   type,
   label,
   badge,
