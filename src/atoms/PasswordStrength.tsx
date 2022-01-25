@@ -1,5 +1,4 @@
 import type { FunctionComponent } from 'react';
-import styled from 'styled-components';
 
 import type { BoxProps } from '.';
 import { Box } from '.';
@@ -10,18 +9,17 @@ export interface PasswordStrengthProps extends BoxProps {
   strength: number;
 }
 
-const SBox = styled(Box)`
-  transition: width 1s ease-in-out;
-  width: ${(props) => `${Math.min(((props.strength + 1) / steps.length) * 100, 100)}%`};
-  background-color: ${(props) => `${steps[Math.min(props.strength, steps.length - 1)]}`};
-`;
-
 export const PasswordStrength: FunctionComponent<PasswordStrengthProps> = ({
   strength,
   height = '10px',
   ...props
 }) => (
   <Box variant="passwordBar" height={height} {...props}>
-    <SBox variant="passwordBar" height={height} strength={strength} />
+    <Box
+      variant="passwordBar"
+      height={height}
+      width={`${Math.min(((strength + 1) / steps.length) * 100, 100)}%`}
+      bg={steps[Math.min(strength, steps.length - 1)]}
+    />
   </Box>
 );

@@ -404,7 +404,8 @@ export const theme = {
     },
     passwordBar: {
       backgroundColor: COLORS.GREY_ATHENS,
-      borderRadius: '100px'
+      borderRadius: '100px',
+      transition: 'width 0.5s ease-in-out'
     }
   }
 };
