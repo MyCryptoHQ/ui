@@ -40,7 +40,8 @@ const COLORS = {
   WHITE: '#ffffff',
   GREY_LIGHT: '#d8d8d8',
   GREY_ATHENS: '#e8eaed',
-  GREY_SECONDARY: '#b5bfc7'
+  GREY_SECONDARY: '#b5bfc7',
+  WARNING_ORANGE: '#fa873f'
 };
 
 const breakpoints: string[] & {
@@ -76,6 +77,8 @@ export const theme = {
     spinner: '#a086f7',
     loadingSpinner: '#7c9ec3',
 
+    warning: COLORS.WARNING_ORANGE,
+
     background: {
       muted: '#f6f8fa'
     },
@@ -93,6 +96,9 @@ export const theme = {
       },
       inverted: {
         hover: '#007896'
+      },
+      warning: {
+        hover: COLORS.WHITE
       }
     },
 
@@ -283,6 +289,36 @@ export const theme = {
       transition: 'color 0.12s ease 0s, background 0.12s ease 0s, box-shadow 0.12s ease 0s',
       '&:hover': {
         backgroundColor: 'button.inverted.hover',
+        color: 'text.inverted'
+      },
+      '&:focus': {
+        boxShadow: 'button',
+        outline: 'none'
+      },
+      '&:disabled': {
+        cursor: 'default',
+        borderColor: 'button.primary.disabled',
+        color: 'button.primary.disabled',
+        '&:hover': {
+          background: 'none',
+          color: 'button.primary.disabled'
+        }
+      }
+    },
+    warning: {
+      cursor: 'pointer',
+      background: '',
+      color: 'primary',
+      fontSize: 2,
+      fontFamily: 'body',
+      padding: '0.625rem 2.125rem',
+      borderRadius: 'small',
+      borderWidth: '0.125rem',
+      borderStyle: 'solid',
+      borderColor: 'primary',
+      transition: 'color 0.12s ease 0s, background 0.12s ease 0s, box-shadow 0.12s ease 0s',
+      '&:hover': {
+        backgroundColor: 'button.warning.hover',
         color: 'text.inverted'
       },
       '&:focus': {

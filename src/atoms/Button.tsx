@@ -7,6 +7,7 @@ import { Spinner } from './Spinner';
 interface OwnProps {
   compact?: boolean;
   loading?: boolean;
+  fullwidth?: boolean;
 }
 
 export type ButtonProps = OwnProps & RebassButtonProps;
@@ -15,6 +16,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   compact = false,
   loading = false,
   disabled = false,
+  fullwidth = false,
   children,
   ...props
 }) => (
@@ -22,6 +24,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
     p={compact ? '0.625rem 2rem' : undefined}
     pl={loading ? '1.5rem' : undefined}
     fontSize={compact ? '0.9rem' : undefined}
+    width={fullwidth ? '100%' : undefined}
     disabled={loading || disabled}
     {...props}>
     <Flex variant="horizontal-center">
