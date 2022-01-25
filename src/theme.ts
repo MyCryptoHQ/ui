@@ -133,6 +133,11 @@ export const theme = {
       action: '#a682ff',
       warning: '#fa873f',
       error: '#ef4747'
+    },
+
+    passwordBar: {
+      green: '#7BBE34',
+      yellow: '#FFD166'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -401,6 +406,11 @@ export const theme = {
           }
         }
       }
+    },
+    passwordBar: {
+      backgroundColor: COLORS.GREY_ATHENS,
+      borderRadius: '100px',
+      transition: 'width 0.5s ease-in-out'
     }
   }
 };
