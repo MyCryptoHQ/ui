@@ -13,6 +13,7 @@ export * from './Copyable';
 export * from './Tag';
 export * from './Textarea';
 export * from './Spinner';
+export * from './PasswordStrength';
 
 // Re-export as these should be used over the ones imported from rebass!
 export { Box, Flex, Image, Link, Text } from 'rebass/styled-components';
