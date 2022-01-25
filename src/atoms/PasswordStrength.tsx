@@ -3,7 +3,7 @@ import type { FunctionComponent } from 'react';
 import type { BoxProps } from '.';
 import { Box } from '.';
 
-const steps = ['#EF4747', '#FA873F', '#FFD166', '#7BBE34'];
+const steps = ['banner.error', 'banner.warning', 'passwordBar.yellow', 'passwordBar.green'];
 
 export interface PasswordStrengthProps extends BoxProps {
   strength: number;
