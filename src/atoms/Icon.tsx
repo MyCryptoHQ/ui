@@ -105,7 +105,7 @@ export const Icon: FunctionComponent<IconProps & BoxProps> = ({
         as={InlineSVG}
         src={icons[type]}
         width={width}
-        fill={get(theme.colors, (fill as keyof Theme['colors']) as string) || fill}
+        sx={{ fill: get(theme.colors, (fill as keyof Theme['colors']) as string) || fill }}
         {...props}
       />
     );

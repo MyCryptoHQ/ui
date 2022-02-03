@@ -347,6 +347,12 @@ export const theme = {
       '&:hover': {
         transform: 'scale(1.05)'
       }
+    },
+    basic: {
+      cursor: 'pointer',
+      background: 'none',
+      border: 'none',
+      p: 0
     }
   },
   variants: {
