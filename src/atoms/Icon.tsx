@@ -12,6 +12,7 @@ import blog from '../assets/icons/blog.svg';
 import caret from '../assets/icons/caret.svg';
 import checkmark from '../assets/icons/checkmark.svg';
 import copy from '../assets/icons/copy.svg';
+import deleteIcon from '../assets/icons/delete.svg';
 import external from '../assets/icons/external.svg';
 import help from '../assets/icons/help.svg';
 import home from '../assets/icons/home.svg';
@@ -29,16 +30,19 @@ import team from '../assets/icons/team.svg';
 import tool from '../assets/icons/tool.svg';
 import waiting from '../assets/icons/waiting.svg';
 import warning from '../assets/icons/warning.svg';
+import apple from '../assets/logos/apple.svg';
 import bitcoin from '../assets/logos/bitcoin.svg';
 import discord from '../assets/logos/discord.svg';
 import ether from '../assets/logos/ether.svg';
 import facebook from '../assets/logos/facebook.svg';
 import github from '../assets/logos/github.svg';
 import linkedin from '../assets/logos/linkedin.svg';
+import linux from '../assets/logos/linux.svg';
 import medium from '../assets/logos/medium.svg';
 import reddit from '../assets/logos/reddit.svg';
 import telegram from '../assets/logos/telegram.svg';
 import twitter from '../assets/logos/twitter.svg';
+import windows from '../assets/logos/windows.svg';
 
 export const icons = {
   alert,
@@ -47,6 +51,7 @@ export const icons = {
   caret,
   checkmark,
   copy,
+  delete: deleteIcon,
   external,
   help,
   home,
@@ -65,16 +70,19 @@ export const icons = {
   waiting,
   warning,
 
+  apple,
   bitcoin,
   discord,
   ether,
   facebook,
   github,
   linkedin,
+  linux,
   medium,
   reddit,
   telegram,
-  twitter
+  twitter,
+  windows
 };
 
 export type IconType = keyof typeof icons;
