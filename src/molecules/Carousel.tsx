@@ -21,6 +21,48 @@ export interface CarouselProps {
   interval?: number;
 }
 
+interface CarouselHeadingProps {
+  title: string;
+  index: number;
+  isActive: boolean;
+  onClick?(index: number): void;
+}
+
+const CarouselHeading: FunctionComponent<CarouselHeadingProps> = ({
+  title,
+  index,
+  isActive,
+  onClick
+}) => {
+  const handleClick = () => onClick?.(index);
+
+  return (
+    <SubHeading
+      key={title}
+      onClick={handleClick}
+      flex="0 0 auto"
+      fontSize={['3', null, '4']}
+      color={isActive ? 'carousel.active' : 'text.discrete'}
+      my="3"
+      mr="4"
+      lineHeight="150%"
+      sx={{
+        '&:first-child': {
+          ml: ['4', null, 0]
+        },
+        '&:last-child': {
+          mr: ['4', null, 0]
+        },
+        whiteSpace: 'nowrap',
+        cursor: 'pointer',
+        borderBottom: '2px solid',
+        borderBottomColor: isActive ? 'carousel.active' : 'transparent'
+      }}>
+      {title}
+    </SubHeading>
+  );
+};
+
 export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
   title,
   elements,
@@ -76,29 +118,13 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
             }
           }}>
           {elements.map((el, current) => (
-            <SubHeading
+            <CarouselHeading
               key={el.title}
-              onClick={() => setIndex(current)}
-              flex="0 0 auto"
-              fontSize={['3', null, '4']}
-              color={index === current ? 'carousel.active' : 'text.discrete'}
-              my="3"
-              mr="4"
-              lineHeight="150%"
-              sx={{
-                '&:first-child': {
-                  ml: ['4', null, 0]
-                },
-                '&:last-child': {
-                  mr: ['4', null, 0]
-                },
-                whiteSpace: 'nowrap',
-                cursor: 'pointer',
-                borderBottom: '2px solid',
-                borderBottomColor: index === current ? 'carousel.active' : 'transparent'
-              }}>
-              {el.title}
-            </SubHeading>
+              title={el.title}
+              index={current}
+              isActive={current === index}
+              onClick={setIndex}
+            />
           ))}
         </Flex>
 
