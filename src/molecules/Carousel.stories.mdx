@@ -1,0 +1,91 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Body } from '../atoms';
+import { Carousel } from './Carousel';
+
+<Meta
+  title="molecules/Carousel"
+  component={Carousel}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+  argTypes={{
+    inverted: {
+      control: {
+        type: 'boolean'
+      }
+    }
+  }}
+/>
+
+# Carousel
+
+A carousel showing different titles, descriptions, and images.
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      title: 'Foo bar',
+      interval: 7500,
+      elements: [
+        {
+          title: 'Element 1',
+          text: (
+            <Body>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt sapien vitae
+              luctus porta.
+            </Body>
+          ),
+          icon: 'https://via.placeholder.com/400'
+        },
+        {
+          title: 'Element 2',
+          text: <Body>Suspendisse ut tempor tortor, sed volutpat arcu.</Body>,
+          icon: 'https://via.placeholder.com/400'
+        },
+        {
+          title: 'Element 3',
+          text: <Body>Mauris in convallis mi. Praesent vehicula sed nunc ac condimentum.</Body>,
+          icon: 'https://via.placeholder.com/400'
+        }
+      ]
+    }}>
+    {(props) => <Carousel {...props} />}
+  </Story>
+</Canvas>
+
+# Static
+
+A carousel that does not automatically change the current element.
+
+<Canvas>
+  <Story
+    name="Static"
+    args={{
+      title: 'Foo bar',
+      interval: 0,
+      elements: [
+        {
+          title: 'Element 1',
+          text: (
+            <Body>
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla tincidunt sapien vitae
+              luctus porta.
+            </Body>
+          ),
+          icon: 'https://via.placeholder.com/400'
+        },
+        {
+          title: 'Element 2',
+          text: <Body>Suspendisse ut tempor tortor, sed volutpat arcu.</Body>,
+          icon: 'https://via.placeholder.com/400'
+        },
+        {
+          title: 'Element 3',
+          text: <Body>Mauris in convallis mi. Praesent vehicula sed nunc ac condimentum.</Body>,
+          icon: 'https://via.placeholder.com/400'
+        }
+      ]
+    }}>
+    {(props) => <Carousel {...props} />}
+  </Story>
+</Canvas>

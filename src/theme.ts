@@ -138,6 +138,10 @@ export const theme = {
     passwordBar: {
       green: '#7BBE34',
       yellow: '#FFD166'
+    },
+
+    carousel: {
+      active: '#a480ff'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -186,13 +190,13 @@ export const theme = {
       fontSize: 5,
       lineHeight: 3,
       fontWeight: 'heading',
-      color: 'text.secondary'
+      color: 'text.primary'
     },
     subHeading: {
       fontFamily: 'body',
       fontSize: 4,
       lineHeight: 2,
-      color: 'text.secondary',
+      color: 'text.primary',
       fontWeight: 'heading'
     },
     body: {
