@@ -1,6 +1,7 @@
 import type { FunctionComponent, ReactNode } from 'react';
 import { useEffect, useState } from 'react';
 
+import type { FlexProps } from '../atoms';
 import { Box, Flex, Heading, Image, SubHeading } from '../atoms';
 
 export interface CarouselElement {
@@ -20,11 +21,12 @@ export interface CarouselProps {
   interval?: number;
 }
 
-export const Carousel: FunctionComponent<CarouselProps> = ({
+export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
   title,
   elements,
   inverted = false,
-  interval = 7500
+  interval = 7500,
+  ...props
 }) => {
   const [index, setIndex] = useState(0);
 
@@ -48,7 +50,8 @@ export const Carousel: FunctionComponent<CarouselProps> = ({
     <Flex
       flexDirection={{ _: 'column', md: inverted ? 'row-reverse' : 'row' }}
       alignItems="center"
-      justifyContent="center">
+      justifyContent="center"
+      {...props}>
       <Flex
         alignItems="flex-start"
         flexDirection="column"
