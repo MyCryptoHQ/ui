@@ -12,3 +12,4 @@ export * from './AccordionItem';
 export * from './Tooltip';
 export * from './InlineMessage';
 export * from './Carousel';
+export * from './Feature';

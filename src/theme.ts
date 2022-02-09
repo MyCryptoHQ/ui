@@ -142,6 +142,10 @@ export const theme = {
 
     carousel: {
       active: '#a480ff'
+    },
+
+    feature: {
+      background: '#ddf0f9'
     }
   },
   fontSizes: ['0.625rem', '0.75rem', '1rem', '1.125rem', '1.25rem', '2.5rem'],
@@ -157,7 +161,8 @@ export const theme = {
     large: '6px',
     avatar: '50%',
     banner: '3px',
-    badge: '4px'
+    badge: '4px',
+    feature: '18px'
   },
   forms: {
     label: {
