@@ -26,5 +26,9 @@ describe('Carousel', () => {
     jest.advanceTimersToNextTimer();
 
     await expect(findAllByText('Qux')).resolves.toBeDefined();
+
+    jest.advanceTimersToNextTimer();
+
+    await expect(findAllByText('Bar')).resolves.toBeDefined();
   });
 });
