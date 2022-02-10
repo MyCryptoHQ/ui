@@ -108,7 +108,6 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
           flexDirection="row"
           flexWrap="nowrap"
           alignItems="center"
-          justifyContent={{ _: 'flex-start', sm: 'center', md: 'flex-start' }}
           overflowX={{ _: 'auto', sm: 'visible' }}
           overflowY="hidden"
           width="100%"
@@ -132,7 +131,8 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
         <Box
           display={{ _: 'none', md: 'block' }}
           height={{ _: 'auto', sm: '70px' }}
-          px={{ _: '4', sm: 0 }}>
+          px={{ _: '4', sm: 0 }}
+          sx={{ textAlign: ['center', null, 'left'] }}>
           {selected.text}
         </Box>
       </Flex>
@@ -149,7 +149,8 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
       <Box
         display={{ _: 'block', md: 'none' }}
         height={{ _: 'auto', sm: '70px' }}
-        px={{ _: '4', sm: 0 }}>
+        px={{ _: '4', sm: 0 }}
+        sx={{ textAlign: ['center', null, 'left'] }}>
         {selected.text}
       </Box>
     </Flex>
