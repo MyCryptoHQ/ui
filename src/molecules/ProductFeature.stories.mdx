@@ -1,0 +1,23 @@
+import { Canvas, Meta, Story } from '@storybook/addon-docs/blocks';
+
+import { Body } from '../atoms';
+import { ProductFeature } from './ProductFeature';
+
+<Meta
+  title="molecules/ProductFeature"
+  component={ProductFeature}
+  parameters={{ actions: { argTypesRegex: '^on.*' } }}
+/>
+
+# ProductFeature
+
+<Canvas>
+  <Story
+    name="Default"
+    args={{
+      icon: 'https://via.placeholder.com/80',
+      text: <Body>Store your funds securely</Body>
+    }}>
+    {(props) => <ProductFeature {...props} />}
+  </Story>
+</Canvas>
