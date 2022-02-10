@@ -1,3 +1,6 @@
+// Re-export `styled-components` to prevent duplicate instances
+export * from 'styled-components';
+
 const FLEX_RECIPES = {
   align: {
     alignItems: 'center'

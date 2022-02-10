@@ -25,6 +25,7 @@ interface CarouselHeadingProps {
   title: string;
   index: number;
   isActive: boolean;
+
   onClick?(index: number): void;
 }
 
@@ -138,8 +139,12 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
       <Flex
         width={{ _: '247px', sm: '400px' }}
         height={{ _: '247px', sm: '400px' }}
-        my={{ _: '5', md: 0 }}>
-        <Image src={selected.icon} width="100%" />
+        my={{ _: '5', md: 0 }}
+        justifyContent="center"
+        alignItems="center">
+        <Box>
+          <Image src={selected.icon} width="100%" />
+        </Box>
       </Flex>
       <Box
         display={{ _: 'block', md: 'none' }}
