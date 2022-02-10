@@ -3,12 +3,16 @@ import type { FunctionComponent, ReactNode } from 'react';
 import type { FlexProps } from '../atoms';
 import { Box, Flex, Image } from '../atoms';
 
-export interface FeatureProps {
+export interface ProductFeatureProps {
   icon: string;
   text: ReactNode;
 }
 
-export const Feature: FunctionComponent<FeatureProps & FlexProps> = ({ icon, text, ...props }) => (
+export const ProductFeature: FunctionComponent<ProductFeatureProps & FlexProps> = ({
+  icon,
+  text,
+  ...props
+}) => (
   <Flex
     flexDirection="row"
     justifyContent={{ _: 'flex-start', md: 'flex-end' }}
