@@ -25,6 +25,7 @@ interface CarouselHeadingProps {
   title: string;
   index: number;
   isActive: boolean;
+
   onClick?(index: number): void;
 }
 
@@ -107,7 +108,6 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
           flexDirection="row"
           flexWrap="nowrap"
           alignItems="center"
-          justifyContent={{ _: 'flex-start', sm: 'center', md: 'flex-start' }}
           overflowX={{ _: 'auto', sm: 'visible' }}
           overflowY="hidden"
           width="100%"
@@ -131,20 +131,26 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
         <Box
           display={{ _: 'none', md: 'block' }}
           height={{ _: 'auto', sm: '70px' }}
-          px={{ _: '4', sm: 0 }}>
+          px={{ _: '4', sm: 0 }}
+          sx={{ textAlign: ['center', null, 'left'] }}>
           {selected.text}
         </Box>
       </Flex>
       <Flex
         width={{ _: '247px', sm: '400px' }}
         height={{ _: '247px', sm: '400px' }}
-        my={{ _: '5', md: 0 }}>
-        <Image src={selected.icon} width="100%" />
+        my={{ _: '5', md: 0 }}
+        justifyContent="center"
+        alignItems="center">
+        <Box>
+          <Image src={selected.icon} width="100%" />
+        </Box>
       </Flex>
       <Box
         display={{ _: 'block', md: 'none' }}
         height={{ _: 'auto', sm: '70px' }}
-        px={{ _: '4', sm: 0 }}>
+        px={{ _: '4', sm: 0 }}
+        sx={{ textAlign: ['center', null, 'left'] }}>
         {selected.text}
       </Box>
     </Flex>
