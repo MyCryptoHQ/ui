@@ -80,7 +80,7 @@ export const Carousel: FunctionComponent<CarouselProps & FlexProps> = ({
         }
 
         setIndex(0);
-      }, 7500);
+      }, interval);
 
       return () => clearTimeout(timeout);
     }
