@@ -47,10 +47,10 @@ export const Banner: FunctionComponent<BannerProps & Omit<BoxProps, 'label'>> = 
         variant="horizontal-start"
         p={extendable ? '2' : '3'}
         pb={'2'}
-        px={type === 'clear' && '0'}
+        px={type === 'clear' ? '0' : undefined}
         justifyContent="space-between"
         onClick={children && extendable ? handleToggle : undefined}
-        sx={{ cursor: children && extendable && 'pointer' }}
+        sx={{ cursor: children && extendable ? 'pointer' : undefined }}
         {...omitMarginProps(props)}
         data-testid="banner-toggle">
         <Flex variant="horizontal-start">
